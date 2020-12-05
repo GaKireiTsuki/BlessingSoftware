@@ -7,7 +7,6 @@ import Video from 'video.js'
 
 import './assets/css/index.css'
 import './assets/css/style.css'
-import './assets/js/all.js'
 
 Vue.config.productionTip = false
 axios.defaults.withCredentials = true
