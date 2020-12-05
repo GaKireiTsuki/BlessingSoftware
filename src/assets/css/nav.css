@@ -23,3 +23,9 @@
 .nav img{
     width: 25px;
 }
+#nav_link{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0px 10px;
+}
