@@ -27,7 +27,6 @@ const routes = [
         path: '/home',
         redirect: '/'
     },
-
     //新闻
     {
         path: '/news',
@@ -37,7 +36,6 @@ const routes = [
             title: 'Blessing Software News'
         }
     },
-
     //商店
     {
         path: '/store',
@@ -47,7 +45,6 @@ const routes = [
             title: 'Blessing Software Store'
         }
     },
-
     //游戏详情
     {
         path: '/store/:GameID',
@@ -57,7 +54,6 @@ const routes = [
             title: 'Blessing Software Game'
         }
     },
-
     //错误页
     {
         path: '/*',

@@ -6,10 +6,10 @@
             </router-link>
             <router-link to="/store" id="nav_link">STORE</router-link>
             <router-link to="/news" id="nav_link">NEWS</router-link>
-            <router-link to="/store" id="nav_link">LOGIN</router-link>
-            <router-link to="/" id="nav_link">
+            <a id="nav_link">LOGIN</a>
+            <a id="nav_link">
                 <img style="width: 18px;" src="../assets/img/ss.png" alt="">
-            </router-link>
+            </a>
         </div>
     </div>
 </template>
@@ -33,7 +33,6 @@ export default {
         box-sizing: border-box;
         font-size: 14px;
         color: #3d3e3f;
-        font-weight: 600;
         position: sticky;
         position: -webkit-sticky;
         max-width: 980px;
@@ -51,5 +50,6 @@ export default {
         height: 100%;
         padding: 0px 10px;
         color: #fff;
+        cursor: pointer;
     }
 </style>

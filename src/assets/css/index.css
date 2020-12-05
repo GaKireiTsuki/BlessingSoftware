@@ -2,3 +2,6 @@
     margin: auto;
     max-width: 980px;
 }
+.border_top{
+    border-top: 1px solid #d6d6d6;
+}

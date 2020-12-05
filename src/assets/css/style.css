@@ -3,7 +3,7 @@
     padding: 0;
     list-style: none;
     text-decoration: none;
-    font-family: 'SF Pro Text', 'SF Pro Display', 'PingFang JP', 'PingFang SC';
+    font-family: "SF Pro SC","SF Pro Text","PingFang SC","Arial",sans-serif;
     user-select: none;
     -webkit-font-smoothing: antialiased;
 }
@@ -24,12 +24,14 @@ a{
 .hmbl{
     background: rgba(29, 29, 31, 0.72);
     backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
     box-sizing: border-box;
     border-bottom: 1px solid rgba(255, 255, 255, 0.24);
 }
 .bmbl{
     background: hsla(0,0%,100%,.72);
     backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
     box-sizing: border-box;
     border-bottom: 1px solid rgba(0,0,0,0.16);
 }
@@ -90,63 +92,6 @@ audio::-webkit-media-controls-current-time-display{
 }
 audio::-webkit-media-controls-time-remaining-display{
     font-family: 'SF Pro Text', 'SF Pro Display', 'PingFang SC';
-}
-@font-face{
-    font-family: 'SF Pro Text';
-    font-style: normal;
-    font-weight: 400;
-    src: url(../font/SfProText/sf-pro-text_regular.woff2);
-}
-@font-face{
-    font-family: 'SF Pro Text';
-    font-style: normal;
-    font-weight: 600;
-    src: url(../font/SfProText/sf-pro-text_semibold.woff2);
-}
-
-@font-face{
-    font-family: 'SF Pro Display';
-    font-style: normal;
-    font-weight: 400;
-    src: url(../font/SfProDisplay/sf-pro-display_regular.woff2);
-}
-@font-face{
-    font-family: 'SF Pro Display';
-    font-style: normal;
-    font-weight: 600;
-    src: url(../font/SfProDisplay/sf-pro-display_semibold.woff2);
-}
-
-@font-face{
-    font-family: 'PingFang SC';
-    font-style: normal;
-    font-weight: 300;
-    src: url(../font/PingFangSC/PingFangSC-Light.woff);
-}
-@font-face{
-    font-family: 'PingFang SC';
-    font-style: normal;
-    font-weight: 400;
-    src: url(../font/PingFangSC/PingFangSC-Regular.woff2);
-}
-@font-face{
-    font-family: 'PingFang SC';
-    font-style: normal;
-    font-weight: 600;
-    src: url(../font/PingFangSC/PingFangSC-Semibold.woff2);
-}
-
-@font-face{
-    font-family: 'PingFang JP';
-    font-style: normal;
-    font-weight: 400;
-    src: url(../font/PingFangJP/SFProJP_regular.woff2);
-}
-@font-face{
-    font-family: 'PingFang JP';
-    font-style: normal;
-    font-weight: 600;
-    src: url(../font/PingFangJP/SFProJP_semibold.woff2);
 }
 
 @media (prefers-color-scheme: dark) {

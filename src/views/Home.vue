@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <p>Blessing Software</p>
+    <div class="home">
+        <div>Blessing Software</div>
     </div>
 </template>
 <script>
@@ -8,3 +8,6 @@ export default {
     name: 'Home'
 }
 </script>
+<style>
+    
+</style>
