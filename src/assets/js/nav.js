@@ -26,12 +26,4 @@ $(document).ready(function () {
             $('.menu_text').text('CLOSE').addClass('e');
         }
     });
-
-    //Click back to top
-    $('.nav a').click(function () {
-        $('body, html').animate({scrollTop: 0}, 500, 'linear');
-    });
-
-    //Refresh back to top
-    $('body, html').animate({scrollTop: 0}, 90);
 });

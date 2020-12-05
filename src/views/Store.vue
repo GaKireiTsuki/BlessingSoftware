@@ -2,7 +2,7 @@
     <div class="store">
         <div class="StoreContent">
             <div class="banner">
-                <video src="../assets/video/1_assets_images_hero_mercy_intro-video.mp4"></video>
+                
             </div>
             <div class="GameOne">
                 <div class="GameTab">

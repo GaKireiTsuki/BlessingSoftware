@@ -13,11 +13,22 @@
         </div>
     </div>
 </template>
+
 <script>
+import $ from 'jquery'
 export default {
     name: 'Nav',
 }
+$(document).ready(function () {
+    //Click back to top
+    $('a').click(function () {
+        $('body, html').animate({scrollTop: 0}, 500, 'linear');
+    });
+    //Refresh back to top
+    $('body, html').animate({scrollTop: 0}, 200);
+});
 </script>
+
 <style>
     .nav{
         height: 48px;
