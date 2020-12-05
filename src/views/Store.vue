@@ -22,17 +22,14 @@
 <script>
 import axios from 'axios'
 import Filters from '../assets/js/Filters'
-
 export default {
     name: 'Store',
     filters: Filters,
-
     data() {
         return {
             Game: []
         }
     },
-
     created() {
         var that = this;
         //请求游戏简介

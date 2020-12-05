@@ -4,17 +4,52 @@
             <router-link to="/" id="nav_link">
                 <img src="../assets/img/blessingsoftware-logo.svg" alt="">
             </router-link>
-            <router-link to="/news" id="nav_link">NEWS</router-link>
             <router-link to="/store" id="nav_link">STORE</router-link>
+            <router-link to="/news" id="nav_link">NEWS</router-link>
+            <router-link to="/store" id="nav_link">LOGIN</router-link>
+            <router-link to="/" id="nav_link">
+                <img style="width: 18px;" src="../assets/img/ss.png" alt="">
+            </router-link>
         </div>
     </div>
 </template>
 <script>
-
-import '../assets/css/nav.css'
-
 export default {
     name: 'Nav',
 }
-
 </script>
+<style>
+    .nav{
+        height: 48px;
+        max-height: 44px;
+        display: flex;
+        background: rgb(0, 0, 0, 0.8);
+    }
+    #nav{
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        font-size: 14px;
+        color: #3d3e3f;
+        font-weight: 600;
+        position: sticky;
+        position: -webkit-sticky;
+        max-width: 980px;
+        height: 100%;
+        width: 100%;
+        transition: 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+        z-index: 1;
+    }
+    .nav img{
+        width: 25px;
+    }
+    #nav_link{
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: 0px 10px;
+        color: #fff;
+    }
+</style>

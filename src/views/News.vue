@@ -37,7 +37,7 @@ export default {
 </script>
 <style>
     .news{
-    color: #3d3e3f;
+        color: #3d3e3f;
     }
     .NewsTitle{
         font-size: 28px;
