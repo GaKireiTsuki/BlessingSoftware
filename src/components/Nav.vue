@@ -2,7 +2,7 @@
     <div class="nav">
         <div id="nav">
             <router-link to="/" id="nav_link">
-                <img src="../assets/img/blessingsoftware-logo.svg" alt="">
+                <img class="logo" src="../assets/img/blessingsoftware-logo.svg" alt="">
             </router-link>
             <router-link to="/store" id="nav_link">STORE</router-link>
             <router-link to="/news" id="nav_link">NEWS</router-link>
@@ -52,8 +52,16 @@ $(document).ready(function () {
         transition: 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
         z-index: 1;
     }
-    .nav img{
+    .logo{
         width: 25px;
+    }
+    .logo:hover{
+        animation: logo 3s ease-in-out;
+        animation-iteration-count: infinite;
+    }
+    @keyframes logo{
+        0% {transform: rotate(360deg);}
+        100% {transform: rotate(0deg);}
     }
     #nav_link{
         display: flex;

@@ -23,6 +23,11 @@ var Games = mongoose.model('games', new mongoose.Schema({
     Developer: {type: String, require: true},
     Publisher: {type: String, require: true}
 }));
+var GameInfos = mongoose.model('gameinfos', new mongoose.Schema({
+    NewsTitle: {type: String, require: true},
+    NewsDateTime: {type: Date, require: true},
+    NewsContent: {type: String, require: true}
+}));
 
 var app=express();
 app.post('/', function (req, res) {
@@ -38,6 +43,12 @@ app.post('/news', function (req, res) {
 });
 app.post('/games', function (req, res) {
     Games.find({}, function (err, doc) {
+        res.json(doc)
+        err
+    });
+});
+app.post('/gameinfos', function (req, res) {
+    GameInfos.find({}, function (err, doc) {
         res.json(doc)
         err
     });

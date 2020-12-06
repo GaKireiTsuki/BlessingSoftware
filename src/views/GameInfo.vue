@@ -13,10 +13,18 @@
 </template>
 
 <script>
+import axios from 'axios'
 import $ from 'jquery'
 export default {
     name: 'GameInfo'
 }
+axios.post('/gameinfos')
+.then(res => {
+    console.log(res)
+})
+.catch(err => {
+    console.error(err); 
+})
 $(document).ready(function () {
     $(function () {
         $(window).scroll(function () { 
