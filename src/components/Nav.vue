@@ -1,7 +1,7 @@
 <template>
-    <div class="nav">
+    <div class="nav hmbl">
         <div id="nav">
-            <router-link to="/" id="nav_link">
+            <router-link to="/" id="nav_link" class="logo_mobile">
                 <img class="logo" src="../assets/img/blessingsoftware-logo.svg" alt="">
             </router-link>
             <router-link to="/store" id="nav_link">STORE</router-link>
@@ -33,6 +33,8 @@ $(document).ready(function () {
     .nav{
         height: 48px;
         max-height: 44px;
+        position: sticky;
+        top: 0;
         display: flex;
         background: rgb(0, 0, 0, 0.8);
     }
@@ -70,5 +72,17 @@ $(document).ready(function () {
         padding: 0px 10px;
         color: #fff;
         cursor: pointer;
+    }
+    @media screen and (max-width: 484px) {
+        .logo_mobile{
+            display: block !important;
+            margin: auto;
+        }
+        .logo{
+            margin: 9.5px 0;
+        }
+        #nav_link{
+            display: none;
+        }
     }
 </style>

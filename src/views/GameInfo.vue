@@ -53,7 +53,7 @@ $(document).ready(function () {
         font-weight: 400;
         border-bottom: 1px solid #d6d6d6;
         padding: 10.93px 0px;
-        top: 0;
+        top: 44px;
         position: sticky;
         position: -webkit-sticky;
         cursor: pointer;
