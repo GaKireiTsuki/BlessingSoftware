@@ -5,11 +5,8 @@
                 
             </div>
             <div class="GameOne">
-                <div class="GameTab">
-                    <img src="../assets/img/bh3.jpg" alt="">
-                </div>
-                <router-link :to="{name: 'GameInfo', params: {GameID: item.GameID}}" class="GameTab" v-for="item in Game" :key="item.GameID">
-                    <img :src="item.GameCover" alt="">
+                <router-link to="/store/bh3" class="GameTab" v-for="item in Game" :key="item.id">
+                    <img v-lazy="item.img" alt="">
                     <div class="GameName">
                         <span>{{item.GameName}}</span>
                         <span>{{item.ReleaseDate | DateTime}}</span>
@@ -20,27 +17,24 @@
     </div>
 </template>
 <script>
-import axios from 'axios'
 import Filters from '../assets/js/Filters'
 export default {
     name: 'Store',
     filters: Filters,
     data() {
         return {
-            Game: []
+            Game: [
+                {img: require('../assets/img/bh3.jpg')},
+                {img: require('../assets/img/bh3.jpg')},
+                {img: require('../assets/img/bh3.jpg')},
+                {img: require('../assets/img/bh3.jpg')},
+                {img: require('../assets/img/bh3.jpg')},
+                {img: require('../assets/img/bh3.jpg')},
+                {img: require('../assets/img/bh3.jpg')},
+                {img: require('../assets/img/bh3.jpg')},
+                {img: require('../assets/img/bh3.jpg')},
+            ]
         }
-    },
-    created() {
-        var that = this;
-        //请求游戏简介
-        axios.post('/games')
-        .then(res => {
-            console.log(res)
-            that.Game = res.data;
-        })
-        .catch(err => {
-            console.error(err, '请求失败，状态码为500。')
-        })
     },
 }
 </script>

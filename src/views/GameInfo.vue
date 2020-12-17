@@ -3,28 +3,29 @@
         <div class="game_title bmbl">
             <span class="click_top">崩坏3</span>
         </div>
-        <img src="../assets/img/BlessingSoftware.png" alt="">
-        <img src="../assets/img/BlessingSoftware.png" alt="">
-        <img src="../assets/img/BlessingSoftware.png" alt="">
-        <img src="../assets/img/BlessingSoftware.png" alt="">
-        <img src="../assets/img/BlessingSoftware.png" alt="">
-        <img src="../assets/img/BlessingSoftware.png" alt="">
+        <img v-for="item in img" :key="item.id" v-lazy="item.img" alt="">
     </div>
 </template>
 
 <script>
-import axios from 'axios'
 import $ from 'jquery'
 export default {
-    name: 'GameInfo'
+    name: 'GameInfo',
+    data() {
+        return {
+            img: [
+                {img: require('../assets/img/BlessingSoftware.png')},
+                {img: require('../assets/img/BlessingSoftware.png')},
+                {img: require('../assets/img/BlessingSoftware.png')},
+                {img: require('../assets/img/BlessingSoftware.png')},
+                {img: require('../assets/img/BlessingSoftware.png')},
+                {img: require('../assets/img/BlessingSoftware.png')},
+                {img: require('../assets/img/BlessingSoftware.png')},
+                {img: require('../assets/img/BlessingSoftware.png')},
+            ]
+        }
+    },
 }
-axios.post('/gameinfos')
-.then(res => {
-    console.log(res)
-})
-.catch(err => {
-    console.error(err); 
-})
 $(document).ready(function () {
     $(function () {
         $(window).scroll(function () { 

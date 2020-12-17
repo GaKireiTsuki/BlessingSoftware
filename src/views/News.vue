@@ -9,7 +9,6 @@
     </div>
 </template>
 <script>
-import axios from 'axios'
 import Filters from '../assets/js/Filters'
 
 export default {
@@ -22,17 +21,6 @@ export default {
         }
     },
 
-    created() {
-        var that = this;
-        //请求新闻
-        axios.post('/news')
-        .then(res => {
-            that.news = res.data;
-        })
-        .catch(err => {
-            console.error(err, '请求失败，状态码为500。')
-        })
-    },
 }
 </script>
 <style>

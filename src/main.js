@@ -16,9 +16,10 @@ axios.defaults.withCredentials = true
 Vue.use(VueWechatTitle)
 Vue.use(VueLazyload, {
     preLoad: 1.3,
-    loading: './assets/img/blessingsoftware-logo.svg',
-    error: './assets/img/blessingsoftware-logo.svg',
-    attempt: 3
+    loading: require('./assets/img/thumb_none.png'),
+    error: require('./assets/img/blessingsoftware-logo.svg'),
+    attempt: 1,
+    listenEvents: ['scroll']
 })
 
 new Vue({
