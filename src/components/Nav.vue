@@ -12,7 +12,7 @@
             <router-link to="/news" id="nav_link">NEWS</router-link>
             <a id="nav_link">LOGIN</a>
             <a id="nav_link">
-                <img style="width: 18px" src="../assets/img/ss.png" alt="" />
+                <img style="width: 18px" src="../assets/img/search.svg" alt="" />
             </a>
             <div class="menu">
                 <div></div>
@@ -20,12 +20,16 @@
             </div>
         </div>
         <div class="menu_mobile">
-            <router-link to="/store" id="mobile_nav_link">STORE</router-link>
-            <router-link to="/news" id="mobile_nav_link">NEWS</router-link>
-            <a id="mobile_nav_link">LOGIN</a>
-            <a id="mobile_nav_link">
-                <img style="width: 18px" src="../assets/img/ss.png" alt="" />
-            </a>
+            <div id="search">
+                <input type="search" name="" id="">
+                <img style="width: 18px" src="../assets/img/search.svg" alt="" />
+                <span id="cancel">Cancel</span>
+            </div>
+            <div id="mobile_nav_link">
+                <router-link to="/store" >STORE</router-link>
+                <router-link to="/news">NEWS</router-link>
+                <a>LOGIN</a>
+            </div>
         </div>
     </div>
 </template>
@@ -42,41 +46,86 @@
         });
         //Refresh back to top
         $("body, html").animate({ scrollTop: 0 }, 200);
-        $(".menu, #mobile_nav_link").click(function () {
+        $(".menu, #mobile_nav_link a").click(function () {
             $(".menu div").toggleClass("menus");
+
             if ($("#nav").hasClass("e")) {
                 $("#nav").css({ background: "rgb(0 0 0 / 0%)" }).removeClass("e");
             } else {
-                $("#nav").css({ background: "#1d1d1f" }).addClass("e");
+                $("#nav").css({ background: "#000" }).addClass("e");
             }
+
             if ($(".menu_mobile").hasClass("e")) {
-                $(".menu_mobile").css({ opacity: "0", height: "44px", padding: "0 34.5px" }).removeClass("e");
+                $(".menu_mobile").css({ height: "0", "z-index": "1" }).removeClass("e");
             } else {
-                $(".menu_mobile").css({ opacity: "1", height: "100vh", padding: "88px 34.5px 34.5px 34.5px" }).addClass("e");
+                $(".menu_mobile").css({ height: "100vh", "z-index": "2" }).addClass("e");
             }
+        });
+        $("input[type=search]").click(function () { 
+            $(".menu_mobile").css({ "margin-top": "0" });
+            $("#search").css({ "padding-top": "16px" });
+            $("#cancel").css({ display: "block" });
+        });
+        $("#cancel").click(function () { 
+            $(".menu_mobile").css({ "margin-top": "43px" });
+            $("#cancel").css({ display: "none" });
         });
     });
 </script>
 
 <style>
     .menu_mobile {
-        padding: 0 34.5px;
         box-sizing: border-box;
         width: 100vw;
         height: 0;
-        opacity: 0;
+        margin-top: 43px;
         transition: all 0.5s;
         position: absolute;
-        background: #1d1d1f;
+        background: #000;
         color: #dadce0;
         z-index: 1;
+        overflow: auto;
         line-height: 2.5em;
-        box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.24);
     }
     #mobile_nav_link{
+        padding: 0 34.5px;
+    }
+    #mobile_nav_link a{
         color: #dadce0;
+        font-size: 18px;
         display: block;
-        font-size: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.24);
+    }
+    #mobile_nav_link a:nth-of-type(1){
+        border: none;
+    }
+    #search{
+        display: flex;
+        align-items: center;
+        height: 2.5em;
+        padding: 0px 16px 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+    }
+    #search img{
+        position: absolute;
+        width: 13px !important;
+        padding: 11.5px;
+    }
+    input[type=search]{
+        padding: 0 0 0 36px;
+        width: 100%;
+        height: 36px;
+        border: none;
+        background: #1D1D1F;
+        border-radius: 6px;
+        color: #dadce0;
+        font-size: 16px;
+        outline: none;
+    }
+    #cancel{
+        margin-left: 16px;
+        color: #1b91dd;
+        display: none;
     }
     .menu {
         height: 25px;

@@ -35,11 +35,13 @@ a{
     box-sizing: border-box;
     border-bottom: 1px solid rgba(0,0,0,0.16);
 }
-input::-webkit-search-cancel-button{
-    display: none;
-}
-input[type=search]::-ms-clear{
-    display: none;
+::-webkit-search-cancel-button{
+    -webkit-appearance: none;
+    background: url(../img/search_clear.svg) no-repeat;
+    height: 15px;
+    width: 14px;
+    margin: 10.5px;
+    transition: all .4s;
 }
 
 /*滚动条*/
