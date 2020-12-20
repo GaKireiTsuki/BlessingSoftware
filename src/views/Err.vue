@@ -3,21 +3,23 @@
         <p>Not Found Page</p>
     </div>
 </template>
+
 <script>
-import $ from 'jquery'
-export default {
-    name: 'Err'
-}
-//错误页重定向至首页
-$(document).ready(function () {
-    setTimeout(() => {
-        alert('Not Found Page')
-        window.location.href= '/'
-    }, 200);
-});
+    import $ from "jquery";
+    export default {
+        name: "Err",
+    };
+    //错误页重定向至首页
+    $(document).ready(function () {
+        setTimeout(() => {
+            alert("Not Found Page");
+            window.location.href = "/";
+        }, 200);
+    });
 </script>
+
 <style>
-    #Err{
+    #Err {
         height: calc(100vh - 50px);
         display: grid;
         place-items: center;
