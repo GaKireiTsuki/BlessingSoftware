@@ -86,7 +86,7 @@ audio::-webkit-media-controls-time-remaining-display{
         background: #1d1d1f;
     }
     *{
-        color: #dadce0 !important;
+        color: #dadce0;
     }
     .menu_bar, .menu_bars{
         background: #dadce0;

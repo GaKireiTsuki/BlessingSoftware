@@ -12,7 +12,10 @@
             <router-link to="/news" id="nav_link">NEWS</router-link>
             <a id="nav_link">LOGIN</a>
             <a id="nav_link">
-                <img style="width: 18px" src="../assets/img/search.svg" alt="" />
+                <img style="width: 18px" src="../assets/img/search_white.svg" alt="" />
+            </a>
+            <a id="nav_link">
+                <img style="width: 18px" src="../assets/img/bag.svg" alt="" />
             </a>
             <div class="menu">
                 <div></div>
@@ -48,27 +51,29 @@
         $("body, html").animate({ scrollTop: 0 }, 200);
         $(".menu, #mobile_nav_link a").click(function () {
             $(".menu div").toggleClass("menus");
-
             if ($("#nav").hasClass("e")) {
                 $("#nav").css({ background: "rgb(0 0 0 / 0%)" }).removeClass("e");
+                $(".menu_mobile").css({ height: "0", "z-index": "1" }).removeClass("e");
+                $("#mobile_nav_link").css({ display: "none" }).removeClass("e");
+                $("body").css({ overflow: "auto" }).removeClass("e");
+                $("#search").css({ display: "none" }).removeClass("e");
             } else {
                 $("#nav").css({ background: "#000" }).addClass("e");
-            }
-
-            if ($(".menu_mobile").hasClass("e")) {
-                $(".menu_mobile").css({ height: "0", "z-index": "1" }).removeClass("e");
-            } else {
                 $(".menu_mobile").css({ height: "100vh", "z-index": "2" }).addClass("e");
+                $("#mobile_nav_link").css({ display: "block" }).addClass("e");
+                $("body").css({ overflow: "hidden" }).addClass("e");
+                $("#search").css({ display: "flex" }).addClass("e");
             }
         });
         $("input[type=search]").click(function () { 
             $(".menu_mobile").css({ "margin-top": "0" });
-            $("#search").css({ "padding-top": "16px" });
             $("#cancel").css({ display: "block" });
+            $("#mobile_nav_link").css({ display: "none" });
         });
         $("#cancel").click(function () { 
-            $(".menu_mobile").css({ "margin-top": "43px" });
+            $(".menu_mobile").css({ margin: "43px 0 0 0" });
             $("#cancel").css({ display: "none" });
+            $("#mobile_nav_link").css({ display: "block" });
         });
     });
 </script>
@@ -78,7 +83,7 @@
         box-sizing: border-box;
         width: 100vw;
         height: 0;
-        margin-top: 43px;
+        margin: 43px 0 0 0;
         transition: all 0.5s;
         position: absolute;
         background: #000;
@@ -89,6 +94,7 @@
     }
     #mobile_nav_link{
         padding: 0 34.5px;
+        display: none;
     }
     #mobile_nav_link a{
         color: #dadce0;
@@ -103,8 +109,12 @@
         display: flex;
         align-items: center;
         height: 2.5em;
-        padding: 0px 16px 10px;
+        padding: 16px 10px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+        position: sticky;
+        top: 0;
+        background: #000;
+        display: none;
     }
     #search img{
         position: absolute;
@@ -121,6 +131,7 @@
         color: #dadce0;
         font-size: 16px;
         outline: none;
+        transition: all 0.5s;
     }
     #cancel{
         margin-left: 16px;
@@ -228,6 +239,9 @@
         }
         #nav{
             background: none !important;
+        }
+        body{
+            overflow: auto !important;
         }
     }
 </style>
