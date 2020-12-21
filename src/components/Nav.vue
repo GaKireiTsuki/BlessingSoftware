@@ -11,16 +11,21 @@
             <router-link to="/store" id="nav_link">STORE</router-link>
             <router-link to="/news" id="nav_link">NEWS</router-link>
             <a id="nav_link">LOGIN</a>
-            <a id="nav_link">
+            <a id="nav_link" >
                 <img style="width: 18px" src="../assets/img/search_white.svg" alt="" />
             </a>
-            <a id="nav_link">
+            <a id="nav_link" class="bag">
                 <img style="width: 18px" src="../assets/img/bag.svg" alt="" />
-            </a>
-            <div class="menu">
-                <div></div>
-                <div></div>
+                <div id="bag">
+                    <p>Your</p>
+                <div class="bag_menu">
+                    <router-link to="">LOGIN</router-link>
+                    <router-link to="">BAG</router-link>
+                    <router-link to="">LOGINOUT</router-link>
+                </div>
             </div>
+            </a>
+            
         </div>
         <div class="menu_mobile">
             <div id="search">
@@ -57,12 +62,14 @@
                 $("#mobile_nav_link").css({ display: "none" }).removeClass("e");
                 $("body").css({ overflow: "auto" }).removeClass("e");
                 $("#search").css({ display: "none" }).removeClass("e");
+                $(".bag").css({ opacity: "1" }).removeClass("e");
             } else {
                 $("#nav").css({ background: "#000" }).addClass("e");
                 $(".menu_mobile").css({ height: "100vh", "z-index": "2" }).addClass("e");
                 $("#mobile_nav_link").css({ display: "block" }).addClass("e");
                 $("body").css({ overflow: "hidden" }).addClass("e");
                 $("#search").css({ display: "flex" }).addClass("e");
+                $(".bag").css({ opacity: "0" }).addClass("e");
             }
         });
         $("input[type=search]").click(function () { 
@@ -75,10 +82,41 @@
             $("#cancel").css({ display: "none" });
             $("#mobile_nav_link").css({ display: "block" });
         });
+        $(".bag").click(function () { 
+            $("#bag").toggle();
+        });
     });
 </script>
 
 <style>
+    #bag{
+        line-height: 2.5em;
+        color: #dadce0;
+        position: absolute;
+        top: 50px;
+        border-radius: 10px;
+        background: #fff;
+        border: 1px solid #d2d2d7;
+        padding: 5px 20px;
+        right: -49.5px;
+        display: none;
+    }
+    #bag p{
+        height: 45px;
+        line-height: 45px;
+        color: #1D1D1F;
+    }
+    .bag_menu{
+        display: grid;
+    }
+    #bag a{
+        color: #1b91dd;
+        width: 100px;
+        border-top: 1px solid #d2d2d7;
+    }
+    #bag a:hover{
+        text-decoration: underline;
+    }
     .menu_mobile {
         box-sizing: border-box;
         width: 100vw;
@@ -215,6 +253,7 @@
         padding: 0px 10px;
         color: #fff;
         cursor: pointer;
+        font-weight: 300;
     }
     @media screen and (max-width: 484px) {
         .logo_mobile {
@@ -226,10 +265,24 @@
         #nav_link {
             display: none;
         }
+        .bag{
+            display: flex !important;
+            padding: 0 !important;
+        }
         #nav {
-            padding: 0px 9.5px;
+            padding: 0px 16px;
             display: flex;
             justify-content: space-between;
+        }
+        #bag {
+            top: 43px;
+            width: 100vw;
+            right: 0;
+            box-sizing: border-box;
+            border-radius: unset;
+        }
+        #bag a{
+            width: 100%;
         }
     }
     @media screen and (min-width: 484px) {
