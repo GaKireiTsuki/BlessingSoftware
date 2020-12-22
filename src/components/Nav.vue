@@ -10,8 +10,8 @@
             </router-link>
             <router-link to="/store" id="nav_link">STORE</router-link>
             <router-link to="/news" id="nav_link">NEWS</router-link>
-            <a href="javascrip:;" id="nav_link">LOGIN</a>
-            <a href="javascrip:;" id="nav_link" >
+            <a href="javascript:;" id="nav_link">LOGIN</a>
+            <a href="javascript:;" id="nav_link" >
                 <img style="width: 18px" src="../assets/img/search_white.svg" alt="" />
             </a>
             <div id="nav_link" class="bag" tabindex="-1">
