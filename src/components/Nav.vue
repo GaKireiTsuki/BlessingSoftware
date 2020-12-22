@@ -88,7 +88,7 @@
         $("#bag").blur(function () { 
             setTimeout(() => {
                 $("#bag").css({ display: "none" });
-            }, 100);
+            }, 200);
         });
     });
 </script>
