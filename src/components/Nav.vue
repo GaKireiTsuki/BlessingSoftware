@@ -10,22 +10,21 @@
             </router-link>
             <router-link to="/store" id="nav_link">STORE</router-link>
             <router-link to="/news" id="nav_link">NEWS</router-link>
-            <a id="nav_link">LOGIN</a>
-            <a id="nav_link" >
+            <a href="javascrip:;" id="nav_link">LOGIN</a>
+            <a href="javascrip:;" id="nav_link" >
                 <img style="width: 18px" src="../assets/img/search_white.svg" alt="" />
             </a>
-            <a id="nav_link" class="bag">
+            <div id="nav_link" class="bag" tabindex="-1">
                 <img style="width: 18px" src="../assets/img/bag.svg" alt="" />
-                <div id="bag">
+                <div id="bag" tabindex="-1">
                     <p>Your</p>
-                <div class="bag_menu">
-                    <router-link to="">LOGIN</router-link>
-                    <router-link to="">BAG</router-link>
-                    <router-link to="">LOGINOUT</router-link>
+                    <div class="bag_menu">
+                        <router-link to="/">LOGIN</router-link>
+                        <router-link to="">BAG</router-link>
+                        <router-link to="">LOGINOUT</router-link>
+                    </div>
                 </div>
             </div>
-            </a>
-            
         </div>
         <div class="menu_mobile">
             <div id="search">
@@ -36,7 +35,7 @@
             <div id="mobile_nav_link">
                 <router-link to="/store" >STORE</router-link>
                 <router-link to="/news">NEWS</router-link>
-                <a>LOGIN</a>
+                <a href="javascript:;">LOGIN</a>
             </div>
         </div>
     </div>
@@ -81,9 +80,15 @@
             $(".menu_mobile").css({ margin: "43px 0 0 0" });
             $("#cancel").css({ display: "none" });
             $("#mobile_nav_link").css({ display: "block" });
+            $("input[type=search]").val("");
         });
-        $(".bag").click(function () { 
-            $("#bag").toggle();
+        $(".bag").focus(function () { 
+            $("#bag").css({ display: "block" }).focus();
+        });
+        $("#bag").blur(function () { 
+            setTimeout(() => {
+                $("#bag").css({ display: "none" });
+            }, 100);
         });
     });
 </script>
@@ -100,6 +105,7 @@
         padding: 5px 20px;
         right: -49.5px;
         display: none;
+        outline: none;
     }
     #bag p{
         height: 45px;
@@ -252,8 +258,8 @@
         height: 100%;
         padding: 0px 10px;
         color: #fff;
-        cursor: pointer;
         font-weight: 300;
+        outline: none;
     }
     @media screen and (max-width: 484px) {
         .logo_mobile {
