@@ -14,9 +14,9 @@
             <a href="javascript:;" id="nav_link" >
                 <img style="width: 18px" src="../assets/img/search_white.svg" alt="" />
             </a>
-            <div id="nav_link" class="bag" tabindex="-1">
+            <div id="nav_link" class="bag">
                 <img style="width: 18px" src="../assets/img/bag.svg" alt="" />
-                <div id="bag" tabindex="-1">
+                <div id="bag">
                     <p>Your</p>
                     <div class="bag_menu">
                         <router-link to="/">LOGIN</router-link>
@@ -53,42 +53,48 @@
         });
         //Refresh back to top
         $("body, html").animate({ scrollTop: 0 }, 200);
+        //控制菜单控件是否显示与隐藏
         $(".menu, #mobile_nav_link a").click(function () {
             $(".menu div").toggleClass("menus");
             if ($("#nav").hasClass("e")) {
                 $("#nav").css({ background: "rgb(0 0 0 / 0%)" }).removeClass("e");
                 $(".menu_mobile").css({ height: "0", "z-index": "1" }).removeClass("e");
-                $("#mobile_nav_link").css({ display: "none" }).removeClass("e");
+                $("#mobile_nav_link").hide().removeClass("e");
                 $("body").css({ overflow: "auto" }).removeClass("e");
-                $("#search").css({ display: "none" }).removeClass("e");
+                $("#search").hide().removeClass("e");
                 $(".bag").css({ opacity: "1" }).removeClass("e");
             } else {
                 $("#nav").css({ background: "#000" }).addClass("e");
                 $(".menu_mobile").css({ height: "100vh", "z-index": "2" }).addClass("e");
-                $("#mobile_nav_link").css({ display: "block" }).addClass("e");
+                $("#mobile_nav_link").show().addClass("e");
                 $("body").css({ overflow: "hidden" }).addClass("e");
                 $("#search").css({ display: "flex" }).addClass("e");
                 $(".bag").css({ opacity: "0" }).addClass("e");
             }
         });
+        //控制搜索取消控件是否显示与隐藏
         $("input[type=search]").click(function () { 
             $(".menu_mobile").css({ "margin-top": "0" });
-            $("#cancel").css({ display: "block" });
-            $("#mobile_nav_link").css({ display: "none" });
+            $("#cancel").show();
+            $("#mobile_nav_link").hide();
         });
         $("#cancel").click(function () { 
             $(".menu_mobile").css({ margin: "43px 0 0 0" });
-            $("#cancel").css({ display: "none" });
-            $("#mobile_nav_link").css({ display: "block" });
+            $("#cancel").hide();
+            $("#mobile_nav_link").show();
             $("input[type=search]").val("");
         });
-        $(".bag").focus(function () { 
-            $("#bag").css({ display: "block" }).focus();
+        //控制购物袋是否显示与隐藏
+        $(".bag").click(function () { 
+            if ($("#bag").is(":hidden")) {
+                $("#bag").show();
+                event.stopPropagation();
+            } else {
+                $("#bag").hide();
+            }
         });
-        $("#bag").blur(function () { 
-            setTimeout(() => {
-                $("#bag").css({ display: "none" });
-            }, 200);
+        $(document).click(function () { 
+            $("#bag").hide();
         });
     });
 </script>
@@ -260,6 +266,11 @@
         color: #fff;
         font-weight: 300;
         outline: none;
+    }
+    @media screen and (max-width: 1029.5px) {
+        #bag{
+            right: 0;
+        }
     }
     @media screen and (max-width: 484px) {
         .logo_mobile {

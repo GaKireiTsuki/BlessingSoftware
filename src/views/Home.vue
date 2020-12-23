@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <div class="home content">
         <div>Blessing Software</div>
     </div>
 </template>
@@ -11,4 +11,5 @@
 </script>
 
 <style>
+
 </style>
