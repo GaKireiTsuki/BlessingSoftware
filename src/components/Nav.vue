@@ -71,14 +71,14 @@
                 $("#mobile_nav_link").hide().removeClass("e");
                 $("body").css({ overflow: "auto" }).removeClass("e");
                 $("#search").hide().removeClass("e");
-                $(".bag").css({ opacity: "1" }).removeClass("e");
+                $(".bag img").css({ opacity: "1", transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)" }).removeClass("e");
             } else {
                 $("#nav").css({ background: "#000" }).addClass("e");
                 $(".menu_mobile").css({ height: "100vh", "z-index": "2" }).addClass("e");
                 $("#mobile_nav_link").show().addClass("e");
                 $("body").css({ overflow: "hidden" }).addClass("e");
                 $("#search").css({ display: "flex" }).addClass("e");
-                $(".bag").css({ opacity: "0" }).addClass("e");
+                $(".bag img").css({ opacity: "0", transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)" }).addClass("e");
             }
         });
         //控制搜索取消控件是否显示与隐藏
@@ -114,6 +114,8 @@
             } else {
                 $("#nav").children("a#nav_link").css({ opacity: "0", transform: "scale(0.3)" }).addClass("e");
                 $(".pc_search").css({ opacity: "1", "z-index": "3", height: "100vh" }).addClass("e");
+                $("#pc_input_search input[type=search]").focus();
+                $("#bag").hide();
             }
         });
         $("input[type=search]").click(function () { 
@@ -354,6 +356,8 @@
         .bag{
             display: flex !important;
             padding: 0 !important;
+            opacity: 1 !important;
+            transform: scale(1) !important;
         }
         #nav {
             padding: 0px 16px;
@@ -363,8 +367,10 @@
         #bag {
             top: 43px;
             width: 100vw;
-            right: 0;
+            right: -15px;
             box-sizing: border-box;
+            border: none;
+            border-bottom: 1px solid #d2d2d7;
             border-radius: unset;
         }
         #bag a{
@@ -377,6 +383,9 @@
             display: none;
         }
         .bag{
+            opacity: 1 !important;
+        }
+        .bag img{
             opacity: 1 !important;
         }
         #nav{
