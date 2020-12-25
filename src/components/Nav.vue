@@ -160,7 +160,7 @@
         padding: 13px;
     }
     #pc_input_search input[type=search]{
-            padding: 0 0 0 44px;
+        padding: 0 0 0 44px;
         height: 44px;
         background: none;
         max-width: 680px;
