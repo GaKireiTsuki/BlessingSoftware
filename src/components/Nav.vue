@@ -1,5 +1,13 @@
 <template>
     <div class="nav hmbl">
+        <div class="pc_search">
+            <div class="pc_input_search">
+                <div id="pc_input_search">
+                    <input type="search" name="" id="">
+                    <img style="width: 18px" src="../assets/img/search_white.svg" alt="" />
+                </div>
+            </div>
+        </div>
         <div id="nav">
             <div class="menu">
                 <div></div>
@@ -11,10 +19,10 @@
             <router-link to="/store" id="nav_link">STORE</router-link>
             <router-link to="/news" id="nav_link">NEWS</router-link>
             <a href="javascript:;" id="nav_link">LOGIN</a>
-            <a href="javascript:;" id="nav_link" >
+            <a href="javascript:;" id="nav_link" class="search">
                 <img style="width: 18px" src="../assets/img/search_white.svg" alt="" />
             </a>
-            <div id="nav_link" class="bag">
+            <a href="javascript:;" id="nav_link" class="bag">
                 <img style="width: 18px" src="../assets/img/bag.svg" alt="" />
                 <div id="bag">
                     <p>Your</p>
@@ -24,11 +32,12 @@
                         <router-link to="">LOGINOUT</router-link>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
+        <!-- 移动端菜单 -->
         <div class="menu_mobile">
             <div id="search">
-                <input type="search" name="" id="">
+                <input type="search" name="" id="m_search">
                 <img style="width: 18px" src="../assets/img/search.svg" alt="" />
                 <span id="cancel">Cancel</span>
             </div>
@@ -53,7 +62,7 @@
         });
         //Refresh back to top
         $("body, html").animate({ scrollTop: 0 }, 200);
-        //控制菜单控件是否显示与隐藏
+        //控制移动端菜单控件是否显示与隐藏
         $(".menu, #mobile_nav_link a").click(function () {
             $(".menu div").toggleClass("menus");
             if ($("#nav").hasClass("e")) {
@@ -73,7 +82,7 @@
             }
         });
         //控制搜索取消控件是否显示与隐藏
-        $("input[type=search]").click(function () { 
+        $("#m_search").click(function () { 
             $(".menu_mobile").css({ "margin-top": "0" });
             $("#cancel").show();
             $("#mobile_nav_link").hide();
@@ -93,6 +102,23 @@
                 $("#bag").hide();
             }
         });
+        //PC端搜索控件
+        $("#nav").children("a#nav_link").css({ transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)" })
+        $(".search, .pc_search").click(function () { 
+            event.stopPropagation();
+            if ($("#nav").children("a#nav_link").hasClass("e")) {
+                $("#nav").children("a#nav_link").css({ opacity: "1", transform: "scale(1)" }).removeClass("e");
+                $(".pc_search").css({ opacity: "0", "z-index": "-3", }).removeClass("e");
+                $("input[type=search]").val("");
+                $(".pc_search").removeAttr( "style" );
+            } else {
+                $("#nav").children("a#nav_link").css({ opacity: "0", transform: "scale(0.3)" }).addClass("e");
+                $(".pc_search").css({ opacity: "1", "z-index": "3", height: "100vh" }).addClass("e");
+            }
+        });
+        $("input[type=search]").click(function () { 
+            event.stopPropagation();
+        });
         $(document).click(function () { 
             $("#bag").hide();
         });
@@ -100,6 +126,48 @@
 </script>
 
 <style>
+    .pc_search{
+        position: fixed;
+        margin: auto;
+        right: 0;
+        left: 0;
+        z-index: -3;
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+        background: rgba(0,0,0,0.48);
+    }
+    .pc_input_search{
+        height: 44px;
+        background: #1D1D1F;
+        width: 100%;
+        left: 0;
+        right: 0;
+        position: absolute;
+    }
+    #pc_input_search{
+        height: 44px;
+        background: #1D1D1F;
+        max-width: 680px;
+        margin: auto;
+        width: 100%;
+        left: 0;
+        right: 0;
+        position: absolute;
+    }
+    #pc_input_search img:nth-of-type(1){
+        padding: 13px;
+    }
+    #pc_input_search input[type=search]{
+            padding: 0 0 0 44px;
+        height: 44px;
+        background: none;
+        max-width: 680px;
+        margin: auto;
+        width: 100%;
+        left: 0;
+        right: 0;
+        position: absolute;
+    }
     #bag{
         line-height: 2.5em;
         color: #dadce0;
@@ -279,7 +347,8 @@
         .logo {
             margin-top: 9.5px;
         }
-        #nav_link {
+        #nav_link,
+        .pc_search {
             display: none;
         }
         .bag{
@@ -306,6 +375,9 @@
         .menu,
         .menu_mobile {
             display: none;
+        }
+        .bag{
+            opacity: 1 !important;
         }
         #nav{
             background: none !important;
