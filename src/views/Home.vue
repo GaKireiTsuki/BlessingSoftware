@@ -1,12 +1,12 @@
 <template>
-    <div class="home content">
+    <div class="home">
         <div>Blessing Software</div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Home",
+        name: 'home'
     };
 </script>
 

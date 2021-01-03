@@ -4,8 +4,10 @@ import Home from '@/views/Home.vue'
 
 Vue.use(VueRouter)
 
-const News = () => import('@/views/News.vue')
 const Store = () => import('@/views/Store.vue')
+const News = () => import('@/views/News.vue')
+const Music = () => import('@/views/Music.vue')
+const SignIn = () => import('@/components/SignIn.vue')
 const GameInfo = () => import('@/views/GameInfo.vue')
 const Err = () => import('@/views/Err.vue')
 
@@ -27,6 +29,15 @@ const routes = [
         path: '/home',
         redirect: '/'
     },
+    //商店
+    {
+        path: '/store',
+        name: 'Store',
+        component: Store,
+        meta: {
+            title: 'Blessing Software Store'
+        }
+    },
     //新闻
     {
         path: '/news',
@@ -36,13 +47,22 @@ const routes = [
             title: 'Blessing Software News'
         }
     },
-    //商店
+    //音乐
     {
-        path: '/store',
-        name: 'Store',
-        component: Store,
+        path: '/music',
+        name: 'Music',
+        component: Music,
         meta: {
-            title: 'Blessing Software Store'
+            title: 'Blessing Software Music'
+        }
+    },
+    //登录
+    {
+        path: '/signIn',
+        name: 'SignIn',
+        component: SignIn,
+        meta: {
+            title: 'Blessing Software Sign In'
         }
     },
     //游戏详情

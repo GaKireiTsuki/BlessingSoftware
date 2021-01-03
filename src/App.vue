@@ -1,14 +1,17 @@
 <template>
     <div>
-        <Nav></Nav>
+        <menus></menus>
         <keep-alive :max="8">
             <router-view v-wechat-title='$route.meta.title' class="content"></router-view>
         </keep-alive>
+        <audioplayer></audioplayer>
     </div>
 </template>
 <script>
-    import Nav from './components/Nav'
+    import menus from './components/Menus'
+    import audioplayer from './components/AudioPlayer'
     export default {
-        components: {Nav},
+        name: 'app',
+        components: {menus, audioplayer},
     }
 </script>

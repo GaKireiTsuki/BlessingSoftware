@@ -7,7 +7,7 @@
 <script>
     import $ from "jquery";
     export default {
-        name: "Err",
+        
     };
     //错误页重定向至首页
     $(document).ready(function () {

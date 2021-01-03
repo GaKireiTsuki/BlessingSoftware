@@ -18,7 +18,7 @@
             </router-link>
             <router-link to="/store" id="nav_link">STORE</router-link>
             <router-link to="/news" id="nav_link">NEWS</router-link>
-            <a href="javascript:;" id="nav_link">LOGIN</a>
+            <router-link to="/music" id="nav_link">MUSIC</router-link>
             <a href="javascript:;" id="nav_link" class="search">
                 <img style="width: 18px" src="../assets/img/search_white.svg" alt="" />
             </a>
@@ -27,7 +27,7 @@
                 <div id="bag">
                     <p>Your</p>
                     <div class="bag_menu">
-                        <router-link to="/">LOGIN</router-link>
+                        <router-link to="/signIn">Sign in</router-link>
                         <router-link to="">BAG</router-link>
                         <router-link to="">LOGINOUT</router-link>
                     </div>
@@ -44,7 +44,7 @@
             <div id="mobile_nav_link">
                 <router-link to="/store" >STORE</router-link>
                 <router-link to="/news">NEWS</router-link>
-                <a href="javascript:;">LOGIN</a>
+                <router-link to="/music">MUSIC</router-link>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
 <script>
     import $ from "jquery";
     export default {
-        name: "Nav",
+        name: 'menus'
     };
     $(document).ready(function () {
         //Click back to top
@@ -292,7 +292,7 @@
         max-height: 44px;
         position: sticky;
         top: 0;
-        z-index: 1;
+        z-index: 999;
         display: flex;
         background: rgb(0, 0, 0, 0.8);
     }

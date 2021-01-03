@@ -18,7 +18,6 @@
 <script>
     import Filters from "../assets/js/Filters";
     export default {
-        name: "Store",
         filters: Filters,
         data() {
             return {

@@ -13,9 +13,8 @@
     import Filters from "../assets/js/Filters";
 
     export default {
-        name: "News",
         filters: Filters,
-
+        name: 'news',
         data() {
             return {
                 news: [],

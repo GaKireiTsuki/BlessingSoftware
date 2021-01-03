@@ -10,7 +10,6 @@
 <script>
     import $ from "jquery";
     export default {
-        name: "GameInfo",
         data() {
             return {
                 img: [
