@@ -1,25 +1,34 @@
 import axios from './axios'
 
 const api = {
-    postSearch(query) { //搜索
-        return axios('/search?keywords=' + this.query, {
+    postSearch(keywords) { //搜索
+        return axios('/search?keywords=' + keywords, {
             method: 'post',
-            query: query,
-            params: {
-                query: '123'
-            }
+            keywords: keywords,
         })
     },
-    postPlay(musicid) { //播放音乐
-        return axios('/song/url?id=' + musicid, {
+    postPlay(id) { //播放音乐
+        return axios('/song/url?id=' + id, {
             method: 'post',
-            musicid: musicid
+            id: id
         })
     },
-    postInfo(musicid) { //获取封面/歌曲/信息
-        return axios('/song/detail?ids=' + musicid, {
+    postInfo(id) { //获取封面/歌曲/信息
+        return axios('/song/detail?ids=' + id, {
             method: 'post',
-            musicid: musicid
+            id: id
+        })
+    },
+    postAlbum(id) { //获取专辑信息
+        return axios('/album?id=' + id, {
+            method: 'post',
+            id: id
+        })
+    },
+    postArtist(id) { //获取歌手信息
+        return axios('/artist/desc?id=' + id, {
+            method: 'post',
+            id: id
         })
     },
     postNewSong() { //最新歌曲

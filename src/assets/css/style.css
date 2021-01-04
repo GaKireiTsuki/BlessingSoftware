@@ -78,7 +78,10 @@ audio::-webkit-media-controls-time-remaining-display{
     *{
         color: #dadce0;
     }
-    .menu_bar, .menu_bars{
+    .info a, .info a:nth-of-type(2){
+        color: #dadce0 !important;
+    }
+    .menu_bar, .menu_bars, .open span{
         background: #dadce0;
         background-color: #dadce0 !important;
     }

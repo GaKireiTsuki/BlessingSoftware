@@ -14,10 +14,10 @@ Vue.config.productionTip = false
 Vue.prototype.$serve = serve
 Vue.use(VueWechatTitle)
 Vue.use(VueLazyload, {
-    preLoad: 1.3,
+    preLoad: 1,
     loading: require('./assets/img/NotFoundPhoto.svg'),
     error: require('./assets/img/NotFoundPhoto.svg'),
-    attempt: 1,
+    attempt: 3,
     listenEvents: ['scroll']
 })
 

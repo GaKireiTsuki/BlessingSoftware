@@ -7,6 +7,9 @@ Vue.use(VueRouter)
 const Store = () => import('@/views/Store.vue')
 const News = () => import('@/views/News.vue')
 const Music = () => import('@/views/Music.vue')
+const Search = () => import('@/components/Search.vue')
+const Album = () => import('@/components/Album.vue')
+const Artist = () => import('@/components/Artist.vue')
 const SignIn = () => import('@/components/SignIn.vue')
 const GameInfo = () => import('@/views/GameInfo.vue')
 const Err = () => import('@/views/Err.vue')
@@ -54,6 +57,43 @@ const routes = [
         component: Music,
         meta: {
             title: 'Blessing Software Music'
+        }
+    },
+    //搜索
+    {
+        path: '/music/search/:keywords',
+        name: 'Search',
+        component: Search,
+        meta: {
+            title: 'Blessing Software Search'
+        }
+    },
+    {
+        path: '/search',
+        redirect: '/music'
+    },
+    {
+        path: '/music/search',
+        redirect: '/music'
+    },
+    //歌手详情
+    {
+        path: '/music/artist/:id',
+        name: 'Artist',
+        component: Artist,
+        meta: {
+            title: 'Blessing Software Artist',
+            keepAlive: false
+        }
+    },
+    //专辑详情
+    {
+        path: '/music/album/:id',
+        name: 'Album',
+        component: Album,
+        meta: {
+            title: 'Blessing Software Album',
+            keepAlive: false
         }
     },
     //登录
