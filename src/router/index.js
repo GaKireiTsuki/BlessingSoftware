@@ -83,7 +83,6 @@ const routes = [
         component: Artist,
         meta: {
             title: 'Blessing Software Artist',
-            keepAlive: false
         }
     },
     //专辑详情
@@ -93,7 +92,6 @@ const routes = [
         component: Album,
         meta: {
             title: 'Blessing Software Album',
-            keepAlive: false
         }
     },
     //登录
@@ -128,6 +126,17 @@ const routes = [
 const router = new VueRouter({
     mode: 'history',
     routes,
+    scrollBehavior (to, from, savedPosition) {
+        // ...
+        if (savedPosition) {
+            return savedPosition;
+        } else {
+            return {
+                x: 0,
+                y: 0
+            }
+        }
+    }
 })
 
 export default router

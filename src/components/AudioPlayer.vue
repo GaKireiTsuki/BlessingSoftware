@@ -1,12 +1,20 @@
 <template>
     <div class="audioplayer bmbl">
-        <img src="" alt="">
-        <audio controls src=""></audio>
+        <img :src="img + '?param=50y50'" alt="">
+        <audio autoplay controls :src="url"></audio>
     </div>
 </template>
 <script>
 export default {
-    name: 'audioplayer'
+    name: 'audioplayer',
+    computed: {
+        url() {
+            return this.$store.state.url
+        },
+        img() {
+            return this.$store.state.img
+        }
+    }
 }
 </script>
 <style>

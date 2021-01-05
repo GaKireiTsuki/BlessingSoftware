@@ -1,13 +1,15 @@
 <template>
     <div class="album">
         <div id="album">
-            <img v-lazy="picUrl + '?param=200y200'" :alt="name" :title="name">
+            <div class="cover">
+                <img v-lazy="picUrl + '?param=1000y1000'" :alt="name" :title="name">
+            </div>
             <div class="album_content">
                 <h1>{{name}}</h1>
                 <router-link :to="{name: 'Artist', params: {id: item.id}}" v-for="item in artistname" :key="item.name">{{item.name}}</router-link>
                 <div id="album_song_list">
                     <div class="album_song_list" v-for="item in songs" :key="item.name">
-                        <span>{{item.no}}</span>
+                        <span @click="play(item.id)">{{item.no}}</span>
                         <span>{{item.name}}</span>
                     </div>
                 </div>
@@ -21,35 +23,8 @@
     </div>
 </template>
 <script>
-export default {
-    name: 'Album',
-    data() {
-        return {
-            picUrl: '',
-            name: '',
-            size: '',
-            company: '',
-            artistname: [],
-            songs: []
-        }
-    },
-    activated() {
-        var that = this;
-        this.$serve.postAlbum(this.$route.params.id).then(res => {
-            console.log(res)
-            that.picUrl = res.data.album.picUrl;
-            that.name = res.data.album.name;
-            that.artistname = res.data.album.artists;
-            that.size = res.data.album.size;
-            that.company = res.data.album.company;
-            that.songs = res.data.songs;
-        }).catch(err => {
-            console.log(err)
-            alert('找不到专辑为 ' + this.$route.params.id + ' 的专辑');
-            window.location.href = "/music";
-        })
-    },
-}
+import album from '../axios/album'
+export default album
 </script>
 <style>
     #album{
@@ -58,13 +33,21 @@ export default {
         grid-auto-flow: column;
         font-family: "SF Pro Text","PingFang SC",Arial,sans-serif;
     }
-    #album img{
+    .cover{
         position: sticky;
         top: 84px;
-        width: 35%;
-        height: 35%;
-        box-shadow: 0 4px 14px rgba(0,0,0,.1);
+        height: 47%;
+        width: 47%;
+    }
+    #album img{
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,.1), 0 10px 13px 0 rgba(0,0,0,.11);
         border-radius: 4px;
+    }
+    #album img:hover{
+        filter: brightness(80%);
+        transition: 0.1s ease-in;
     }
     .album_content{
         margin-left: 20px;
@@ -114,20 +97,23 @@ export default {
         color: #3c3c4399;
     }
     @media screen and (max-width: 484px) {
-        #album img{
+        #album .cover{
+            padding: 16px;
             width: 100%;
             height: 100%;
+            box-sizing: border-box;
             position: unset;
         }
         #album{
             display: block;
+            margin: 0;
         }
         .album{
-            padding: 0px 24px;
+            padding: 24px;
             box-sizing: border-box;
         }
         .album_content{
-            margin: 40px 0 0 0;
+            margin: 0;
         }
     }
 </style>

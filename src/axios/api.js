@@ -1,10 +1,22 @@
 import axios from './axios'
 
 const api = {
-    postSearch(keywords) { //搜索
-        return axios('/search?keywords=' + keywords, {
+    postSearchArtist(keywords) { //搜索艺术家
+        return axios('/search?keywords=' + keywords + '&limit=2&type=100', {
             method: 'post',
             keywords: keywords,
+        })
+    },
+    postSearchAlbum(keywords) { //搜索艺术家专辑
+        return axios('/search?keywords=' + keywords + '&type=10', {
+            method: 'post',
+            keywords: keywords,
+        })
+    },
+    postPlayIf(id) { //检查音乐是否可用
+        return axios('/check/music?id=' + id, {
+            method: 'post',
+            id: id
         })
     },
     postPlay(id) { //播放音乐
@@ -26,7 +38,25 @@ const api = {
         })
     },
     postArtist(id) { //获取歌手信息
-        return axios('/artist/desc?id=' + id, {
+        return axios('/artists?id=' + id, {
+            method: 'post',
+            id: id
+        })
+    },
+    postArtistSong(id) { //获取歌手单曲
+        return axios('/artists?id=' + id, {
+            method: 'post',
+            id: id
+        })
+    },
+    postArtistAlbum(id) { //获取歌手专辑
+        return axios('/artist/album?id=' + id + '&limit=10', {
+            method: 'post',
+            id: id
+        })
+    },
+    postArtistMV(id) { //获取歌手MV
+        return axios('/artist/mv?id=' + id, {
             method: 'post',
             id: id
         })

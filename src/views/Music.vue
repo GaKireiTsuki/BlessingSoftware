@@ -3,7 +3,7 @@
         <input type="search" class="bmbl" v-model="keywords" @keyup.enter="search" name="" id="">
         <div id="new_song_helf">
             <div class="new_song_helf">
-                <div class="new_song" v-for="item in postNewSong" :key="item.data">
+                <div class="new_song" v-for="item in postNewSong" :key="item.name">
                     <div class="play_music">
                         <img v-lazy="item.picUrl + '?param=50y50'" :alt="item.name" :title="item.name">
                         <svg @click="play(item.id)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27"><path d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"></path></svg>
@@ -20,10 +20,10 @@
         </div>
         </div>
         <div id="new_album_helf">
-            <div class="new_album_helf">
-                <div v-for="item in postNewAlbum" :key="item.name">
+            <div class="new_album_helf albums_grid">
+                <div class="albums" v-for="item in postNewAlbum" :key="item.name">
                     <router-link :to="{name: 'Album', params: {id: item.id}}">
-                        <img v-lazy="item.picUrl + '?param=150y150'" :alt="item.name" :title="item.name">
+                        <img class="album_cover" v-lazy="item.picUrl + '?param=150y150'" :alt="item.name" :title="item.name">
                     </router-link>
                     <div class="info">
                         <router-link :to="{name: 'Album', params: {id: item.id}}">{{item.name}}</router-link>
@@ -36,92 +36,11 @@
             <span></span>
         </div>
         </div>
-        <audio autoplay controls  :src="postPlay"></audio>
     </div>
 </template>
 <script>
-import $ from 'jquery'
-export default {
-    name: 'music',
-    data() {
-        return {
-            keywords: '',
-            SearchData: [],
-            postNewSong: [],
-            postNewAlbum: [],
-            postPlay: ''
-        }
-    },
-    methods: {
-        search: function () {
-            this.$router.push({name: 'Search', params: {keywords: this.keywords}})
-        },
-        play: function (id) {
-            var that = this;
-            this.$serve.postPlay(id).then(res => {
-                console.log(res.data.data[0])
-                that.postPlay = res.data.data[0].url;
-            }).catch(err => {
-                console.log(err)
-            })
-            this.$serve.postInfo(id).then(res => {
-                console.log(res.data.songs[0])
-            }).catch(err => {
-                console.log(err)
-            })
-        }
-    },
-    created () {
-        var that = this;
-        this.$serve.postNewSong().then(res => {
-            that.postNewSong = res.data.result
-        }).catch(err => {
-            console.log(err)
-        })
-        this.$serve.postNewAlbum().then(res => {
-            that.postNewAlbum = res.data.albums
-        }).catch(err => {
-            console.log(err)
-        })
-    }
-}
-$(document).ready(function () {
-    $(".music input[type=search]").click(function () {
-        $("body, html").animate({ scrollTop: 0 }, 300, "linear");
-    });
-    $("#new_song_helf .open").click(function () { 
-        if ($(".new_song_helf").hasClass("e")) {
-            $(".new_song_helf").animate({ scrollTop: 0 }, 400, "linear");
-            $(".new_song_helf").css({height: "199.96", "margin-bottom": "25px", "overflow-y": "hidden"}).removeClass("e");
-            $("#new_song_helf .open span:nth-of-type(1)").css({transform: "rotate(45deg)"}).removeClass("e");
-            $("#new_song_helf .open span:nth-of-type(2)").css({transform: "rotate(-45deg)"}).removeClass("e");
-        } else {
-            if ($(window).width() < 484) {
-                $(".new_song_helf").css({height: "447.92px", "margin-bottom": "0px", "overflow-y": "auto"}).addClass("e");
-            } else {
-                $(".new_song_helf").css({height: "447.92px", "margin-bottom": "0px", "overflow-y": "hidden"}).addClass("e");
-            }
-            $("#new_song_helf .open span:nth-of-type(1)").css({transform: "rotate(-45deg)"}).addClass("e");
-            $("#new_song_helf .open span:nth-of-type(2)").css({transform: "rotate(45deg)"}).addClass("e");
-        }
-    });
-    $("#new_album_helf .open").click(function () { 
-        if ($(".new_album_helf").hasClass("e")) {
-            $(".new_album_helf").animate({ scrollTop: 0 }, 400, "linear");
-            $(".new_album_helf").css({height: "375.99px", "margin-bottom": "25px", "overflow-y": "hidden"}).removeClass("e");
-            $("#new_album_helf .open span:nth-of-type(1)").css({transform: "rotate(45deg)"}).removeClass("e");
-            $("#new_album_helf .open span:nth-of-type(2)").css({transform: "rotate(-45deg)"}).removeClass("e");
-        } else {
-            if ($(window).width() < 484) {
-                $(".new_album_helf").css({height: "826.98px", "margin-bottom": "0px", "overflow-y": "auto"}).addClass("e");
-            } else {
-                $(".new_album_helf").css({height: "826.98px", "margin-bottom": "0px", "overflow-y": "hidden"}).addClass("e");
-            }
-            $("#new_album_helf .open span:nth-of-type(1)").css({transform: "rotate(-45deg)"}).addClass("e");
-            $("#new_album_helf .open span:nth-of-type(2)").css({transform: "rotate(45deg)"}).addClass("e");
-        }
-    });
-});
+import player from '../axios/player'
+export default player
 </script>
 <style>
     .open{
@@ -149,23 +68,11 @@ $(document).ready(function () {
         right: 2.4px;
     }
     .new_album_helf{
-        height: 375.99px;
+        height: 412.66px;
         padding: 25px 0px;
         margin-bottom: 25px;
-        display: grid;
-        grid-auto-flow: column;
-        justify-content: space-between;
-        grid-template-rows: repeat(4,1fr);
-        row-gap: 16px;
         overflow-y: hidden;
         transition: all .4s cubic-bezier(0.55, 0.06, 0.68, 0.19);
-    }
-    .new_album_helf div{
-        width: 150px;
-    }
-    .new_album_helf div img{
-        border-radius: 4px;
-        box-shadow: 0 4px 14px rgba(0,0,0,.1);
     }
     .play_music{
         height: 40px;
@@ -205,25 +112,14 @@ $(document).ready(function () {
         padding: 7.5px 24px 7.5px 0;
         border-top: 1px solid rgba(0,0,0,.14901960784313725);
     }
-    .info a{
-        font-size: 14px;
-        line-height: 1.429em;
-        font-family: "SF Pro Text","PingFang SC",Arial,sans-serif;
-        -webkit-line-clamp: 1;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        white-space: normal;
-        overflow: hidden;
-    }
-    .info a:nth-of-type(2){
-        font-size: 12px;
-        color: rgba(60,60,67,.6);
-    }
     .new_song img{
         width: 40px;
         height: 40px;
         margin-right: 6px;
         border-radius: 6px;
+    }
+    .new_song .info a:nth-of-type(1){
+        text-decoration: none;
     }
     .new_song_helf{
         transition: all .4s cubic-bezier(0.55, 0.06, 0.68, 0.19);
