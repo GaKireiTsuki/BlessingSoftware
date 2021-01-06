@@ -64,23 +64,23 @@ $(document).ready(function () {
         if ($(".new_song_helf").hasClass("e")) {
             $(".new_song_helf").animate({ scrollTop: 0 }, 400, "linear");
             $(".new_song_helf").css({height: "199.96", "margin-bottom": "25px", "overflow-y": "hidden"}).removeClass("e");
-            $("#new_song_helf .open span:nth-of-type(1)").css({transform: "rotate(45deg)"}).removeClass("e");
-            $("#new_song_helf .open span:nth-of-type(2)").css({transform: "rotate(-45deg)"}).removeClass("e");
+            $("#new_song_helf .open span:nth-of-type(1)").css({transform: "rotate(45deg)"});
+            $("#new_song_helf .open span:nth-of-type(2)").css({transform: "rotate(-45deg)"});
         } else {
             if ($(window).width() < 484) {
                 $(".new_song_helf").css({height: "447.92px", "margin-bottom": "0px", "overflow-y": "auto"}).addClass("e");
             } else {
-                $(".new_song_helf").css({height: "447.92px", "margin-bottom": "0px", "overflow-y": "hidden"}).addClass("e");
+                $(".new_song_helf").css({height: "447.92px", "margin-bottom": "0px", "overflow-y": "hidden"});
             }
-            $("#new_song_helf .open span:nth-of-type(1)").css({transform: "rotate(-45deg)"}).addClass("e");
-            $("#new_song_helf .open span:nth-of-type(2)").css({transform: "rotate(45deg)"}).addClass("e");
+            $("#new_song_helf .open span:nth-of-type(1)").css({transform: "rotate(-45deg)"});
+            $("#new_song_helf .open span:nth-of-type(2)").css({transform: "rotate(45deg)"});
         }
     });
     $("#new_album_helf .open").click(function () { 
         if ($(".new_album_helf").hasClass("e")) {
             $(".new_album_helf").animate({ scrollTop: 0 }, 400, "linear");
             if ($(window).width() < 484) {
-                $(".new_album_helf").css({height: "427.5px", "margin-bottom": "0px", "overflow-y": "auto"}).removeClass("e");
+                $(".new_album_helf").css({height: "427.5px", "margin-bottom": "0px", "overflow-y": "hidden"}).removeClass("e");
             } else {
                 $(".new_album_helf").css({height: "412.66px", "margin-bottom": "25px", "overflow-y": "hidden"}).removeClass("e");
             }
@@ -90,7 +90,7 @@ $(document).ready(function () {
             if ($(window).width() < 484) {
                 $(".new_album_helf").css({height: "1216.5px", "margin-bottom": "0px", "overflow-y": "auto"}).addClass("e");
             } else {
-                $(".new_album_helf").css({height: "845.99px", "margin-bottom": "0px", "overflow-y": "hidden"}).addClass("e");
+                $(".new_album_helf").css({height: "845.99px", "margin-bottom": "25px", "overflow-y": "hidden"}).addClass("e");
             }
             $("#new_album_helf .open span:nth-of-type(1)").css({transform: "rotate(-45deg)"}).addClass("e");
             $("#new_album_helf .open span:nth-of-type(2)").css({transform: "rotate(45deg)"}).addClass("e");

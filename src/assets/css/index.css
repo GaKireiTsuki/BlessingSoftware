@@ -1,6 +1,7 @@
 .content{
     margin: auto;
     max-width: 980px;
+    padding-bottom: 74px !important;
 }
 .border_top{
     border-top: 1px solid #d6d6d6;

@@ -9,7 +9,8 @@ export default {
             artistname: [],
             songs: [],
             url: '',
-            img: ''
+            img: '',
+            msg: ''
         }
     },
     methods: {
@@ -17,8 +18,12 @@ export default {
             var that = this;
             this.$serve.postPlayIf(id).then(res => {
                 console.log(res)
+                that.msg = '1'
             }).catch(err => {
                 console.log(err)
+                that.img = 'htps://music.jpg';
+                that.url = 'htps://music.mp3';
+                that.msg = '0'
             })
             this.$serve.postPlay(id).then(res => {
                 that.url = res.data[0].url;
@@ -30,6 +35,9 @@ export default {
             }).catch(err => {
                 console.log(err)
             })
+        },
+        song: function () {
+            this.$store.dispatch('add', this.songs)
         }
     },
     watch: {
@@ -38,6 +46,9 @@ export default {
         },
         img () {
             return this.$store.dispatch('show', this.img)
+        },
+        msg () {
+            return this.$store.dispatch('msgs', this.msg)
         }
     },
     activated() {

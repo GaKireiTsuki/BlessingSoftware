@@ -7,7 +7,7 @@
                     <img v-lazy="item.img" alt="" />
                     <div class="GameName">
                         <span>{{ item.GameName }}</span>
-                        <span>{{ item.ReleaseDate | DateTime }}</span>
+                        <span>{{ item.ReleaseDate}}</span>
                     </div>
                 </router-link>
             </div>
@@ -16,9 +16,7 @@
 </template>
 
 <script>
-    import Filters from "../assets/js/Filters";
     export default {
-        filters: Filters,
         data() {
             return {
                 Game: [

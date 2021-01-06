@@ -3,17 +3,14 @@
         <p>Blessing Software News</p>
         <div v-for="item in news" :key="item.id">
             <h1 class="NewsTitle">{{ item.NewsTitle }}</h1>
-            <p class="NewsDateTime">{{ item.NewsDateTime | DateTime }}</p>
+            <p class="NewsDateTime">{{ item.NewsDateTime}}</p>
             <div class="NewsContent">{{ item.NewsContent }}</div>
         </div>
     </div>
 </template>
 
 <script>
-    import Filters from "../assets/js/Filters";
-
     export default {
-        filters: Filters,
         name: 'news',
         data() {
             return {

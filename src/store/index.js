@@ -6,7 +6,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         url: '',
-        img: ''
+        img: '',
+        msg: '1',
+        song: ''
     },
     mutations: {
         play (state, url) {
@@ -14,6 +16,12 @@ export default new Vuex.Store({
         },
         show (state, img) {
             state.img = img;
+        },
+        msgs (state, msg) {
+            state.msg = msg;
+        },
+        add (state, song) {
+            state.song = song;
         }
     },
     actions: {
@@ -22,6 +30,12 @@ export default new Vuex.Store({
         },
         show (music, img) {
             music.commit('show', img)
+        },
+        msgs (music, msg) {
+            music.commit('msgs', msg)
+        },
+        add (music, song) {
+            music.commit('add', song)
         }
     },
     modules: {

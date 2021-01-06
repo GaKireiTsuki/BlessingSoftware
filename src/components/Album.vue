@@ -1,7 +1,7 @@
 <template>
     <div class="album">
         <div id="album">
-            <div class="cover">
+            <div class="cover" @click="song()">
                 <img v-lazy="picUrl + '?param=1000y1000'" :alt="name" :title="name">
             </div>
             <div class="album_content">
