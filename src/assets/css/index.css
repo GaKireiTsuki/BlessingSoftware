@@ -47,6 +47,13 @@
     .albums_grid{
         grid-template-columns: repeat(2,1fr);
     }
+    .play_list{
+        width: 100vw;
+        height: calc(100% - 97px);
+    }
+    .open_list{
+        bottom: 66px;
+    }
 }
 @media screen and (min-width: 484px){
     .albums_grid{

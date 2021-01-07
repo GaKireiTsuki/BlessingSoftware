@@ -31,7 +31,6 @@ export default album
         margin: 40px 0px;
         display: flex;
         grid-auto-flow: column;
-        font-family: "SF Pro Text","PingFang SC",Arial,sans-serif;
     }
     .cover{
         position: sticky;
@@ -93,7 +92,7 @@ export default album
         color: #3c3c434d;
     }
     .album_info span:nth-of-type(1){
-        font-size: 14px;
+        font-size: 12px;
         color: #3c3c4399;
     }
     @media screen and (max-width: 484px) {

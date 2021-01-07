@@ -4,6 +4,7 @@
         <keep-alive :max="8">
             <router-view v-wechat-title='$route.meta.title' class="content"></router-view>
         </keep-alive>
+        <playlist></playlist>
         <audioplayer></audioplayer>
     </div>
 </template>

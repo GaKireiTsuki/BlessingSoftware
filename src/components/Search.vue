@@ -30,9 +30,6 @@ import search from '../axios/search'
 export default search
 </script>
 <style>
-    *{
-        font-family: "SF Pro Text","PingFang SC",Arial,sans-serif;
-    }
     .search{
         padding-top: 32px;
     }

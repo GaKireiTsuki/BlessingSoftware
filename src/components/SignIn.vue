@@ -22,6 +22,5 @@ export default {
         font-size: 40px;
         font-weight: 600;
         color: #1d1d1f;
-        font-family: "SF Pro Display","SF Pro Text","PingFang SC","Arial",sans-serif;
     }
 </style>
