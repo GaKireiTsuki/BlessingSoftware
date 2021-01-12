@@ -4,8 +4,10 @@ export default {
         return {
             artists: [],
             albums: [],
+            songs: [],
+            mvs: [],
             url: '',
-            img: ''
+            img: '',
         }
     },
     methods: {
@@ -45,6 +47,16 @@ export default {
         })
         this.$serve.postSearchAlbum(this.$route.params.keywords).then(res => {
             that.albums = res.result.albums;
+        }).catch(err => {
+            console.log(err)
+        })
+        this.$serve.postSearchSong(this.$route.params.keywords).then(res => {
+            that.songs = res.result.songs;
+        }).catch(err => {
+            console.log(err)
+        })
+        this.$serve.postSearchMV(this.$route.params.keywords).then(res => {
+            that.mvs = res.result.mvs;
         }).catch(err => {
             console.log(err)
         })

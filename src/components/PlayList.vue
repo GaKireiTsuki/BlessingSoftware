@@ -5,10 +5,8 @@
             <img @click="play(item.id)" :src="item.al.picUrl + '?param=40y40'" :alt="item.name" :title="item.name">
             <div class="play_list_name">
                 <div>
-                    <div>
-                        <span id="list_name">{{item.name}}</span>
-                        <span id="list_name">{{item.ar[0].name}}</span>
-                    </div>
+                    <span id="list_name">{{item.name}}</span>
+                    <span id="list_name">{{item.ar[0].name}}</span>
                 </div>
                 <div class="more" tabindex="0" outline=0>
                     <span></span>

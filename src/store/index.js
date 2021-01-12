@@ -8,7 +8,7 @@ export default new Vuex.Store({
         url: '',
         img: '',
         msg: '1',
-        song: ''
+        song: '',
     },
     mutations: {
         play (state, url) {

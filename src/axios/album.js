@@ -6,6 +6,8 @@ export default {
             name: '',
             size: '',
             company: '',
+            subType: '',
+            publishTime: '',
             artistname: [],
             songs: [],
             url: '',
@@ -55,6 +57,8 @@ export default {
         var that = this;
         this.$serve.postAlbum(this.$route.params.id).then(res => {
             console.log(res)
+            that.subType = res.album.subType;
+            that.publishTime = res.album.publishTime;
             that.picUrl = res.album.picUrl;
             that.name = res.album.name;
             that.artistname = res.album.artists;

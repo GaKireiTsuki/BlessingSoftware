@@ -6,6 +6,30 @@
 .border_top{
     border-top: 1px solid #d6d6d6;
 }
+.play_button{
+    fill: #fa233b;
+    transition: all .2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+.search_title{
+    line-height: 1.22226;
+    letter-spacing: .005em;
+    border-top: .5px solid #D9D9D9;
+    padding: 13px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search_title h2{
+    font-size: 18px;
+    color: #000000f2;
+}
+.info{
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    overflow: hidden;
+}
 .info a{
     font-size: 12px;
     line-height: 1.429em;
@@ -31,7 +55,7 @@
     filter: brightness(80%);
     transition: 0.1s ease-in;
 }
-.albums_grid{
+.grid_layout{
     display: grid;
     gap: 20px;
     box-sizing: border-box;
@@ -43,8 +67,67 @@
     width: 100%;
     margin-bottom: 4px;
 }
+div[class $= '_layout']::-webkit-scrollbar{
+    height: 4px;
+}
+.flex_layout{
+    grid-auto-flow: column;
+    grid-template-rows: repeat(1,1fr);
+    display: grid;
+    gap: 20px;
+    box-sizing: border-box;
+    overflow-y: hidden;
+}
+.helf_layout{
+    grid-auto-flow: column;
+    grid-template-rows: repeat(1,1fr);
+    display: grid;
+    gap: 20px;
+    box-sizing: border-box;
+    overflow-y: hidden;
+}
+.new_song{
+    display: flex;
+    padding: 7.5px 24px 7.5px 0;
+    border-top: 1px solid rgba(0,0,0,.14901960784313725);
+}
+.new_song img{
+    width: 40px;
+    height: 40px;
+    margin-right: 6px;
+    border-radius: 6px;
+}
+.new_song .info a:nth-of-type(1){
+    text-decoration: none;
+}
+.new_song_helf{
+    padding: 25px 0px;
+    margin-bottom: 25px;
+}
+.new_song:hover .play_music svg{
+    opacity: 1;
+    transform: scale(1);
+}
+.new_song:hover .play_music img{
+    filter: saturate(180%) blur(1px);
+    box-sizing: border-box;
+}
+.new_song:hover{
+    background: rgba(0,0,0,.14901960784313725);
+}
+.play_music{
+    height: 40px;
+    position: relative;
+}
+.play_music svg{
+    position: absolute;
+    left: 0;
+    width: 40px;
+    opacity: 0;
+    transform: scale(0.7);
+}
 @media screen and (max-width: 484px){
-    .albums_grid{
+    .grid_layout{
         grid-template-columns: repeat(2,1fr);
     }
     .play_list{
@@ -54,40 +137,82 @@
     .open_list{
         bottom: 66px;
     }
+    .music {
+        padding: 0px 24px;
+    }
+    .flex_layout::-webkit-scrollbar{
+        display: none;
+    }
+    .new_album_helf::-webkit-scrollbar, .new_song_helf::-webkit-scrollbar{
+        display: none;
+    }
 }
 @media screen and (min-width: 484px){
-    .albums_grid{
+    .grid_layout{
         grid-template-columns: repeat(2,1fr);
     }
 }
 @media screen and (min-width: 500px){
-    .albums_grid{
+    .grid_layout{
         grid-template-columns: repeat(3,1fr);
     }
 }
 @media screen and (min-width: 650px){
-    .albums_grid{
+    .grid_layout{
         grid-template-columns: repeat(4,1fr);
+    }
+    .flex_layout{
+        grid-auto-columns: 144px;
+    }
+    .helf_layout{
+        grid-auto-columns: calc((100% - 1 * 20px)/ 2);
+    }
+}
+@media screen and (max-width: 650px){
+    .flex_layout{
+        grid-auto-columns: 144px;
+    }
+    .helf_layout{
+        grid-auto-columns: calc((100% - 1 * 20px)/ 2);
+        grid-auto-columns: 270px;
     }
 }
 @media screen and (min-width: 800px){
-    .albums_grid{
+    .grid_layout{
         grid-template-columns: repeat(5,1fr);
+    }
+    .flex_layout{
+        grid-auto-columns: calc((100% - 4 * 20px)/ 5);
+    }
+    .helf_layout{
+        grid-auto-columns: calc((100% - 2 * 20px)/ 3);
     }
 }
 @media screen and (min-width: 1000px){
-    .albums_grid{
+    .grid_layout{
         grid-template-columns: repeat(5,1fr);
+    }
+    .flex_layout{
+        grid-auto-columns: calc((100% - 4 * 20px)/ 5);
+    }
+    .helf_layout{
+        grid-auto-columns: calc((100% - 3 * 20px)/ 4);
     }
 }
 @media screen and (min-width: 1260px){
-    .albums_grid{
+    .grid_layout{
         grid-template-columns: repeat(6,1fr);
+    }
+    .flex_layout{
+        grid-auto-columns: calc((100% - 5 * 20px)/ 6);
     }
 }
 @media screen and (min-width: 1580px){
-    .albums_grid{
+    .grid_layout{
         grid-template-columns: repeat(6,1fr);
+    }
+    .flex_layout{
+        grid-auto-columns: calc((100% - 5 * 20px)/ 6);
     }
 }
 @media screen and (max-width: 1000px){

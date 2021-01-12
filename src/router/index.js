@@ -8,6 +8,8 @@ const Store = () => import('@/views/Store.vue')
 const News = () => import('@/views/News.vue')
 const Music = () => import('@/views/Music.vue')
 const Search = () => import('@/components/Search.vue')
+const MoreAlbum = () => import('@/components/MoreAlbum.vue')
+const MV = () => import('@/components/MV.vue')
 const Album = () => import('@/components/Album.vue')
 const Artist = () => import('@/components/Artist.vue')
 const SignIn = () => import('@/components/SignIn.vue')
@@ -83,6 +85,24 @@ const routes = [
         component: Artist,
         meta: {
             title: 'Blessing Software Artist',
+        }
+    },
+    //MV
+    {
+        path: '/music/mv/:id',
+        name: 'MV',
+        component: MV,
+        meta: {
+            title: 'Blessing Software MV',
+        }
+    },
+    //更多专辑
+    {
+        path: '/music/search/more-album/:keywords',
+        name: 'MoreAlbum',
+        component: MoreAlbum,
+        meta: {
+            title: 'Blessing Software MoreAlbum',
         }
     },
     //专辑详情

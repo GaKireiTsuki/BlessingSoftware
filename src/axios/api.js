@@ -13,6 +13,30 @@ const api = {
             keywords: keywords,
         })
     },
+    postSearchSong(keywords) { //搜索艺术家歌曲
+        return axios('/search?keywords=' + keywords + '&type=1', {
+            method: 'post',
+            keywords: keywords,
+        })
+    },
+    postSearchMV(keywords) { //搜索艺术家MV
+        return axios('/search?keywords=' + keywords + '&type=1004', {
+            method: 'post',
+            keywords: keywords,
+        })
+    },
+    postPlayMV(id) { //播放MV
+        return axios('/mv/url?id=' + id, {
+            method: 'post',
+            id: id,
+        })
+    },
+    postInfoMV(id) { //MV信息
+        return axios('/mv/detail?mvid=' + id, {
+            method: 'post',
+            id: id,
+        })
+    },
     postPlayIf(id) { //检查音乐是否可用
         return axios('/check/music?id=' + id, {
             method: 'post',
@@ -56,7 +80,7 @@ const api = {
         })
     },
     postArtistMV(id) { //获取歌手MV
-        return axios('/artist/mv?id=' + id, {
+        return axios('/artist/mv?id=' + id + '&limit=30', {
             method: 'post',
             id: id
         })
