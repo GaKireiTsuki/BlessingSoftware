@@ -7,6 +7,9 @@
     user-select: none;
     -webkit-font-smoothing: antialiased;
 }
+a{
+    cursor: pointer;
+}
 *::selection{
     background: #1d1d1f65;
 }

@@ -5,7 +5,7 @@
             <h2>更多{{artistName}}的作品</h2>
         </div>
         <div class="flex_layout">
-            <div class="albums" v-for="item in mvs" :key="item.names">
+            <div class="albums mv" v-for="item in mvs" :key="item.names">
                 <router-link :to="{name: 'MV', params: {id: item.id}}">
                     <img class="album_cover" v-lazy="item.imgurl16v9 + '?param=159y90'" :alt="item.name" :title="item.name">
                 </router-link>
@@ -25,15 +25,34 @@ export default {
             url: '',
             artistId: '',
             mvs: [],
-            artistName: ''
+            artistName: '',
+        }
+    },
+    methods: {
+        playmv() {
+            var that = this;
+            this.$serve.postPlayMV(this.$route.params.id).then(res => {
+                that.url = res.data.url;
+            })
+            this.$serve.postInfoMV(this.$route.params.id).then(res => {
+                console.log(res)
+                that.artistId = res.data.artistId;
+                that.artistName = res.data.artistName;
+                this.$serve.postArtistMV(this.artistId).then(res => {
+                    that.mvs = res.mvs;
+                })
+            })
+        }
+    },
+    watch: {
+        $route(to, from) {
+            this.playmv()
         }
     },
     activated() {
         var that = this;
         this.$serve.postPlayMV(this.$route.params.id).then(res => {
             that.url = res.data.url;
-        }).catch(err => {
-            console.log(err)
         })
         this.$serve.postInfoMV(this.$route.params.id).then(res => {
             console.log(res)
@@ -42,8 +61,6 @@ export default {
             this.$serve.postArtistMV(this.artistId).then(res => {
                 that.mvs = res.mvs;
             })
-        }).catch(err => {
-            console.log(err)
         })
     }
 }

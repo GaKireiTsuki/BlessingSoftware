@@ -5,6 +5,7 @@ import store from './store'
 import serve from './axios/api'
 import VueWechatTitle from 'vue-wechat-title'
 import VueLazyload from 'vue-lazyload'
+import { Loading } from 'element-ui'
 
 import './assets/css/index.css'
 import './assets/css/style.css'
@@ -13,6 +14,7 @@ import './assets/css/fonts.css'
 Vue.config.productionTip = false
 Vue.prototype.$serve = serve
 Vue.use(VueWechatTitle)
+Vue.use(Loading)
 Vue.use(VueLazyload, {
     preLoad: 1,
     loading: require('./assets/img/NotFoundPhoto.svg'),

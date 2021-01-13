@@ -1,3 +1,7 @@
+.mv img[lazy="loading"]{
+    width: 146.67px;
+    height: 83.01px;
+}
 .content{
     margin: auto;
     max-width: 980px;

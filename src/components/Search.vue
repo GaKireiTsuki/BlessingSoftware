@@ -42,13 +42,13 @@
             <h2>音乐视频</h2><router-link to="">查看全部</router-link>
         </div>
         <div class="flex_layout">
-            <div class="albums" v-for="item in mvs" :key="item.names">
+            <div class="albums mv" v-for="item in mvs" :key="item.names">
                 <router-link :to="{name: 'MV', params: {id: item.id}}">
                     <img class="album_cover" v-lazy="item.cover + '?param=159y90'" :alt="item.name" :title="item.name">
                 </router-link>
                 <div class="info">
                     <router-link :to="{name: 'MV', params: {id: item.id}}">{{item.name}}</router-link>
-                    <router-link :to="{name: 'Artist', params: {id: item.artistId}}">{{item.arTransName}}</router-link>
+                    <router-link :to="{name: 'Artist', params: {id: item.artistId}}">{{item.artistName}}</router-link>
                 </div>
             </div>
         </div>
