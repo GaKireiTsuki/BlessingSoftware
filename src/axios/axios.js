@@ -1,7 +1,17 @@
 import axios from 'axios'
+import { Loading } from 'element-ui'
+
+let loadingInstance;
 
 axios.interceptors.request.use(config => {
     // Do something before request is sent
+    loadingInstance = Loading.service({ //加载loading
+        lock: true,
+        fullscreen: true,
+        text: 'Loading...',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+    });
     return config;
     },error => {
     // Do something with request error
@@ -10,7 +20,12 @@ axios.interceptors.request.use(config => {
 
 axios.interceptors.response.use(response => {
     // Do something before response is sent
-    return response.data;
+    loadingInstance.close();//关闭loading
+    if(response.data.code=="200"){
+        return response.data;
+    }else{
+        return Promise.reject(response.data);
+    }
     },error => {
     // Do something with response error
     const {response} = error

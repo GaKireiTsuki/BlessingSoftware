@@ -10,6 +10,7 @@ import { Loading } from 'element-ui'
 import './assets/css/index.css'
 import './assets/css/style.css'
 import './assets/css/fonts.css'
+import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.config.productionTip = false
 Vue.prototype.$serve = serve
