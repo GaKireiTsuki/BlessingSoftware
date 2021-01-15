@@ -180,6 +180,15 @@ div[class $= '_layout']::-webkit-scrollbar{
         grid-auto-columns: calc((100% - 1 * 20px)/ 2);
         grid-auto-columns: 270px;
     }
+    .artist_mv_info{
+        margin-top: 20px;
+    }
+    .mv_info{
+        grid-template-columns: 1fr !important;
+    }
+    .player video{
+        height: 30% !important;
+    }
 }
 @media screen and (min-width: 800px){
     .grid_layout{
