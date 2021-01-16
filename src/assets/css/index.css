@@ -74,21 +74,14 @@
 div[class $= '_layout']::-webkit-scrollbar{
     height: 4px;
 }
-.flex_layout{
+div[class $= '_layout']{
     grid-auto-flow: column;
     grid-template-rows: repeat(1,1fr);
     display: grid;
     gap: 20px;
     box-sizing: border-box;
     overflow-y: hidden;
-}
-.helf_layout{
-    grid-auto-flow: column;
-    grid-template-rows: repeat(1,1fr);
-    display: grid;
-    gap: 20px;
-    box-sizing: border-box;
-    overflow-y: hidden;
+    padding-bottom: 32px;
 }
 .new_song{
     display: flex;
@@ -144,7 +137,7 @@ div[class $= '_layout']::-webkit-scrollbar{
     .music {
         padding: 0px 24px;
     }
-    .flex_layout::-webkit-scrollbar{
+    div[class $= '_layout']::-webkit-scrollbar{
         display: none;
     }
     .new_album_helf::-webkit-scrollbar, .new_song_helf::-webkit-scrollbar{

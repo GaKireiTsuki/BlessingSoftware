@@ -38,7 +38,7 @@ export default player
     .new_album_helf{
         padding: 25px 0px;
         margin-bottom: 25px;
-        grid-template-rows: repeat(2,1fr);
+        grid-template-rows: repeat(2,1fr) !important;
     }
     .music input[type=search]{
         z-index: 2;
@@ -57,7 +57,7 @@ export default player
     .new_song_helf{
         padding: 25px 0px;
         margin-bottom: 25px;
-        grid-template-rows: repeat(4,1fr);
-        gap: 0px 20px;
+        grid-template-rows: repeat(4,1fr) !important;
+        gap: 0px 20px !important;
     }
 </style>

@@ -102,10 +102,12 @@ $(document).ready(function () {
     $(openplay).click(function () { 
         player.show()
         $('video').trigger('play');
+        $('audio').trigger('pause');
     });
     $(closeplay).click(function () { 
         player.hide()
         $('video').trigger('pause');
+        $('audio').trigger('play');
     });
 });
 </script>
