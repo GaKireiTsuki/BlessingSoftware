@@ -26,32 +26,12 @@ export default {
     data() {
         return {
             url: '',
-            img: '',
-            msg: ''
+            img: ''
         }
     },
     methods: {
         play: function (id) {
-            var that = this;
-            this.$serve.postPlayIf(id).then(res => {
-                console.log(res)
-                that.msg = '1'
-            }).catch(err => {
-                console.log(err)
-                that.img = 'htps://music.jpg';
-                that.url = 'htps://music.mp3';
-                that.msg = '0'
-            })
-            this.$serve.postPlay(id).then(res => {
-                that.url = res.data[0].url;
-            }).catch(err => {
-                console.log(err)
-            })
-            this.$serve.postInfo(id).then(res => {
-                that.img = res.songs[0].al.picUrl;
-            }).catch(err => {
-                console.log(err)
-            })
+            this.player(id);
         },
         clear: function () {
             this.$store.dispatch('add', this.clears)
@@ -63,9 +43,6 @@ export default {
         },
         img () {
             return this.$store.dispatch('show', this.img)
-        },
-        msg () {
-            return this.$store.dispatch('msgs', this.msg)
         },
         song () {
             return this.$store.dispatch('songs', this.song)

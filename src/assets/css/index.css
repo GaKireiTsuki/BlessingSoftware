@@ -63,6 +63,8 @@
     display: grid;
     gap: 20px;
     box-sizing: border-box;
+    grid-template-columns: repeat(6,1fr);
+    grid-auto-flow: row !important;
 }
 .albums{
     width: -webkit-fill-available;

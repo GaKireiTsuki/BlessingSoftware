@@ -23,30 +23,43 @@ Vue.use(VueLazyload, {
     attempt: 3,
     listenEvents: ['scroll']
 })
-Vue.filter('Duration', function (originVal) {
-    let duration = originVal
-    let min = parseInt(duration / 1000 / 60)
+
+Vue.filter('Duration', function (value) {
+    var duration = value
+    var min = parseInt(duration / 1000 / 60)
     if (min < 10) {
-        min = + min
+        min = '0' + min
     }
-    let sec = parseInt((duration / 1000) % 60)
+    var sec = parseInt((duration / 1000) % 60)
     if (sec < 10) {
         sec = '0' + sec
     }
     return `${min}:${sec}`
 })
-Vue.filter('Year',function(originVal){
-    const date = new Date(originVal)
-    const year = date.getFullYear()
+
+Vue.filter('Year',function(value){
+    var date = new Date(value)
+    var year = date.getFullYear()
     return `${year}年`
 })
-Vue.filter('Date',function(originVal){
-    const date = new Date(originVal)
-    const year = date.getFullYear()
-    const month = (date.getMonth()+ 1 + '').padStart(2,'')
-    const day = (date.getMonth() + '').padStart(2,'')
+
+Vue.filter('Date',function(value){
+    var date = new Date(value)
+    var year = date.getFullYear()
+    var month = (date.getMonth()+ 1 + '').padStart(2,'')
+    var day = (date.getMonth() + '').padStart(2,'')
     return `${year}年${month}月${day}日`
 })
+
+Vue.prototype.player = function (id) {
+    var that = this;
+    this.$serve.postPlay(id).then(res => {
+        that.url = res.data[0].url;
+    })
+    this.$serve.postInfo(id).then(res => {
+        that.img = res.songs[0].al.picUrl;
+    })
+}
 
 new Vue({
     router,

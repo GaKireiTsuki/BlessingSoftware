@@ -3,7 +3,6 @@
         <img :src="this.$store.state.img + '?param=50y50'" alt="">
         <img :src="this.$store.state.img + '?param=1000y1000'" alt="">
         <audio autoplay controls :src="this.$store.state.url"></audio>
-        <span v-show="this.$store.state.msg == 999" class="msg">无法播放</span>
         <div class="open_list">
             open
         </div>
@@ -13,53 +12,6 @@
 import $ from 'jquery'
 export default {
     name: 'audioplayer',
-    data() {
-        return {
-            url: '',
-            img: '',
-            msg: ''
-        }
-    },
-    computed: {
-        song() {
-            return this.$store.state.song
-        }
-    },
-    methods: {
-        play: function (id) {
-            var that = this;
-            this.$serve.postPlayIf(id).then(res => {
-                console.log(res)
-                that.msg = '1'
-            }).catch(err => {
-                console.log(err)
-                that.img = 'htps://music.jpg';
-                that.url = 'htps://music.mp3';
-                that.msg = '0'
-            })
-            this.$serve.postPlay(id).then(res => {
-                that.url = res.data[0].url;
-            }).catch(err => {
-                console.log(err)
-            })
-            this.$serve.postInfo(id).then(res => {
-                that.img = res.songs[0].al.picUrl;
-            }).catch(err => {
-                console.log(err)
-            })
-        },
-    },
-    watch: {
-        url () {
-            return this.$store.dispatch('play', this.url)
-        },
-        img () {
-            return this.$store.dispatch('show', this.img)
-        },
-        msg () {
-            return this.$store.dispatch('msgs', this.msg)
-        }
-    }
 }
 $(document).ready(function () {
     $(".audioplayer").click(function () { 
@@ -111,6 +63,7 @@ $(document).ready(function () {
     .audioplayer img:nth-of-type(1){
         padding: 4px;
         border-radius: 8px;
+        height: 100%;
         box-sizing: border-box;
     }
     .audioplayer img:nth-of-type(2){

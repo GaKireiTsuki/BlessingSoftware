@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="search_title">
-            <h2>专辑</h2><router-link :to="{name: 'MoreAlbum', params: {keywords: this.$route.params.keywords}}">查看全部</router-link>
+            <h2>专辑</h2><!-- <router-link :to="{name: 'MoreAlbum', params: {keywords: $route.params.keywords}}">查看全部</router-link> -->
         </div>
         <div class="flex_layout">
             <div class="albums" v-for="item in albums" :key="item.names">
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="search_title">
-            <h2>歌曲</h2><router-link to="">查看全部</router-link>
+            <h2>歌曲</h2>
         </div>
         <div class="helf_layout">
             <div class="new_song" v-for="item in songs" :key="item.names">
@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="search_title">
-            <h2>音乐视频</h2><router-link to="">查看全部</router-link>
+            <h2>音乐视频</h2>
         </div>
         <div class="flex_layout">
             <div class="albums mv" v-for="item in mvs" :key="item.names">

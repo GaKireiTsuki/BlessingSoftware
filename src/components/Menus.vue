@@ -56,73 +56,91 @@
         name: 'menus'
     };
     $(document).ready(function () {
-        //Click back to top
-        $("#nav_link").click(function () {
-            $("body, html").animate({ scrollTop: 0 }, 500, "linear");
-        });
-        //Refresh back to top
-        $("body, html").animate({ scrollTop: 0 }, 200);
+        var pc_search = $(".pc_search")
+        var bag = $("#bag")
+        var nav = $("#nav")
+        var search = $("input[type=search]")
+        var menu_mobile = $(".menu_mobile")
+        var cancel = $("#cancel")
         //控制移动端菜单控件是否显示与隐藏
         $(".menu, #mobile_nav_link a").click(function () {
             $(".menu div").toggleClass("menus");
-            if ($("#nav").hasClass("e")) {
-                $("#nav").css({ background: "rgb(0 0 0 / 0%)" }).removeClass("e");
-                $(".menu_mobile").css({ height: "0", "z-index": "1" }).removeClass("e");
-                $("#mobile_nav_link").hide().removeClass("e");
-                $("body").css({ overflow: "auto" }).removeClass("e");
-                $("#search").hide().removeClass("e");
-                $(".bag img").css({ opacity: "1", transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)" }).removeClass("e");
+            if (menu_mobile.css("z-index") == 2) {
+                nav.removeAttr( "style" );
+                menu_mobile.removeAttr( "style" );
+                $("#mobile_nav_link").hide();
+                $("body").css({ overflow: "auto" });
+                $("#search").hide();
+                $(".bag img").css({ opacity: "1", transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)" });
             } else {
-                $("#nav").css({ background: "#000" }).addClass("e");
-                $(".menu_mobile").css({ height: "100vh", "z-index": "2" }).addClass("e");
-                $("#mobile_nav_link").show().addClass("e");
-                $("body").css({ overflow: "hidden" }).addClass("e");
-                $("#search").css({ display: "flex" }).addClass("e");
-                $(".bag img").css({ opacity: "0", transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)" }).addClass("e");
+                nav.css({ background: "#000" });
+                menu_mobile.css({ height: "100vh", "z-index": "2" });
+                $("#mobile_nav_link").show();
+                $("body").css({ overflow: "hidden" });
+                $("#search").css({ display: "flex" });
+                $(".bag img").css({ opacity: "0", transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)" });
             }
         });
         //控制搜索取消控件是否显示与隐藏
         $("#m_search").click(function () { 
-            $(".menu_mobile").css({ "margin-top": "0" });
-            $("#cancel").show();
+            menu_mobile.css({ "margin-top": "0" });
+            cancel.show();
             $("#mobile_nav_link").hide();
         });
-        $("#cancel").click(function () { 
-            $(".menu_mobile").css({ margin: "43px 0 0 0" });
-            $("#cancel").hide();
+        cancel.click(function () { 
+            menu_mobile.css({ margin: "43px 0 0 0" });
+            cancel.hide();
             $("#mobile_nav_link").show();
-            $("input[type=search]").val("");
+            search.val("");
         });
         //控制购物袋是否显示与隐藏
         $(".bag").click(function () { 
-            if ($("#bag").is(":hidden")) {
-                $("#bag").show();
+            if (bag.is(":hidden")) {
+                bag.show();
                 event.stopPropagation();
             } else {
-                $("#bag").hide();
+                bag.hide();
             }
         });
         //PC端搜索控件
-        $("#nav").children("a#nav_link").css({ transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)" })
-        $(".search, .pc_search").click(function () { 
+        $(".search, .pc_search").on("click", function () { 
             event.stopPropagation();
-            if ($("#nav").children("a#nav_link").hasClass("e")) {
-                $("#nav").children("a#nav_link").css({ opacity: "1", transform: "scale(1)" }).removeClass("e");
-                $(".pc_search").css({ opacity: "0", "z-index": "-3", }).removeClass("e");
+            if (pc_search.css("opacity") == 1) {
+                nav.children("a").removeAttr( "style" );
                 $("input[type=search]").val("");
-                $(".pc_search").removeAttr( "style" );
+                pc_search.removeAttr( "style" );
             } else {
-                $("#nav").children("a#nav_link").css({ opacity: "0", transform: "scale(0.3)" }).addClass("e");
-                $(".pc_search").css({ opacity: "1", "z-index": "3", height: "100vh" }).addClass("e");
-                $("#pc_input_search input[type=search]").focus();
-                $("#bag").hide();
+                nav.children("a").css({ opacity: "0", transform: "scale(0.3)" });
+                pc_search.css({ opacity: "1", "z-index": "3", height: "100vh", "max-width": "none" });
+                $("#pc_input_search").children(search).focus();
+                bag.hide();
             }
         });
-        $("input[type=search]").click(function () { 
+        search.click(function () { 
             event.stopPropagation();
         });
         $(document).click(function () { 
-            $("#bag").hide();
+            bag.hide();
+        });
+        //判断窗口宽度
+        $(window).resize(function () { 
+            if ($(window).width() < 484) {
+                nav.children("a").removeAttr( "style" );
+                $("input[type=search]").val("");
+                pc_search.removeAttr( "style" );
+            } else {
+                $(".menu div").removeClass("menus");
+                nav.removeAttr( "style" );
+                menu_mobile.removeAttr( "style" );
+                $("#mobile_nav_link").hide();
+                $("body").css({ overflow: "auto" });
+                $("#search").hide();
+                $(".bag img").css({ opacity: "1", transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)" });
+                menu_mobile.css({ margin: "43px 0 0 0" });
+                cancel.hide();
+                $("#mobile_nav_link").show();
+                search.val("");
+            }
         });
     });
 </script>
@@ -137,6 +155,7 @@
         opacity: 0;
         transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         background: rgba(0,0,0,0.48);
+        max-width: 0;
     }
     .pc_input_search{
         height: 44px;
@@ -336,6 +355,7 @@
         color: #fff;
         font-weight: 300;
         outline: none;
+        transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
     @media screen and (max-width: 1029.5px) {
         #bag{

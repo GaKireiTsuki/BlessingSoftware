@@ -7,7 +7,6 @@ export default new Vuex.Store({
     state: {
         url: '',
         img: '',
-        msg: '1',
         song: '',
     },
     mutations: {
@@ -16,9 +15,6 @@ export default new Vuex.Store({
         },
         show (state, img) {
             state.img = img;
-        },
-        msgs (state, msg) {
-            state.msg = msg;
         },
         add (state, song) {
             state.song = song;
@@ -30,9 +26,6 @@ export default new Vuex.Store({
         },
         show (music, img) {
             music.commit('show', img)
-        },
-        msgs (music, msg) {
-            music.commit('msgs', msg)
         },
         add (music, song) {
             music.commit('add', song)

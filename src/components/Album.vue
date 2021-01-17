@@ -11,7 +11,7 @@
                     <h3>{{subType}} · {{publishTime | Year}}</h3>
                 </div>
                 <div id="album_song_list">
-                    <div class="album_song_list" v-for="item in songs" :key="item.name" tabindex="0" outline=0>
+                    <div class="album_song_list" v-for="item in songs" :key="item.names" tabindex="0" outline=0>
                         <div style="width: 17.5px"></div>
                         <span>
                             <div>{{item.no}}</div>

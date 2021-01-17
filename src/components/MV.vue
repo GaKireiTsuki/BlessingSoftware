@@ -17,8 +17,10 @@
             </div>
             <div class="artist_mv_info">
                 <p>{{name}}</p>
-                <router-link :to="{name: 'Artist', params: {id: item.id}}" v-for="item in artists" :key="item.names">{{item.name}}</router-link>
-                <p>{{publishTime}}</p>
+                <p>
+                    <router-link :to="{name: 'Artist', params: {id: item.id}}" v-for="item in artists" :key="item.names">{{item.name}}</router-link>
+                </p>
+                <p>{{publishTime | Date}}</p>
             </div>
         </div>
         <div class="search_title">
@@ -58,6 +60,8 @@ export default {
             var that = this;
             this.$serve.postPlayMV(this.$route.params.id).then(res => {
                 that.url = res.data.url;
+            }).catch(err => {
+                console.log(err)
             })
             this.$serve.postInfoMV(this.$route.params.id).then(res => {
                 that.cover = res.data.cover;
@@ -69,11 +73,14 @@ export default {
                 this.$serve.postArtistMV(this.artistId).then(res => {
                     that.mvs = res.mvs;
                 })
+            }).catch(err => {
+                console.log(err)
             })
         }
     },
-    watch: {
-        $route(to, from) {
+    beforeRouteUpdate (to, from, next) {
+        if (to.fullPath != from.fullPath) {
+            next()
             this.playmv()
         }
     },
@@ -190,15 +197,16 @@ $(document).ready(function () {
         font-size: 24px;
         color: #000000f2;
     }
-    .artist_mv_info a{
+    .artist_mv_info p a{
         margin-top: 2px;
         font-size: 24px;
         color: #fa233b;
+        margin-right: 8px;
     }
-    .artist_mv_info a:hover{
+    .artist_mv_info p a:hover{
         text-decoration: underline;
     }
-    .artist_mv_info p:nth-of-type(2){
+    .artist_mv_info p:nth-of-type(3){
         margin-top: 4px;
         font-size: 12px;
         color: #34344399;

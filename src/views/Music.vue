@@ -31,8 +31,8 @@
     </div>
 </template>
 <script>
-import player from '../axios/player'
-export default player
+import music from '../axios/music'
+export default music
 </script>
 <style>
     .new_album_helf{
