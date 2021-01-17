@@ -69,7 +69,7 @@
                 nav.removeAttr( "style" );
                 menu_mobile.removeAttr( "style" );
                 $("#mobile_nav_link").hide();
-                $("body").css({ overflow: "auto" });
+                $("body").removeAttr( "style" );
                 $("#search").hide();
                 $(".bag img").css({ opacity: "1", transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)" });
             } else {
@@ -133,7 +133,7 @@
                 nav.removeAttr( "style" );
                 menu_mobile.removeAttr( "style" );
                 $("#mobile_nav_link").hide();
-                $("body").css({ overflow: "auto" });
+                $("body").removeAttr( "style" );
                 $("#search").hide();
                 $(".bag img").css({ opacity: "1", transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)" });
                 menu_mobile.css({ margin: "43px 0 0 0" });
