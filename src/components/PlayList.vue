@@ -49,8 +49,8 @@ export default {
         }
     }
 }
-$(document).ready(function () {
-    $(".open_list").click(function () { 
+$(function () {
+    $(".open_list").on("click", function () { 
         event.stopPropagation();
         var playlist = $(".play_list")
         if (playlist.is(":hidden")) {

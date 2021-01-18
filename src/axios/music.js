@@ -1,10 +1,10 @@
 import $ from 'jquery'
+import axios from 'axios'
 export default {
     name: 'music',
     data() {
         return {
             keywords: '',
-            SearchData: [],
             postNewSong: [],
             postNewAlbum: [],
             url: '',
@@ -29,20 +29,15 @@ export default {
     },
     created () {
         var that = this;
-        this.$serve.postNewSong().then(res => {
-            that.postNewSong = res.result;
-        }).catch(err => {
-            console.log(err)
-        })
-        this.$serve.postNewAlbum().then(res => {
-            that.postNewAlbum = res.albums
-        }).catch(err => {
-            console.log(err)
-        })
+        axios.all([this.$serve.postNewSong(), this.$serve.postNewAlbum()])
+        .then(axios.spread((res1, res2)=>{
+            that.postNewSong = res1.result;
+            that.postNewAlbum = res2.albums
+        }))
     }
 }
-$(document).ready(function () {
-    $(".music input[type=search]").click(function () {
+$(function () {
+    $(".music input[type=search]").on("click", function () {
         $("body, html").animate({ scrollTop: 0 }, 300, "linear");
     });
 });

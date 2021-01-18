@@ -15,7 +15,7 @@ export default {
         play: function (id) {
             this.player(id);
         },
-        search: function () {
+        searchs: function () {
             var that = this;
             axios.all([
                 this.$serve.postSearchArtist(this.keywords), 
@@ -43,7 +43,7 @@ export default {
         var keywords = this.$route.params.keywords
         if (this.keywords != keywords) {
             this.keywords = keywords
-            this.search()
+            this.searchs()
         }
     }
 }

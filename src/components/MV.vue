@@ -10,7 +10,7 @@
         </div>
         <div class="mv_info">
             <div class="play_mv">
-                <button class="open_play bmbl">
+                <button @click="playermv()" class="open_play bmbl">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27" class="glyph"><path d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"></path></svg>
                 </button>
                 <img v-lazy="cover + '?param=700y400'" alt="">
@@ -59,18 +59,24 @@ export default {
     methods: {
         mv: function() {
             var that = this;
-            axios.all([this.$serve.postPlayMV(this.id), this.$serve.postInfoMV(this.id)])
-            .then(axios.spread((res1, res2)=>{
-                that.url = res1.data.url;
-                that.cover = res2.data.cover;
-                that.artists = res2.data.artists;
-                that.name = res2.data.name;
-                that.publishTime = res2.data.publishTime;
-                that.artistId = res2.data.artistId;
-                that.artistName = res2.data.artistName;
+            axios.all([this.$serve.postInfoMV(this.id)])
+            .then(axios.spread((res)=>{
+                that.cover = res.data.cover;
+                that.artists = res.data.artists;
+                that.name = res.data.name;
+                that.publishTime = res.data.publishTime;
+                that.artistId = res.data.artistId;
+                that.artistName = res.data.artistName;
                 this.$serve.postArtistMV(this.artistId).then(res => {
                     that.mvs = res.mvs;
                 })
+            }))
+        },
+        playermv: function () {
+            var that = this;
+            axios.all([this.$serve.postPlayMV(this.id)])
+            .then(axios.spread((res)=>{
+                that.url = res.data.url;
             }))
         }
     },
@@ -89,16 +95,18 @@ export default {
         }
     }
 }
-$(document).ready(function () {
+$(function () {
     var openplay = $(".open_play");
     var closeplay = $(".close_player");
     var player = $(".player");
-    $(openplay).click(function () { 
+    openplay.on("click", function () { 
         player.show()
-        $('video').trigger('play');
+        setTimeout(() => {
+            $('video').trigger('play');
+        }, 300);
         $('audio').trigger('pause');
     });
-    $(closeplay).click(function () { 
+    closeplay.on("click", function () { 
         player.hide()
         $('video').trigger('pause');
     });

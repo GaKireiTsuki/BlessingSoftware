@@ -55,7 +55,7 @@
     export default {
         name: 'menus'
     };
-    $(document).ready(function () {
+    $(function () {
         var pc_search = $(".pc_search")
         var bag = $("#bag")
         var nav = $("#nav")
@@ -63,7 +63,7 @@
         var menu_mobile = $(".menu_mobile")
         var cancel = $("#cancel")
         //控制移动端菜单控件是否显示与隐藏
-        $(".menu, #mobile_nav_link a").click(function () {
+        $(".menu, #mobile_nav_link a").on("click", function () {
             $(".menu div").toggleClass("menus");
             if (menu_mobile.css("z-index") == 2) {
                 nav.removeAttr( "style" );
@@ -82,19 +82,19 @@
             }
         });
         //控制搜索取消控件是否显示与隐藏
-        $("#m_search").click(function () { 
+        $("#m_search").on("click", function () { 
             menu_mobile.css({ "margin-top": "0" });
             cancel.show();
             $("#mobile_nav_link").hide();
         });
-        cancel.click(function () { 
+        cancel.on("click", function () { 
             menu_mobile.css({ margin: "43px 0 0 0" });
             cancel.hide();
             $("#mobile_nav_link").show();
             search.val("");
         });
         //控制购物袋是否显示与隐藏
-        $(".bag").click(function () { 
+        $(".bag").on("click", function () { 
             if (bag.is(":hidden")) {
                 bag.show();
                 event.stopPropagation();
@@ -116,14 +116,14 @@
                 bag.hide();
             }
         });
-        search.click(function () { 
+        search.on("click", function () { 
             event.stopPropagation();
         });
-        $(document).click(function () { 
+        $(document).on("click", function () { 
             bag.hide();
         });
         //判断窗口宽度
-        $(window).resize(function () { 
+        $(window).on("resize", function () { 
             if ($(window).width() < 484) {
                 nav.children("a").removeAttr( "style" );
                 $("input[type=search]").val("");
