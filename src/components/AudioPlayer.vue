@@ -2,7 +2,7 @@
     <div class="audioplayer bmbl">
         <img :src="this.$store.state.img + '?param=50y50'" alt="">
         <img :src="this.$store.state.img + '?param=1000y1000'" alt="">
-        <audio autoplay controls :src="this.$store.state.url"></audio>
+        <audio controls :src="this.$store.state.url"></audio>
         <div class="open_list">
             open
         </div>

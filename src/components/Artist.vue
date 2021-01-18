@@ -50,6 +50,7 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
     name: 'Artist',
     data() {
@@ -67,6 +68,22 @@ export default {
     methods: {
         play: function (id) {
             this.player(id);
+        },
+        artist: function () {
+            var that = this;
+            axios.all([
+                this.$serve.postArtist(this.id), 
+                this.$serve.postArtistSong(this.id), 
+                this.$serve.postArtistAlbum(this.id), 
+                this.$serve.postArtistMV(this.id), 
+            ])
+            .then(axios.spread((res1, res2, res3, res4)=>{
+                that.img1v1Url = res1.artist.img1v1Url;
+                that.name = res1.artist.name;
+                that.hotSongs = res2.hotSongs;
+                that.hotAlbums = res3.hotAlbums;
+                that.mvs = res4.mvs;
+            }))
         }
     },
     watch: {
@@ -78,29 +95,12 @@ export default {
         }
     },
     activated() {
-        var that = this;
-        this.$serve.postArtist(this.$route.params.id).then(res => {
-            that.img1v1Url = res.artist.img1v1Url;
-            that.name = res.artist.name;
-        }).catch(err => {
-            console.log(err)
-        })
-        this.$serve.postArtistSong(this.$route.params.id).then(res => {
-            that.hotSongs = res.hotSongs;
-        }).catch(err => {
-            console.log(err)
-        })
-        this.$serve.postArtistAlbum(this.$route.params.id).then(res => {
-            that.hotAlbums = res.hotAlbums;
-        }).catch(err => {
-            console.log(err)
-        })
-        this.$serve.postArtistMV(this.$route.params.id).then(res => {
-            that.mvs = res.mvs;
-        }).catch(err => {
-            console.log(err)
-        })
-    },
+        var id = this.$route.params.id
+        if (this.id != id) {
+            this.id = id
+            this.artist()
+        }
+    }
 }
 </script>
 <style>

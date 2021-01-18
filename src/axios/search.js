@@ -1,3 +1,4 @@
+import axios from 'axios'
 export default {
     name: 'Search',
     data() {
@@ -13,6 +14,21 @@ export default {
     methods: {
         play: function (id) {
             this.player(id);
+        },
+        search: function () {
+            var that = this;
+            axios.all([
+                this.$serve.postSearchArtist(this.keywords), 
+                this.$serve.postSearchAlbum(this.keywords), 
+                this.$serve.postSearchSong(this.keywords), 
+                this.$serve.postSearchMV(this.keywords)
+            ])
+            .then(axios.spread((res1, res2, res3, res4)=>{
+                that.artists = res1.result.artists;
+                that.albums = res2.result.albums;
+                that.songs = res3.result.songs;
+                that.mvs = res4.result.mvs;
+            }))
         }
     },
     watch: {
@@ -24,18 +40,10 @@ export default {
         }
     },
     activated() {
-        var that = this;
-        this.$serve.postSearchArtist(this.$route.params.keywords).then(res => {
-            that.artists = res.result.artists;
-        })
-        this.$serve.postSearchAlbum(this.$route.params.keywords).then(res => {
-            that.albums = res.result.albums;
-        })
-        this.$serve.postSearchSong(this.$route.params.keywords).then(res => {
-            that.songs = res.result.songs;
-        })
-        this.$serve.postSearchMV(this.$route.params.keywords).then(res => {
-            that.mvs = res.result.mvs;
-        })
-    },
+        var keywords = this.$route.params.keywords
+        if (this.keywords != keywords) {
+            this.keywords = keywords
+            this.search()
+        }
+    }
 }

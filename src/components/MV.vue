@@ -41,6 +41,7 @@
 </template>
 <script>
 import $ from 'jquery'
+import axios from 'axios'
 export default {
     name: 'MV',
     data() {
@@ -56,50 +57,36 @@ export default {
         }
     },
     methods: {
-        playmv() {
+        mv: function() {
             var that = this;
-            this.$serve.postPlayMV(this.$route.params.id).then(res => {
-                that.url = res.data.url;
-            }).catch(err => {
-                console.log(err)
-            })
-            this.$serve.postInfoMV(this.$route.params.id).then(res => {
-                that.cover = res.data.cover;
-                that.artists = res.data.artists;
-                that.name = res.data.name;
-                that.publishTime = res.data.publishTime;
-                that.artistId = res.data.artistId;
-                that.artistName = res.data.artistName;
+            axios.all([this.$serve.postPlayMV(this.id), this.$serve.postInfoMV(this.id)])
+            .then(axios.spread((res1, res2)=>{
+                that.url = res1.data.url;
+                that.cover = res2.data.cover;
+                that.artists = res2.data.artists;
+                that.name = res2.data.name;
+                that.publishTime = res2.data.publishTime;
+                that.artistId = res2.data.artistId;
+                that.artistName = res2.data.artistName;
                 this.$serve.postArtistMV(this.artistId).then(res => {
                     that.mvs = res.mvs;
                 })
-            }).catch(err => {
-                console.log(err)
-            })
+            }))
         }
     },
     beforeRouteUpdate (to, from, next) {
         if (to.fullPath != from.fullPath) {
             next()
-            this.playmv()
+            this.id = this.$route.params.id
+            this.mv()
         }
     },
     activated() {
-        var that = this;
-        this.$serve.postPlayMV(this.$route.params.id).then(res => {
-            that.url = res.data.url;
-        })
-        this.$serve.postInfoMV(this.$route.params.id).then(res => {
-            that.cover = res.data.cover;
-            that.artists = res.data.artists;
-            that.name = res.data.name;
-            that.publishTime = res.data.publishTime;
-            that.artistId = res.data.artistId;
-            that.artistName = res.data.artistName;
-            this.$serve.postArtistMV(this.artistId).then(res => {
-                that.mvs = res.mvs;
-            })
-        })
+        var id = this.$route.params.id
+        if (this.id != id) {
+            this.id = id
+            this.mv()
+        }
     }
 }
 $(document).ready(function () {
@@ -114,7 +101,6 @@ $(document).ready(function () {
     $(closeplay).click(function () { 
         player.hide()
         $('video').trigger('pause');
-        $('audio').trigger('play');
     });
 });
 </script>
