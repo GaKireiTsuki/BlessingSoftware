@@ -18,17 +18,27 @@ export default {
     name: 'MoreAlbum',
     data() {
         return {
-            albums: []
+            albums: [],
+            asize: 50,
         }
     },
-    activated() {
-        var that = this;
-        this.$serve.postSearchAlbum(this.$route.params.keywords).then(res => {
-            that.albums = res.result.albums;
-        }).catch(err => {
-            console.log(err)
-        })
+    methods: {
+        morealbum () {
+            var that = this;
+            this.$api.music.searchalbum(this.keywords, this.asize).then(res => {
+                that.albums = res.result.albums;
+            }).catch(err => {
+                console.log(err)
+            })
+        }
     },
+    async activated() {
+        var keywords = this.$route.params.keywords
+        if (this.keywords != keywords) {
+            this.keywords = keywords
+            this.morealbum()
+        }
+    }
 }
 </script>
 <style>

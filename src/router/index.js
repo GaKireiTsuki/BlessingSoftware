@@ -8,12 +8,11 @@ const Store = () => import('@/views/Store.vue')
 const News = () => import('@/views/News.vue')
 const Music = () => import('@/views/Music.vue')
 const Search = () => import('@/components/Search.vue')
-const MoreAlbum = () => import('@/components/MoreAlbum.vue')
+const MoreAlbum = () => import('@/components/more/MoreAlbum.vue')
 const MV = () => import('@/components/MV.vue')
 const Album = () => import('@/components/Album.vue')
 const Artist = () => import('@/components/Artist.vue')
 const SignIn = () => import('@/components/SignIn.vue')
-const GameInfo = () => import('@/views/GameInfo.vue')
 const Err = () => import('@/views/Err.vue')
 
 const routes = [
@@ -70,14 +69,6 @@ const routes = [
             title: 'Blessing Software Search'
         }
     },
-    {
-        path: '/search',
-        redirect: '/music'
-    },
-    {
-        path: '/music/search',
-        redirect: '/music'
-    },
     //歌手详情
     {
         path: '/music/artist/:id',
@@ -98,7 +89,7 @@ const routes = [
     },
     //更多专辑
     {
-        path: '/music/search/more-album/:keywords',
+        path: '/music/more-album/:keywords',
         name: 'MoreAlbum',
         component: MoreAlbum,
         meta: {
@@ -121,15 +112,6 @@ const routes = [
         component: SignIn,
         meta: {
             title: 'Blessing Software Sign In'
-        }
-    },
-    //游戏详情
-    {
-        path: '/store/:GameID',
-        name: 'GameInfo',
-        component: GameInfo,
-        meta: {
-            title: 'Blessing Software Game'
         }
     },
     //错误页

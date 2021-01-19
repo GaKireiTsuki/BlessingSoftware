@@ -72,11 +72,11 @@ export default music
         justify-items: center;
     }
     .category{
-        display: flex;
+        display: grid;
         justify-items: center;
-        flex-wrap: wrap;
-        justify-content: space-around;
+        grid-auto-flow: column;
         gap: 10px;
+        overflow-y: hidden;
     }
     .new_album_helf{
         padding: 25px 0px;

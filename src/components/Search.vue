@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="search_title">
-            <h2>专辑</h2><!-- <router-link :to="{name: 'MoreAlbum', params: {keywords: $route.params.keywords}}">查看全部</router-link> -->
+            <h2>专辑</h2><router-link :to="{name: 'MoreAlbum', params: {keywords: this.query}}">查看全部</router-link>
         </div>
         <div class="flex_layout">
             <div class="albums" v-for="item in albums" :key="item.names">

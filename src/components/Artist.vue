@@ -66,10 +66,10 @@ export default {
         }
     },
     methods: {
-        play: function (id) {
+        play (id) {
             this.player(id);
         },
-        artist: function () {
+        artist () {
             var that = this;
             axios.all([
                 this.$api.music.artistsong(this.id), 
@@ -93,7 +93,7 @@ export default {
             return this.$store.dispatch('show', this.img)
         }
     },
-    activated() {
+    async activated() {
         var id = this.$route.params.id
         if (this.id != id) {
             this.id = id

@@ -15,13 +15,13 @@ export default {
         }
     },
     methods: {
-        play: function (id) {
+        play (id) {
             this.player(id);
         },
-        song: function () {
+        song () {
             this.$store.dispatch('add', this.songs)
         },
-        album: function () {
+        album () {
             var that = this;
             this.$api.music.albuminfo(this.id).then(res => {
                 that.subType = res.album.subType;
@@ -47,7 +47,7 @@ export default {
             return this.$store.dispatch('show', this.img)
         },
     },
-    activated() {
+    async activated() {
         var id = this.$route.params.id
         if (this.id != id) {
             this.id = id

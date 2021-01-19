@@ -22,10 +22,10 @@ export default {
         }
     },
     methods: {
-        search: function () {
+        search () {
             this.$router.push({name: 'Search', params: {keywords: this.keywords}})
         },
-        play: function (id) {
+        play (id) {
             this.player(id);
         }
     },
@@ -43,7 +43,7 @@ export default {
             })
         }
     },
-    created () {
+    async created () {
         var that = this;
         axios.all([this.$api.music.newsong(this.ssize), this.$api.music.newalbum(this.area, this.asize)])
         .then(axios.spread((res1, res2)=>{
@@ -55,5 +55,15 @@ export default {
 $(function () {
     $(".music input[type=search]").on("click", function () {
         $("body, html").animate({ scrollTop: 0 }, 300, "linear");
+    });
+    $(".category input[type=radio]").on("click", function () {
+        $(".flex_layout").animate({ scrollLeft: 0 }, 300, "linear");
+    });
+    $(window).on("scroll", function () {
+        if ($(window).scrollTop() > 50) {
+            $(".music input[type=search]").css({top: "0px"});
+        } else {
+            $(".music input[type=search]").removeAttr("style");
+        }
     });
 });

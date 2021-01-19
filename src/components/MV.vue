@@ -57,7 +57,7 @@ export default {
         }
     },
     methods: {
-        mv: function() {
+        mv () {
             var that = this;
             axios.all([this.$api.music.mvinfo(this.id)])
             .then(axios.spread((res)=>{
@@ -72,7 +72,7 @@ export default {
                 })
             }))
         },
-        playermv: function () {
+        playermv () {
             var that = this;
             axios.all([this.$api.music.playmv(this.id)])
             .then(axios.spread((res)=>{
@@ -87,7 +87,7 @@ export default {
             this.mv()
         }
     },
-    activated() {
+    async activated() {
         var id = this.$route.params.id
         if (this.id != id) {
             this.id = id

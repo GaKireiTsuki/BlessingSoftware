@@ -6,14 +6,14 @@ const music = {
     searchartist (keywords) { //搜索艺术家
         return axios.post(`${base.music}/search?keywords=${keywords}&limit=2&type=100`)
     },
-    searchalbum (keywords) { //搜索专辑
-        return axios.post(`${base.music}/search?keywords=${keywords}&type=10`)
+    searchalbum (keywords, asize) { //搜索专辑
+        return axios.post(`${base.music}/search?keywords=${keywords}&limit=${asize}&type=10`)
     },
-    searchsong (keywords) { //搜索歌曲
-        return axios.post(`${base.music}/search?keywords=${keywords}&type=1`)
+    searchsong (keywords, ssize) { //搜索歌曲
+        return axios.post(`${base.music}/search?keywords=${keywords}&limit=${ssize}&type=1`)
     },
-    searchmv (keywords) { //搜索MV
-        return axios.post(`${base.music}/search?keywords=${keywords}&type=1004`)
+    searchmv (keywords, msize) { //搜索MV
+        return axios.post(`${base.music}/search?keywords=${keywords}&limit=${msize}&type=1004`)
     },
 
     newsong (ssize) { //最新歌曲
