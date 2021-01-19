@@ -72,17 +72,16 @@ export default {
         artist: function () {
             var that = this;
             axios.all([
-                this.$serve.postArtist(this.id), 
-                this.$serve.postArtistSong(this.id), 
-                this.$serve.postArtistAlbum(this.id), 
-                this.$serve.postArtistMV(this.id), 
+                this.$api.music.artistsong(this.id), 
+                this.$api.music.artistalbum(this.id), 
+                this.$api.music.artistmv(this.id), 
             ])
-            .then(axios.spread((res1, res2, res3, res4)=>{
+            .then(axios.spread((res1, res2, res3)=>{
                 that.img1v1Url = res1.artist.img1v1Url;
                 that.name = res1.artist.name;
-                that.hotSongs = res2.hotSongs;
-                that.hotAlbums = res3.hotAlbums;
-                that.mvs = res4.mvs;
+                that.hotSongs = res1.hotSongs;
+                that.hotAlbums = res2.hotAlbums;
+                that.mvs = res3.mvs;
             }))
         }
     },

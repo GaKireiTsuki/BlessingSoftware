@@ -18,10 +18,10 @@ export default {
         searchs: function () {
             var that = this;
             axios.all([
-                this.$serve.postSearchArtist(this.keywords), 
-                this.$serve.postSearchAlbum(this.keywords), 
-                this.$serve.postSearchSong(this.keywords), 
-                this.$serve.postSearchMV(this.keywords)
+                this.$api.music.searchartist(this.keywords), 
+                this.$api.music.searchalbum(this.keywords), 
+                this.$api.music.searchsong(this.keywords), 
+                this.$api.music.searchmv(this.keywords)
             ])
             .then(axios.spread((res1, res2, res3, res4)=>{
                 that.artists = res1.result.artists;

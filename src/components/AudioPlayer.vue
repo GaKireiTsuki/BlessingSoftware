@@ -13,7 +13,7 @@ import $ from 'jquery'
 export default {
     name: 'audioplayer',
 }
-$(document).ready(function () {
+$(function () {
     $(".audioplayer").click(function () { 
         if ($(window).width() < 484) {
             $(".audioplayer audio").toggleClass("audioplayer_audio");
@@ -35,20 +35,6 @@ $(document).ready(function () {
 });
 </script>
 <style>
-    .msg{
-        display: grid;
-        position: fixed;
-        bottom: 60px;
-        right: 0;
-        margin: auto;
-        height: 32px;
-        width: 64px;
-        align-items: center;
-        justify-items: center;
-        font-size: 14px;
-        color: #fa233b;
-        border: 1px solid rgba(0,0,0,0.16);
-    }
     .audioplayer{
         position: fixed;
         bottom: 0;

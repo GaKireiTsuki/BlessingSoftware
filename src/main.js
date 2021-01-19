@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import serve from './axios/api'
+import api from './request/api/index'
 import axios from 'axios'
 import $ from 'jquery'
 import VueWechatTitle from 'vue-wechat-title'
@@ -15,7 +15,7 @@ import './assets/css/fonts.css'
 import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.config.productionTip = false
-Vue.prototype.$serve = serve
+Vue.prototype.$api = api
 Vue.use(VueWechatTitle)
 Vue.use(Loading)
 Vue.use(VueLazyload, {
@@ -55,12 +55,11 @@ Vue.filter('Date',function(value){
 
 Vue.prototype.player = function (id) {
     var that = this;
-    axios.all([this.$serve.postPlay(id), this.$serve.postInfo(id)])
+    axios.all([this.$api.music.playmusic(id), this.$api.music.musicinfo(id)])
     .then(axios.spread((res1, res2)=>{
         that.url = res1.data[0].url;
         that.img = res2.songs[0].al.picUrl;
     }))
-    $('audio').trigger('play');
 }
 
 new Vue({

@@ -4,9 +4,19 @@ export default {
     name: 'music',
     data() {
         return {
+            ssize: 32,
+            area: 'ALL',
+            category: [
+                {text: 'ALL', value: 'ALL'},
+                {text: 'C-POP', value: 'ZH'},
+                {text: 'J-POP', value: 'JP'},
+                {text: 'EA-POP', value: 'EA'},
+                {text: 'K-POP', value: 'KR'}
+            ],
+            asize: 24,
             keywords: '',
-            postNewSong: [],
-            postNewAlbum: [],
+            result: [],
+            albums: [],
             url: '',
             img: ''
         }
@@ -25,14 +35,20 @@ export default {
         },
         img () {
             return this.$store.dispatch('show', this.img)
+        },
+        area () {
+            var that = this;
+            this.$api.music.newalbum(this.area, this.asize).then((res)=>{
+                that.albums = res.albums;
+            })
         }
     },
     created () {
         var that = this;
-        axios.all([this.$serve.postNewSong(), this.$serve.postNewAlbum()])
+        axios.all([this.$api.music.newsong(this.ssize), this.$api.music.newalbum(this.area, this.asize)])
         .then(axios.spread((res1, res2)=>{
-            that.postNewSong = res1.result;
-            that.postNewAlbum = res2.albums
+            that.result = res1.result;
+            that.albums = res2.albums
         }))
     }
 }

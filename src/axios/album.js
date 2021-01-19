@@ -23,7 +23,7 @@ export default {
         },
         album: function () {
             var that = this;
-            this.$serve.postAlbum(this.id).then(res => {
+            this.$api.music.albuminfo(this.id).then(res => {
                 that.subType = res.album.subType;
                 that.publishTime = res.album.publishTime;
                 that.picUrl = res.album.picUrl;

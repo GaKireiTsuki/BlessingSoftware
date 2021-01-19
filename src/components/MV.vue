@@ -59,7 +59,7 @@ export default {
     methods: {
         mv: function() {
             var that = this;
-            axios.all([this.$serve.postInfoMV(this.id)])
+            axios.all([this.$api.music.mvinfo(this.id)])
             .then(axios.spread((res)=>{
                 that.cover = res.data.cover;
                 that.artists = res.data.artists;
@@ -67,14 +67,14 @@ export default {
                 that.publishTime = res.data.publishTime;
                 that.artistId = res.data.artistId;
                 that.artistName = res.data.artistName;
-                this.$serve.postArtistMV(this.artistId).then(res => {
+                this.$api.music.artistmv(this.artistId).then(res => {
                     that.mvs = res.mvs;
                 })
             }))
         },
         playermv: function () {
             var that = this;
-            axios.all([this.$serve.postPlayMV(this.id)])
+            axios.all([this.$api.music.playmv(this.id)])
             .then(axios.spread((res)=>{
                 that.url = res.data.url;
             }))
