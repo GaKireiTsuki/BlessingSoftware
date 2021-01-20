@@ -10,8 +10,8 @@
 </template>
 <script>
 import menus from '@/components/Menus'
-import audioplayer from '@/components/AudioPlayer'
-import playlist from '@/components/PlayList'
+import audioplayer from '@/components/music/AudioPlayer'
+import playlist from '@/components/music/PlayList'
 export default {
     name: 'app',
     components: {menus, audioplayer, playlist},

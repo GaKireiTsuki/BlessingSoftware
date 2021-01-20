@@ -37,7 +37,7 @@
     </div>
 </template>
 <script>
-import music from '../axios/music'
+import music from '../components/music/musicjs/music'
 export default music
 </script>
 <style>

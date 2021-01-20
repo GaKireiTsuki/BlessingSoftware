@@ -67,7 +67,7 @@
     </div>
 </template>
 <script>
-import album from '../axios/album'
+import album from './musicjs/album'
 export default album
 </script>
 <style>

@@ -55,7 +55,7 @@
     </div>
 </template>
 <script>
-import search from '../axios/search'
+import search from './musicjs/search'
 export default search
 </script>
 <style>
