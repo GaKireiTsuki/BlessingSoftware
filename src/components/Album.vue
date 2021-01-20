@@ -36,6 +36,34 @@
                 </div>
             </div>
         </div>
+        <div class="search_title" v-show="mvs && mvs.length>0">
+            <h2>音乐视频</h2>
+        </div>
+        <div class="flex_layout" v-show="mvs && mvs.length>0">
+            <div class="albums mv" v-for="item in mvs" :key="item.names">
+                <router-link :to="{name: 'MV', params: {id: item.id}}">
+                    <img class="album_cover" v-lazy="item.imgurl16v9 + '?param=159y90'" :alt="item.name" :title="item.name">
+                </router-link>
+                <div class="info">
+                    <router-link :to="{name: 'MV', params: {id: item.id}}">{{item.name}}</router-link>
+                    <router-link :to="{name: 'Artist', params: {id: item.artist.id}}">{{item.artistName}}</router-link>
+                </div>
+            </div>
+        </div>
+        <div class="search_title">
+            <h2>更多{{artistsname}}的作品</h2>
+        </div>
+        <div class="flex_layout">
+            <div class="albums" v-for="item in hotAlbums" :key="item.names">
+                <router-link :to="{name: 'Album', params: {id: item.id}}">
+                    <img class="album_cover" v-lazy="item.picUrl + '?param=150y150'" :alt="item.name" :title="item.name">
+                </router-link>
+                <div class="info">
+                    <router-link :to="{name: 'Album', params: {id: item.id}}">{{item.name}}</router-link>
+                    <router-link :to="{name: 'Artist', params: {id: item.artist.id}}">{{item.artists[0].name}}</router-link>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -47,6 +75,9 @@ export default album
         margin: 40px 0px;
         display: flex;
         grid-auto-flow: column;
+    }
+    #album .search_title{
+        padding-left: 0px;
     }
     .cover{
         position: sticky;

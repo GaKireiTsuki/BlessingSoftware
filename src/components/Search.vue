@@ -4,15 +4,15 @@
             <h2>艺人</h2>
         </div>
         <div id="search_artists">
-            <div class="search_artists" v-for="item in artists" :key="item.name">
+            <div class="search_artists" v-for="item in artists" :key="item.names">
                 <router-link :to="{name: 'Artist', params: {id: item.id}}"><img :src="item.img1v1Url + '?param=120y120'" :alt="item.name" :title="item.name"></router-link>
                 <router-link :to="{name: 'Artist', params: {id: item.id}}">{{item.name}}</router-link>
             </div>
         </div>
-        <div class="search_title">
+        <div class="search_title" v-show="albums && albums.length>0">
             <h2>专辑</h2><router-link :to="{name: 'MoreAlbum', params: {keywords: this.query}}">查看全部</router-link>
         </div>
-        <div class="flex_layout">
+        <div class="flex_layout" v-show="albums && albums.length>0">
             <div class="albums" v-for="item in albums" :key="item.names">
                 <router-link :to="{name: 'Album', params: {id: item.id}}">
                     <img class="album_cover" v-lazy="item.picUrl + '?param=150y150'" :alt="item.name" :title="item.name">
@@ -38,10 +38,10 @@
                 </div>
             </div>
         </div>
-        <div class="search_title">
+        <div class="search_title" v-show="mvs && mvs.length>0">
             <h2>音乐视频</h2>
         </div>
-        <div class="flex_layout">
+        <div class="flex_layout" v-show="mvs && mvs.length>0">
             <div class="albums mv" v-for="item in mvs" :key="item.names">
                 <router-link :to="{name: 'MV', params: {id: item.id}}">
                     <img class="album_cover" v-lazy="item.cover + '?param=159y90'" :alt="item.name" :title="item.name">

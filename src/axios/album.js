@@ -1,3 +1,4 @@
+import axios from 'axios'
 export default {
     name: 'Album',
     data() {
@@ -10,6 +11,9 @@ export default {
             publishTime: '',
             artistname: [],
             songs: [],
+            hotAlbums: [],
+            artistsname: '',
+            mvs: [],
             url: '',
             img: '',
         }
@@ -32,6 +36,13 @@ export default {
                 that.size = res.album.size;
                 that.company = res.album.company;
                 that.songs = res.songs;
+                that.artistid = res.album.artist.id
+                axios.all([this.$api.music.artistalbum(this.artistid), this.$api.music.artistmv(this.artistid)])
+                .then(axios.spread((res1, res2)=>{
+                    that.hotAlbums = res1.hotAlbums;
+                    that.artistsname = res1.artist.name;
+                    that.mvs = res2.mvs;
+                }))
             }).catch(err => {
                 console.log(err)
                 alert('找不到专辑为 ' + this.id + ' 的专辑');
@@ -46,6 +57,13 @@ export default {
         img () {
             return this.$store.dispatch('show', this.img)
         },
+    },
+    beforeRouteUpdate (to, from, next) {
+        if (to.fullPath != from.fullPath) {
+            next()
+            this.id = this.$route.params.id
+            this.album()
+        }
     },
     async activated() {
         var id = this.$route.params.id

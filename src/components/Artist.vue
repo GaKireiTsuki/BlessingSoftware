@@ -33,10 +33,10 @@
                 </div>
             </div>
         </div>
-        <div class="search_title">
+        <div class="search_title" v-show="mvs && mvs.length>0">
             <h2>热门视频排行</h2>
         </div>
-        <div class="flex_layout">
+        <div class="flex_layout" v-show="mvs && mvs.length>0">
             <div class="albums mv" v-for="item in mvs" :key="item.names">
                 <router-link :to="{name: 'MV', params: {id: item.id}}">
                     <img class="album_cover" v-lazy="item.imgurl16v9 + '?param=159y90'" :alt="item.name" :title="item.name">
