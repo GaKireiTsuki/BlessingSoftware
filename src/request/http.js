@@ -17,15 +17,14 @@ instance.interceptors.request.use(config => {
     return Promise.reject(error);
 });
 
-instance.interceptors.response.use(
+instance.interceptors.response.use(response => {
     //在发送响应之前先做点事
-    /* if (response.data.code == 200) {
+    if (response.status == 200) {
         return response.data;
     } else {
         return Promise.reject(response)
-    } */
-    response => response.status === 200 ? Promise.resolve(response.data) : Promise.reject(response)
-,error => {
+    }
+},error => {
     //做一些响应错误
     const { response } = error
     if (response) {
@@ -46,10 +45,11 @@ const errorHandler = (status, other) => {
             break;
 
         case 404:
+            window.location.href = '/err'
             break;
 
         default:
-            console.log(other)
+            other
     }
 }
 

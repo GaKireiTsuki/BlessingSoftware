@@ -88,13 +88,6 @@ audio::-webkit-media-controls-time-remaining-display{
         background: #dadce0;
         background-color: #dadce0 !important;
     }
-    .game_title{
-        background: hsl(0deg 0% 18% / 88%);
-        backdrop-filter: saturate(50%) blur(20px);
-        -webkit-backdrop-filter: saturate(50%) blur(20px);
-        box-sizing: border-box;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.24) !important;
-    }
 }
 
 @media (prefers-color-scheme: light) {

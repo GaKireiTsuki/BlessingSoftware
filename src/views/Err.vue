@@ -3,25 +3,27 @@
         <p>Not Found Page</p>
     </div>
 </template>
-
 <script>
-    import $ from "jquery";
-    export default {
-        
-    };
-    //错误页重定向至首页
-    $(document).ready(function () {
-        setTimeout(() => {
-            alert("Not Found Page");
-            window.location.href = "/";
-        }, 200);
-    });
+/* import $ from "jquery"; */
+export default {
+    
+};
+//错误页重定向至首页
+/* $(document).ready(function () {
+    setTimeout(() => {
+        alert("Not Found Page");
+        window.location.href = "/";
+    }, 200);
+}); */
 </script>
-
 <style>
     #Err {
-        height: calc(100vh - 50px);
+        height: calc(100vh - 98px);
         display: grid;
         place-items: center;
+        font-size: 48px;
+        font-weight: 600;
+        text-align: center;
+        padding-bottom: 0px !important;
     }
 </style>

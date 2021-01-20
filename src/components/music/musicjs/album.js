@@ -43,10 +43,6 @@ export default {
                     that.artistsname = res1.artist.name;
                     that.mvs = res2.mvs;
                 }))
-            }).catch(err => {
-                console.log(err)
-                alert('找不到专辑为 ' + this.id + ' 的专辑');
-                window.location.href = "/music";
             })
         }
     },
