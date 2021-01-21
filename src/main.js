@@ -22,8 +22,8 @@ Vue.use(VueLazyload, {
     preLoad: 1,
     loading: require('./assets/img/NotFoundPhoto.svg'),
     error: require('./assets/img/NotFoundPhoto.svg'),
-    attempt: 10,
-    listenEvents: ['scroll']
+    attempt: 3,
+    listenEvents: ['scroll', 'wheel', 'mousewheel', 'resize', 'animationend', 'transitionend', 'touchmove']
 })
 
 Vue.filter('Duration', function (value) {
