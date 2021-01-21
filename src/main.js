@@ -22,7 +22,7 @@ Vue.use(VueLazyload, {
     preLoad: 1,
     loading: require('./assets/img/NotFoundPhoto.svg'),
     error: require('./assets/img/NotFoundPhoto.svg'),
-    attempt: 3,
+    attempt: 10,
     listenEvents: ['scroll']
 })
 

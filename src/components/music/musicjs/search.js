@@ -47,6 +47,7 @@ export default {
         var keywords = this.$route.params.keywords
         if (this.keywords != keywords) {
             this.keywords = keywords
+            this.query = keywords
             this.searchs()
         }
     }
