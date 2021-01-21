@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <menus></menus>
-        <transition name="slide" mode="out-in">
+        <transition name="slide">
             <keep-alive :max="8">
                 <router-view v-wechat-title='$route.meta.title' class="content"></router-view>
             </keep-alive>

@@ -47,6 +47,17 @@
     font-size: 12px;
     color: rgba(60,60,67,.6);
 }
+.info span{
+    display: flex;
+}
+.info span a{
+    font-size: 12px;
+    color: rgba(60,60,67,.6);
+    margin-right: 8px;
+}
+.info span a:hover{
+    text-decoration: underline !important;
+}
 .info a:hover{
     text-decoration: underline;
 }

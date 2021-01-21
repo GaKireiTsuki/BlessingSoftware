@@ -15,7 +15,9 @@
                 </div>
                 <div class="info">
                     <router-link to="">{{item.name}}</router-link>
-                    <router-link :to="{name: 'Artist', params: {id: item.ar[0].id}}">{{item.ar[0].name}}</router-link>
+                    <span>
+                        <router-link :to="{name: 'Artist', params: {id: items.id}}" v-for="items in item.ar" :key="items.name">{{items.name}}</router-link>
+                    </span>
                 </div>
             </div>
         </div>
@@ -91,6 +93,13 @@ export default {
         },
         img () {
             return this.$store.dispatch('show', this.img)
+        }
+    },
+    beforeRouteUpdate (to, from, next) {
+        if (to.fullPath != from.fullPath) {
+            next()
+            this.id = this.$route.params.id
+            this.artist()
         }
     },
     async activated() {

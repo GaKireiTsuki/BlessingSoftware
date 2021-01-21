@@ -17,7 +17,12 @@
                             <div>{{item.no}}</div>
                             <svg @click="play(item.id)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27" class="dt-play-button__list-item-play-glyph"><path d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"></path></svg>
                         </span>
-                        <span class="info">{{item.name}}</span>
+                        <span class="info name_artist">
+                            <div>{{item.name}}</div>
+                            <div id="name_artist" v-show="item.ar && item.ar.length>1">
+                                <router-link :to="{name: 'Artist', params: {id: items.id}}" v-for="items in item.ar" :key="items.name">{{items.name}}</router-link>
+                            </div>
+                        </span>
                         <span>{{item.dt | Duration}}</span>
                         <div style="width: 17.5px"></div>
                     </div>
@@ -71,6 +76,27 @@ import album from './musicjs/album'
 export default album
 </script>
 <style>
+    #name_artist a{
+        font-size: 12px;
+        color: rgba(60,60,67,.6);
+    }
+    #name_artist{
+        display: flex;
+    }
+    .name_artist{
+        display: grid;
+        align-content: center;
+    }
+    .name_artist div:nth-of-type(1){
+        -webkit-line-clamp: 1;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+        overflow: hidden;
+    }
+    .name_artist div{
+        line-height: 24.5px;
+    }
     #album{
         margin: 40px 0px;
         display: flex;
@@ -159,6 +185,9 @@ export default album
     .album_song_list:focus span{
         color: #fff;
         box-shadow: none;
+    }
+    .album_song_list:focus #name_artist a{
+        color: #fff;
     }
     .album_song_list:focus + .album_song_list span{
         box-shadow: none;
