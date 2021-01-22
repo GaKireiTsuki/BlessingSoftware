@@ -1,34 +1,66 @@
 <template>
     <div class="sign_in">
-        <h1>Please sign in.</h1>
-        <form action="" method="post">
-            <input v-model="name" type="text" name="" id="">
-            <input v-model="password" type="password" name="" id="">
-            <input @click="login()" type="button" value="Sign in">
-        </form>
+        <img :src="qrimg" alt="">
     </div>
 </template>
 <script>
 export default {
     data() {
         return {
-            name: '',
-            password: ''
+            qrimg: '',
+            code: ''
         }
+    },
+    async activated() {
+        this.loginstatus()
     },
     methods: {
-        login () {
-        this.$serve.logineMail(this.name, this.password).then(res => {
-                console.log(res)
+        checkstatu () {
+            var that = this;
+            this.$api.music.checkstatus(this.key).then( res => {
+                that.code = res.code;
             })
+        },
+        getqr () {
+            var that = this;
+            this.$api.music.qrkey().then( res => {
+                that.key = res.data.unikey
+                this.$api.music.qrcreate(this.key).then( res => {
+                    that.qrimg = res.data.qrimg
+                })
+            })
+        },
+        loginstatus () {
+            this.$api.music.loginstatus().then( res => {
+                if (res.data.account == null) {
+                    this.getqr()
+                    this.qr()
+                } else {
+                    alert('您已登录')
+                    window.location = '/music'
+                }
+            })
+        },
+        qr () {
+            var timer
+            timer = setInterval( async() => {
+                this.checkstatu()
+                var code = this.code
+                if (code === 800) {
+                    console.log('二维码已过期')
+                    this.getqr()
+                } if (code === 801) {
+                    console.log('等待扫码')
+                } if (code === 803) {
+                    console.log('授权登录成功')
+                    clearInterval(timer)
+                    this.loginstatus()
+                }
+            }, 2000);
         }
-    },
+    }
 }
 </script>
 <style>
-    h1{
-        font-size: 40px;
-        font-weight: 600;
-        color: #1d1d1f;
-    }
+    
 </style>

@@ -48,6 +48,28 @@ const music = {
     artistmv (id) { //获取歌手MV
         return axios.post(`${base.music}/artist/mv?id=${id}`)
     },
+
+    qrkey () { //获取二维码key
+        return axios.post(`${base.music}/login/qr/key?timerstamp=${Date.now()}`)
+    },
+    qrcreate (key) { //生成二维码
+        return axios.post(`${base.music}/login/qr/create?key=${key}&qrimg=true&timerstamp=${Date.now()}`)
+    },
+    checkstatus (key) { //轮询状态
+        return axios.post(`${base.music}/login/qr/check?key=${key}&timerstamp=${Date.now()}`)
+    },
+    loginstatus () { //登录状态
+        return axios.post(`${base.music}/login/status?timerstamp=${Date.now()}`)
+    },
+    loginrefresh () { //刷新登录状态
+        return axios.post(`${base.music}/login/refresh?timerstamp=${Date.now()}`)
+    },
+    account () { //账号信息
+        return axios.post(`${base.music}/user/account`)
+    },
+    emali (names, pas) {
+        return axios.post(`${base.music}/login?email=${names}&password=${pas}`)
+    }
 }
 
 export default music

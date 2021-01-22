@@ -27,7 +27,7 @@
                 <div id="bag">
                     <p>Your</p>
                     <div class="bag_menu">
-                        <router-link to="/signIn">Sign in</router-link>
+                        <router-link class="open_login" to="">Sign in</router-link>
                         <router-link to="">BAG</router-link>
                         <router-link to="">LOGINOUT</router-link>
                     </div>
@@ -410,9 +410,6 @@
         }
         #nav{
             background: none !important;
-        }
-        body{
-            overflow: auto !important;
         }
     }
 </style>

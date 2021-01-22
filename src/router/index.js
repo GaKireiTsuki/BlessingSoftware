@@ -12,7 +12,6 @@ const MoreAlbum = () => import('@/components/music/more/MoreAlbum.vue')
 const MV = () => import('@/components/music/MV.vue')
 const Album = () => import('@/components/music/Album.vue')
 const Artist = () => import('@/components/music/Artist.vue')
-const SignIn = () => import('@/components/SignIn.vue')
 const Err = () => import('@/views/Err.vue')
 
 const routes = [
@@ -103,15 +102,6 @@ const routes = [
         component: Album,
         meta: {
             title: 'Blessing Software Album',
-        }
-    },
-    //登录
-    {
-        path: '/signIn',
-        name: 'SignIn',
-        component: SignIn,
-        meta: {
-            title: 'Blessing Software Sign In'
         }
     },
     //错误页
