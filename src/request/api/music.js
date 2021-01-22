@@ -65,10 +65,10 @@ const music = {
         return axios.post(`${base.music}/login/refresh?timerstamp=${Date.now()}`)
     },
     account () { //账号信息
-        return axios.post(`${base.music}/user/account`)
+        return axios.post(`${base.music}/user/account?timerstamp=${Date.now()}`)
     },
-    emali (names, pas) {
-        return axios.post(`${base.music}/login?email=${names}&password=${pas}`)
+    emali (account, password) { //邮箱登录
+        return axios.post(`${base.music}/login?email=${account}&password=${password}&timerstamp=${Date.now()}`)
     }
 }
 

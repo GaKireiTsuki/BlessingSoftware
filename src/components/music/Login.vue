@@ -6,6 +6,11 @@
                 <div class="login_content">
                     <img src="../../assets/img/blessingsoftware-logo.svg" alt="">
                     <h1>使用 Music ID 登录</h1>
+                    <p>您将登录 Blessing Software Music</p>
+                    <div class="ap">
+                        <input v-model="account" type="text" name="account" id="account">
+                        <input v-model="password" type="password" name="password" id="password">
+                    </div>
                     <img id="qrimg" :src="qrimg" alt="">
                     <span @click="loginstatus()" class="qrif">使用二维码登录</span>
                 </div>
@@ -20,8 +25,9 @@ export default {
     name: 'login',
     data() {
         return {
-            qrimg: '',
-            code: ''
+            account: '',
+            password: '',
+            qrimg: ''
         }
     },
     methods: {
@@ -43,13 +49,25 @@ export default {
         },
         loginstatus () {
             this.$api.music.loginstatus().then( res => {
-                if (res.data.account == null) {
+                console.log(res)
+                if (res.data.account === null) {
                     this.getqr()
                     this.qr()
                 } else {
-                    alert('您已登录')
-                    window.location = '/music'
-                    this.closetimer(this.timer)
+                    console.log('您已登录')
+                    $(function () {
+                        var _login = $("#logins")
+                        var qrif = $('.qrif')
+                        var qrh = $('.login_content h1')
+                        var qrimg = $('#qrimg')
+                        var ap = $('.ap')
+                        _login.hide()
+                        qrimg.hide()
+                        ap.show()
+                        qrif.text('使用二维码登录')
+                        qrh.text('使用 Music ID 登录')
+                        $('body').removeAttr('style');
+                    })
                 }
             })
         },
@@ -83,9 +101,11 @@ $(function () {
     var qrif = $('.qrif')
     var qrh = $('.login_content h1')
     var qrimg = $('#qrimg')
+    var ap = $('.ap')
     close.on('click', function () {
         _login.hide()
         qrimg.hide()
+        ap.show()
         qrif.text('使用二维码登录')
         qrh.text('使用 Music ID 登录')
         $('body').removeAttr('style');
@@ -98,11 +118,13 @@ $(function () {
         if (qrimg.is(':hidden')) {
             setTimeout(() => {
                 qrimg.show()
+                ap.hide()
                 qrif.text('使用 Music ID 登录')
                 qrh.text('使用二维码登录')
             }, 300);
         } else {
             qrimg.hide()
+            ap.show()
             qrif.text('使用二维码登录')
             qrh.text('使用 Music ID 登录')
         }
@@ -110,6 +132,22 @@ $(function () {
 })
 </script>
 <style>
+    .ap{
+        margin-top: 35px;
+        max-width: 328px;
+    }
+    .ap input{
+        width: 100%;
+        height: 42px;
+        border-radius: 6px;
+        border: 1px solid #d6d6d6;
+        font-size: 17px;
+        line-height: 1.29412;
+        font-weight: 400;
+        color: #494949;
+        padding: 0px 15px;
+        box-sizing: border-box;
+    }
     #qrimg{
         width: 198px;
         height: 198px;
@@ -144,6 +182,11 @@ $(function () {
         font-size: 24px;
         color: #111;
         height: 100%;
+    }
+    .login_content p{
+        font-size: 17px;
+        margin-top: 13.6px;
+        color: #333;
     }
     #login{
         position: fixed;
