@@ -9,9 +9,9 @@
                     <p>您将登录 Blessing Software Music</p>
                     <div class="ap">
                         <img id="next" src="../../assets/img/next.svg" alt="">
-                        <img id="nexts" src="../../assets/img/next.svg" alt="">
+                        <img @click="email()" id="nexts" src="../../assets/img/next.svg" alt="">
                         <input v-model="account" type="text" name="account" id="account">
-                        <input v-model="password" type="password" name="password" id="password">
+                        <input @keyup.enter="email()" v-model="password" type="password" name="password" id="password">
                     </div>
                     <img id="qrimg" :src="qrimg" alt="">
                     <span @click="loginstatus()" class="qrif">使用二维码登录</span>
@@ -33,6 +33,33 @@ export default {
         }
     },
     methods: {
+        email () {
+            this.$api.music.email(this.account, this.password).then( res => {
+                console.log(res)
+                if (res.code === 200) {
+                    clearInterval(this.timer)
+                    $(function () {
+                        console.log('您已登录')
+                        var _login = $("#logins")
+                        var qrif = $('.qrif')
+                        var qrh = $('.login_content h1')
+                        var qrimg = $('#qrimg')
+                        var ap = $('.ap')
+                        var next = $('#next')
+                        var nexts = $('#nexts')
+                        _login.hide()
+                        qrimg.hide()
+                        ap.show()
+                        qrif.text('使用二维码登录')
+                        qrh.text('使用 Music ID 登录')
+                        $('body').removeAttr('style');
+                        $('.ap input').val("").removeAttr('style')
+                        next.removeAttr('style')
+                        nexts.removeAttr('style')
+                    })
+                }
+            })
+        },
         checkstatu () {
             var that = this;
             this.$api.music.checkstatus(this.key).then( res => {

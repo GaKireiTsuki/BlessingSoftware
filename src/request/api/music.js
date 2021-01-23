@@ -67,7 +67,7 @@ const music = {
     account () { //账号信息
         return axios.post(`${base.music}/user/account?timerstamp=${Date.now()}`)
     },
-    emali (account, password) { //邮箱登录
+    email (account, password) { //邮箱登录
         return axios.post(`${base.music}/login?email=${account}&password=${password}&timerstamp=${Date.now()}`)
     }
 }
