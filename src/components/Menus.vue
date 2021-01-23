@@ -94,7 +94,7 @@
             search.val("");
         });
         //控制购物袋是否显示与隐藏
-        $(".bag").on("click", function () { 
+        $(".bag").on("click", function (event) { 
             if (bag.is(":hidden")) {
                 bag.show();
                 event.stopPropagation();

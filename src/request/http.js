@@ -3,7 +3,7 @@ import axios from 'axios'
 //创建axios实例
 var instance = axios.create({
     timeout: 1000 * 12,
-    withCredentials: false
+    withCredentials: true
 })
 
 // 设置post请求头

@@ -8,6 +8,8 @@
                     <h1>使用 Music ID 登录</h1>
                     <p>您将登录 Blessing Software Music</p>
                     <div class="ap">
+                        <img id="next" src="../../assets/img/next.svg" alt="">
+                        <img id="nexts" src="../../assets/img/next.svg" alt="">
                         <input v-model="account" type="text" name="account" id="account">
                         <input v-model="password" type="password" name="password" id="password">
                     </div>
@@ -102,6 +104,8 @@ $(function () {
     var qrh = $('.login_content h1')
     var qrimg = $('#qrimg')
     var ap = $('.ap')
+    var next = $('#next')
+    var nexts = $('#nexts')
     close.on('click', function () {
         _login.hide()
         qrimg.hide()
@@ -109,6 +113,9 @@ $(function () {
         qrif.text('使用二维码登录')
         qrh.text('使用 Music ID 登录')
         $('body').removeAttr('style');
+        $('.ap input').val("").removeAttr('style')
+        next.removeAttr('style')
+        nexts.removeAttr('style')
     })
     open_login.on('click', function () {
         _login.show()
@@ -129,12 +136,53 @@ $(function () {
             qrh.text('使用 Music ID 登录')
         }
     })
+    next.on('click', function () {
+        $('.ap input[type=password]').css({height: '42px'}).focus()
+        next.hide()
+        setTimeout(() => {
+            nexts.show()
+        }, 500)
+    })
+    $('.ap input[type=text]').keydown(function (event) {
+        if (event.keyCode == 13) {
+            $('.ap input[type=password]').css({height: '42px'}).focus()
+            next.hide()
+            setTimeout(() => {
+                nexts.show()
+            }, 500)
+        }
+    });
 })
 </script>
 <style>
     .ap{
         margin-top: 35px;
-        max-width: 328px;
+        width: 328px;
+        min-width: 300px;
+        display: grid;
+        position: relative;
+        height: 84px;
+    }
+    #next{
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 11px;
+        right: 11px;
+        margin: 0;
+        z-index: 1;
+        cursor: pointer;
+    }
+    #nexts{
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        bottom: 11px;
+        right: 11px;
+        margin: 0;
+        z-index: 1;
+        display: none;
+        cursor: pointer;
     }
     .ap input{
         width: 100%;
@@ -147,6 +195,26 @@ $(function () {
         color: #494949;
         padding: 0px 15px;
         box-sizing: border-box;
+        outline: none;
+        transition: all 0.5s;
+        background: #FFF;
+    }
+    .ap input[type=text]:focus{
+        border: 1px solid #0070c9;
+    }
+    .ap input[type=password]:focus{
+        border: 1px solid #0070c9;
+    }
+    .ap input[type=text]{
+        border-radius: 6px 6px 0 0;
+        border-bottom: none;
+    }
+    .ap input[type=password]{
+        height: 0px;
+        position: absolute;
+        top: 42px;
+        border-top: none;
+        border-radius: 0 0 6px 6px;
     }
     #qrimg{
         width: 198px;
