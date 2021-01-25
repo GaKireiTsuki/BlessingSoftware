@@ -18,6 +18,7 @@ export default {
             result: [],
             albums: [],
             banners: [],
+            results: [],
             url: '',
             img: ''
         }
@@ -42,6 +43,16 @@ export default {
             this.$api.music.newalbum(this.area, this.asize).then((res)=>{
                 that.albums = res.albums;
             })
+        },
+        keywords () {
+            clearTimeout(this.timer)
+            var that = this;
+            this.timer = setTimeout(() => {
+                this.$api.music.suggest(this.keywords).then(res => {
+                    that.results = res
+                    console.log(res.result)
+                })
+            }, 500)
         }
     },
     async created () {

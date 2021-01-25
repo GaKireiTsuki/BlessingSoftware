@@ -1,6 +1,39 @@
 <template>
     <div class="music">
-        <input type="search" class="bmbl" v-model="keywords" @keyup.enter="search" name="" id="">
+        <input type="search" class="bmbl" v-model="keywords" @keyup.enter="search()" name="" id="">
+        <div class="suggest bmbl">
+            <div id="suggest" v-for="item in results" :key="item.name">
+                <router-link :to="{name: 'Artist', params: {id: items.id}}" v-for="items in item.artists" :key="items.name">
+                    <img :src="items.picUrl + '?param=110y110'" :alt="items.name" :title="items.name">
+                    <span>
+                        <p>{{items.name}}</p>
+                        <p>艺人</p>
+                    </span>
+                </router-link>
+                <router-link to="" v-for="items in item.songs" :key="items.name">
+                    <img src="">
+                    <span>
+                        <p @click="play(items.id)">{{items.name}}</p>
+                        <p>歌曲 · 
+                            <span v-for="item in items.artists" :key="item.name">
+                                {{item.name}}
+                            </span>
+                        </p>
+                    </span>
+                </router-link>
+                <router-link :to="{name: 'Album', params: {id: items.id}}" v-for="items in item.albums" :key="items.id">
+                    <img src="">
+                    <span>
+                        <p>{{items.name}}</p>
+                        <p>专辑 · 
+                            <span>
+                                {{items.artist.name}}
+                            </span>
+                        </p>
+                    </span>
+                </router-link>
+            </div>
+        </div>
         <div class="banner">
             <div id="banner" v-for="item in banners" :key="item.name">
                 <div class="banner_info">
@@ -51,8 +84,30 @@ import music from '../components/music/musicjs/music'
 export default music
 </script>
 <style>
+    #suggest a{
+        min-height: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        border-top: .5px solid #00000026;
+    }
+    #suggest a img{
+        width: 46px;
+        border-radius: 100%;
+        box-shadow: 0 4px 15px rgba(0,0,0,.08);
+        margin-right: 10px;
+    }
+    #suggest a{
+        color: #000000f2;
+        font-size: 13px;
+    }
+    #suggest a p:nth-of-type(2){
+        color: #3c3c4399;
+        font-size: 12px;
+    }
     #banner img{
         width: 100%;
+        border-radius: 4px;
     }
     .banner{
         display: grid;

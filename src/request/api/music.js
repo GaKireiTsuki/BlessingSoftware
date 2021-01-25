@@ -3,6 +3,9 @@ import axios from '@/request/http'
 /* import qs from 'qs' */
 
 const music = {
+    suggest (keywords) {
+        return axios.post(`${base.music}/search/suggest?keywords=${keywords}`)
+    },
     searchartist (keywords) { //搜索艺术家
         return axios.post(`${base.music}/search?keywords=${keywords}&limit=2&type=100`)
     },
