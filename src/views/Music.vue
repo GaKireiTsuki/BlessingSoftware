@@ -1,6 +1,16 @@
 <template>
     <div class="music">
         <input type="search" class="bmbl" v-model="keywords" @keyup.enter="search" name="" id="">
+        <div class="banner">
+            <div id="banner" v-for="item in banners" :key="item.name">
+                <div class="banner_info">
+                    <p>{{item.typeTitle}}</p>
+                    <h2></h2>
+                    <h2></h2>
+                </div>
+                <img :src="item.imageUrl" alt="">
+            </div>
+        </div>
         <div id="new_song_helf">
             <div class="new_song_helf helf_layout">
                 <div class="new_song" v-for="item in result" :key="item.name">
@@ -41,6 +51,21 @@ import music from '../components/music/musicjs/music'
 export default music
 </script>
 <style>
+    #banner img{
+        width: 100%;
+    }
+    .banner{
+        display: grid;
+        overflow-y: hidden;
+        column-gap: 20px;
+        grid-auto-flow: column;
+        grid-auto-columns: calc((100% - 1 * 20px)/ 2);
+        padding: 15px 0;
+        box-sizing: border-box;
+    }
+    .banner::-webkit-scrollbar{
+        height: 4px;
+    }
     .radio{
         display: none;
     }

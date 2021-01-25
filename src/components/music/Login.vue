@@ -15,6 +15,7 @@
                     </div>
                     <img id="qrimg" :src="qrimg" alt="">
                     <span @click="loginstatus()" class="qrif">使用二维码登录</span>
+                    <span>{{cookie}}</span>
                 </div>
             </div>
             <button @click="closetimer()" class="close_login"></button>
@@ -29,7 +30,8 @@ export default {
         return {
             account: '',
             password: '',
-            qrimg: ''
+            qrimg: '',
+            cookie: ''
         }
     },
     methods: {
@@ -64,6 +66,7 @@ export default {
             var that = this;
             this.$api.music.checkstatus(this.key).then( res => {
                 that.code = res.code;
+                console.log(res.cookie)
             })
         },
         getqr () {
@@ -78,7 +81,7 @@ export default {
         },
         loginstatus () {
             this.$api.music.loginstatus().then( res => {
-                console.log(res)
+                console.log(res.data)
                 if (res.data.account === null) {
                     this.getqr()
                     this.qr()

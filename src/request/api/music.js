@@ -16,6 +16,9 @@ const music = {
         return axios.post(`${base.music}/search?keywords=${keywords}&limit=${msize}&type=1004`)
     },
 
+    banner () {
+        return axios.post(`${base.music}/banner`)
+    },
     newsong (ssize) { //最新歌曲
         return axios.post(`${base.music}/personalized/newsong?&limit=${ssize}`)
     },

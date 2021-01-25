@@ -1,4 +1,5 @@
 import axios from 'axios'
+axios.defaults.withCredentials=true
 
 //创建axios实例
 var instance = axios.create({

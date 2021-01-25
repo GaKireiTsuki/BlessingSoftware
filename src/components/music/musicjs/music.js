@@ -17,6 +17,7 @@ export default {
             keywords: '',
             result: [],
             albums: [],
+            banners: [],
             url: '',
             img: ''
         }
@@ -45,10 +46,15 @@ export default {
     },
     async created () {
         var that = this;
-        axios.all([this.$api.music.newsong(this.ssize), this.$api.music.newalbum(this.area, this.asize)])
-        .then(axios.spread((res1, res2)=>{
+        axios.all([
+            this.$api.music.newsong(this.ssize), 
+            this.$api.music.newalbum(this.area, this.asize), 
+            this.$api.music.banner()
+        ])
+        .then(axios.spread((res1, res2, res3)=>{
             that.result = res1.result;
             that.albums = res2.albums
+            that.banners = res3.banners
         }))
     }
 }
