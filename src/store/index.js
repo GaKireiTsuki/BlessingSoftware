@@ -9,6 +9,7 @@ export default new Vuex.Store({
         url: '',
         img: '',
         song: '',
+        keywords: ''
     },
     mutations: {
         play (state, url) {
@@ -19,6 +20,9 @@ export default new Vuex.Store({
         },
         add (state, song) {
             state.song = song;
+        },
+        suggest (state, keywords) {
+            state.keywords = keywords;
         }
     },
     actions: {
@@ -30,6 +34,9 @@ export default new Vuex.Store({
         },
         add (music, song) {
             music.commit('add', song)
+        },
+        suggest (music, keywords) {
+            music.commit('suggest', keywords)
         }
     },
     modules: {

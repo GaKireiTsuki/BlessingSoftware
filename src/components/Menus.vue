@@ -1,10 +1,11 @@
 <template>
     <div class="nav hmbl">
-        <div class="pc_search">
+        <div @click="clear()" class="pc_search">
             <div class="pc_input_search">
                 <div id="pc_input_search">
-                    <input type="search" name="" id="">
+                    <input type="search" v-model="keywords" name="" id="">
                     <img style="width: 18px" src="../assets/img/search_white.svg" alt="" />
+                    <suggest></suggest>
                 </div>
             </div>
         </div>
@@ -37,10 +38,11 @@
         <!-- 移动端菜单 -->
         <div class="menu_mobile">
             <div id="search">
-                <input type="search" name="" id="m_search">
+                <input type="search" v-model="keywords" name="" id="m_search">
                 <img style="width: 18px" src="../assets/img/search.svg" alt="" />
-                <span id="cancel">Cancel</span>
+                <span @click="clear()" id="cancel">Cancel</span>
             </div>
+            <suggest></suggest>
             <div id="mobile_nav_link">
                 <router-link to="/store" >STORE</router-link>
                 <router-link to="/news">NEWS</router-link>
@@ -52,9 +54,27 @@
 
 <script>
     import $ from "jquery";
+    import suggest from './music/Suggest'
     export default {
-        name: 'menus'
-    };
+        name: 'menus',
+        components: {suggest},
+        data() {
+            return {
+                keywords: "",
+                clears: ""
+            }
+        },
+        methods: {
+            clear: function () {
+                this.$store.dispatch('suggest', this.clears)
+            }
+        },
+        watch: {
+            keywords() {
+                return this.$store.dispatch('suggest', this.keywords)
+            }
+        }
+    }
     $(function () {
         var pc_search = $(".pc_search")
         var bag = $("#bag")
@@ -109,6 +129,10 @@
                 nav.children("a").removeAttr( "style" );
                 $("input[type=search]").val("");
                 pc_search.removeAttr( "style" );
+                $(".suggest").css({display: "none"});
+                setTimeout(() => {
+                    $(".suggest").removeAttr( "style" );
+                }, 300);
             } else {
                 nav.children("a").css({ opacity: "0", transform: "scale(0.3)" });
                 pc_search.css({ opacity: "1", "z-index": "3", height: "100vh", "max-width": "none" });

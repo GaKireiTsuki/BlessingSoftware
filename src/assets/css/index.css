@@ -139,6 +139,21 @@ div[class $= '_layout']{
     display: none;
 }
 @media screen and (max-width: 484px){
+    .suggest{
+        background: #000;
+    }
+    #suggest p{
+        color: aliceblue;
+    }
+    #yuan img{
+        filter: invert(0) !important;
+    }
+    #suggest img{
+        filter: invert(1);
+    }
+    #suggest a p:nth-of-type(2){
+        color: aliceblue;
+    }
     .grid_layout{
         grid-template-columns: repeat(2,1fr);
     }
