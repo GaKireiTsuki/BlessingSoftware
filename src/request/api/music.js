@@ -29,11 +29,11 @@ const music = {
         return axios.post(`${base.music}/album/new?area=${area}&limit=${asize}`)
     },
 
-    playmusic (id) { //播放音乐
-        return axios.post(`${base.music}/song/url?id=${id}`)
+    playmusic (songID) { //播放音乐
+        return axios.post(`${base.music}/song/url?id=${songID}`)
     },
-    musicinfo (id) { //获取封面/歌曲/信息
-        return axios.post(`${base.music}/song/detail?ids=${id}`)
+    musicinfo (songID) { //获取封面/歌曲/信息
+        return axios.post(`${base.music}/song/detail?ids=${songID}`)
     },
     playmv (id) { //播放mv
         return axios.post(`${base.music}/mv/url?id=${id}`)

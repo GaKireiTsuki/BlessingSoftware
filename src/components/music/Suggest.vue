@@ -36,7 +36,7 @@
     </div>
 </template>
 <script>
-    import {mapState } from 'vuex'
+    import { mapActions, mapState } from 'vuex'
     export default {
         name: "Suggest",
         data() {
@@ -44,15 +44,18 @@
                 results: []
             };
         },
+        methods: {
+            ...mapActions(['play'])
+        },
         computed: {
             ...mapState(['keywords'])
         },
         watch: {
-            keywords() {
+            keywords(keywords) {
                 clearTimeout(this.timer);
                 var that = this;
                 this.timer = setTimeout(() => {
-                    this.$api.music.suggest(this.keywords).then((res) => {
+                    this.$api.music.suggest(keywords).then((res) => {
                         that.results = res;
                     });
                 }, 500);

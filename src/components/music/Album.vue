@@ -1,8 +1,8 @@
 <template>
     <div class="album">
         <div id="album">
-            <div class="cover" @click="song()">
-                <img v-lazy="picUrl + '?param=1000y1000'" :alt="name" :title="name">
+            <div class="cover">
+                <img @click="add(songs)" v-lazy="picUrl + '?param=1000y1000'" :alt="name" :title="name">
             </div>
             <div class="album_content">
                 <div id="album_info">

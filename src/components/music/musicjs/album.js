@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { mapActions } from 'vuex'
 export default {
     name: 'Album',
     data() {
@@ -13,18 +14,11 @@ export default {
             songs: [],
             hotAlbums: [],
             artistsname: '',
-            mvs: [],
-            url: '',
-            img: '',
+            mvs: []
         }
     },
     methods: {
-        play (id) {
-            this.player(id);
-        },
-        song () {
-            this.$store.dispatch('add', this.songs)
-        },
+        ...mapActions(['play', 'add']),
         album () {
             var that = this;
             this.$api.music.albuminfo(this.id).then(res => {
@@ -45,14 +39,6 @@ export default {
                 }))
             })
         }
-    },
-    watch: {
-        url () {
-            return this.$store.dispatch('play', this.url)
-        },
-        img () {
-            return this.$store.dispatch('show', this.img)
-        },
     },
     beforeRouteUpdate (to, from, next) {
         if (to.fullPath != from.fullPath) {

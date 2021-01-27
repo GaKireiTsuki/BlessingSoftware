@@ -6,37 +6,30 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        url: '',
-        img: '',
-        song: '',
-        keywords: ''
+        songID: '',
+        keywords: '',
+        playList: []
     },
     mutations: {
-        play (state, url) {
-            state.url = url;
-        },
-        show (state, img) {
-            state.img = img;
-        },
-        add (state, song) {
-            state.song = song;
-        },
         suggest (state, keywords) {
             state.keywords = keywords;
+        },
+        play (state, id) {
+            state.songID = id;
+        },
+        add (state, songs) {
+            state.playList = songs;
         }
     },
     actions: {
-        play (music, url) {
-            music.commit('play', url)
-        },
-        show (music, img) {
-            music.commit('show', img)
-        },
-        add (music, song) {
-            music.commit('add', song)
-        },
-        suggest (music, keywords) {
+        suggest (music, keywords) { //传递搜索建议
             music.commit('suggest', keywords)
+        },
+        play (music, id) { //传递歌曲ID
+            music.commit('play', id)
+        },
+        add (music, songs) { //添加至待播列表
+            music.commit('add', songs)
         }
     },
     modules: {

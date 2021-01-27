@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import axios from 'axios'
+import { mapActions } from 'vuex'
 export default {
     name: 'music',
     data() {
@@ -24,35 +25,17 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['play']),
         search () {
             this.$router.push({name: 'Search', params: {keywords: this.keywords}})
         },
-        play (id) {
-            this.player(id);
-        }
     },
     watch: {
-        url () {
-            return this.$store.dispatch('play', this.url)
-        },
-        img () {
-            return this.$store.dispatch('show', this.img)
-        },
         area () {
             var that = this;
             this.$api.music.newalbum(this.area, this.asize).then((res)=>{
                 that.albums = res.albums;
             })
-        },
-        keywords () {
-            clearTimeout(this.timer)
-            var that = this;
-            this.timer = setTimeout(() => {
-                this.$api.music.suggest(this.keywords).then(res => {
-                    that.results = res
-                    console.log(res.result)
-                })
-            }, 500)
         }
     },
     async created () {

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { mapActions } from 'vuex'
 export default {
     name: 'Search',
     data() {
@@ -10,15 +11,11 @@ export default {
             mvs: [],
             asize: 12,
             ssize: 24,
-            msize: 12,
-            url: '',
-            img: '',
+            msize: 12
         }
     },
     methods: {
-        play (id) {
-            this.player(id);
-        },
+        ...mapActions(['play']),
         searchs () {
             var that = this;
             axios.all([
@@ -33,14 +30,6 @@ export default {
                 that.songs = res3.result.songs;
                 that.mvs = res4.result.mvs;
             }))
-        }
-    },
-    watch: {
-        url () {
-            return this.$store.dispatch('play', this.url)
-        },
-        img () {
-            return this.$store.dispatch('show', this.img)
         }
     },
     async activated() {

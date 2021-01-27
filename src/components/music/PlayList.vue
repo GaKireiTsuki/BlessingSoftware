@@ -1,7 +1,7 @@
 <template>
     <div class="play_list bmbl">
         <h3>待播清单</h3>
-        <div id="play_list" v-for="item in this.$store.state.song" :key="item.name" tabindex="1" outline=0>
+        <div id="play_list" v-for="item in playList" :key="item.name" tabindex="1" outline=0>
             <img @click="play(item.id)" :src="item.al.picUrl + '?param=40y40'" :alt="item.name" :title="item.name">
             <div class="play_list_name">
                 <div>
@@ -16,47 +16,34 @@
                     </div>
                 </div>
             </div>
-        <button @click="clear()">清除</button>
+        <button @click="add()">清除</button>
     </div>
 </template>
 <script>
 import $ from 'jquery'
+import { mapState, mapActions } from 'vuex'
 export default {
     name: 'playlist',
-    data() {
-        return {
-            url: '',
-            img: ''
-        }
+    computed: {
+        ...mapState(['playList'])
     },
     methods: {
-        play: function (id) {
-            this.player(id);
-        },
-        clear: function () {
-            this.$store.dispatch('add', this.clears)
-        }
-    },
-    watch: {
-        url () {
-            return this.$store.dispatch('play', this.url)
-        },
-        img () {
-            return this.$store.dispatch('show', this.img)
-        },
-        song () {
-            return this.$store.dispatch('songs', this.song)
-        }
+        ...mapActions(['play', 'add']),
     }
 }
 $(function () {
-    $(".open_list").on("click", function () { 
+    $(".open_list").on("click", function (event) { 
         event.stopPropagation();
         var playlist = $(".play_list")
+        var openlist = $(".open_list")
         if (playlist.is(":hidden")) {
             playlist.show()
+            openlist.css({background: '#6c6c6c',})
+            openlist.children('svg').css({fill: '#fff'})
         } else {
             playlist.hide()
+            openlist.removeAttr('style')
+            openlist.children('svg').removeAttr('style')
         }
     });
     $(".clear").focus(function () { 
@@ -124,16 +111,21 @@ $(function () {
     .open_list{
         color: #1d1d1f;
         font-size: 14px;
-        width: 45px;
-        height: 30px;
+        width: 28px;
+        height: 22px;
+        padding: 2px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid rgba(0,0,0,0.16);
+        box-sizing: border-box;
         border-radius: 4px;
         position: absolute;
         right: 12px;
         bottom: 12px;
+        cursor: pointer;
+    }
+    .open_list svg{
+        fill: #3c3c4399;
     }
     .play_list h3{
         font-size: 18px;

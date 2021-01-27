@@ -53,6 +53,7 @@
 </template>
 <script>
 import axios from 'axios'
+import { mapActions } from 'vuex'
 export default {
     name: 'Artist',
     data() {
@@ -62,15 +63,11 @@ export default {
             postArtist: [],
             hotSongs: [],
             hotAlbums: [],
-            mvs: [],
-            url: '',
-            img: '',
+            mvs: []
         }
     },
     methods: {
-        play (id) {
-            this.player(id);
-        },
+        ...mapActions(['play']),
         artist () {
             var that = this;
             axios.all([
@@ -85,14 +82,6 @@ export default {
                 that.hotAlbums = res2.hotAlbums;
                 that.mvs = res3.mvs;
             }))
-        }
-    },
-    watch: {
-        url () {
-            return this.$store.dispatch('play', this.url)
-        },
-        img () {
-            return this.$store.dispatch('show', this.img)
         }
     },
     beforeRouteUpdate (to, from, next) {
