@@ -1,6 +1,5 @@
 <template>
     <div class="music">
-        <input type="search" class="bmbl" v-model="keywords" @keyup.enter="search()" name="" id="">
         <div class="banner">
             <div id="banner" v-for="item in banners" :key="item.name">
                 <div class="banner_info">
@@ -108,15 +107,6 @@ export default music
         padding: 25px 0px;
         margin-bottom: 25px;
         grid-template-rows: repeat(2,1fr) !important;
-    }
-    .music input[type=search]{
-        z-index: 2;
-        position: sticky;
-        top: 50px;
-        margin-bottom: 12px;
-        background: hsl(0deg 0% 100% / 72%);
-        border: 1px solid rgba(0,0,0,0.16);
-        color: #1d1d1f;
     }
     .new_song{
         display: flex;

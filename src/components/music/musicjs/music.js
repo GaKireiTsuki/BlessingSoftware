@@ -1,4 +1,3 @@
-import $ from 'jquery'
 import axios from 'axios'
 import { mapActions } from 'vuex'
 export default {
@@ -19,16 +18,11 @@ export default {
             result: [],
             albums: [],
             banners: [],
-            results: [],
-            url: '',
-            img: ''
+            results: []
         }
     },
     methods: {
         ...mapActions(['play']),
-        search () {
-            this.$router.push({name: 'Search', params: {keywords: this.keywords}})
-        },
     },
     watch: {
         area () {
@@ -52,18 +46,3 @@ export default {
         }))
     }
 }
-$(function () {
-    $(".music input[type=search]").on("click", function () {
-        $("body, html").animate({ scrollTop: 0 }, 300, "linear");
-    });
-    $(".category input[type=radio]").on("click", function () {
-        $(".flex_layout").animate({ scrollLeft: 0 }, 300, "linear");
-    });
-    $(window).on("scroll", function () {
-        if ($(window).scrollTop() > 50) {
-            $(".music input[type=search]").css({top: "0px"});
-        } else {
-            $(".music input[type=search]").removeAttr("style");
-        }
-    });
-});

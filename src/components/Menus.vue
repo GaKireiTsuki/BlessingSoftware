@@ -1,14 +1,10 @@
 <template>
-    <div class="nav hmbl">
+    <div class="nav bmbl">
         <div class="pc_search">
             <div class="pc_input_search">
                 <div id="pc_input_search">
-                    <input type="search" v-model="keywords" name="" id="" />
-                    <img
-                        style="width: 18px"
-                        src="../assets/img/search_white.svg"
-                        alt=""
-                    />
+                    <input type="search" v-model="keywords" @keyup.enter="search()" name="" id="" />
+                    <img style="width: 18px" src="../assets/img/search_white.svg" alt="" />
                     <suggest></suggest>
                 </div>
             </div>
@@ -52,7 +48,7 @@
         <!-- 移动端菜单 -->
         <div class="menu_mobile">
             <div id="search">
-                <input type="search" v-model="keywords" name="" id="m_search" />
+                <input type="search" v-model="keywords" @keyup.enter="search()" name="" id="m_search" />
                 <img
                     style="width: 18px"
                     src="../assets/img/search.svg"
@@ -71,16 +67,31 @@
 </template>
 
 <script>
-import $ from "jquery";
-import suggest from "./music/Suggest";
+import $ from 'jquery'
+import suggest from './music/Suggest'
 export default {
     name: "menus",
     components: { suggest },
     data() {
         return {
-            keywords: "",
-            clears: "",
+            keywords: ''
         };
+    },
+    methods: {
+        search () {
+            this.$router.push({name: 'Search', params: {keywords: this.keywords}})
+            $(function () {
+                var nav = $("#nav");
+                var pc_search = $(".pc_search");
+                nav.children("a").removeAttr("style");
+                $("input[type=search]").val("");
+                pc_search.removeAttr("style");
+                $(".suggest").css({ display: "none" });
+                setTimeout(() => {
+                    $(".suggest").removeAttr("style");
+                }, 300);
+            })
+        },
     },
     watch: {
         keywords (keywords) {
@@ -142,7 +153,7 @@ $(function () {
         }
     });
     //PC端搜索控件
-    $(".search, .pc_search").on("click", function () {
+    $(".search, .pc_search").on("click", function (event) {
         event.stopPropagation();
         if (pc_search.css("opacity") == 1) {
             nav.children("a").removeAttr("style");
@@ -164,7 +175,7 @@ $(function () {
             bag.hide();
         }
     });
-    search.on("click", function () {
+    search.on("click", function (event) {
         event.stopPropagation();
     });
     $(document).on("click", function () {
@@ -336,7 +347,7 @@ input[type="search"] {
 .menu div {
     width: 100%;
     height: 2px;
-    background: #dadce0;
+    background: #000000f2;
     border-radius: 1px;
     transition: all 0.5s;
     position: inherit;
@@ -385,6 +396,7 @@ input[type="search"] {
 }
 .logo {
     width: 25px;
+    filter: invert(0) !important;
 }
 .logo:hover {
     animation: logo 3s ease-in-out;
@@ -403,10 +415,13 @@ input[type="search"] {
     align-items: center;
     height: 100%;
     padding: 0px 10px;
-    color: #fff;
-    font-weight: 300;
+    color: #000000f2;
+    font-weight: 400;
     outline: none;
     transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+#nav_link img{
+    filter: invert(1);
 }
 @media screen and (max-width: 1029.5px) {
     #bag {

@@ -32,6 +32,14 @@ export default {
             }))
         }
     },
+    beforeRouteUpdate (to, from, next) {
+        if (to.fullPath != from.fullPath) {
+            next()
+            this.keywords = this.$route.params.keywords
+            this.query = this.$route.params.keywords,
+            this.searchs()
+        }
+    },
     async activated() {
         var keywords = this.$route.params.keywords
         if (this.keywords != keywords) {

@@ -75,18 +75,38 @@ audio::-webkit-media-controls-time-remaining-display{
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        background: #1d1d1f;
+    .album_content a{
+        color: #fa233b !important;
     }
-    *{
-        color: #dadce0;
+    :root, #bag, .login{
+        background: #1d1d1f !important;
+    }
+    *, a{
+        color: #dadce0 !important;
     }
     .info a, .info a:nth-of-type(2){
         color: #dadce0 !important;
     }
-    .menu_bar, .menu_bars, .open span{
+    #nav_link img{
+        filter: invert(0);
+    }
+    .menu div{
         background: #dadce0;
-        background-color: #dadce0 !important;
+    }
+    .open_list svg{
+        fill: #dadce0;
+    }
+    .nav, .audioplayer, .play_list{
+        background: hsl(0deg 0% 18% / 88%);
+        backdrop-filter: saturate(50%) blur(20px);
+        -webkit-backdrop-filter: saturate(50%) blur(20px);
+        box-sizing: border-box;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+    }
+    .audioplayer{
+        border-top: 1px solid rgba(255, 255, 255, 0.24);
+        border-bottom: none;
+        bottom: -1px;
     }
 }
 

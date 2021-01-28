@@ -4,6 +4,12 @@ import Home from '@/views/Home.vue'
 
 Vue.use(VueRouter)
 
+const originalPush = VueRouter.prototype.push
+
+VueRouter.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch(err => err)
+}
+
 const Store = () => import('@/views/Store.vue')
 const News = () => import('@/views/News.vue')
 const Music = () => import('@/views/Music.vue')
@@ -118,7 +124,7 @@ const routes = [
 const router = new VueRouter({
     mode: 'history',
     routes,
-    scrollBehavior (to, from, savedPosition) {
+    scrollBehavior(to, from, savedPosition) {
         // ...
         if (savedPosition) {
             return savedPosition;

@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <div>Blessing Software</div>
+        
     </div>
 </template>
 

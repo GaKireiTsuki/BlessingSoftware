@@ -245,7 +245,7 @@ export default album
         }
         #album{
             display: block;
-            margin: 0;
+            margin-bottom: 40px;
         }
         .album{
             padding: 24px;

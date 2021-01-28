@@ -5,7 +5,7 @@ import store from './store'
 import api from './request/api/index'
 import VueWechatTitle from 'vue-wechat-title'
 import VueLazyload from 'vue-lazyload'
-import { Loading } from 'element-ui'
+import Message from './components/message/index'
 
 import './assets/css/index.css'
 import './assets/css/style.css'
@@ -14,8 +14,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.config.productionTip = false
 Vue.prototype.$api = api
+Vue.prototype.$message = Message.install
 Vue.use(VueWechatTitle)
-Vue.use(Loading)
 Vue.use(VueLazyload, {
     preLoad: 1,
     loading: require('./assets/img/NotFoundPhoto.svg'),
@@ -50,8 +50,6 @@ Vue.filter('Date',function(value){
     var day = date.getDate()
     return `${year}年${month}月${day}日`
 })
-
-
 
 new Vue({
     router,
