@@ -1,8 +1,13 @@
 <template>
-    <div class="audioplayer bmbl">
-        <img :src="img + '?param=50y50'" alt="" />
-        <img :src="img + '?param=1000y1000'" alt="" />
-        <audio controls :src="url"></audio>
+    <div class="audioplayer bmbl" v-show="songID !== ''">
+        <div class="song_info">
+            <img v-lazy="img + '?param=44y44'" alt="" />
+            <div id="song_info">
+                <span class="info" v-show="url !== ''">{{songName}}</span>
+                <span class="info" v-show="url !== ''">{{artistName}} — {{albumName}}</span>
+                <audio controls :src="url" v-show="url !== ''"></audio>
+            </div>
+        </div>
         <div class="open_list">
             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill-rule="evenodd"
                 stroke-linejoin="round" stroke-miterlimit="2" clip-rule="evenodd" version="1.1" viewBox="0 0 18 18"
@@ -22,8 +27,11 @@
         name: "audioplayer",
         data() {
             return {
-                url: "",
-                img: "",
+                url: '',
+                img: '',
+                artistName: '',
+                songName: '',
+                albumName: ''
             };
         },
         computed: {
@@ -51,6 +59,9 @@
                         axios.all([this.$api.music.musicinfo(songID)])
                         .then(res => {
                             that.img = res[0].songs[0].al.picUrl
+                            that.songName = res[0].songs[0].name
+                            that.artistName = res[0].songs[0].ar[0].name
+                            that.albumName = res[0].songs[0].al.name
                         })
 
                         setTimeout(() => {
@@ -59,48 +70,45 @@
                     }
                 });
             },
-        },
-        async created() {
-            var that = this;
-            axios
-                .all([
-                    this.$api.music.playmusic(this.songID),
-                    this.$api.music.musicinfo(this.songID),
-                ])
-                .then(
-                    axios.spread((res1, res2) => {
-                        that.url = res1.data[0].url;
-                        that.img = res2.songs[0].al.picUrl;
-                    })
-                );
-        },
+        }
     };
-    $(function () {
-        $(".audioplayer").click(function () {
-            if ($(window).width() < 484) {
-                $(".audioplayer audio").toggleClass("audioplayer_audio");
-                if ($(".audioplayer").hasClass("e")) {
-                    $(".audioplayer")
-                        .css({ height: "54px", background: "hsl(0deg 0% 100%)" })
-                        .removeClass("e");
-                    $("body").css({ overflow: "auto" });
-                    setTimeout(() => {
-                        $(".audioplayer img:nth-of-type(1)").show();
-                    }, 400);
-                    $(".audioplayer img:nth-of-type(2)").hide();
-                } else {
-                    $(".audioplayer")
-                        .css({ height: "calc(100% - 44px)", background: "#fff" })
-                        .addClass("e");
-                    $("body").css({ overflow: "hidden" });
-                    $(".audioplayer img:nth-of-type(1)").hide();
-                    $(".audioplayer img:nth-of-type(2)").show();
-                }
-            }
-        });
-    });
 </script>
 <style>
+    .song_info{
+        display: flex;
+        height: 44px;
+        width: 100%;
+        max-width: 600px;
+        padding: 0 5px;
+        box-sizing: border-box;
+    }
+    #song_info{
+        border: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        width: 100%;
+        display: grid;
+        grid-template-rows: 14px 14px 13px;
+        background: #fff;
+    }
+    #song_info span{
+        font-size: 12px;
+        color: #000000f2;
+        text-align: center;
+    }
+    #song_info span:nth-of-type(2){
+        color: #3c3c4380;
+    }
+    .song_info audio{
+        height: 100%;
+        border-left: none;
+        background: #fff;
+        width: 100%;
+    }
+    .song_info img{
+        width: 44px;
+        height: 44px;
+        filter: invert(0.1);
+    }
     .audioplayer {
         position: fixed;
         bottom: 0;
@@ -108,16 +116,12 @@
         height: 54px;
         display: flex;
         justify-content: center;
+        align-items: center;
         border-top: 1px solid rgba(0, 0, 0, 0.16);
         transition: all 0.4s ease-in-out;
         z-index: 2;
-    }
-
-    .audioplayer img:nth-of-type(1) {
-        padding: 4px;
-        border-radius: 8px;
-        height: 100%;
-        box-sizing: border-box;
+        background: hsl(0deg 0% 100% / 88%) !important;
+        backdrop-filter: saturate(50%) blur(20px) !important;
     }
 
     .audioplayer img:nth-of-type(2) {
