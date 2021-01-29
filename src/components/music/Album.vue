@@ -86,8 +86,9 @@ export default album
         height: 100%;
         display: inline-flex;
         align-items: center;
-        margin-right: 8px;
         cursor: pointer;
+        position: absolute;
+        left: 0;
     }
     .add_play_list svg{
         width: 32px;
@@ -176,6 +177,7 @@ export default album
         text-align: end;
         font-size: 12px;
         display: flex;
+        position: relative;
         justify-content: flex-end;
         color: #3c3c4399;
     }
@@ -217,6 +219,9 @@ export default album
     }
     .album_song_list:focus span:nth-of-type(3) svg{
         fill: #fff;
+    }
+    .album_song_list:focus span:nth-of-type(3){
+        color: #DD1F34;
     }
     .album_song_list span{
         box-shadow: 0px -1px #00000026;

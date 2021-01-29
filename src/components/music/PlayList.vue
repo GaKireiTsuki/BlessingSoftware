@@ -1,6 +1,6 @@
 <template>
     <div class="play_list bmbl">
-        <h3>待播清单</h3>
+        <h3 v-show="playList && playList.length>0">待播清单</h3>
         <div id="play_list" v-for="item in playList" :key="item.id" tabindex="1" outline=0>
             <img @click="play(item.id)" v-lazy="item.al.picUrl + '?param=40y40'" :alt="item.name" :title="item.name">
             <div class="play_list_name">
@@ -16,7 +16,8 @@
                     </div>
                 </div>
             </div>
-        <button @click="clear()">清除</button>
+        <button v-show="playList && playList.length>0" @click="clear()">清除</button>
+        <p class="typography_label" v-show="playList && playList.length<=0">无待播歌曲。</p>
     </div>
 </template>
 <script>
@@ -53,6 +54,14 @@ $(function () {
 });
 </script>
 <style>
+    .typography_label{
+        height: 100%;
+        display: flex;
+        place-items: center;
+        place-content: center;
+        color: #000000f2;
+        font-size: 14px;
+    }
     .more:focus .more_list{
         display: block;
     }
