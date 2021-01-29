@@ -22,6 +22,12 @@ export default new Vuex.Store({
         add (state, songs) {
             state.playList.push(songs)
         },
+        removesongs (state, id) { //移除相应的歌曲
+            const i = state.playList.findIndex(x => x.id === id)
+            if (i !== -1) {
+                state.playList.splice(i, 1)
+            }
+        },
         clear (state, clear) {
             state.playList = clear
         }
@@ -39,7 +45,7 @@ export default new Vuex.Store({
                 music.commit('add', res.data.songs[0])
             })
         },
-        clear (music) { //传递歌曲ID
+        clear (music) { //清空待播列表
             music.commit('clear', [])
         },
     },

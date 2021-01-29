@@ -11,7 +11,7 @@
                 <div class="more" tabindex="0" outline=0>
                     <span></span>
                     <div class="more_list">
-                        <div class="clear">从“待播清单”中移除项目</div>
+                        <div class="clear" @click="removesongs(item.id)">从“待播清单”中移除项目</div>
                     </div>
                     </div>
                 </div>
@@ -30,6 +30,9 @@ export default {
     },
     methods: {
         ...mapActions(['play', 'add', 'clear']),
+        removesongs(id) {
+            this.$store.commit('removesongs', id)
+        }
     }
     
 }
