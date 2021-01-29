@@ -1,8 +1,8 @@
 <template>
     <div class="play_list bmbl">
         <h3>待播清单</h3>
-        <div id="play_list" v-for="item in playList" :key="item.name" tabindex="1" outline=0>
-            <img @click="play(item.id)" :src="item.al.picUrl + '?param=40y40'" :alt="item.name" :title="item.name">
+        <div id="play_list" v-for="item in playList" :key="item.id" tabindex="1" outline=0>
+            <img @click="play(item.id)" v-lazy="item.al.picUrl + '?param=40y40'" :alt="item.name" :title="item.name">
             <div class="play_list_name">
                 <div>
                     <span id="list_name">{{item.name}}</span>
@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </div>
-        <button @click="add()">清除</button>
+        <button @click="clear()">清除</button>
     </div>
 </template>
 <script>
@@ -28,8 +28,9 @@ export default {
         ...mapState(['playList'])
     },
     methods: {
-        ...mapActions(['play', 'add']),
+        ...mapActions(['play', 'add', 'clear']),
     }
+    
 }
 $(function () {
     $(".open_list").on("click", function (event) { 

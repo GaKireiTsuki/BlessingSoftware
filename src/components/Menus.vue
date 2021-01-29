@@ -21,9 +21,9 @@
                     alt=""
                 />
             </router-link>
-            <router-link to="/store" id="nav_link">STORE</router-link>
-            <router-link to="/news" id="nav_link">NEWS</router-link>
             <router-link to="/music" id="nav_link">MUSIC</router-link>
+            <router-link to="/artists" id="nav_link">ARTISTS</router-link>
+            <router-link to="/store" id="nav_link">STORE</router-link>
             <a href="javascript:;" id="nav_link" class="search">
                 <img
                     style="width: 18px"
@@ -58,9 +58,9 @@
             </div>
             <suggest></suggest>
             <div id="mobile_nav_link">
-                <router-link to="/store">STORE</router-link>
-                <router-link to="/news">NEWS</router-link>
                 <router-link to="/music">MUSIC</router-link>
+                <router-link to="/artists">ARTISTS</router-link>
+                <router-link to="/store">STORE</router-link>
             </div>
         </div>
     </div>

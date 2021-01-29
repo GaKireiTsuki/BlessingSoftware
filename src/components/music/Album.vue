@@ -2,7 +2,7 @@
     <div class="album">
         <div id="album">
             <div class="cover">
-                <img @click="add(songs)" v-lazy="picUrl + '?param=1000y1000'" :alt="name" :title="name">
+                <img v-lazy="picUrl + '?param=1000y1000'" :alt="name" :title="name">
             </div>
             <div class="album_content">
                 <div id="album_info">
@@ -23,7 +23,12 @@
                                 <router-link :to="{name: 'Artist', params: {id: items.id}}" v-for="items in item.ar" :key="items.name">{{items.name}}</router-link>
                             </div>
                         </span>
-                        <span>{{item.dt | Duration}}</span>
+                        <span>
+                            <div @click="add(item.id)" class="add_play_list">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="glyph-add" aria-hidden="true"><path d="M15.169 21.24v-4.423h-4.387a.824.824 0 01-.818-.813c0-.448.379-.821.818-.821h4.387V10.76c0-.44.38-.796.827-.796.447 0 .827.356.827.796v4.423h4.395c.447 0 .818.373.818.821a.82.82 0 01-.818.813h-4.395v4.423c0 .431-.38.796-.827.796-.447 0-.827-.365-.827-.796z"></path></svg>
+                            </div>
+                            {{item.dt | Duration}}
+                        </span>
                         <div style="width: 17.5px"></div>
                     </div>
                     <div class="album_song_list" style="height: 0.01px">
@@ -76,6 +81,19 @@ import album from './musicjs/album'
 export default album
 </script>
 <style>
+    .add_play_list{
+        width: 32px;
+        height: 100%;
+        display: inline-flex;
+        align-items: center;
+        margin-right: 8px;
+        cursor: pointer;
+    }
+    .add_play_list svg{
+        width: 32px;
+        height: 32px;
+        fill: #fa233b;
+    }
     #name_artist a{
         font-size: 12px;
         color: rgba(60,60,67,.6);
@@ -157,6 +175,8 @@ export default album
     .album_song_list span:nth-of-type(3){
         text-align: end;
         font-size: 12px;
+        display: flex;
+        justify-content: flex-end;
         color: #3c3c4399;
     }
     .album_song_list:hover{
@@ -193,6 +213,9 @@ export default album
         box-shadow: none;
     }
     .album_song_list:focus span:nth-of-type(1) svg{
+        fill: #fff;
+    }
+    .album_song_list:focus span:nth-of-type(3) svg{
         fill: #fff;
     }
     .album_song_list span{

@@ -11,7 +11,7 @@ VueRouter.prototype.push = function push(location) {
 }
 
 const Store = () => import('@/views/Store.vue')
-const News = () => import('@/views/News.vue')
+const Artists = () => import('@/views/Artists.vue')
 const Music = () => import('@/views/Music.vue')
 const Search = () => import('@/components/music/Search.vue')
 const MoreAlbum = () => import('@/components/music/more/MoreAlbum.vue')
@@ -49,11 +49,11 @@ const routes = [
     },
     //新闻
     {
-        path: '/news',
-        name: 'News',
-        component: News,
+        path: '/artists',
+        name: 'Artists',
+        component: Artists,
         meta: {
-            title: 'Blessing Software News'
+            title: 'Blessing Software Artists'
         }
     },
     //音乐
