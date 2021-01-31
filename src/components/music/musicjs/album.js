@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
     name: 'Album',
     data() {
@@ -16,6 +16,9 @@ export default {
             artistsname: '',
             mvs: []
         }
+    },
+    computed: {
+        ...mapState(["songID"]),
     },
     methods: {
         ...mapActions(['play', 'add']),

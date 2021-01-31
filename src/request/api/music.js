@@ -35,8 +35,8 @@ const music = {
     musicinfo (songID) { //获取封面/歌曲/信息
         return axios.post(`${base.music}/song/detail?ids=${songID}`)
     },
-    playmv (id) { //播放mv
-        return axios.post(`${base.music}/mv/url?id=${id}`)
+    playmv (id, r) { //播放mv
+        return axios.post(`${base.music}/mv/url?id=${id}&r=${r}`)
     },
     mvinfo (id) { //获取mv信息
         return axios.post(`${base.music}/mv/detail?mvid=${id}`)

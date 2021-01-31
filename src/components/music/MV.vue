@@ -7,6 +7,10 @@
             <div style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
                 <video :src="url" controls></video>
             </div>
+            <select v-model="r" name="" id="">
+                <option selected value="">Default</option>
+                <option v-for="(item, index) in sortBrs" :key="index.point" :value="item.br">{{item.br}}P</option>
+            </select>
         </div>
         <div class="mv_info">
             <div class="play_mv">
@@ -16,7 +20,7 @@
                 <img v-lazy="cover + '?param=700y400'" alt="">
             </div>
             <div class="artist_mv_info">
-                <p>{{name}}</p>
+                <p>{{name | Nbsp}}</p>
                 <p>
                     <router-link :to="{name: 'Artist', params: {id: item.id}}" v-for="item in artists" :key="item.names">{{item.name}}</router-link>
                 </p>
@@ -53,7 +57,21 @@ export default {
             publishTime: '',
             artistId: '',
             mvs: [],
+            brs: [],
+            r: '',
             artistName: '',
+        }
+    },
+    computed: {
+        sortBrs () {
+            return sortBrsKey(this.brs, 'point')
+            function sortBrsKey(array, key) {
+                return array.sort(function (a, b) {
+                    var x = a[key]
+                    var y = b[key]
+                    return ((x > y ) ? -1 : (x < y) ? 1 : 0)
+                })
+            }
         }
     },
     methods: {
@@ -67,6 +85,7 @@ export default {
                 that.publishTime = res.data.publishTime;
                 that.artistId = res.data.artistId;
                 that.artistName = res.data.artistName;
+                that.brs = res.data.brs;
                 this.$api.music.artistmv(this.artistId).then(res => {
                     that.mvs = res.mvs;
                 })
@@ -74,10 +93,18 @@ export default {
         },
         playermv () {
             var that = this;
-            axios.all([this.$api.music.playmv(this.id)])
+            axios.all([this.$api.music.playmv(this.id, this.r)])
             .then(axios.spread((res)=>{
                 that.url = res.data.url;
             }))
+        }
+    },
+    watch: {
+        r() {
+            this.playermv()
+                setTimeout(() => {
+                $('video').trigger('play');
+            }, 300);
         }
     },
     beforeRouteUpdate (to, from, next) {
@@ -113,6 +140,18 @@ $(function () {
 });
 </script>
 <style>
+    select{
+        border: none;
+        background: #ffffff00;
+        color: white;
+        outline: none;
+        position: fixed;
+        right: 44px;
+    }
+    select option{
+        background: #000 !important;
+        border: none;
+    }
     .close_player{
         top: 13.5px;
         left: 13.5px;
@@ -190,6 +229,7 @@ $(function () {
     .artist_mv_info p:nth-of-type(1){
         font-size: 24px;
         color: #000000f2;
+        white-space: pre-wrap;
     }
     .artist_mv_info p a{
         margin-top: 2px;

@@ -98,6 +98,7 @@ div[class $= '_layout']{
 .new_song{
     display: flex;
     padding: 7.5px 24px 7.5px 0;
+    position: relative;
     border-top: 1px solid rgba(0,0,0,.14901960784313725);
 }
 .new_song img{

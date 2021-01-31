@@ -53,6 +53,12 @@ export default new Vuex.Store({
         //
     },
     plugins: [
-        persistedState()
+        persistedState({
+            reducer (val) {
+                return {
+                    playList: val.playList
+                }
+            }
+        })
     ]
 })

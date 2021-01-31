@@ -10,7 +10,6 @@ import Message from './components/message/index'
 import './assets/css/index.css'
 import './assets/css/style.css'
 import './assets/css/fonts.css'
-import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.config.productionTip = false
 Vue.prototype.$api = api
@@ -21,7 +20,7 @@ Vue.use(VueLazyload, {
     loading: require('./assets/img/NotFoundPhoto.svg'),
     error: require('./assets/img/NotFoundPhoto.svg'),
     attempt: 3,
-    listenEvents: ['scroll', 'wheel', 'mousewheel', 'resize', 'animationend', 'transitionend', 'touchmove']
+    listenEvents: ['scroll', 'wheel', 'resize', 'animationend', 'transitionend', 'touchmove']
 })
 
 Vue.filter('Duration', function (value) {
@@ -49,6 +48,10 @@ Vue.filter('Date',function(value){
     var month = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1)
     var day = date.getDate()
     return `${year}年${month}月${day}日`
+})
+
+Vue.filter('Nbsp',function(value){
+    return value.replace(/\s/g, ' ')
 })
 
 new Vue({

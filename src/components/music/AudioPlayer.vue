@@ -1,5 +1,5 @@
 <template>
-    <div class="audioplayer bmbl" v-show="songID !== ''">
+    <div class="audioplayer bmbl">
         <div class="song_info">
             <img v-lazy="img + '?param=44y44'" alt="" />
             <div id="song_info">
