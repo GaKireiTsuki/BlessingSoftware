@@ -11,6 +11,7 @@ export default {
             subType: '',
             publishTime: '',
             artistname: [],
+            titlename: '',
             songs: [],
             hotAlbums: [],
             artistsname: '',
@@ -30,6 +31,7 @@ export default {
                 that.picUrl = res.album.picUrl;
                 that.name = res.album.name;
                 that.artistname = res.album.artists;
+                that.titlename = res.album.artists[0].name
                 that.size = res.album.size;
                 that.company = res.album.company;
                 that.songs = res.songs;

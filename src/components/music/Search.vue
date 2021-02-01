@@ -1,5 +1,5 @@
 <template>
-    <div class="search">
+    <div class="search" v-wechat-title="'BS Music Search - ' + query">
         <div class="search_title" v-show="artists && artists.length>0">
             <h2>艺人</h2>
         </div>
@@ -82,6 +82,9 @@ export default search
         width: 32px;
         height: 32px;
         fill: #fa233b;
+        opacity: 0;
+        transform: scale(0.7);
+        transition: all .2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     }
     .search{
         padding-top: 32px;

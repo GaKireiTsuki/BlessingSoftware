@@ -89,6 +89,7 @@
         display: grid;
         grid-template-rows: 14px 14px 13px;
         background: #fff;
+        border-left: none;
     }
     #song_info span{
         font-size: 12px;

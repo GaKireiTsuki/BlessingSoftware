@@ -25,10 +25,7 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        component: Home,
-        meta: {
-            title: 'Blessing Software'
-        }
+        component: Home
     },
     {
         path: '/index',
@@ -42,73 +39,49 @@ const routes = [
     {
         path: '/store',
         name: 'Store',
-        component: Store,
-        meta: {
-            title: 'Blessing Software Store'
-        }
+        component: Store
     },
     //新闻
     {
         path: '/artists',
         name: 'Artists',
-        component: Artists,
-        meta: {
-            title: 'Blessing Software Artists'
-        }
+        component: Artists
     },
     //音乐
     {
         path: '/music',
         name: 'Music',
-        component: Music,
-        meta: {
-            title: 'Blessing Software Music'
-        }
+        component: Music
     },
     //搜索
     {
         path: '/music/search/:keywords',
         name: 'Search',
-        component: Search,
-        meta: {
-            title: 'Blessing Software Search'
-        }
+        component: Search
     },
     //歌手详情
     {
         path: '/music/artist/:id',
         name: 'Artist',
-        component: Artist,
-        meta: {
-            title: 'Blessing Software Artist',
-        }
+        component: Artist
     },
     //MV
     {
         path: '/music/mv/:id',
         name: 'MV',
-        component: MV,
-        meta: {
-            title: 'Blessing Software MV',
-        }
+        component: MV
     },
     //更多专辑
     {
         path: '/music/more-album/:keywords',
         name: 'MoreAlbum',
-        component: MoreAlbum,
-        meta: {
-            title: 'Blessing Software MoreAlbum',
-        }
+        component: MoreAlbum
     },
     //专辑详情
     {
         path: '/music/album/:id',
         name: 'Album',
-        component: Album,
-        meta: {
-            title: 'Blessing Software Album',
-        }
+        component: Album
     },
     //错误页
     {

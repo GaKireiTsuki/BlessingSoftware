@@ -1,5 +1,5 @@
 <template>
-    <div class="artist">
+    <div class="artist" v-wechat-title="'BS Music - ' + name">
         <div class="artist_info">
             <img v-lazy="img1v1Url + '?param=190y190'" :alt="name" :title="name">
             <h1>{{name}}</h1>
@@ -118,6 +118,9 @@ export default {
         width: 32px;
         height: 32px;
         fill: #fa233b;
+        opacity: 0;
+        transform: scale(0.7);
+        transition: all .2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     }
     .artist{
         padding: 0px;

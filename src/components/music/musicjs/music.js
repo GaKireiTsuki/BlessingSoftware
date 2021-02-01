@@ -7,11 +7,11 @@ export default {
             ssize: 32,
             area: 'ALL',
             category: [
-                {text: 'ALL', value: 'ALL'},
-                {text: 'C-POP', value: 'ZH'},
-                {text: 'J-POP', value: 'JP'},
-                {text: 'EA-POP', value: 'EA'},
-                {text: 'K-POP', value: 'KR'}
+                {text: '全部', value: 'ALL'},
+                {text: '国语流行', value: 'ZH'},
+                {text: '日语流行', value: 'JP'},
+                {text: '欧美流行', value: 'EA'},
+                {text: '韩语流行', value: 'KR'}
             ],
             asize: 24,
             keywords: '',

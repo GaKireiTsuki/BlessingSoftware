@@ -1,5 +1,5 @@
 <template>
-    <div class="album">
+    <div class="album" v-wechat-title="'BS Music 上' + titlename + '的专辑' + '《' + name + '》'">
         <div id="album">
             <div class="cover">
                 <img v-lazy="picUrl + '?param=1000y1000'" :alt="name" :title="name">
