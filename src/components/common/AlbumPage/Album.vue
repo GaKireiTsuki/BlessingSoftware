@@ -86,19 +86,8 @@ import album from './album'
 export default album
 </script>
 <style>
-    .add_play_list{
-        width: 32px;
-        height: 100%;
-        display: inline-flex;
-        align-items: center;
-        cursor: pointer;
-        position: absolute;
+    .album_song_list span:nth-of-type(3) .add_play_list{
         left: 0;
-    }
-    .add_play_list svg{
-        width: 32px;
-        height: 32px;
-        fill: #fa233b;
     }
     #name_artist a{
         font-size: 12px;

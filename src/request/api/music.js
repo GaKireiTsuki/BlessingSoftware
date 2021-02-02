@@ -35,11 +35,18 @@ const music = {
     musicinfo (songID) { //获取封面/歌曲/信息
         return axios.post(`${base.music}/song/detail?ids=${songID}`)
     },
+    musiclyric (songID) { //获取封面/歌曲/信息
+        return axios.post(`${base.music}/lyric?id=${songID}`)
+    },
     playmv (id, r) { //播放mv
         return axios.post(`${base.music}/mv/url?id=${id}&r=${r}`)
     },
     mvinfo (id) { //获取mv信息
         return axios.post(`${base.music}/mv/detail?mvid=${id}`)
+    },
+
+    artistlist (area, type, name) { //获取艺术家列表
+        return axios.post(`${base.music}/artist/list?type=${type}&area=${area}&initial=${name}`)
     },
 
     albuminfo (id) { //获取专辑信息

@@ -7,6 +7,7 @@
                 <router-view v-wechat-title='$route.meta.title' class="content"></router-view>
             </keep-alive>
         </transition>
+        <lyric></lyric>
         <playlist></playlist>
         <audioplayer></audioplayer>
     </div>
@@ -16,9 +17,10 @@ import menus from '@/components/common/Menus/Menus'
 import audioplayer from '@/components/common/AudioPlayer/AudioPlayer'
 import playlist from '@/components/common/PlayList/PlayList'
 import login from '@/components/common/Login/Login'
+import lyric from '@/components/common/Lyric/Lyric'
 export default {
     name: 'app',
-    components: {menus, audioplayer, playlist, login},
+    components: {menus, audioplayer, playlist, login, lyric},
 }
 </script>
 <style>

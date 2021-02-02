@@ -21,7 +21,6 @@
     </div>
 </template>
 <script>
-import $ from 'jquery'
 import { mapState, mapActions } from 'vuex'
 export default {
     name: 'playlist',
@@ -34,27 +33,7 @@ export default {
             this.$store.commit('removesongs', id)
         }
     }
-    
 }
-$(function () {
-    $(".open_list").on("click", function (event) { 
-        event.stopPropagation();
-        var playlist = $(".play_list")
-        var openlist = $(".open_list")
-        if (playlist.is(":hidden")) {
-            playlist.show()
-            openlist.css({background: '#6c6c6c',})
-            openlist.children('svg').css({fill: '#fff'})
-        } else {
-            playlist.hide()
-            openlist.removeAttr('style')
-            openlist.children('svg').removeAttr('style')
-        }
-    });
-    $(".clear").focus(function () { 
-        $("#play_list").remove();
-    });
-});
 </script>
 <style>
     .typography_label{
@@ -160,9 +139,6 @@ $(function () {
         border-top: 1px solid #00000012;
         border-left: .5px solid #00000026;
         z-index: 2;
-    }
-    .play_list::-webkit-scrollbar{
-        display: none;
     }
     #play_list{
         display: grid;

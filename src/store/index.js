@@ -11,6 +11,7 @@ export default new Vuex.Store({
         songID: '',
         keywords: '',
         playList: [],
+        lyric: ''
     },
     mutations: {
         suggest (state, keywords) {
@@ -30,6 +31,9 @@ export default new Vuex.Store({
         },
         clear (state, clear) {
             state.playList = clear
+        },
+        lyric (state, lyric) {
+            state.lyric = lyric
         }
     },
     actions: {

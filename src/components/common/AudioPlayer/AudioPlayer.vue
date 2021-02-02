@@ -17,6 +17,9 @@
                 </path>
             </svg>
         </div>
+        <div class="open_lyric">
+            词
+        </div>
     </div>
 </template>
 <script>
@@ -56,14 +59,24 @@
                     if (res.data[0].url !== null) {
                         that.url = res.data[0].url
 
-                        axios.all([this.$api.music.musicinfo(songID)])
-                        .then(res => {
-                            that.img = res[0].songs[0].al.picUrl
-                            that.songName = res[0].songs[0].name
-                            that.artistName = res[0].songs[0].ar[0].name
-                            that.albumName = res[0].songs[0].al.name
-                        })
-
+                        axios.all([
+                            this.$api.music.musicinfo(songID), 
+                            this.$api.music.musiclyric(songID)
+                        ])
+                        .then(axios.spread((res1, res2)=>{
+                            that.img = res1.songs[0].al.picUrl
+                            that.songName = res1.songs[0].name
+                            that.artistName = res1.songs[0].ar[0].name
+                            that.albumName = res1.songs[0].al.name
+                            switch (res2.sgc) {
+                                case true:
+                                    this.$store.commit('lyric', '')
+                                    break;
+                                case false:
+                                    this.$store.commit('lyric', res2.lrc.lyric)
+                                    break;
+                            }
+                        }))
                         setTimeout(() => {
                             $("audio").trigger("play");
                         }, 400)
@@ -72,6 +85,41 @@
             },
         }
     };
+$(function () {
+    var playlist = $(".play_list")
+    var openlist = $(".open_list")
+    var lyric = $(".lyric")
+    var openlyric = $(".open_lyric")
+    openlyric.on("click", function (e) { 
+        e.stopPropagation()
+        if (lyric.is(":hidden")) {
+            lyric.show()
+            openlyric.css({background: '#6c6c6c', color: '#fff'})
+            if (playlist.is(":visible")) {
+                openlist.click()
+            }
+        } else {
+            lyric.hide()
+            openlyric.removeAttr('style')
+        }
+    });
+
+    openlist.on("click", function (e) { 
+        e.stopPropagation()
+        if (playlist.is(":hidden")) {
+            playlist.show()
+            openlist.css({background: '#6c6c6c',})
+            openlist.children('svg').css({fill: '#fff'})
+            if (lyric.is(":visible")) {
+                openlyric.click()
+            }
+        } else {
+            playlist.hide()
+            openlist.removeAttr('style')
+            openlist.children('svg').removeAttr('style')
+        }
+    });
+});
 </script>
 <style>
     .song_info{

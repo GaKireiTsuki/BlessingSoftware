@@ -1,6 +1,19 @@
 .mv img[lazy="loading"]{
     height: 83.01px;
 }
+.add_play_list{
+    width: 32px;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+}
+.add_play_list svg{
+    width: 32px;
+    height: 32px;
+    fill: #fa233b;
+}
 .radio{
     display: none;
 }
@@ -176,7 +189,7 @@ div[class $= '_layout']{
     opacity: 0;
     transform: scale(0.7);
 }
-.category::-webkit-scrollbar{
+.category::-webkit-scrollbar, .lyric::-webkit-scrollbar, .play_list::-webkit-scrollbar{
     display: none;
 }
 @media screen and (max-width: 484px){

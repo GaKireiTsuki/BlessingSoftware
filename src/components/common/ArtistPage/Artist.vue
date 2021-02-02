@@ -104,20 +104,11 @@ export default {
 }
 </script>
 <style>
-    .add_play_list{
-        width: 32px;
-        height: 100%;
-        display: inline-flex;
-        align-items: center;
-        cursor: pointer;
-        position: absolute;
+    .new_song .add_play_list{
         top: 0;
         right: 0;
     }
-    .add_play_list svg{
-        width: 32px;
-        height: 32px;
-        fill: #fa233b;
+    .new_song svg{
         opacity: 0;
         transform: scale(0.7);
         transition: all .2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
