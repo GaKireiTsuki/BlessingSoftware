@@ -116,8 +116,8 @@ $(function () {
         height: 25px;
         width: 25px;
         z-index: 9999;
-        -webkit-mask-image: url("../../assets/img/more.png");
-        mask-image: url("../../assets/img/more.png");
+        -webkit-mask-image: url("../../../assets/img/more.png");
+        mask-image: url("../../../assets/img/more.png");
         -webkit-mask-repeatd: no-repeat;
         mask-repeat: no-repeat;
     }

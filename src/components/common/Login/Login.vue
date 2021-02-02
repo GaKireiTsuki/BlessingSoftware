@@ -4,12 +4,12 @@
             <div class="login">
                 <button @click="closetimer()" class="closes_login"></button>
                 <div class="login_content">
-                    <img src="../../assets/img/blessingsoftware-logo.svg" alt="">
+                    <img src="../../../assets/img/blessingsoftware-logo.svg" alt="">
                     <h1>使用 Music ID 登录</h1>
                     <p>您将登录 Blessing Software Music</p>
                     <div class="ap">
-                        <img id="next" src="../../assets/img/next.svg" alt="">
-                        <img @click="email()" id="nexts" src="../../assets/img/next.svg" alt="">
+                        <img id="next" src="../../../assets/img/next.svg" alt="">
+                        <img @click="email()" id="nexts" src="../../../assets/img/next.svg" alt="">
                         <input v-model="account" type="text" name="account" id="account">
                         <input @keyup.enter="email()" v-model="password" type="password" name="password" id="password">
                     </div>
@@ -313,8 +313,8 @@ $(function () {
         height: 18px;
         border: none;
         background-color: rgb(204, 204, 204);
-        mask-image: url('../../assets/img/close.svg');
-        -webkit-mask-image: url('../../assets/img/close.svg');
+        mask-image: url('../../../assets/img/close.svg');
+        -webkit-mask-image: url('../../../assets/img/close.svg');
         position: fixed;
         margin: 22px 22px 0px;
         outline: none;

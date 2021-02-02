@@ -4,7 +4,7 @@
             <div class="pc_input_search">
                 <div id="pc_input_search">
                     <input type="search" v-model="keywords" @keyup.enter="search()" name="" id="" />
-                    <img style="width: 18px" src="../assets/img/search_white.svg" alt="" />
+                    <img style="width: 18px" src="../../../assets/img/search_white.svg" alt="" />
                     <suggest></suggest>
                 </div>
             </div>
@@ -17,7 +17,7 @@
             <router-link to="/" id="nav_link" class="logo_mobile">
                 <img
                     class="logo"
-                    src="../assets/img/blessingsoftware-logo.svg"
+                    src="../../../assets/img/blessingsoftware-logo.svg"
                     alt=""
                 />
             </router-link>
@@ -27,12 +27,12 @@
             <a href="javascript:;" id="nav_link" class="search">
                 <img
                     style="width: 18px"
-                    src="../assets/img/search_white.svg"
+                    src="../../../assets/img/search_white.svg"
                     alt=""
                 />
             </a>
             <a href="javascript:;" id="nav_link" class="bag">
-                <img style="width: 18px" src="../assets/img/bag.svg" alt="" />
+                <img style="width: 18px" src="../../../assets/img/bag.svg" alt="" />
                 <div id="bag">
                     <p>Your</p>
                     <div class="bag_menu">
@@ -51,7 +51,7 @@
                 <input type="search" v-model="keywords" @keyup.enter="search()" name="" id="m_search" />
                 <img
                     style="width: 18px"
-                    src="../assets/img/search.svg"
+                    src="../../../assets/img/search.svg"
                     alt=""
                 />
                 <span id="cancel">Cancel</span>
@@ -68,7 +68,7 @@
 
 <script>
 import $ from 'jquery'
-import suggest from './music/Suggest'
+import suggest from './Suggest'
 export default {
     name: "menus",
     components: { suggest },

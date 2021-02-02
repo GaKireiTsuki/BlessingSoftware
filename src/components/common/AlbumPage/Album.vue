@@ -82,7 +82,7 @@
     </div>
 </template>
 <script>
-import album from './musicjs/album'
+import album from './album'
 export default album
 </script>
 <style>

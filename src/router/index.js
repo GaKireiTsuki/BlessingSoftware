@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/views/Home.vue'
+import Home from '@/views/HomePage/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -10,15 +10,16 @@ VueRouter.prototype.push = function push(location) {
     return originalPush.call(this, location).catch(err => err)
 }
 
-const Store = () => import('@/views/Store.vue')
-const Artists = () => import('@/views/Artists.vue')
-const Music = () => import('@/views/Music.vue')
-const Search = () => import('@/components/music/Search.vue')
-const MoreAlbum = () => import('@/components/music/more/MoreAlbum.vue')
-const MV = () => import('@/components/music/MV.vue')
-const Album = () => import('@/components/music/Album.vue')
-const Artist = () => import('@/components/music/Artist.vue')
-const Err = () => import('@/views/Err.vue')
+const Store = () => import('@/views/StorePage/Store.vue')
+const Artists = () => import('@/views/ArtistsPage/Artists.vue')
+const Music = () => import('@/views/MusicPage/Music.vue')
+const Err = () => import('@/views/ErrPage/Err.vue')
+
+const Search = () => import('@/components/common/SearchPage/Search.vue')
+const MoreAlbum = () => import('@/components/common/SearchPage/more/MoreAlbum.vue')
+const MV = () => import('@/components/common/MVPage/MV.vue')
+const Album = () => import('@/components/common/AlbumPage/Album.vue')
+const Artist = () => import('@/components/common/ArtistPage/Artist.vue')
 
 const routes = [
     //首页

@@ -12,10 +12,10 @@
     </div>
 </template>
 <script>
-import menus from '@/components/Menus'
-import audioplayer from '@/components/music/AudioPlayer'
-import playlist from '@/components/music/PlayList'
-import login from '@/components/music/Login'
+import menus from '@/components/common/Menus/Menus'
+import audioplayer from '@/components/common/AudioPlayer/AudioPlayer'
+import playlist from '@/components/common/PlayList/PlayList'
+import login from '@/components/common/Login/Login'
 export default {
     name: 'app',
     components: {menus, audioplayer, playlist, login},

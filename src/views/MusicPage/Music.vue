@@ -48,7 +48,7 @@
     </div>
 </template>
 <script>
-import music from '../components/music/musicjs/music'
+import music from './music'
 export default music
 </script>
 <style>
