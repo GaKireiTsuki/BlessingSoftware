@@ -26,7 +26,8 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        component: Home
+        component: Home,
+        redirect: '/music'
     },
     {
         path: '/index',
@@ -88,10 +89,7 @@ const routes = [
     {
         path: '/*',
         name: 'Err',
-        component: Err,
-        meta: {
-            title: 'Not Found Page - Blessing Software'
-        }
+        component: Err
     },
 ]
 

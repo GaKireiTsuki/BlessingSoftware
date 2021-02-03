@@ -3,84 +3,83 @@ import axios from '@/request/http'
 /* import qs from 'qs' */
 
 const music = {
-    suggest (keywords) {
+    suggest(keywords) {
         return axios.post(`${base.music}/search/suggest?keywords=${keywords}`)
     },
-    searchartist (keywords) { //搜索艺术家
+    searchartist(keywords) { //搜索艺术家
         return axios.post(`${base.music}/search?keywords=${keywords}&limit=2&type=100`)
     },
-    searchalbum (keywords, asize) { //搜索专辑
+    searchalbum(keywords, asize) { //搜索专辑
         return axios.post(`${base.music}/search?keywords=${keywords}&limit=${asize}&type=10`)
     },
-    searchsong (keywords, ssize) { //搜索歌曲
+    searchsong(keywords, ssize) { //搜索歌曲
         return axios.post(`${base.music}/search?keywords=${keywords}&limit=${ssize}&type=1`)
     },
-    searchmv (keywords, msize) { //搜索MV
+    searchmv(keywords, msize) { //搜索MV
         return axios.post(`${base.music}/search?keywords=${keywords}&limit=${msize}&type=1004`)
     },
 
-    banner () {
+    banner() {
         return axios.post(`${base.music}/banner`)
     },
-    newsong (ssize) { //最新歌曲
+    newsong(ssize) { //最新歌曲
         return axios.post(`${base.music}/personalized/newsong?&limit=${ssize}`)
     },
-    newalbum (area, asize) { //最新专辑
+    newalbum(area, asize) { //最新专辑
         return axios.post(`${base.music}/album/new?area=${area}&limit=${asize}`)
     },
 
-    playmusic (songID) { //播放音乐
+    playmusic(songID) { //播放音乐
         return axios.post(`${base.music}/song/url?id=${songID}`)
     },
-    musicinfo (songID) { //获取封面/歌曲/信息
+    musicinfo(songID) { //获取封面/歌曲/信息
         return axios.post(`${base.music}/song/detail?ids=${songID}`)
     },
-    musiclyric (songID) { //获取封面/歌曲/信息
+    musiclyric(songID) { //获取封面/歌曲/信息
         return axios.post(`${base.music}/lyric?id=${songID}`)
     },
-    playmv (id, r) { //播放mv
+    playmv(id, r) { //播放mv
         return axios.post(`${base.music}/mv/url?id=${id}&r=${r}`)
     },
-    mvinfo (id) { //获取mv信息
+    mvinfo(id) { //获取mv信息
         return axios.post(`${base.music}/mv/detail?mvid=${id}`)
     },
 
-    artistlist (area, type, name) { //获取艺术家列表
-        return axios.post(`${base.music}/artist/list?type=${type}&area=${area}&initial=${name}`)
+    artistlist(offset, area, type, name) { //获取艺术家列表
+        return axios.post(`${base.music}/artist/list?limit=24&offset=${offset}&type=${type}&area=${area}&initial=${name}`)
     },
-
-    albuminfo (id) { //获取专辑信息
+    albuminfo(id) { //获取专辑信息
         return axios.post(`${base.music}/album?id=${id}`)
     },
-    artistsong (id) { //获取歌手单曲
+    artistsong(id) { //获取歌手单曲
         return axios.post(`${base.music}/artists?id=${id}`)
     },
-    artistalbum (id) { //获取歌手专辑
+    artistalbum(id) { //获取歌手专辑
         return axios.post(`${base.music}/artist/album?id=${id}`)
     },
-    artistmv (id) { //获取歌手MV
+    artistmv(id) { //获取歌手MV
         return axios.post(`${base.music}/artist/mv?id=${id}`)
     },
 
-    qrkey () { //获取二维码key
+    qrkey() { //获取二维码key
         return axios.post(`${base.music}/login/qr/key?timerstamp=${Date.now()}`)
     },
-    qrcreate (key) { //生成二维码
+    qrcreate(key) { //生成二维码
         return axios.post(`${base.music}/login/qr/create?key=${key}&qrimg=true&timerstamp=${Date.now()}`)
     },
-    checkstatus (key) { //轮询状态
+    checkstatus(key) { //轮询状态
         return axios.post(`${base.music}/login/qr/check?key=${key}&timerstamp=${Date.now()}`)
     },
-    loginstatus () { //登录状态
+    loginstatus() { //登录状态
         return axios.post(`${base.music}/login/status?timerstamp=${Date.now()}`)
     },
-    loginrefresh () { //刷新登录状态
+    loginrefresh() { //刷新登录状态
         return axios.post(`${base.music}/login/refresh?timerstamp=${Date.now()}`)
     },
-    account () { //账号信息
+    account() { //账号信息
         return axios.post(`${base.music}/user/account?timerstamp=${Date.now()}`)
     },
-    email (account, password) { //邮箱登录
+    email(account, password) { //邮箱登录
         return axios.post(`${base.music}/login?email=${account}&password=${password}&timerstamp=${Date.now()}`)
     }
 }

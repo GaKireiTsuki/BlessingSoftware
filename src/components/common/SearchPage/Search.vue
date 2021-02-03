@@ -5,7 +5,7 @@
         </div>
         <div id="search_artists" v-show="artists && artists.length>0">
             <div class="search_artists" v-for="item in artists" :key="item.id">
-                <router-link :to="{name: 'Artist', params: {id: item.id}}"><img :src="item.img1v1Url + '?param=120y120'" :alt="item.name" :title="item.name"></router-link>
+                <router-link :to="{name: 'Artist', params: {id: item.id}}"><img :src="item.img1v1Url + '?param=120y120'" :key="item.img1v1Url + '?param=120y120'" :alt="item.name" :title="item.name"></router-link>
                 <router-link :to="{name: 'Artist', params: {id: item.id}}">{{item.name}}</router-link>
             </div>
         </div>
@@ -15,7 +15,7 @@
         <div class="flex_layout" v-show="albums && albums.length>0">
             <div class="albums" v-for="item in albums" :key="item.id">
                 <router-link :to="{name: 'Album', params: {id: item.id}}">
-                    <img class="album_cover" v-lazy="item.picUrl + '?param=150y150'" :alt="item.name" :title="item.name">
+                    <img class="album_cover" v-lazy="item.picUrl + '?param=150y150'" :key="item.picUrl + '?param=150y150'" :alt="item.name" :title="item.name">
                 </router-link>
                 <div class="info">
                     <router-link :to="{name: 'Album', params: {id: item.id}}">{{item.name}}</router-link>
@@ -51,7 +51,7 @@
         <div class="flex_layout" v-show="mvs && mvs.length>0">
             <div class="albums mv" v-for="item in mvs" :key="item.id">
                 <router-link :to="{name: 'MV', params: {id: item.id}}">
-                    <img class="album_cover" v-lazy="item.cover + '?param=159y90'" :alt="item.name" :title="item.name">
+                    <img class="album_cover" v-lazy="item.cover + '?param=159y90'" :key="item.cover + '?param=159y90'" :alt="item.name" :title="item.name">
                 </router-link>
                 <div class="info">
                     <router-link :to="{name: 'MV', params: {id: item.id}}">{{item.name}}</router-link>
@@ -68,21 +68,11 @@ import search from './search'
 export default search
 </script>
 <style>
-    .add_play_list{
-        width: 32px;
-        height: 100%;
-        display: inline-flex;
-        align-items: center;
-        cursor: pointer;
-        position: absolute;
+    .new_song .add_play_list{
         top: 0;
         right: 0;
     }
-    .add_play_list svg{
-        width: 32px;
-        height: 32px;
-        fill: #fa233b;
-        opacity: 0;
+    .new_song svg{
         transform: scale(0.7);
         transition: all .2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     }

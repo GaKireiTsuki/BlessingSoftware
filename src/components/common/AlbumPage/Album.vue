@@ -2,7 +2,7 @@
     <div class="album" v-wechat-title="'BS Music 上' + titlename + '的专辑' + '《' + name + '》'">
         <div id="album">
             <div class="cover">
-                <img v-lazy="picUrl + '?param=1000y1000'" :alt="name" :title="name">
+                <img v-lazy="picUrl + '?param=1000y1000'" :key="picUrl + '?param=1000y1000'" :alt="name" :title="name">
             </div>
             <div class="album_content">
                 <div id="album_info">
@@ -57,7 +57,7 @@
         <div class="flex_layout" v-show="mvs && mvs.length>0">
             <div class="albums mv" v-for="item in mvs" :key="item.names">
                 <router-link :to="{name: 'MV', params: {id: item.id}}">
-                    <img class="album_cover" v-lazy="item.imgurl16v9 + '?param=159y90'" :alt="item.name" :title="item.name">
+                    <img class="album_cover" v-lazy="item.imgurl16v9 + '?param=159y90'" :key="item.imgurl16v9 + '?param=159y90'" :alt="item.name" :title="item.name">
                 </router-link>
                 <div class="info">
                     <router-link :to="{name: 'MV', params: {id: item.id}}">{{item.name}}</router-link>
@@ -71,7 +71,7 @@
         <div class="flex_layout">
             <div class="albums" v-for="item in hotAlbums" :key="item.names">
                 <router-link :to="{name: 'Album', params: {id: item.id}}">
-                    <img class="album_cover" v-lazy="item.picUrl + '?param=150y150'" :alt="item.name" :title="item.name">
+                    <img class="album_cover" v-lazy="item.picUrl + '?param=150y150'" :key="item.picUrl + '?param=150y150'" :alt="item.name" :title="item.name">
                 </router-link>
                 <div class="info">
                     <router-link :to="{name: 'Album', params: {id: item.id}}">{{item.name}}</router-link>

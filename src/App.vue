@@ -4,7 +4,7 @@
         <login></login>
         <transition name="slide">
             <keep-alive :max="8">
-                <router-view v-wechat-title='$route.meta.title' class="content"></router-view>
+                <router-view class="content"></router-view>
             </keep-alive>
         </transition>
         <lyric></lyric>

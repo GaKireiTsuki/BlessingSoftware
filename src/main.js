@@ -5,6 +5,7 @@ import store from './store'
 import api from './request/api/index'
 import VueWechatTitle from 'vue-wechat-title'
 import VueLazyload from 'vue-lazyload'
+import InfiniteLoading from 'vue-infinite-loading'
 import Message from './components/message/index'
 
 import './assets/css/index.css'
@@ -15,12 +16,23 @@ Vue.config.productionTip = false
 Vue.prototype.$api = api
 Vue.prototype.$message = Message.install
 Vue.use(VueWechatTitle)
+Vue.use(InfiniteLoading, {
+    props: {
+        spinner: 'circles',
+        distance: '10'
+    },
+    slots: {
+        noMore: 'No more message',
+        noResults: 'No results message',
+        error: 'Opps, something went wrong :('
+    },
+})
 Vue.use(VueLazyload, {
     preLoad: 1,
     loading: require('./assets/img/NotFoundPhoto.svg'),
     error: require('./assets/img/NotFoundPhoto.svg'),
     attempt: 3,
-    listenEvents: ['scroll', 'wheel', 'resize', 'animationend', 'transitionend', 'touchmove']
+    listenEvents: ['scroll', 'wheel', 'mousewheel', 'resize', 'animationend', 'transitionend']
 })
 
 Vue.filter('Duration', function (value) {

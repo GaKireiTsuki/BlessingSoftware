@@ -1,20 +1,20 @@
 <template>
-    <div id="Err">
+    <div id="Err" v-wechat-title="'Not Found Page - BS Music'">
         <p>Not Found Page</p>
     </div>
 </template>
 <script>
 /* import $ from "jquery"; */
 export default {
-    
+    name: 'err'
 };
 //错误页重定向至首页
-/* $(document).ready(function () {
+/* $(function () {
     setTimeout(() => {
-        alert("Not Found Page");
-        window.location.href = "/";
-    }, 200);
-}); */
+        alert("Not Found Page")
+        window.location.href = "/music"
+    }, 200)
+}) */
 </script>
 <style>
     #Err {

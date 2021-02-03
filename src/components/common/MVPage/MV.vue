@@ -17,7 +17,7 @@
                 <button @click="playermv()" class="open_play bmbl">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27" class="glyph"><path d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"></path></svg>
                 </button>
-                <img v-lazy="cover + '?param=700y400'" alt="">
+                <img v-lazy="cover + '?param=700y400'" :key="cover + '?param=700y400'" alt="">
             </div>
             <div class="artist_mv_info">
                 <p>{{name | Nbsp}}</p>
@@ -33,7 +33,7 @@
         <div class="flex_layout">
             <div class="albums mv" v-for="item in mvs" :key="item.names">
                 <router-link :to="{name: 'MV', params: {id: item.id}}">
-                    <img class="album_cover" v-lazy="item.imgurl16v9 + '?param=159y90'" :alt="item.name" :title="item.name">
+                    <img class="album_cover" v-lazy="item.imgurl16v9 + '?param=159y90'" :key="item.imgurl16v9 + '?param=159y90'" :alt="item.name" :title="item.name">
                 </router-link>
                 <div class="info">
                     <router-link :to="{name: 'MV', params: {id: item.id}}">{{item.name}}</router-link>
