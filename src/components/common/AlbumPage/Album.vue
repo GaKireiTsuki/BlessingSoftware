@@ -1,8 +1,11 @@
 <template>
     <div class="album" v-wechat-title="'BS Music 上' + titlename + '的专辑' + '《' + name + '》'">
         <div id="album">
-            <div class="cover">
-                <img @click="add(songs)" v-lazy="picUrl + '?param=1000y1000'" :key="picUrl + '?param=1000y1000'" :alt="name" :title="name">
+            <div class="cover play_cover">
+                <button @click="add(songs), play(songs[0].id)" class="play_button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27" class="glyph"><path d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"></path></svg>
+                </button>
+                <img v-lazy="picUrl + '?param=1000y1000'" :key="picUrl + '?param=1000y1000'" :alt="name" :title="name">
             </div>
             <div class="album_content">
                 <div id="album_info">
@@ -111,7 +114,6 @@ export default album
         line-height: 24.5px;
     }
     #album{
-        margin: 40px 0px;
         display: flex;
         grid-auto-flow: column;
     }
@@ -129,10 +131,6 @@ export default album
         height: 100%;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,.1), 0 10px 13px 0 rgba(0,0,0,.11);
         border-radius: 4px;
-    }
-    #album img:hover{
-        filter: brightness(80%);
-        transition: 0.1s ease-in;
     }
     .album_content{
         margin-left: 20px;
@@ -257,13 +255,17 @@ export default album
         font-size: 12px;
         color: #3c3c4399;
     }
+    .album{
+        margin-top: 40px;
+    }
     @media screen and (max-width: 484px) {
         #album .cover{
             padding: 16px;
             width: 100%;
             height: 100%;
             box-sizing: border-box;
-            position: unset;
+            position: relative;
+            top: 0;
         }
         #album{
             display: block;
@@ -271,6 +273,7 @@ export default album
         }
         .album{
             padding: 24px;
+            margin-top: 0;
             box-sizing: border-box;
         }
         .album_content{

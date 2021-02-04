@@ -13,8 +13,8 @@
             </select>
         </div>
         <div class="mv_info">
-            <div class="play_mv">
-                <button @click="playermv()" class="open_play bmbl">
+            <div class="play_mv play_cover">
+                <button @click="playermv()" class="open_play play_button">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27" class="glyph"><path d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"></path></svg>
                 </button>
                 <img v-lazy="cover + '?param=700y400'" :key="cover + '?param=700y400'" alt="">
@@ -185,42 +185,10 @@ $(function () {
         column-gap: 20px;
         padding: 40px 0 30px 0;
     }
-    .play_mv{
-        position: relative;
-        display: grid;
-        place-items: center;
-    }
-    .open_play{
-        width: 36px;
-        height: 36px;
-        border: none;
-        position: absolute;
-        border-radius: 23px;
-        background: hsl(0deg 0% 100% / 0%);
-        backdrop-filter: blur(5px);
-        z-index: 1;
-        transition: all 0.1s ease-in;
-        opacity: 0;
-        outline: none;
-    }
-    .open_play svg{
-        fill: #fff;
-    }
     .play_mv img{
         width: 100%;
         border-radius: 4px;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,.1), 0 10px 13px 0 rgba(0,0,0,.11);
-        transition: all 0.1s ease-in;
-    }
-    .play_mv:hover img{
-        filter: brightness(80%);
-    }
-    .play_mv:hover .open_play{
-        opacity: 1;
-    }
-    .open_play:hover{
-        cursor: pointer;
-        background: #fa233b;
     }
     .artist_mv_info{
         display: grid;
