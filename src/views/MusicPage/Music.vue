@@ -21,6 +21,9 @@
                         <router-link to="">{{item.name}}</router-link>
                         <router-link :to="{name: 'Artist', params: {id: item.song.artists[0].id}}">{{item.song.artists[0].name}}</router-link>
                     </div>
+                    <div @click="add(item)" class="add_play_list">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="glyph-add" aria-hidden="true"><path d="M15.169 21.24v-4.423h-4.387a.824.824 0 01-.818-.813c0-.448.379-.821.818-.821h4.387V10.76c0-.44.38-.796.827-.796.447 0 .827.356.827.796v4.423h4.395c.447 0 .818.373.818.821a.82.82 0 01-.818.813h-4.395v4.423c0 .431-.38.796-.827.796-.447 0-.827-.365-.827-.796z"></path></svg>
+                    </div>
                 </div>
             </div>
         </div>
@@ -52,6 +55,15 @@ import music from './music'
 export default music
 </script>
 <style>
+    .new_song .add_play_list{
+        top: 0;
+        right: 0;
+    }
+    .new_song svg{
+        opacity: 0;
+        transform: scale(0.7);
+        transition: all .2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
     #banner img{
         width: 100%;
         border-radius: 4px;

@@ -22,7 +22,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['play']),
+        ...mapActions(['play', 'add']),
     },
     watch: {
         area () {

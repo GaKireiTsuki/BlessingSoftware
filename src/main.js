@@ -29,8 +29,8 @@ Vue.use(InfiniteLoading, {
 })
 Vue.use(VueLazyload, {
     preLoad: 1,
-    loading: require('./assets/img/NotFoundPhoto.svg'),
-    error: require('./assets/img/NotFoundPhoto.svg'),
+    loading: require('./assets/img/loading.svg'),
+    error: require('./assets/img/error.svg'),
     attempt: 3,
     listenEvents: ['scroll', 'wheel', 'mousewheel', 'resize', 'animationend', 'transitionend']
 })

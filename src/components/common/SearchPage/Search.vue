@@ -29,9 +29,9 @@
             <h2>歌曲</h2>
         </div>
         <div class="helf_layout" v-show="songs && songs.length>0">
-            <div class="new_song" v-for="item in songs" :key="item.id">
+            <div class="new_song" v-for="(item,index) in songs" :key="index">
                 <div class="play_music">
-                    <img src="../../../assets/img/NotFoundPhoto.svg">
+                    <img v-lazy="'?param=50y50'" :key="'?param=50y50'">
                     <svg @click="play(item.id)" class="play_button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27"><path d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"></path></svg>
                 </div>
                 <div class="info">
@@ -40,7 +40,7 @@
                         <router-link :to="{name: 'Artist', params: {id: items.id}}" v-for="items in item.artists" :key="items.name">{{items.name}}</router-link>
                     </span>
                 </div>
-                <div @click="add(item.id)" class="add_play_list">
+                <div @click="add(item)" class="add_play_list">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="glyph-add" aria-hidden="true"><path d="M15.169 21.24v-4.423h-4.387a.824.824 0 01-.818-.813c0-.448.379-.821.818-.821h4.387V10.76c0-.44.38-.796.827-.796.447 0 .827.356.827.796v4.423h4.395c.447 0 .818.373.818.821a.82.82 0 01-.818.813h-4.395v4.423c0 .431-.38.796-.827.796-.447 0-.827-.365-.827-.796z"></path></svg>
                 </div>
             </div>
@@ -73,6 +73,7 @@ export default search
         right: 0;
     }
     .new_song svg{
+        opacity: 0;
         transform: scale(0.7);
         transition: all .2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     }
