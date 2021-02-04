@@ -116,6 +116,7 @@ export default album
     #album{
         display: flex;
         grid-auto-flow: column;
+        margin-bottom: 40px;
     }
     #album .search_title{
         padding-left: 0px;
@@ -244,21 +245,20 @@ export default album
     }
     .album_info span{
         display: block;
-        color: #3c3c434d;
-        font-size: 11px;
+        color: #3c3c4399;
+        font-size: 12px;
         line-height: 1.18182;
         font-weight: 500;
         letter-spacing: .006em;
         margin-bottom: 3px;
     }
-    .album_info span:nth-of-type(1){
-        font-size: 12px;
-        color: #3c3c4399;
-    }
     .album{
         margin-top: 40px;
     }
     @media screen and (max-width: 484px) {
+        #album_info{
+            padding: 0;
+        }
         #album .cover{
             padding: 16px;
             width: 100%;
