@@ -114,10 +114,10 @@ export default {
         justify-content: center;
         box-sizing: border-box;
         border-radius: 4px;
-        position: absolute;
-        right: 12px;
-        bottom: 12px;
         cursor: pointer;
+        border: none;
+        background: none;
+        outline: none;
     }
     .open_list svg{
         fill: #3c3c4399;

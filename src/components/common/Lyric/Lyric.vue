@@ -46,9 +46,9 @@ export default {
         justify-content: center;
         box-sizing: border-box;
         border-radius: 4px;
-        position: absolute;
-        right: 48px;
-        bottom: 12px;
         cursor: pointer;
+        border: none;
+        background: none;
+        outline: none;
     }
 </style>

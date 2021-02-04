@@ -227,6 +227,9 @@ div[class $= '_layout']{
     display: none;
 }
 @media screen and (max-width: 484px){
+    .controls, .controls_container{
+        display: none;
+    }
     .category{
         width: -webkit-fill-available;
         display: grid;
