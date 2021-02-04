@@ -169,6 +169,11 @@
                 }
             } else {
                 audioplayer.removeAttr("style")
+                playlist.hide()
+                openlist.removeAttr('style')
+                openlist.children('svg').removeAttr('style')
+                lyric.hide()
+                openlyric.removeAttr('style')
                 setTimeout(() => {
                     song_info.removeAttr("style")
                 }, 400)
@@ -179,6 +184,12 @@
             }
         })
         $(window).on("resize", function () {
+            audioplayer.removeAttr("style")
+            playlist.hide()
+            openlist.removeAttr('style')
+            openlist.children('svg').removeAttr('style')
+            lyric.hide()
+            openlyric.removeAttr('style')
             if ($(window).width() > 484) {
                 audioplayer.removeAttr("style")
                 setTimeout(() => {

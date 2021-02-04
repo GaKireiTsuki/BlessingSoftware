@@ -253,9 +253,10 @@ div[class $= '_layout']{
     .grid_layout{
         grid-template-columns: repeat(2,1fr);
     }
-    .play_list{
+    .play_list, .lyric{
         width: 100vw;
-        height: calc(100% - 97px);
+        height: calc(100% - 162px);
+        bottom: 118px;
     }
     .open_list{
         bottom: 66px;
