@@ -13,7 +13,7 @@ export default {
         };
     },
     computed: {
-        ...mapState(["songID"]),
+        ...mapState(["songID"])
     },
     watch: {
         songID(songID) {
@@ -57,7 +57,7 @@ export default {
                     }, 400)
                 }
             });
-        },
+        }
     }
 }
 $(function () {
