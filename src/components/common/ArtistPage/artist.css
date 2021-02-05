@@ -1,0 +1,42 @@
+.new_song .add_play_list{
+    top: 0;
+    right: 0;
+}
+.new_song svg{
+    opacity: 0;
+    transform: scale(0.7);
+    transition: all .2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+.artist{
+    padding: 0px;
+}
+.artist .helf_layout{
+    grid-template-rows: repeat(3,1fr);
+    gap: 0px 20px;
+}
+.artist_info{
+    position: relative;
+    padding-top: 80px;
+    box-sizing: border-box;
+    height: 386px;
+    background: linear-gradient(180deg,#fff,#f3f3f3)
+}
+.artist_info img{
+    width: 190px;
+    border-radius: 190px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.1);
+    display: block;
+    margin: auto;
+}
+.artist_info h1{
+    position: absolute;
+    bottom: 0;
+    padding: 0 40px 22px;
+    line-height: 39px;
+    width: -webkit-fill-available;
+}
+@media screen and (max-width: 980px) {
+    .artist div[class $= '_layout'], div[class $= '_title']{
+        padding-left: 20px;
+    }
+}
