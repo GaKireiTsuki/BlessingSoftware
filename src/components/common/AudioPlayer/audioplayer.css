@@ -13,6 +13,9 @@
         width: 30px;
         height: 22px;
     }
+    .pause_icon{
+        display: none;
+    }
     button[class $= '_song']{
         background: none;
         border: none;
