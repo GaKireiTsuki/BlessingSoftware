@@ -318,6 +318,7 @@ $(function () {
         position: fixed;
         margin: 22px 22px 0px;
         outline: none;
+        z-index: 999;
     }
     .close_login{
         position: absolute;

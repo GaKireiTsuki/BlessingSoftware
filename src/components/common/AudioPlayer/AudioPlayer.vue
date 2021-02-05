@@ -160,43 +160,46 @@
             }
         });
         audioplayer.on("click", function () {
-            if (controls.is(':hidden')) {
-                if ($(window).width() < 484) {
+            if ($(window).width() < 484) {
+                if (controls.is(':hidden')) {
                     controls.css({position: 'relative', top: '21px'}).show()
                     controls_container.css({display: 'flex', position: 'relative', top: '26px'})
                     audioplayer.css({height: '118px'})
                     song_info.css({position: 'absolute', top: '-1px', padding: '0'})
+                } else {
+                    if (lyric.is(":visible")) {
+                        openlyric.click()
+                    } if (playlist.is(":visible")) {
+                        openlist.click()
+                    }
+                    audioplayer.removeAttr("style")
+                    setTimeout(() => {
+                        song_info.removeAttr("style")
+                    }, 400)
+                    setTimeout(() => {
+                        controls.hide().removeAttr("style")
+                        controls_container.hide().removeAttr("style")
+                    }, 300)
                 }
-            } else {
-                audioplayer.removeAttr("style")
-                playlist.hide()
-                openlist.removeAttr('style')
-                openlist.children('svg').removeAttr('style')
-                lyric.hide()
-                openlyric.removeAttr('style')
-                setTimeout(() => {
-                    song_info.removeAttr("style")
-                }, 400)
-                setTimeout(() => {
-                    controls.hide().removeAttr("style")
-                    controls_container.hide().removeAttr("style")
-                }, 300)
             }
         })
         $(window).on("resize", function () {
-            audioplayer.removeAttr("style")
-            playlist.hide()
-            openlist.removeAttr('style')
-            openlist.children('svg').removeAttr('style')
-            lyric.hide()
-            openlyric.removeAttr('style')
-            if ($(window).width() > 484) {
-                audioplayer.removeAttr("style")
-                setTimeout(() => {
-                    song_info.removeAttr("style")
-                }, 400)
-                controls.hide().removeAttr("style")
-                controls_container.hide().removeAttr("style")
+            if ($(window).width() <= 484) {
+                if (lyric.is(":visible")) {
+                    openlyric.click()
+                } if (playlist.is(":visible")) {
+                    openlist.click()
+                }
+                if (controls.is(':visible')) {
+                    audioplayer.removeAttr("style")
+                    setTimeout(() => {
+                        song_info.removeAttr("style")
+                    }, 400)
+                    setTimeout(() => {
+                        controls.hide().removeAttr("style")
+                        controls_container.hide().removeAttr("style")
+                    }, 300)
+                }
             }
         })
     })
