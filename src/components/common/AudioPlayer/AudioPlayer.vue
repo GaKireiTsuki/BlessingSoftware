@@ -105,11 +105,11 @@
                                 that.songName = res1.songs[0].name
                                 that.artistName = res1.songs[0].ar[0].name
                                 that.albumName = res1.songs[0].al.name
-                                switch (res2.sgc) {
+                                switch (res2.nolyric) {
                                     case true:
                                         this.$store.commit('lyric', '')
                                         break;
-                                    case false:
+                                    default:
                                         this.$store.commit('lyric', res2.lrc.lyric)
                                         break;
                                 }
