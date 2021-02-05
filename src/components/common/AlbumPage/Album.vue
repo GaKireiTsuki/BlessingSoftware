@@ -10,7 +10,7 @@
             <div class="album_content">
                 <div id="album_info">
                     <h1>{{name}}</h1>
-                    <router-link :to="{name: 'Artist', params: {id: item.id}}" v-for="item in artistname" :key="item.name">{{item.name}}</router-link>
+                    <router-link :to="{name: 'Artist', params: {id: item.id}}" v-for="(item, index) in artistname" :key="index">{{item.name}}</router-link>
                     <h3>{{subType}} · {{publishTime | Year}}</h3>
                 </div>
                 <div id="album_song_list">
@@ -28,7 +28,7 @@
                         <span class="info name_artist">
                             <div>{{item.name}}</div>
                             <div id="name_artist" v-show="item.ar && item.ar.length>1">
-                                <router-link :to="{name: 'Artist', params: {id: items.id}}" v-for="items in item.ar" :key="items.name">{{items.name}}</router-link>
+                                <router-link :to="{name: 'Artist', params: {id: item.id}}" v-for="(item, index) in item.ar" :key="index">{{item.name}}</router-link>
                             </div>
                         </span>
                         <span>
@@ -58,7 +58,7 @@
             <h2>音乐视频</h2>
         </div>
         <div class="flex_layout" v-show="mvs && mvs.length>0">
-            <div class="albums mv" v-for="item in mvs" :key="item.names">
+            <div class="albums mv" v-for="(item, index) in mvs" :key="index">
                 <router-link :to="{name: 'MV', params: {id: item.id}}">
                     <img class="album_cover" v-lazy="item.imgurl16v9 + '?param=159y90'" :key="item.imgurl16v9 + '?param=159y90'" :alt="item.name" :title="item.name">
                 </router-link>
@@ -72,7 +72,7 @@
             <h2>更多{{artistsname}}的作品</h2>
         </div>
         <div class="flex_layout">
-            <div class="albums" v-for="item in hotAlbums" :key="item.names">
+            <div class="albums" v-for="(item, index) in hotAlbums" :key="index">
                 <router-link :to="{name: 'Album', params: {id: item.id}}">
                     <img class="album_cover" v-lazy="item.picUrl + '?param=150y150'" :key="item.picUrl + '?param=150y150'" :alt="item.name" :title="item.name">
                 </router-link>

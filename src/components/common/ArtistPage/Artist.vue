@@ -16,7 +16,7 @@
                 <div class="info">
                     <router-link to="">{{item.name}}</router-link>
                     <span>
-                        <router-link :to="{name: 'Artist', params: {id: items.id}}" v-for="items in item.ar" :key="items.name">{{items.name}}</router-link>
+                        <router-link :to="{name: 'Artist', params: {id: item.id}}" v-for="(item, index) in item.ar" :key="index">{{item.name}}</router-link>
                     </span>
                 </div>
                 <div @click="add(item)" class="add_play_list">
@@ -28,7 +28,7 @@
             <h2>专辑</h2>
         </div>
         <div class="flex_layout">
-            <div class="albums" v-for="item in hotAlbums" :key="item.names">
+            <div class="albums" v-for="(item, index) in hotAlbums" :key="index">
                 <router-link :to="{name: 'Album', params: {id: item.id}}">
                     <img class="album_cover" v-lazy="item.picUrl + '?param=150y150'" :key="item.picUrl + '?param=150y150'" :alt="item.name" :title="item.name">
                 </router-link>
@@ -42,7 +42,7 @@
             <h2>热门视频排行</h2>
         </div>
         <div class="flex_layout" v-show="mvs && mvs.length>0">
-            <div class="albums mv" v-for="item in mvs" :key="item.names">
+            <div class="albums mv" v-for="(item, index) in mvs" :key="index">
                 <router-link :to="{name: 'MV', params: {id: item.id}}">
                     <img class="album_cover" v-lazy="item.imgurl16v9 + '?param=159y90'" :key="item.imgurl16v9 + '?param=159y90'" :alt="item.name" :title="item.name">
                 </router-link>

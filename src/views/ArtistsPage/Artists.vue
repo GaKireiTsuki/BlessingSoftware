@@ -3,7 +3,7 @@
         <div id="artists_category">
             <div id="category">
                 <div class="category">
-                    <label v-for="item in AreaCategory" :key="item.text">
+                    <label v-for="(item, index) in AreaCategory" :key="index">
                         <input
                             type="radio"
                             class="radio"
@@ -16,7 +16,7 @@
             </div>
             <div id="category">
                 <div class="category">
-                    <label v-for="item in TypeCategory" :key="item.text">
+                    <label v-for="(item, index) in TypeCategory" :key="index">
                         <input
                             type="radio"
                             class="radio"
@@ -29,7 +29,7 @@
             </div>
             <div id="category">
                 <div class="category">
-                    <label v-for="item in NameCategory" :key="item.text">
+                    <label v-for="(item, index) in NameCategory" :key="index">
                         <input
                             type="radio"
                             class="radio"
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="grid_layout">
-            <div class="albums" v-for="item in artists" :key="item.name">
+            <div class="albums" v-for="(item, index) in artists" :key="index">
                 <router-link :to="{ name: 'Artist', params: { id: item.id } }">
                     <img
                         class="album_cover"

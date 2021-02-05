@@ -9,7 +9,7 @@
             </div>
             <select v-model="r" name="" id="">
                 <option selected value="">Default</option>
-                <option v-for="(item, index) in sortBrs" :key="index.point" :value="item.br">{{item.br}}P</option>
+                <option v-for="(item, index) in sortBrs" :key="index" :value="item.br">{{item.br}}P</option>
             </select>
         </div>
         <div class="mv_info">
@@ -22,7 +22,7 @@
             <div class="artist_mv_info">
                 <p>{{name | Nbsp}}</p>
                 <p>
-                    <router-link :to="{name: 'Artist', params: {id: item.id}}" v-for="item in artists" :key="item.names">{{item.name}}</router-link>
+                    <router-link :to="{name: 'Artist', params: {id: item.id}}" v-for="(item, index) in artists" :key="index">{{item.name}}</router-link>
                 </p>
                 <p>{{publishTime | Date}}</p>
             </div>
@@ -31,7 +31,7 @@
             <h2>更多{{artistName}}的作品</h2>
         </div>
         <div class="flex_layout">
-            <div class="albums mv" v-for="item in mvs" :key="item.names">
+            <div class="albums mv" v-for="(item, index) in mvs" :key="index">
                 <router-link :to="{name: 'MV', params: {id: item.id}}">
                     <img class="album_cover" v-lazy="item.imgurl16v9 + '?param=159y90'" :key="item.imgurl16v9 + '?param=159y90'" :alt="item.name" :title="item.name">
                 </router-link>
