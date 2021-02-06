@@ -17,7 +17,8 @@ export default new Vuex.Store({
         persistedState({
             reducer (val) {
                 return {
-                    playList: val.playList
+                    playList: val.playList,
+                    playHistory: val.playHistory
                 }
             }
         })

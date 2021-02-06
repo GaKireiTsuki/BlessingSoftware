@@ -8,6 +8,12 @@ const mutations = {
     // 添加至播放列表
     [TYPES.ADD_PLAY_LIST] (state, songs) {
         state.playList = state.playList.concat(songs)
+        state.playHistory = state.playHistory.concat(songs)
+    },
+
+    // 播放历史
+    [TYPES.PLAY_HISTORY] (state, songs) {
+        state.playHistory = state.playHistory.concat(songs)
     },
 
     // 移除相应的歌曲
@@ -55,7 +61,7 @@ const mutations = {
     },
 
     // 歌词
-    lyric (state, lyric) {
+    [TYPES.SEND_LYRIC] (state, lyric) {
         state.lyric = lyric
     }
 }

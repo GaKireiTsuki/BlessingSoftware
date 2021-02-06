@@ -10,6 +10,12 @@ export const REMOVE_SONGS = 'REMOVE_SONGS'
 // 清空播放列表
 export const CLEAR_PLAY_LIST = 'CLEAR_PLAY_LIST'
 
+// 播放历史
+export const PLAY_HISTORY = 'PLAY_HISTORY'
+
+// 歌词
+export const SEND_LYRIC = 'SEND_LYRIC'
+
 // 发送搜索建议
 export const SEND_SUGGEST = 'SEND_SUGGEST'
 

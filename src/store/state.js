@@ -3,6 +3,8 @@ const state = {
     songID: '',
     // 播放列表
     playList: [],
+    // 播放历史
+    playHistory: [],
     // 播放状态
     playIng: false,
     // 歌词
