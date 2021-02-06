@@ -14,12 +14,12 @@
                 <div class="more" tabindex="0" outline=0>
                     <span></span>
                     <div class="more_list">
-                        <div class="clear" @click="removesongs(item.id)">从“待播清单”中移除项目</div>
+                        <div class="clear" @click="removeSong(item.id)">从“待播清单”中移除项目</div>
                     </div>
                     </div>
                 </div>
             </div>
-        <button v-show="playList && playList.length>0" @click="clear()">清除</button>
+        <button v-show="playList && playList.length>0" @click="Clear()">清除</button>
         <p class="typography_label" v-show="playList && playList.length<=0">无待播歌曲。</p>
     </div>
 </template>
@@ -31,10 +31,7 @@ export default {
         ...mapState(['playList'])
     },
     methods: {
-        ...mapActions(['play', 'add', 'clear']),
-        removesongs(id) {
-            this.$store.commit('removesongs', id)
-        }
+        ...mapActions(['play', 'add', 'Clear', 'removeSong'])
     }
 }
 </script>

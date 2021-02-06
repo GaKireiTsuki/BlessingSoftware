@@ -1,22 +1,59 @@
+import * as TYPES from './mutation-types'
 const mutations = {
-    suggest (state, keywords) {
-        state.keywords = keywords;
+    // 发送歌曲ID
+    [TYPES.SEND_SONGS_ID] (state, id) {
+        state.songID = id
     },
-    play (state, id) {
-        state.songID = id;
-    },
-    add (state, songs) {
+
+    // 添加至播放列表
+    [TYPES.ADD_PLAY_LIST] (state, songs) {
         state.playList = state.playList.concat(songs)
     },
-    removesongs (state, id) { //移除相应的歌曲
+
+    // 移除相应的歌曲
+    [TYPES.REMOVE_SONGS] (state, id) {
         const i = state.playList.findIndex(x => x.id === id)
         if (i !== -1) {
             state.playList.splice(i, 1)
         }
     },
-    clear (state, clear) {
+
+    // 上一首歌
+    [TYPES.PREV_SONGS] (state, id) {
+        const i = state.playList.findIndex(x => x.id === id)
+        if (i !== -1) {
+            const n = state.playList.slice(i-1)
+            if (n && n.length<=0) {
+                return
+            } else {
+                state.songID = n[0].id
+            }
+        }
+    },
+
+    // 下一首歌
+    [TYPES.NEXT_SONGS] (state, id) {
+        const i = state.playList.findIndex(x => x.id === id)
+        if (i !== -1) {
+            const n = state.playList.slice(i+1)
+            if (n && n.length<=0) {
+                return
+            } else {
+                state.songID = n[0].id
+            }
+        }
+    },
+
+    // 清空播放列表
+    [TYPES.CLEAR_PLAY_LIST] (state, clear) {
         state.playList = clear
     },
+    // 发送搜索建议
+    [TYPES.SEND_SUGGEST] (state, keywords) {
+        state.keywords = keywords;
+    },
+
+    // 歌词
     lyric (state, lyric) {
         state.lyric = lyric
     }

@@ -12,6 +12,14 @@
                     <h1>{{name}}</h1>
                     <router-link :to="{name: 'Artist', params: {id: item.id}}" v-for="(item, index) in artistname" :key="index">{{item.name}}</router-link>
                     <h3>{{subType}} · {{publishTime | Year}}</h3>
+                    <div class="album_button">
+                        <button @click="add(songs), play(songs[0].id)">
+                            播放
+                        </button>
+                        <button @click="add(songs)">
+                            添加
+                        </button>
+                    </div>
                 </div>
                 <div id="album_song_list">
                     <div class="album_song_list" v-for="(item, index) in songs" :key="index" tabindex="0" outline=0>
@@ -89,6 +97,24 @@ import album from './album'
 export default album
 </script>
 <style>
+    .album_button{
+        padding: 14px 0 16px;
+        display: flex;
+        justify-content: flex-start;
+        column-gap: 10px;
+    }
+    .album_button button{
+        height: 28px;
+        cursor: pointer;
+        color: #fff;
+        border: none;
+        background: #fa233b;
+        padding: 0 12px;
+        border-radius: 4px;
+        min-width: 90px;
+        font-size: 13px;
+        outline: none;
+    }
     .album_song_list span:nth-of-type(3) .add_play_list{
         left: 0;
     }

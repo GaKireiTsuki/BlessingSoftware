@@ -23,6 +23,7 @@
         height: 32px;
         fill: #000000f2;
         outline: none;
+        cursor: pointer;
     }
     .controls_container{
         width: 100%;

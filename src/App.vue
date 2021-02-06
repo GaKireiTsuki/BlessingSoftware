@@ -14,7 +14,7 @@
 </template>
 <script>
 import menus from '@/components/common/Menus/Menus'
-import audioplayer from '@/components/common/AudioPlayer/AudioPlayer'
+import audioplayer from '@/components/common/AudioPlayer/AudioPlayer.vue'
 import playlist from '@/components/common/PlayList/PlayList'
 import login from '@/components/common/Login/Login'
 import lyric from '@/components/common/Lyric/Lyric'

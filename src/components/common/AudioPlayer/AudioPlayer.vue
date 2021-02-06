@@ -11,7 +11,7 @@
                             style="fill-rule:nonzero"></path>
                     </svg>
                 </button>
-                <button class="previous_song">
+                <button class="previous_song" @click="prevSong(songID)">
                     <svg width="100%" height="100%" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
                         style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421">
@@ -36,7 +36,7 @@
                             style="fill-rule:nonzero"></path>
                     </svg>
                 </button>
-                <button class="next_song">
+                <button class="next_song" @click="nextSong(songID)">
                     <svg width="100%" height="100%" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
                         style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
@@ -86,6 +86,6 @@
 </template>
 <script>
     import './audioplayer.css'
-    import audioplayer from './audioplayer.js'
+    import audioplayer from './audioplayer'
     export default audioplayer
 </script>

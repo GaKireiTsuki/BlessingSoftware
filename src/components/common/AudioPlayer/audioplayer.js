@@ -1,6 +1,6 @@
 import $ from "jquery";
 import axios from "axios";
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
     name: "audioplayer",
     data() {
@@ -12,8 +12,11 @@ export default {
             albumName: ''
         };
     },
+    methods: {
+        ...mapActions(['prevSong', 'nextSong'])
+    },
     computed: {
-        ...mapState(["songID"])
+        ...mapState(['songID'])
     },
     watch: {
         songID(songID) {
@@ -69,6 +72,7 @@ $(function () {
     var song_info = $(".song_info")
     var controls = $(".controls")
     var controls_container = $(".controls_container")
+    var button_song = $("button[class $= '_song']")
     openlyric.on("click", function (e) {
         e.stopPropagation()
         if (lyric.is(":hidden")) {
@@ -139,5 +143,8 @@ $(function () {
                 }, 300)
             }
         }
+    })
+    button_song.on("click", function (e) {
+        e.stopPropagation()
     })
 })
