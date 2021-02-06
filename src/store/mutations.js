@@ -37,7 +37,8 @@ const mutations = {
         if (i !== -1) {
             const n = state.playList.slice(i+1)
             if (n && n.length<=0) {
-                return
+                const t = state.playList.slice(0, 1)
+                state.songID = t[0].id
             } else {
                 state.songID = n[0].id
             }
