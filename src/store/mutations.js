@@ -6,14 +6,33 @@ const mutations = {
     },
 
     // 添加至播放列表
+    // 限制重复添加
     [TYPES.ADD_PLAY_LIST] (state, songs) {
-        state.playList = state.playList.concat(songs)
-        state.playHistory = state.playHistory.concat(songs)
+        const i = state.playList.find(x => x.id === songs.id)
+        if (i === undefined) {
+            if (i && i.length<=0) {
+                return
+            } else {
+                state.playList = state.playList.concat(songs)
+            }
+        }
+        const arr = state.playList.filter(function (arr, index, self) {
+            return self.indexOf(arr) === index
+        })
+        state.playList = arr
+        console.log(arr)
     },
 
     // 播放历史
-    [TYPES.PLAY_HISTORY] (state, songs) {
-        state.playHistory = state.playHistory.concat(songs)
+    // 是否限制重复数据添加，还有待商榷。
+    [TYPES.PLAY_HISTORY] (state, history) {
+        state.history = history
+        const i = state.playHistory.find(x => x.id === history.id)
+        switch (i) {
+            case undefined:
+                state.playHistory = state.playHistory.concat(history.songs)
+                break;
+        }
     },
 
     // 移除相应的歌曲

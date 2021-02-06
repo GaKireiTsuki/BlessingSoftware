@@ -1,37 +1,37 @@
 <template>
     <div class="play_list bmbl">
-        <h3 v-show="playList && playList.length>0" @click="quChong()">待播清单</h3>
+        <list></list>
+        <h3 v-show="playList && playList.length>0">待播清单</h3>
         <div id="play_list" v-for="(item, index) in playList" :key="index" tabindex="1" outline=0>
             <img @click="play(item.id)" v-lazy="'?param=40y40'" :key="'?param=40y40'" :alt="item.name" :title="item.name">
-            <!-- <img @click="play(item.id)" v-lazy="item.al.picUrl + '?param=40y40'" :alt="item.name" :title="item.name">
-            <img @click="play(item.id)" v-lazy="item.picUrl + '?param=40y40'" :alt="item.name" :title="item.name"> -->
             <div class="play_list_name">
                 <div>
                     <span id="list_name">{{item.name}}</span>
-                    <!-- <span id="list_name">{{item.ar[0].name}}</span>
-                    <span id="list_name">{{item.song.artists[0].name}}</span> -->
                 </div>
                 <div class="more" tabindex="0" outline=0>
                     <span></span>
                     <div class="more_list">
                         <div class="clear" @click="removeSong(item.id)">从“待播清单”中移除项目</div>
                     </div>
-                    </div>
                 </div>
             </div>
+        </div>
         <button v-show="playList && playList.length>0" @click="Clear()">清除</button>
         <p class="typography_label" v-show="playList && playList.length<=0">无待播歌曲。</p>
     </div>
 </template>
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
+import list from './List'
 export default {
     name: 'playlist',
+    components: {list},
     computed: {
-        ...mapState(['playList'])
+        ...mapState(['playList', 'playHistory']),
     },
     methods: {
-        ...mapActions(['play', 'add', 'Clear', 'removeSong'])
+        ...mapActions(['play', 'Clear', 'removeSong']),
+        ...mapMutations(['ADD_PLAY_LIST'])
     }
 }
 </script>

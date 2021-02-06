@@ -47,7 +47,10 @@ export default {
                     ])
                         .then(axios.spread((res1, res2) => {
                             that.img = res1.songs[0].al.picUrl
-                            this.$store.commit('PLAY_HISTORY', res1.songs[0])
+                            this.$store.commit('PLAY_HISTORY', {
+                                id: res1.songs[0].id,
+                                songs: res1.songs[0]
+                            })
                             that.songName = res1.songs[0].name
                             that.artistName = res1.songs[0].ar[0].name
                             that.albumName = res1.songs[0].al.name
