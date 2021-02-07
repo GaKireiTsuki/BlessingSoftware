@@ -17,7 +17,7 @@ const actions = {
 
     // 清空播放列表
     Clear ({ commit }) {
-        commit(TYPES.CLEAR_PLAY_LIST, [])
+        commit(TYPES.CLEAR_LIST, [])
     },
 
     // 移除相应的歌曲

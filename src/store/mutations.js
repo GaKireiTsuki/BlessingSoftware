@@ -68,8 +68,9 @@ const mutations = {
     },
 
     // 清空播放列表
-    [TYPES.CLEAR_PLAY_LIST] (state, clear) {
+    [TYPES.CLEAR_LIST] (state, clear) {
         state.playList = clear
+        state.playHistory = clear
     },
     // 发送搜索建议
     [TYPES.SEND_SUGGEST] (state, keywords) {

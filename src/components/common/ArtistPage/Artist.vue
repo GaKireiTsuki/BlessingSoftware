@@ -24,10 +24,10 @@
                 </div>
             </div>
         </div>
-        <div class="search_title">
+        <div class="search_title" v-show="hotAlbums && hotAlbums.length>0">
             <h2>专辑</h2>
         </div>
-        <div class="flex_layout">
+        <div class="flex_layout" v-show="hotAlbums && hotAlbums.length>0">
             <div class="albums" v-for="(item, index) in hotAlbums" :key="index">
                 <router-link :to="{name: 'Album', params: {id: item.id}}">
                     <img class="album_cover" v-lazy="item.picUrl + '?param=150y150'" :key="item.picUrl + '?param=150y150'" :alt="item.name" :title="item.name">

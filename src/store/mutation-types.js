@@ -11,7 +11,7 @@ export const PLAY_ALBUM = 'PLAY_ALBUM'
 export const REMOVE_SONGS = 'REMOVE_SONGS'
 
 // 清空播放列表
-export const CLEAR_PLAY_LIST = 'CLEAR_PLAY_LIST'
+export const CLEAR_LIST = 'CLEAR_LIST'
 
 // 播放历史
 export const PLAY_HISTORY = 'PLAY_HISTORY'

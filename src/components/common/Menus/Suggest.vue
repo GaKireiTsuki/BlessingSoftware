@@ -1,33 +1,33 @@
 <template>
     <div class="suggest">
-        <div id="suggest" v-for="(item,index) in results" :key="index">
-            <router-link id="yuan" :to="{ name: 'Artist', params: { id: items.id } }" v-for="items in item.artists" :key="items.name">
-                <img v-lazy="items.picUrl + '?param=110y110'" :alt="items.name" :title="items.name" />
+        <div id="suggest" v-for="(item, index) in results" :key="index">
+            <router-link id="yuan" :to="{ name: 'Artist', params: { id: item.id } }" v-for="(item, index) in item.artists" :key="index + 'artists'">
+                <img v-lazy="item.picUrl + '?param=110y110'" :alt="item.name" :title="item.name" />
                 <span>
-                    <p>{{ items.name }}</p>
+                    <p>{{ item.name }}</p>
                     <p>艺人</p>
                 </span>
             </router-link>
-            <router-link id="fang" to="" v-for="items in item.songs" :key="items.id">
+            <router-link id="fang" to="" v-for="(item, index) in item.songs" :key="index + 'songs'">
                 <img v-lazy="" />
                 <span>
-                    <p class="info" @click="play(items.id)">{{ items.name }}</p>
+                    <p class="info" @click="playSong(item.id)">{{ item.name }}</p>
                     <p>
                         歌曲 ·
-                        <span v-for="item in items.artists" :key="item.name">
+                        <span v-for="(item, index) in item.artists" :key="index">
                             {{ item.name }}
                         </span>
                     </p>
                 </span>
             </router-link>
-            <router-link id="fang" :to="{ name: 'Album', params: { id: items.id } }" v-for="items in item.albums" :key="items.id">
+            <router-link id="fang" :to="{ name: 'Album', params: { id: item.id } }" v-for="(item, index) in item.albums" :key="index + 'albums'">
                 <img v-lazy="" />
                 <span>
-                    <p>{{ items.name }}</p>
+                    <p>{{ item.name }}</p>
                     <p>
                         专辑 ·
                         <span>
-                            {{ items.artist.name }}
+                            {{ item.artist.name }}
                         </span>
                     </p>
                 </span>
@@ -45,7 +45,7 @@
             };
         },
         methods: {
-            ...mapActions(['play'])
+            ...mapActions(['playSong'])
         },
         computed: {
             ...mapState(['keywords'])
