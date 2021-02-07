@@ -18,7 +18,7 @@ const mutations = {
         }
     },
 
-    // 添加专辑至播放列表
+    // 播放专辑
     [TYPES.PLAY_ALBUM] (state, songs) {
         state.playList = songs
     },

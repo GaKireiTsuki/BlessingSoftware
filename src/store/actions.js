@@ -10,7 +10,7 @@ const actions = {
         commit(TYPES.ADD_SONGS_PLAY_LIST, songs)
     },
 
-    // 添加专辑至播放列表
+    // 播放专辑
     playAlbum ({ commit }, songs) {
         commit(TYPES.PLAY_ALBUM, songs)
     },
