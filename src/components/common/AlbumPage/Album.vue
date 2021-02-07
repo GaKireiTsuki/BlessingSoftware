@@ -2,7 +2,7 @@
     <div class="album" v-wechat-title="'BS Music 上' + titlename + '的专辑' + '《' + name + '》'">
         <div id="album">
             <div class="cover play_cover">
-                <button @click="add(songs), play(songs[0].id)" class="play_button">
+                <button @click="playAlbum(songs), playSong(songs[0].id)" class="play_button">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27" class="glyph"><path d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"></path></svg>
                 </button>
                 <img v-lazy="picUrl + '?param=1000y1000'" :key="picUrl + '?param=1000y1000'" :alt="name" :title="name">
@@ -13,10 +13,10 @@
                     <router-link :to="{name: 'Artist', params: {id: item.id}}" v-for="(item, index) in artistname" :key="index">{{item.name}}</router-link>
                     <h3>{{subType}} · {{publishTime | Year}}</h3>
                     <div class="album_button">
-                        <button @click="add(songs), play(songs[0].id)">
+                        <button @click="playAlbum(songs), playSong(songs[0].id)">
                             播放
                         </button>
-                        <button @click="add(songs)">
+                        <button>
                             添加
                         </button>
                     </div>
@@ -30,7 +30,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27"><path d="M9,17.6071429 C9,18.3928571 9.42,19 10.14,19 L10.92,19 C11.58,19 12,18.3928571 12,17.6071429 L12,9.39285714 C12,8.60714286 11.58,8 10.92,8 L10.14,8 C9.42,8 9,8.60714286 9,9.39285714 L9,17.6071429 Z M15,17.6071429 C15,18.3928571 15.42,19 16.14,19 L16.92,19 C17.58,19 18,18.3928571 18,17.6071429 L18,9.39285714 C18,8.60714286 17.58,8 16.92,8 L16.14,8 C15.42,8 15,8.60714286 15,9.39285714 L15,17.6071429 Z"></path></svg>
                             </button> -->
                             <button v-show="songID !== item.id" style="background: no-repeat; border: none;">
-                                <svg @click="play(item.id)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27"><path d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"></path></svg>
+                                <svg @click="playSong(item.id)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27"><path d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"></path></svg>
                             </button>
                         </span>
                         <span class="info name_artist">
@@ -40,7 +40,7 @@
                             </div>
                         </span>
                         <span>
-                            <div @click="add(item)" class="add_play_list">
+                            <div @click="addSong(item)" class="add_play_list">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="glyph-add" aria-hidden="true"><path d="M15.169 21.24v-4.423h-4.387a.824.824 0 01-.818-.813c0-.448.379-.821.818-.821h4.387V10.76c0-.44.38-.796.827-.796.447 0 .827.356.827.796v4.423h4.395c.447 0 .818.373.818.821a.82.82 0 01-.818.813h-4.395v4.423c0 .431-.38.796-.827.796-.447 0-.827-.365-.827-.796z"></path></svg>
                             </div>
                             {{item.dt | Duration}}

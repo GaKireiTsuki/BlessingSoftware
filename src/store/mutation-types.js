@@ -1,8 +1,11 @@
 // 发送歌曲ID
 export const SEND_SONGS_ID = 'SEND_SONGS_ID'
 
-// 添加至播放列表
-export const ADD_PLAY_LIST = 'ADD_PLAY_LIST'
+// 添加歌曲至播放列表
+export const ADD_SONGS_PLAY_LIST = 'ADD_SONGS_PLAY_LIST'
+
+// 播放专辑
+export const PLAY_ALBUM = 'PLAY_ALBUM'
 
 // 移除相应的歌曲
 export const REMOVE_SONGS = 'REMOVE_SONGS'

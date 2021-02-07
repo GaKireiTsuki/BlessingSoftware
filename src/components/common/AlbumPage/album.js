@@ -22,7 +22,7 @@ export default {
         ...mapState(["songID"]),
     },
     methods: {
-        ...mapActions(['play', 'add']),
+        ...mapActions(['playSong', 'addSong', 'playAlbum']),
         album () {
             var that = this;
             this.$api.music.albuminfo(this.id).then(res => {

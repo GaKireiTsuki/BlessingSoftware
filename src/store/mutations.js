@@ -5,9 +5,9 @@ const mutations = {
         state.songID = id
     },
 
-    // 添加至播放列表
+    // 添加歌曲至播放列表
     // 限制重复添加
-    [TYPES.ADD_PLAY_LIST] (state, songs) {
+    [TYPES.ADD_SONGS_PLAY_LIST] (state, songs) {
         const i = state.playList.find(x => x.id === songs.id)
         if (i === undefined) {
             if (i && i.length<=0) {
@@ -16,23 +16,16 @@ const mutations = {
                 state.playList = state.playList.concat(songs)
             }
         }
-        const arr = state.playList.filter(function (arr, index, self) {
-            return self.indexOf(arr) === index
-        })
-        state.playList = arr
-        console.log(arr)
+    },
+
+    // 添加专辑至播放列表
+    [TYPES.PLAY_ALBUM] (state, songs) {
+        state.playList = songs
     },
 
     // 播放历史
-    // 是否限制重复数据添加，还有待商榷。
     [TYPES.PLAY_HISTORY] (state, history) {
-        state.history = history
-        const i = state.playHistory.find(x => x.id === history.id)
-        switch (i) {
-            case undefined:
-                state.playHistory = state.playHistory.concat(history.songs)
-                break;
-        }
+        state.playHistory = state.playHistory.concat(history)
     },
 
     // 移除相应的歌曲
@@ -45,29 +38,33 @@ const mutations = {
 
     // 上一首歌
     [TYPES.PREV_SONGS] (state, id) {
-        const i = state.playList.findIndex(x => x.id === id)
-        if (i !== -1) {
-            const n = state.playList.slice(i-1)
-            if (n && n.length<=0) {
-                return
-            } else {
-                state.songID = n[0].id
+        setTimeout(() => {
+            const i = state.playList.findIndex(x => x.id === id)
+            if (i !== -1) {
+                const n = state.playList.slice(i-1)
+                if (n && n.length<=0) {
+                    return
+                } else {
+                    state.songID = n[0].id
+                }
             }
-        }
+        }, 800)
     },
 
     // 下一首歌
     [TYPES.NEXT_SONGS] (state, id) {
-        const i = state.playList.findIndex(x => x.id === id)
-        if (i !== -1) {
-            const n = state.playList.slice(i+1)
-            if (n && n.length<=0) {
-                const t = state.playList.slice(0, 1)
-                state.songID = t[0].id
-            } else {
-                state.songID = n[0].id
+        setTimeout(() => {
+            const i = state.playList.findIndex(x => x.id === id)
+            if (i !== -1) {
+                const n = state.playList.slice(i+1)
+                if (n && n.length<=0) {
+                    const t = state.playList.slice(0, 1)
+                    state.songID = t[0].id
+                } else {
+                    state.songID = n[0].id
+                }
             }
-        }
+        }, 800)
     },
 
     // 清空播放列表

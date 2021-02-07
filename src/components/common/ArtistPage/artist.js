@@ -13,7 +13,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['play', 'add']),
+        ...mapActions(['playSong', 'addSong']),
         artist() {
             var that = this;
             axios.all([

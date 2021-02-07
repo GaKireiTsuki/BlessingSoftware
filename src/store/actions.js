@@ -1,13 +1,18 @@
 import * as TYPES from './mutation-types'
 const actions = {
     // 发送歌曲ID
-    play ({ commit }, id) {
+    playSong ({ commit }, id) {
         commit(TYPES.SEND_SONGS_ID, id)
     },
 
-    // 添加至播放列表
-    add ({ commit }, songs) {
-        commit(TYPES.ADD_PLAY_LIST, songs)
+    // 添加歌曲至播放列表
+    addSong ({ commit }, songs) {
+        commit(TYPES.ADD_SONGS_PLAY_LIST, songs)
+    },
+
+    // 添加专辑至播放列表
+    playAlbum ({ commit }, songs) {
+        commit(TYPES.PLAY_ALBUM, songs)
     },
 
     // 清空播放列表

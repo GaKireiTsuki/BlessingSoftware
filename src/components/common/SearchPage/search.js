@@ -15,7 +15,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['play', 'add']),
+        ...mapActions(['playSong', 'addSong']),
         searchs () {
             var that = this;
             axios.all([
