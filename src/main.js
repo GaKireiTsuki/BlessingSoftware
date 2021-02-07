@@ -7,6 +7,7 @@ import VueWechatTitle from 'vue-wechat-title'
 import VueLazyload from 'vue-lazyload'
 import InfiniteLoading from 'vue-infinite-loading'
 import Message from './components/message/index'
+import filters from './components/filters/index'
 
 import './assets/css/index.css'
 import './assets/css/style.css'
@@ -15,6 +16,7 @@ import './assets/css/fonts.css'
 Vue.config.productionTip = false
 Vue.prototype.$api = api
 Vue.prototype.$message = Message.install
+Object.keys(filters).forEach(key => Vue.filter(key, filters[key]))
 Vue.use(VueWechatTitle)
 Vue.use(InfiniteLoading, {
     props: {
@@ -33,37 +35,6 @@ Vue.use(VueLazyload, {
     error: require('./assets/img/error.svg'),
     attempt: 3,
     listenEvents: ['scroll', 'wheel', 'mousewheel', 'resize', 'animationend', 'transitionend']
-})
-
-Vue.filter('Duration', function (value) {
-    var duration = value
-    var min = parseInt(duration / 1000 / 60)
-    if (min < 10) {
-        min = '0' + min
-    }
-    var sec = parseInt((duration / 1000) % 60)
-    if (sec < 10) {
-        sec = '0' + sec
-    }
-    return `${min}:${sec}`
-})
-
-Vue.filter('Year',function(value){
-    var date = new Date(value)
-    var year = date.getFullYear()
-    return `${year}年`
-})
-
-Vue.filter('Date',function(value){
-    var date = new Date(value) //时间戳为10位需*1000，时间戳为13位的话不需乘1000
-    var year = date.getFullYear()
-    var month = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1)
-    var day = date.getDate()
-    return `${year}年${month}月${day}日`
-})
-
-Vue.filter('Nbsp',function(value){
-    return value.replace(/\s/g, ' ')
 })
 
 new Vue({
