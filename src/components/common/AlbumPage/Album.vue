@@ -16,7 +16,7 @@
                         <button @click="playAlbum(songs), playSong(songs[0].id)">
                             播放
                         </button>
-                        <button>
+                        <button @click="addSong(songs)">
                             添加
                         </button>
                     </div>

@@ -8,14 +8,16 @@ const mutations = {
     // 添加歌曲至播放列表
     // 限制重复添加
     [TYPES.ADD_SONGS_PLAY_LIST] (state, songs) {
-        const i = state.playList.find(x => x.id === songs.id)
-        if (i === undefined) {
-            if (i && i.length<=0) {
-                return
-            } else {
-                state.playList = state.playList.concat(songs)
+        const song = JSON.parse(songs)
+        state.playList = state.playList.concat(song)
+        function repeat(arr) {
+            const map = {};
+            // 1、把数组元素作为对象的键存起来（这样就算有重复的元素，也会相互替换掉）
+            arr.forEach(item => map[JSON.stringify(item, ['id', 'name'])] = item)
+            // 2、再把新对象的键名抽成一个数组返回即为不重复的集合
+            return Object.keys(map).map(key => JSON.parse(key))
             }
-        }
+            state.playList = repeat(state.playList)
     },
 
     // 播放专辑
