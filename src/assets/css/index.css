@@ -223,10 +223,16 @@ div[class $= '_layout']{
     opacity: 0;
     transform: scale(0.7);
 }
-.category::-webkit-scrollbar, .lyric::-webkit-scrollbar, .play_list::-webkit-scrollbar{
+.play_history::-webkit-scrollbar,
+.category::-webkit-scrollbar,
+.lyric::-webkit-scrollbar,
+.play_list::-webkit-scrollbar{
     display: none;
 }
 @media screen and (max-width: 484px){
+    .banner{
+        grid-auto-columns: calc((100% - 0 * 20px)/ 1) !important;
+    }
     .controls, .controls_container{
         display: none;
     }

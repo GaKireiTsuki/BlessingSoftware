@@ -1,7 +1,26 @@
 <template>
     <div class="play_list bmbl">
-        <playHistoryList></playHistoryList>
-        <h3 v-show="playList && playList.length>0">待播清单</h3>
+        <transition name="slide">
+            <div class="play_history" v-show="phsh">
+                <h3 @click="phsh =! phsh">历史记录</h3>
+                <div id="play_list" v-for="(item, index) in playHistory" :key="index" tabindex="1" outline=0>
+                    <img @click="playSong(item.id), addSong(item)" v-lazy="item.al.picUrl + '?param=40y40'" :alt="item.name" :title="item.name">
+                    <div class="play_list_name">
+                        <div>
+                            <span id="list_name">{{item.name}}</span>
+                            <span id="list_name">{{item.ar[0].name}}</span>
+                            </div>
+                        <div class="more" tabindex="0" outline=0>
+                            <span></span>
+                            <div class="more_list">
+                                <div class="clear" @click="removeSong(item.id)">从“历史记录”中移除项目</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </transition>
+        <h3 v-show="playList && playList.length>0" @click="phsh =! phsh">待播清单</h3>
         <div id="play_list" v-for="(item, index) in playList" :key="index" tabindex="1" outline=0>
             <img @click="playSong(item.id)" v-lazy="'?param=40y40'" :key="'?param=40y40'" :alt="item.name" :title="item.name">
             <div class="play_list_name">
@@ -22,10 +41,13 @@
 </template>
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex'
-import playHistoryList from './playHistoryList'
 export default {
     name: 'playlist',
-    components: {playHistoryList},
+    data() {
+        return {
+            phsh: false
+        }
+    },
     computed: {
         ...mapState(['playList', 'playHistory']),
     },
@@ -36,6 +58,19 @@ export default {
 }
 </script>
 <style>
+    .slide-enter-active,
+    .slide-leave-active{
+        transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+        height: 100% !important;
+    }
+    .slide-enter,
+    .slide-leave-to {
+        height: 0% !important;
+    }
+    .play_history{
+        overflow-y: auto;
+        height: 100%;
+    }
     .typography_label{
         height: 100%;
         display: flex;

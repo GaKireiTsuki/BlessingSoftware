@@ -36,6 +36,7 @@ export default {
                 that.company = res.album.company;
                 that.songs = res.songs;
                 that.artistid = res.album.artist.id
+                console.log(res)
                 axios.all([this.$api.music.artistalbum(this.artistid), this.$api.music.artistmv(this.artistid)])
                 .then(axios.spread((res1, res2)=>{
                     that.hotAlbums = res1.hotAlbums;

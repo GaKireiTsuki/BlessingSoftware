@@ -160,9 +160,6 @@ $(function () {
             $("input[type=search]").val("");
             pc_search.removeAttr("style");
             $(".suggest").css({ display: "none" });
-            setTimeout(() => {
-                $(".suggest").removeAttr("style");
-            }, 300);
         } else {
             nav.children("a").css({ opacity: "0", transform: "scale(0.3)" });
             pc_search.css({
@@ -173,6 +170,7 @@ $(function () {
             });
             $("#pc_input_search").children(search).focus();
             bag.hide();
+            $(".suggest").css({ display: "block" });
         }
     });
     search.on("click", function (event) {
