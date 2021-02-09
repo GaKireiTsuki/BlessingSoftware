@@ -36,11 +36,11 @@
                 <div id="bag">
                     <p>Your</p>
                     <div class="bag_menu">
-                        <router-link class="open_login" to=""
-                            >Sign in</router-link
+                        <a href="javascript:;" class="open_login"
+                            >Sign in</a
                         >
-                        <router-link to="">BAG</router-link>
-                        <router-link to="">LOGINOUT</router-link>
+                        <a href="javascript:;">BAG</a>
+                        <a href="javascript:;">LOGINOUT</a>
                     </div>
                 </div>
             </a>

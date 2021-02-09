@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import state from './state'
 import mutations from './mutations'
 import actions from './actions'
-import persistedState from 'vuex-persistedstate'
+import persistedstate from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
@@ -12,13 +12,17 @@ export default new Vuex.Store({
     mutations,
     actions,
     plugins: [
-        persistedState({
-            reducer (val) {
-                return {
-                    playList: val.playList,
-                    playHistory: val.playHistory
-                }
-            }
+        persistedstate({
+            key: 'PLAY_LIST',
+            reducer: state => ({
+                playList: state.playList
+            })
+        }),
+        persistedstate({
+            key: 'PLAY_HISTORY',
+            reducer: state => ({
+                playHistory: state.playHistory
+            })
         })
     ]
 })

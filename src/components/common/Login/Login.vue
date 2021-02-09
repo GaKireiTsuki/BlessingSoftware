@@ -15,7 +15,6 @@
                     </div>
                     <img id="qrimg" :src="qrimg" alt="">
                     <span @click="loginstatus()" class="qrif">使用二维码登录</span>
-                    <span>{{cookie}}</span>
                 </div>
             </div>
             <button @click="closetimer()" class="close_login"></button>
@@ -30,8 +29,7 @@ export default {
         return {
             account: '',
             password: '',
-            qrimg: '',
-            cookie: ''
+            qrimg: ''
         }
     },
     methods: {
@@ -66,7 +64,23 @@ export default {
             var that = this;
             this.$api.music.checkstatus(this.key).then( res => {
                 that.code = res.code;
-                console.log(res.cookie)
+                if (res.code === 803) {
+                    console.log(res.cookie)
+                    var dataCookie = res.cookie
+                    //将多cookie切割为多个名/值对
+                    var arrCookie = dataCookie.split(';')
+                    var MUSIC_U
+                    //遍历cookie数组，处理每个cookie对
+                    for(var i=0;i<arrCookie.length;i++){
+                        var arr = arrCookie[i].split("=")
+                        //找到名称为userId的cookie，并返回它的值
+                        if ("MUSIC_U" == arr[0]) {
+                            MUSIC_U = arr[1]
+                            document.cookie = 'MUSIC_U' + "=" + MUSIC_U
+                            console.log(MUSIC_U)
+                        }
+                    }
+                }
             })
         },
         getqr () {
