@@ -26,5 +26,6 @@ exports.Date = (value) => {
 };
 
 exports.Nbsp = (value) => {
-    value.replace(/\s/g, ' ')
+    var nbsp = value.replace(/\s/g, '')
+    return `${nbsp}`
 };

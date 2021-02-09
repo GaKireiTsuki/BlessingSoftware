@@ -48,14 +48,14 @@
             ...mapActions(['playSong'])
         },
         computed: {
-            ...mapState(['keywords'])
+            ...mapState(['term'])
         },
         watch: {
-            keywords(keywords) {
+            keywords(term) {
                 clearTimeout(this.timer);
                 var that = this;
                 this.timer = setTimeout(() => {
-                    this.$api.music.suggest(keywords).then((res) => {
+                    this.$api.music.suggest(term).then((res) => {
                         that.results = res;
                     });
                 }, 500);

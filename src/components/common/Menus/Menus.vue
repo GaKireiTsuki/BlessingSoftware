@@ -3,7 +3,7 @@
         <div class="pc_search">
             <div class="pc_input_search">
                 <div id="pc_input_search">
-                    <input type="search" v-model="keywords" @keyup.enter="search()" name="" id="" />
+                    <input type="search" v-model="term" @keyup.enter="search()" name="" id="" />
                     <img style="width: 18px" src="../../../assets/img/search_white.svg" alt="" />
                     <suggest></suggest>
                 </div>
@@ -48,7 +48,7 @@
         <!-- 移动端菜单 -->
         <div class="menu_mobile">
             <div id="search">
-                <input type="search" v-model="keywords" @keyup.enter="search()" name="" id="m_search" />
+                <input type="search" v-model="term" @keyup.enter="search()" name="" id="m_search" />
                 <img
                     style="width: 18px"
                     src="../../../assets/img/search.svg"
@@ -74,12 +74,12 @@ export default {
     components: { suggest },
     data() {
         return {
-            keywords: ''
+            term: ''
         };
     },
     methods: {
         search () {
-            this.$router.push({name: 'Search', params: {keywords: this.keywords}})
+            this.$router.push({name: 'Search', query: {term: this.term}})
             $(function () {
                 var nav = $("#nav");
                 var pc_search = $(".pc_search");

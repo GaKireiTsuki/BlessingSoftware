@@ -57,7 +57,7 @@ const routes = [
     },
     //搜索
     {
-        path: '/search/:keywords',
+        path: '/search',
         name: 'Search',
         component: Search
     },

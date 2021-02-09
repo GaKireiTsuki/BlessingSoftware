@@ -10,7 +10,7 @@ const state = {
     // 歌词
     lyric: '',
     // 所见即所得
-    keywords: ''
+    term: ''
 }
 
 export default state

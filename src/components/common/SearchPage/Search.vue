@@ -1,5 +1,5 @@
 <template>
-    <div class="search" v-wechat-title="'BS Music Search - ' + query">
+    <div class="search" v-wechat-title="'BS Music Search - ' + terms">
         <div class="search_title" v-show="artists && artists.length>0">
             <h2>艺人</h2>
         </div>
@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="search_title" v-show="albums && albums.length>0">
-            <h2>专辑</h2><router-link :to="{name: 'MoreAlbum', params: {keywords: this.query}}">查看全部</router-link>
+            <h2>专辑</h2><!-- <router-link to="">查看全部</router-link> -->
         </div>
         <div class="flex_layout" v-show="albums && albums.length>0">
             <div class="albums" v-for="(item, index) in albums" :key="index">

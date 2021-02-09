@@ -75,8 +75,8 @@ const mutations = {
         state.playHistory = clear
     },
     // 发送搜索建议
-    [TYPES.SEND_SUGGEST] (state, keywords) {
-        state.keywords = keywords;
+    [TYPES.SEND_SUGGEST] (state, term) {
+        state.term = term;
     },
 
     // 歌词

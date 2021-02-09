@@ -3,20 +3,20 @@ import axios from '@/request/http'
 /* import qs from 'qs' */
 
 const music = {
-    suggest(keywords) {
-        return axios.post(`${base.music}/search/suggest?keywords=${keywords}`)
+    suggest(term) {
+        return axios.post(`${base.music}/search/suggest?keywords=${term}`)
     },
-    searchartist(keywords) { //搜索艺术家
-        return axios.post(`${base.music}/search?keywords=${keywords}&limit=2&type=100`)
+    searchartist(term) { //搜索艺术家
+        return axios.post(`${base.music}/search?keywords=${term}&limit=2&type=100`)
     },
-    searchalbum(keywords, asize) { //搜索专辑
-        return axios.post(`${base.music}/search?keywords=${keywords}&limit=${asize}&type=10`)
+    searchalbum(term, asize) { //搜索专辑
+        return axios.post(`${base.music}/search?keywords=${term}&limit=${asize}&type=10`)
     },
-    searchsong(keywords, ssize) { //搜索歌曲
-        return axios.post(`${base.music}/search?keywords=${keywords}&limit=${ssize}&type=1`)
+    searchsong(term, ssize) { //搜索歌曲
+        return axios.post(`${base.music}/search?keywords=${term}&limit=${ssize}&type=1`)
     },
-    searchmv(keywords, msize) { //搜索MV
-        return axios.post(`${base.music}/search?keywords=${keywords}&limit=${msize}&type=1004`)
+    searchmv(term, msize) { //搜索MV
+        return axios.post(`${base.music}/search?keywords=${term}&limit=${msize}&type=1004`)
     },
 
     banner() {

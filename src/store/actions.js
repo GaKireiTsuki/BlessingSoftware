@@ -38,8 +38,8 @@ const actions = {
     },
 
     // 发送搜索建议
-    suggest ({ commit }, keywords) {
-        commit(TYPES.SEND_SUGGEST, keywords)
+    suggest ({ commit }, term) {
+        commit(TYPES.SEND_SUGGEST, term)
     }
 }
 

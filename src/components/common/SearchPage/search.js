@@ -4,7 +4,7 @@ export default {
     name: 'Search',
     data() {
         return {
-            query: this.$route.params.keywords,
+            terms: this.$route.query.term,
             artists: [],
             albums: [],
             songs: [],
@@ -19,10 +19,10 @@ export default {
         searchs () {
             var that = this;
             axios.all([
-                this.$api.music.searchartist(this.keywords), 
-                this.$api.music.searchalbum(this.keywords, this.asize), 
-                this.$api.music.searchsong(this.keywords, this.ssize), 
-                this.$api.music.searchmv(this.keywords, this.msize)
+                this.$api.music.searchartist(this.term), 
+                this.$api.music.searchalbum(this.term, this.asize), 
+                this.$api.music.searchsong(this.term, this.ssize), 
+                this.$api.music.searchmv(this.term, this.msize)
             ])
             .then(axios.spread((res1, res2, res3, res4)=>{
                 that.artists = res1.result.artists;
@@ -35,16 +35,15 @@ export default {
     beforeRouteUpdate (to, from, next) {
         if (to.fullPath != from.fullPath) {
             next()
-            this.keywords = this.$route.params.keywords
-            this.query = this.$route.params.keywords,
+            this.term = this.$route.query.term
+            this.terms = this.$route.query.term
             this.searchs()
         }
     },
     async activated() {
-        var keywords = this.$route.params.keywords
-        if (this.keywords != keywords) {
-            this.keywords = keywords
-            this.query = keywords
+        var term = this.$route.query.term
+        if (this.term != term) {
+            this.term = term
             this.searchs()
         }
     }
