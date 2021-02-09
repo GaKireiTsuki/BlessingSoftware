@@ -43,7 +43,7 @@
         </div>
         <div class="grid_layout">
             <div class="albums" v-for="(item, index) in artists" :key="index">
-                <router-link :to="{ name: 'Artist', params: { id: item.id } }">
+                <router-link :to="{ name: 'Artist', params: { id: item.id, name: item.name }}">
                     <img
                         class="album_cover"
                         v-lazy="item.picUrl + '?param=150y150'"
@@ -54,7 +54,7 @@
                 </router-link>
                 <div class="info">
                     <router-link
-                        :to="{ name: 'Artist', params: { id: item.id } }"
+                        :to="{ name: 'Artist', params: { id: item.id, name: item.name }}"
                         >{{ item.name }}</router-link
                     >
                 </div>

@@ -1,7 +1,7 @@
 <template>
     <div class="suggest">
         <div id="suggest" v-for="(item, index) in results" :key="index">
-            <router-link id="yuan" :to="{ name: 'Artist', params: { id: item.id } }" v-for="(item, index) in item.artists" :key="index + 'artists'">
+            <router-link id="yuan" :to="{ name: 'Artist', params: { id: item.id, name: item.name } }" v-for="(item, index) in item.artists" :key="index + 'artists'">
                 <img v-lazy="item.picUrl + '?param=110y110'" :alt="item.name" :title="item.name" />
                 <span>
                     <p>{{ item.name }}</p>
@@ -20,7 +20,7 @@
                     </p>
                 </span>
             </router-link>
-            <router-link id="fang" :to="{ name: 'Album', params: { id: item.id } }" v-for="(item, index) in item.albums" :key="index + 'albums'">
+            <router-link id="fang" :to="{ name: 'Album', params: { id: item.id, name: item.name } }" v-for="(item, index) in item.albums" :key="index + 'albums'">
                 <img v-lazy="" />
                 <span>
                     <p>{{ item.name }}</p>

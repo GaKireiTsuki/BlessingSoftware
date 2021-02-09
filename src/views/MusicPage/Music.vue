@@ -19,7 +19,7 @@
                     </div>
                     <div class="info">
                         <router-link to="">{{item.name}}</router-link>
-                        <router-link :to="{name: 'Artist', params: {id: item.song.artists[0].id}}">{{item.song.artists[0].name}}</router-link>
+                        <router-link :to="{name: 'Artist', params: {id: item.song.artists[0].id, name: item.song.artists[0].name}}">{{item.song.artists[0].name}}</router-link>
                     </div>
                     <div @click="addSong(item)" class="add_play_list">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="glyph-add" aria-hidden="true"><path d="M15.169 21.24v-4.423h-4.387a.824.824 0 01-.818-.813c0-.448.379-.821.818-.821h4.387V10.76c0-.44.38-.796.827-.796.447 0 .827.356.827.796v4.423h4.395c.447 0 .818.373.818.821a.82.82 0 01-.818.813h-4.395v4.423c0 .431-.38.796-.827.796-.447 0-.827-.365-.827-.796z"></path></svg>
@@ -38,12 +38,12 @@
             </div>
             <div class="new_album_helf flex_layout">
                 <div class="albums" v-for="(item, index) in albums" :key="index">
-                    <router-link :to="{name: 'Album', params: {id: item.id}}">
+                    <router-link :to="{name: 'Album', params: {id: item.id, name: item.name}}">
                         <img class="album_cover" v-lazy="item.picUrl + '?param=150y150'" :key="item.picUrl + '?param=150y150'" :alt="item.name" :title="item.name">
                     </router-link>
                     <div class="info">
-                        <router-link :to="{name: 'Album', params: {id: item.id}}">{{item.name}}</router-link>
-                        <router-link :to="{name: 'Artist', params: {id: item.artist.id}}">{{item.artists[0].name}}</router-link>
+                        <router-link :to="{name: 'Album', params: {id: item.id, name: item.name}}">{{item.name}}</router-link>
+                        <router-link :to="{name: 'Artist', params: {id: item.artist.id, name: item.artist.name}}">{{item.artists[0].name}}</router-link>
                     </div>
                 </div>
             </div>

@@ -43,7 +43,7 @@ const routes = [
         name: 'Store',
         component: Store
     },
-    //新闻
+    //艺术家列表
     {
         path: '/artists',
         name: 'Artists',
@@ -57,31 +57,31 @@ const routes = [
     },
     //搜索
     {
-        path: '/music/search/:keywords',
+        path: '/search/:keywords',
         name: 'Search',
         component: Search
     },
     //歌手详情
     {
-        path: '/music/artist/:id',
+        path: '/artist/:name/:id',
         name: 'Artist',
         component: Artist
     },
     //MV
     {
-        path: '/music/mv/:id',
+        path: '/mv/:name/:id',
         name: 'MV',
         component: MV
     },
     //更多专辑
     {
-        path: '/music/more-album/:keywords',
+        path: '/more-album/:keywords',
         name: 'MoreAlbum',
         component: MoreAlbum
     },
     //专辑详情
     {
-        path: '/music/album/:id',
+        path: '/album/:name/:id',
         name: 'Album',
         component: Album
     },

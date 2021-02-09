@@ -16,7 +16,7 @@
                 <div class="info">
                     <router-link to="">{{item.name}}</router-link>
                     <span>
-                        <router-link :to="{name: 'Artist', params: {id: item.id}}" v-for="(item, index) in item.ar" :key="index">{{item.name}}</router-link>
+                        <router-link :to="{name: 'Artist', params: {id: item.id, name: item.name}}" v-for="(item, index) in item.ar" :key="index">{{item.name}}</router-link>
                     </span>
                 </div>
                 <div @click="addSong(item)" class="add_play_list">
@@ -29,12 +29,12 @@
         </div>
         <div class="flex_layout" v-show="hotAlbums && hotAlbums.length>0">
             <div class="albums" v-for="(item, index) in hotAlbums" :key="index">
-                <router-link :to="{name: 'Album', params: {id: item.id}}">
+                <router-link :to="{name: 'Album', params: {id: item.id, name: item.name}}">
                     <img class="album_cover" v-lazy="item.picUrl + '?param=150y150'" :key="item.picUrl + '?param=150y150'" :alt="item.name" :title="item.name">
                 </router-link>
                 <div class="info">
-                    <router-link :to="{name: 'Album', params: {id: item.id}}">{{item.name}}</router-link>
-                    <router-link :to="{name: 'Artist', params: {id: item.artist.id}}">{{item.artists[0].name}}</router-link>
+                    <router-link :to="{name: 'Album', params: {id: item.id, name: item.name}}">{{item.name}}</router-link>
+                    <router-link :to="{name: 'Artist', params: {id: item.artist.id, name: item.artist.name}}">{{item.artists[0].name}}</router-link>
                 </div>
             </div>
         </div>
@@ -43,12 +43,12 @@
         </div>
         <div class="flex_layout" v-show="mvs && mvs.length>0">
             <div class="albums mv" v-for="(item, index) in mvs" :key="index">
-                <router-link :to="{name: 'MV', params: {id: item.id}}">
+                <router-link :to="{name: 'MV', params: {id: item.id, name: item.name}}">
                     <img class="album_cover" v-lazy="item.imgurl16v9 + '?param=159y90'" :key="item.imgurl16v9 + '?param=159y90'" :alt="item.name" :title="item.name">
                 </router-link>
                 <div class="info">
-                    <router-link :to="{name: 'MV', params: {id: item.id}}">{{item.name}}</router-link>
-                    <router-link :to="{name: 'Artist', params: {id: item.artist.id}}">{{item.artistName}}</router-link>
+                    <router-link :to="{name: 'MV', params: {id: item.id, name: item.name}}">{{item.name}}</router-link>
+                    <router-link :to="{name: 'Artist', params: {id: item.artist.id, name: item.artist.name}}">{{item.artistName}}</router-link>
                 </div>
             </div>
         </div>
