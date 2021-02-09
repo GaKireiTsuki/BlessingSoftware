@@ -52,7 +52,7 @@ export default {
         ...mapState(['playList', 'playHistory']),
     },
     methods: {
-        ...mapActions(['playSong', 'Clear', 'removeSong']),
+        ...mapActions(['playSong', 'addSong', 'Clear', 'removeSong']),
         ...mapMutations(['ADD_PLAY_LIST'])
     }
 }
