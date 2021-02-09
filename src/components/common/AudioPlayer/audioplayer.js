@@ -120,13 +120,9 @@ $(function () {
                     openlist.click()
                 }
                 audioplayer.removeAttr("style")
-                setTimeout(() => {
-                    song_info.removeAttr("style")
-                }, 400)
-                setTimeout(() => {
-                    controls.hide().removeAttr("style")
-                    controls_container.hide().removeAttr("style")
-                }, 300)
+                song_info.removeAttr("style")
+                controls.hide().removeAttr("style")
+                controls_container.hide().removeAttr("style")
             }
         }
     })
@@ -139,13 +135,9 @@ $(function () {
             }
             if (controls.is(':visible')) {
                 audioplayer.removeAttr("style")
-                setTimeout(() => {
-                    song_info.removeAttr("style")
-                }, 400)
-                setTimeout(() => {
-                    controls.hide().removeAttr("style")
-                    controls_container.hide().removeAttr("style")
-                }, 300)
+                song_info.removeAttr("style")
+                controls.hide().removeAttr("style")
+                controls_container.hide().removeAttr("style")
             }
         }
     })
