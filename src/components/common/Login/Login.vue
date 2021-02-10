@@ -77,7 +77,6 @@ export default {
                         if ("MUSIC_U" == arr[0]) {
                             MUSIC_U = arr[1]
                             document.cookie = 'MUSIC_U' + "=" + MUSIC_U
-                            console.log(MUSIC_U)
                         }
                     }
                 }
@@ -95,12 +94,12 @@ export default {
         },
         loginstatus () {
             this.$api.music.loginstatus().then( res => {
-                console.log(res.data)
                 if (res.data.account === null) {
                     this.getqr()
                     this.qr()
                 } else {
-                    console.log('您已登录')
+                    this.$store.dispatch('alter', true)
+                    this.$store.dispatch('userId', res.data.account.id)
                     $(function () {
                         var _login = $("#logins")
                         var qrif = $('.qrif')

@@ -1,5 +1,15 @@
 import * as TYPES from './mutation-types'
 const actions = {
+    // 登陆状态
+    alter ({ commit }, Statu) {
+        commit(TYPES.LOGIN_STATU, Statu)
+    },
+
+    // 用户ID
+    userId ({ commit }, id) {
+        commit(TYPES.USER_ID, id)
+    },
+
     // 发送歌曲ID
     playSong ({ commit }, id) {
         commit(TYPES.SEND_SONGS_ID, id)

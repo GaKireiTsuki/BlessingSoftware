@@ -1,5 +1,15 @@
 import * as TYPES from './mutation-types'
 const mutations = {
+    // 登陆状态
+    [TYPES.LOGIN_STATU] (state, Statu) {
+        state.loginStatu = Statu
+    },
+
+    // 用户ID
+    [TYPES.USER_ID] (state, id) {
+        state.uid = id
+    },
+
     // 发送歌曲ID
     [TYPES.SEND_SONGS_ID] (state, id) {
         state.songID = id

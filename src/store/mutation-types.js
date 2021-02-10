@@ -1,3 +1,9 @@
+// 登陆状态
+export const LOGIN_STATU = 'LOGIN_STATU'
+
+// 用户ID
+export const USER_ID = 'USER_ID'
+
 // 发送歌曲ID
 export const SEND_SONGS_ID = 'SEND_SONGS_ID'
 

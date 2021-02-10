@@ -13,6 +13,13 @@ export default new Vuex.Store({
     actions,
     plugins: [
         persistedstate({
+            key: 'USER',
+            reducer: state => ({
+                loginStatu: state.loginStatu,
+                uid: state.uid
+            })
+        }),
+        persistedstate({
             key: 'PLAY_LIST',
             reducer: state => ({
                 playList: state.playList

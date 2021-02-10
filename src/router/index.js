@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/views/HomePage/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -11,6 +10,7 @@ VueRouter.prototype.push = function push(location) {
 }
 
 const Store = () => import('@/views/StorePage/Store.vue')
+const Account = () => import('@/views/AccountPage/Account.vue')
 const Artists = () => import('@/views/ArtistsPage/Artists.vue')
 const Music = () => import('@/views/MusicPage/Music.vue')
 const Err = () => import('@/views/ErrPage/Err.vue')
@@ -25,8 +25,6 @@ const routes = [
     //首页
     {
         path: '/',
-        name: 'Home',
-        component: Home,
         redirect: '/music'
     },
     {
@@ -36,6 +34,12 @@ const routes = [
     {
         path: '/home',
         redirect: '/'
+    },
+    //账户
+    {
+        path: '/account',
+        name: 'Account',
+        component: Account
     },
     //商店
     {

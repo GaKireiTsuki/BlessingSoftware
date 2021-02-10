@@ -1,4 +1,8 @@
 const state = {
+    // 登陆状态
+    loginStatu: false,
+    // 用户ID
+    uid: '',
     // 歌曲ID
     songID: '',
     // 播放列表
