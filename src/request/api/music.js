@@ -60,9 +60,9 @@ const music = {
         return axios.post(`${base.music}/artist/mv?id=${id}`)
     },
 
-    /* user() { // 获取账号信息
-        return
-    }, */
+    userinfo() { // 获取账号信息
+        return axios.post(`${base.music}/user/account`)
+    },
 
     qrkey() { // 获取二维码key
         return axios.post(`${base.music}/login/qr/key?timerstamp=${Date.now()}`)
@@ -84,9 +84,6 @@ const music = {
     },
     email(account, password) { // 邮箱登录
         return axios.post(`${base.music}/login?email=${account}&password=${password}&timerstamp=${Date.now()}`)
-    },
-    logout() { // 退出登录
-        return axios.post(`${base.music}/logout`)
     }
 }
 

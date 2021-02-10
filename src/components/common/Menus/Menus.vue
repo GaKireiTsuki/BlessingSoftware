@@ -37,11 +37,8 @@
                     <p>Your</p>
                     <div class="bag_menu">
                         <router-link v-show="loginStatu === true" to="/account">Account</router-link>
-                        <a v-show="loginStatu === false" href="javascript:;" class="open_login"
-                            >Sign in</a
-                        >
-                        <a href="javascript:;" @click="logout">BAG</a>
-                        <a v-show="loginStatu === true" href="javascript:;">LOGINOUT</a>
+                        <a v-show="loginStatu !== true" href="javascript:;" class="open_login">Sign in</a>
+                        <a v-show="loginStatu === true" href="javascript:;" @click="out()">Sign out</a>
                     </div>
                 </div>
             </a>
@@ -70,7 +67,8 @@
 <script>
 import $ from 'jquery'
 import suggest from './Suggest'
-import { mapState } from 'vuex'
+import Cookies from 'js-cookie'
+import { mapState, mapActions } from 'vuex'
 export default {
     name: "menus",
     components: { suggest },
@@ -83,10 +81,10 @@ export default {
         ...mapState(['loginStatu']),
     },
     methods: {
-        logout () {
-            this.$api.music.logout().then((res) => {
-                console.log(res)
-            });
+        ...mapActions(['logout']),
+        out () {
+            this.logout()
+            Cookies.remove('MUSIC_U')
         },
         search () {
             this.$router.push({name: 'Search', query: {term: this.term}})

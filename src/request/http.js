@@ -1,13 +1,15 @@
 import axios from 'axios'
-axios.defaults.withCredentials = true;
+
+
 //创建axios实例
 var instance = axios.create({
-    timeout: 1000 * 12,
-    withCredentials: true
+    timeout: 1000 * 60
 })
 
 // 设置post请求头
 instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+instance.defaults.responseType = 'json'
+instance.defaults.withCredentials = true
 
 instance.interceptors.request.use(config => {
     //在发送请求之前先做点事

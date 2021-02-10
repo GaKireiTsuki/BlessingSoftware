@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../store/index'
 
 Vue.use(VueRouter)
 
@@ -39,7 +40,12 @@ const routes = [
     {
         path: '/account',
         name: 'Account',
-        component: Account
+        component: Account,
+        beforeEnter: (to, from, next) => {
+            if (store.state.loginStatu !== true)
+            next({ name: 'Music' })
+            else next()
+        }
     },
     //商店
     {

@@ -4,14 +4,7 @@ export default {
     name: 'Album',
     data() {
         return {
-            picUrl: '',
-            name: '',
-            size: '',
-            company: '',
-            subType: '',
-            publishTime: '',
-            artistname: [],
-            titlename: '',
+            album: '',
             songs: [],
             hotAlbums: [],
             artistsname: '',
@@ -23,24 +16,16 @@ export default {
     },
     methods: {
         ...mapActions(['playSong', 'addSong', 'playAlbum']),
-        album () {
-            var that = this;
+        getalbum () {
             this.$api.music.albuminfo(this.id).then(res => {
-                that.subType = res.album.subType;
-                that.publishTime = res.album.publishTime;
-                that.picUrl = res.album.picUrl;
-                that.name = res.album.name;
-                that.artistname = res.album.artists;
-                that.titlename = res.album.artists[0].name
-                that.size = res.album.size;
-                that.company = res.album.company;
-                that.songs = res.songs;
-                that.artistid = res.album.artist.id
+                this.album = res.album
+                this.songs = res.songs;
+                this.artistid = res.album.artist.id
                 axios.all([this.$api.music.artistalbum(this.artistid), this.$api.music.artistmv(this.artistid)])
                 .then(axios.spread((res1, res2)=>{
-                    that.hotAlbums = res1.hotAlbums;
-                    that.artistsname = res1.artist.name;
-                    that.mvs = res2.mvs;
+                    this.hotAlbums = res1.hotAlbums;
+                    this.artistsname = res1.artist.name;
+                    this.mvs = res2.mvs;
                 }))
             })
         }
@@ -49,14 +34,14 @@ export default {
         if (to.fullPath != from.fullPath) {
             next()
             this.id = this.$route.params.id
-            this.album()
+            this.getalbum()
         }
     },
     async activated() {
         var id = this.$route.params.id
         if (this.id != id) {
             this.id = id
-            this.album()
+            this.getalbum()
         }
     }
 }

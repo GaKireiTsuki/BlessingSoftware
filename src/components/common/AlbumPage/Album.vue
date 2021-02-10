@@ -1,17 +1,17 @@
 <template>
-    <div class="album" v-wechat-title="'BS Music 上' + titlename + '的专辑' + '《' + name + '》'">
+    <div class="album" v-wechat-title="'BS Music 上' + artistsname + '的专辑' + '《' + album.name + '》'">
         <div id="album">
             <div class="cover play_cover">
                 <button @click="playAlbum(songs), playSong(songs[0].id)" class="play_button">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27" class="glyph"><path d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"></path></svg>
                 </button>
-                <img v-lazy="picUrl + '?param=1000y1000'" :key="picUrl + '?param=1000y1000'" :alt="name" :title="name">
+                <img v-lazy="album.picUrl + '?param=1000y1000'" :key="album.picUrl + '?param=1000y1000'" :alt="album.name" :title="album.name">
             </div>
             <div class="album_content">
                 <div id="album_info">
-                    <h1>{{name}}</h1>
-                    <router-link :to="{name: 'Artist', params: {id: item.id, name: item.name}}" v-for="(item, index) in artistname" :key="index">{{item.name}}</router-link>
-                    <h3>{{subType}} · {{publishTime | Year}}</h3>
+                    <h1>{{album.name}}</h1>
+                    <router-link :to="{name: 'Artist', params: {id: item.id, name: item.name}}" v-for="(item, index) in album.artists" :key="index">{{item.name}}</router-link>
+                    <h3>{{album.subType}} · {{album.publishTime | Year}}</h3>
                     <div class="album_button">
                         <button @click="playAlbum(songs), playSong(songs[0].id)">
                             播放
@@ -56,9 +56,9 @@
                     </div>
                 </div>
                 <div class="album_info">
-                    <span>{{size}}&nbsp;首歌曲</span>
-                    <span>发行日期 {{publishTime | Date}}</span>
-                    <span>{{company}}</span>
+                    <span>{{album.size}}&nbsp;首歌曲</span>
+                    <span>发行日期 {{album.publishTime | Date}}</span>
+                    <span>{{album.company}}</span>
                 </div>
             </div>
         </div>

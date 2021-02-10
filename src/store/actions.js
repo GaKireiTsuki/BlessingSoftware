@@ -5,6 +5,11 @@ const actions = {
         commit(TYPES.LOGIN_STATU, Statu)
     },
 
+    // 退出登陆
+    logout ({ commit }) {
+        commit(TYPES.LOGOUT)
+    },
+
     // 用户ID
     userId ({ commit }, id) {
         commit(TYPES.USER_ID, id)

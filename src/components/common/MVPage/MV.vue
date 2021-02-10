@@ -1,5 +1,5 @@
 <template>
-    <div v-wechat-title="'BS Music MV - ' + name">
+    <div v-wechat-title="'BS Music MV - ' + mv.name">
         <div class="player">
             <svg class="close_player" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="#fff">
                 <path d="M10.5 21C4.724 21 0 16.275 0 10.5S4.724 0 10.5 0 21 4.725 21 10.5 16.276 21 10.5 21zm-3.543-5.967a.96.96 0 00.693-.295l2.837-2.842 2.85 2.842c.167.167.41.295.693.295.552 0 1.001-.461 1.001-1.012 0-.281-.115-.512-.295-.704L11.899 10.5l2.85-2.855a.875.875 0 00.295-.68c0-.55-.45-.998-1.001-.998a.871.871 0 00-.668.295l-2.888 2.855-2.862-2.843a.891.891 0 00-.668-.281.99.99 0 00-1.001.986c0 .269.116.512.295.678L9.088 10.5l-2.837 2.843a.926.926 0 00-.295.678c0 .551.45 1.012 1.001 1.012z" fill-rule="nonzero"/>
@@ -17,18 +17,18 @@
                 <button @click="playermv()" class="open_play play_button">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27" class="glyph"><path d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"></path></svg>
                 </button>
-                <img v-lazy="cover + '?param=700y400'" :key="cover + '?param=700y400'" alt="">
+                <img v-lazy="mv.cover + '?param=700y400'" :key="mv.cover + '?param=700y400'" alt="">
             </div>
             <div class="artist_mv_info">
-                <p>{{name | Nbsp}}</p>
+                <p v-if="mv.name">{{mv.name | Nbsp}}</p>
                 <p>
-                    <router-link :to="{name: 'Artist', params: {id: item.id, name: item.name}}" v-for="(item, index) in artists" :key="index">{{item.name}}</router-link>
+                    <router-link :to="{name: 'Artist', params: {id: item.id, name: item.name}}" v-for="(item, index) in mv.artists" :key="index">{{item.name}}</router-link>
                 </p>
-                <p>{{publishTime | Date}}</p>
+                <p>{{mv.publishTime | Date}}</p>
             </div>
         </div>
         <div class="search_title">
-            <h2>更多{{artistName}}的作品</h2>
+            <h2>更多{{mv.artistName}}的作品</h2>
         </div>
         <div class="flex_layout">
             <div class="albums mv" v-for="(item, index) in mvs" :key="index">
@@ -50,16 +50,11 @@ export default {
     name: 'MV',
     data() {
         return {
-            url: '',
-            cover: '',
-            artists: [],
-            name: '',
-            publishTime: '',
-            artistId: '',
+            mv: '',
             mvs: [],
             brs: [],
+            url: '',
             r: '',
-            artistName: '',
         }
     },
     computed: {
@@ -75,27 +70,21 @@ export default {
         }
     },
     methods: {
-        mv () {
-            var that = this;
+        getmv () {
             axios.all([this.$api.music.mvinfo(this.id)])
             .then(axios.spread((res)=>{
-                that.cover = res.data.cover;
-                that.artists = res.data.artists;
-                that.name = res.data.name;
-                that.publishTime = res.data.publishTime;
-                that.artistId = res.data.artistId;
-                that.artistName = res.data.artistName;
-                that.brs = res.data.brs;
+                this.mv = res.data
+                this.artistId = res.data.artistId;
+                this.brs = res.data.brs;
                 this.$api.music.artistmv(this.artistId).then(res => {
-                    that.mvs = res.mvs;
+                    this.mvs = res.mvs;
                 })
             }))
         },
         playermv () {
-            var that = this;
             axios.all([this.$api.music.playmv(this.id, this.r)])
             .then(axios.spread((res)=>{
-                that.url = res.data.url;
+                this.url = res.data.url;
             }))
         }
     },
@@ -111,14 +100,14 @@ export default {
         if (to.fullPath != from.fullPath) {
             next()
             this.id = this.$route.params.id
-            this.mv()
+            this.getmv()
         }
     },
     async activated() {
         var id = this.$route.params.id
         if (this.id != id) {
             this.id = id
-            this.mv()
+            this.getmv()
         }
     }
 }

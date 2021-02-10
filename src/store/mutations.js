@@ -5,6 +5,12 @@ const mutations = {
         state.loginStatu = Statu
     },
 
+    // 退出登陆
+    [TYPES.LOGOUT] (state) {
+        state.loginStatu = ''
+        state.uid = ''
+    },
+
     // 用户ID
     [TYPES.USER_ID] (state, id) {
         state.uid = id

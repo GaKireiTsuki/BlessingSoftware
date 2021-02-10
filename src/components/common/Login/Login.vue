@@ -23,6 +23,7 @@
 </template>
 <script>
 import $ from 'jquery'
+import Cookies from 'js-cookie'
 export default {
     name: 'login',
     data() {
@@ -35,11 +36,9 @@ export default {
     methods: {
         email () {
             this.$api.music.email(this.account, this.password).then( res => {
-                console.log(res)
                 if (res.code === 200) {
                     clearInterval(this.timer)
                     $(function () {
-                        console.log('您已登录')
                         var _login = $("#logins")
                         var qrif = $('.qrif')
                         var qrh = $('.login_content h1')
@@ -65,7 +64,6 @@ export default {
             this.$api.music.checkstatus(this.key).then( res => {
                 that.code = res.code;
                 if (res.code === 803) {
-                    console.log(res.cookie)
                     var dataCookie = res.cookie
                     //将多cookie切割为多个名/值对
                     var arrCookie = dataCookie.split(';')
@@ -76,7 +74,7 @@ export default {
                         //找到名称为userId的cookie，并返回它的值
                         if ("MUSIC_U" == arr[0]) {
                             MUSIC_U = arr[1]
-                            document.cookie = 'MUSIC_U' + "=" + MUSIC_U
+                            Cookies.set('MUSIC_U', MUSIC_U, {expires: 180})
                         }
                     }
                 }
@@ -88,7 +86,7 @@ export default {
                 that.key = res.data.unikey
                 this.$api.music.qrcreate(this.key).then( res => {
                     that.qrimg = res.data.qrimg
-                    console.log('二维码已重置')
+                    /* console.log('二维码已重置') */
                 })
             })
         },
@@ -124,14 +122,14 @@ export default {
                 this.checkstatu()
                 var code = this.code
                 if (code === 800) {
-                    console.log('二维码已过期')
+                    /* console.log('二维码已过期') */
                     this.getqr()
                 } if (code === 801) {
-                    console.log('等待扫码')
+                    /* console.log('等待扫码') */
                 } if (code === 802) {
-                    console.log('待确认')
+                    /* console.log('待确认') */
                 } if (code === 803) {
-                    console.log('授权登录成功')
+                    /* console.log('授权登录成功') */
                     clearInterval(this.timer)
                     this.loginstatus()
                 }
