@@ -222,7 +222,7 @@ export default album
         outline: none;
     }
     .album_song_list:focus span{
-        color: var(--whiteFontColor);
+        color: var(--whiteFontColor) !important;
         box-shadow: none;
     }
     .album_song_list:focus #name_artist a{
@@ -238,7 +238,7 @@ export default album
         fill: var(--whiteFillColor);
     }
     .album_song_list:focus span:nth-of-type(3){
-        color: #DD1F34;
+        color: #DD1F34 !important;
     }
     .album_song_list span{
         box-shadow: 0px -1px #00000026;
