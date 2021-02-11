@@ -153,14 +153,13 @@ $(function () {
     }
     .player{
         position: fixed;
-        background: #000;
+        background: var(--blackBgColor);
         width: 100vw;
         height: 100vh;
         z-index: 999;
         top: 0;
         left: 0;
         padding: 44px;
-        box-sizing: border-box;
         display: none;
     }
     .player video{
@@ -191,7 +190,7 @@ $(function () {
     .artist_mv_info p a{
         margin-top: 2px;
         font-size: 24px;
-        color: #fa233b;
+        color: var(--redFontColor);
         margin-right: 8px;
     }
     .artist_mv_info p a:hover{

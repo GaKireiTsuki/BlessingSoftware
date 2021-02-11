@@ -19,7 +19,6 @@ export default {
         backdrop-filter: saturate(180%) blur(20px);
         border-top: 1px solid #00000012;
         border-left: .5px solid #00000026;
-        box-sizing: border-box;
         width: 300px;
         height: calc(100vh - 97px);
         padding: 10px 20px;
@@ -44,7 +43,6 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
-        box-sizing: border-box;
         border-radius: 4px;
         cursor: pointer;
         border: none;

@@ -259,11 +259,11 @@ $(function () {
 }
 #bag {
     line-height: 2.5em;
-    color: #dadce0;
+    color: var(--silveryWhiteFontColor);
     position: absolute;
     top: 50px;
     border-radius: 10px;
-    background: #fff;
+    background: var(--whiteBgColor);
     border: 1px solid #d2d2d7;
     padding: 5px 20px;
     right: -49.5px;
@@ -287,14 +287,13 @@ $(function () {
     text-decoration: underline;
 }
 .menu_mobile {
-    box-sizing: border-box;
     width: 100vw;
     height: 0;
     margin: 43px 0 0 0;
     transition: all 0.5s;
     position: absolute;
-    background: #000;
-    color: #dadce0;
+    background: var(--blackBgColor);
+    color: var(--silveryWhiteFontColor);
     z-index: 1;
     overflow: auto;
     line-height: 2.5em;
@@ -304,7 +303,7 @@ $(function () {
     display: none;
 }
 #mobile_nav_link a {
-    color: #dadce0;
+    color: var(--silveryWhiteFontColor);
     font-size: 18px;
     display: block;
     border-top: 1px solid rgba(255, 255, 255, 0.24);
@@ -320,7 +319,7 @@ $(function () {
     border-bottom: 1px solid rgba(255, 255, 255, 0.24);
     position: sticky;
     top: 0;
-    background: #000;
+    background: var(--blackBgColor);
     display: none;
 }
 #search img {
@@ -335,7 +334,7 @@ input[type="search"] {
     border: none;
     background: #1d1d1f;
     border-radius: 6px;
-    color: #dadce0;
+    color: var(--silveryWhiteFontColor);
     font-size: 16px;
     outline: none;
     transition: all 0.5s;
@@ -388,7 +387,6 @@ input[type="search"] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-sizing: border-box;
     font-size: 14px;
     color: #3d3e3f;
     position: sticky;
@@ -460,7 +458,6 @@ input[type="search"] {
         top: 43px;
         width: 100vw;
         right: -15px;
-        box-sizing: border-box;
         border: none;
         border-bottom: 1px solid #d2d2d7;
         border-radius: unset;

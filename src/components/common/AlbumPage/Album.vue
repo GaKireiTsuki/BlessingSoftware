@@ -106,9 +106,9 @@ export default album
     .album_button button{
         height: 28px;
         cursor: pointer;
-        color: #fff;
+        color: var(--whiteFontColor);
         border: none;
-        background: #fa233b;
+        background: var(--redBgColor);
         padding: 0 12px;
         border-radius: 4px;
         min-width: 90px;
@@ -120,7 +120,7 @@ export default album
     }
     #name_artist a{
         font-size: 12px;
-        color: rgba(60,60,67,.6);
+        color: var(--grayishFontColor);
     }
     #name_artist{
         display: flex;
@@ -168,7 +168,7 @@ export default album
     }
     .album_content h3{
         margin-top: 4px;
-        color: #3c3c4399;
+        color: var(--grayishFontColor);
         text-transform: uppercase;
         font-size: 11px;
         line-height: 1.18182;
@@ -177,7 +177,7 @@ export default album
     }
     .album_content a{
         font-size: 24px;
-        color: #fa233b;
+        color: var(--redFontColor);
         margin-right: 8px;
     }
     .album_content a:hover{
@@ -190,7 +190,6 @@ export default album
         display: grid;
         font-size: 14px;
         grid-template-columns: 17.5px 26px 1fr 70px 17.5px;
-        box-sizing: border-box;
     }
     .album_song_list span:nth-of-type(3){
         text-align: end;
@@ -198,11 +197,10 @@ export default album
         display: flex;
         position: relative;
         justify-content: flex-end;
-        color: #3c3c4399;
+        color: var(--grayishFontColor);
     }
     .album_song_list:hover{
         background: #FBFBFB;
-        box-sizing: border-box;
         border-radius: 8px;
     }
     .album_song_list:hover span{
@@ -224,20 +222,20 @@ export default album
         outline: none;
     }
     .album_song_list:focus span{
-        color: #fff;
+        color: var(--whiteFontColor);
         box-shadow: none;
     }
     .album_song_list:focus #name_artist a{
-        color: #fff;
+        color: var(--whiteFontColor);
     }
     .album_song_list:focus + .album_song_list span{
         box-shadow: none;
     }
     .album_song_list:focus span:nth-of-type(1) svg{
-        fill: #fff;
+        fill: var(--whiteFillColor);
     }
     .album_song_list:focus span:nth-of-type(3) svg{
-        fill: #fff;
+        fill: var(--whiteFillColor);
     }
     .album_song_list:focus span:nth-of-type(3){
         color: #DD1F34;
@@ -246,37 +244,36 @@ export default album
         box-shadow: 0px -1px #00000026;
         height: 55px;
         line-height: 55px;
-        box-sizing: border-box;
     }
     .album_song_list span:nth-of-type(1){
         height: 55px;
         width: 26px;
         position: relative;
+        color: var(--grayishFontColor);
     }
     .album_song_list span:nth-of-type(1) svg{
         left: -12px;
         width: 34px;
         top: 10.5px;
         position: absolute;
-        fill: #fa233b;
+        fill: var(--redFillColor);
         opacity: 0;
     }
     #album_info{
         padding: 0px 17.5px;
-        box-sizing: border-box;
     }
     .album_info{
         padding: 20px 17.5px 0;
-        box-sizing: border-box;
     }
     .album_info span{
         display: block;
-        color: #3c3c4399;
+        color: var(--grayishFontColor);
         font-size: 12px;
         line-height: 1.18182;
         font-weight: 500;
         letter-spacing: .006em;
         margin-bottom: 3px;
+        font-family: "SF Pro","PingFang SC";
     }
     .album{
         margin-top: 40px;
@@ -289,7 +286,6 @@ export default album
             padding: 16px;
             width: 100%;
             height: 100%;
-            box-sizing: border-box;
             position: relative;
             top: 0;
         }
@@ -300,7 +296,6 @@ export default album
         .album{
             padding: 24px;
             margin-top: 0;
-            box-sizing: border-box;
         }
         .album_content{
             margin: 0;

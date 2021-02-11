@@ -14,7 +14,7 @@
         align-items: center;
     }
     .shuffle_song, .repeat_song{
-        fill: #3c3c4399 !important;
+        fill: var(--grayishFillColor) !important;
         width: 30px !important;
         height: 22px !important;
     }
@@ -50,16 +50,14 @@
         width: 100%;
         max-width: 900px;
         padding: 0 5px;
-        box-sizing: border-box;
     }
 
     #song_info {
         border: 1px solid #E0E0E0;
-        box-sizing: border-box;
         width: 100%;
         display: grid;
         grid-template-rows: 14px 14px 13px;
-        background: #fff;
+        background: var(--whiteBgColor);
         border-left: none;
     }
 
@@ -76,7 +74,7 @@
     .song_info audio {
         height: 100%;
         border-left: none;
-        background: #fff;
+        background: var(--whiteBgColor);
         width: 100%;
     }
 
@@ -107,7 +105,6 @@
         padding: 30px;
         border-radius: 40px;
         display: none;
-        box-sizing: border-box;
     }
 
     .audioplayer_audio {

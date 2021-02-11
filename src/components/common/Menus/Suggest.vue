@@ -65,7 +65,7 @@
 </script>
 <style>
     .suggest {
-        background: #fff;
+        background: var(--whiteBgColor);
         border-bottom-left-radius: 18px;
         border-bottom-right-radius: 18px;
         color: #86868b;
@@ -110,6 +110,6 @@
 
     #suggest a p:nth-of-type(2) {
         font-size: 12px;
-        color: #3c3c4399;
+        color: var(--grayishFontColor);
     }
 </style>

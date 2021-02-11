@@ -235,10 +235,9 @@ $(function () {
         font-weight: 400;
         color: #494949;
         padding: 0px 15px;
-        box-sizing: border-box;
         outline: none;
         transition: all 0.5s;
-        background: #FFF;
+        background: var(--whiteBgColor);
     }
     .ap input[type=text]:focus{
         border: 1px solid #0070c9;
@@ -311,7 +310,7 @@ $(function () {
         min-height: 560px;
         min-width: 300px;
         width: 800px;
-        background: #FFFFFF;
+        background: var(--whiteBgColor);
         border-radius: 12px;
         z-index: 3;
         position: relative;

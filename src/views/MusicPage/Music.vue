@@ -75,7 +75,6 @@ export default music
         grid-auto-flow: column;
         grid-auto-columns: calc((100% - 1 * 20px)/ 2);
         padding: 15px 0;
-        box-sizing: border-box;
     }
     .banner::-webkit-scrollbar{
         height: 4px;

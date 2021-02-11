@@ -83,14 +83,13 @@ export default {
         display: block;
     }
     .play_list button{
-        color: #fa233b;
+        color: var(--redFontColor);
         font-size: 14px;
         height: 40px;
         width: 100%;
         border: none;
         background: none;
         outline: none;
-        box-sizing: border-box;
         padding: 10px 20px 0;
         border-top: .5px solid #00000026;
     }
@@ -99,7 +98,6 @@ export default {
         height: 55px;
         border-top: .5px solid #00000026;
         align-items: center;
-        box-sizing: border-box;
         grid-template-columns: 1fr 40px;
     }
     .more{
@@ -114,7 +112,7 @@ export default {
         right: 20px;
         bottom: -19.5px;
         font-size: 12px;
-        background: #fff;
+        background: var(--whiteBgColor);
         border-radius: 6px;
         box-shadow: 0 2px 10px rgba(0,0,0,.08);
         z-index: 1;
@@ -122,7 +120,6 @@ export default {
     }
     .more_list div{
         padding: 7px 32px 0px 10px;
-        box-sizing: border-box;
         height: 32px;
     }
     .more span{
@@ -144,7 +141,6 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
-        box-sizing: border-box;
         border-radius: 4px;
         cursor: pointer;
         border: none;
@@ -152,7 +148,7 @@ export default {
         outline: none;
     }
     .open_list svg{
-        fill: #3c3c4399;
+        fill: var(--grayishFillColor);
     }
     .play_list h3{
         font-size: 18px;
@@ -169,8 +165,7 @@ export default {
         padding: 10px 0px;
         display: none;
         box-shadow: 0 0 3px rgba(0,0,0,.1);
-        box-sizing: border-box;
-        background: #fff;
+        background: var(--whiteBgColor);
         border-top: 1px solid #00000012;
         border-left: .5px solid #00000026;
         z-index: 2;
@@ -182,24 +177,23 @@ export default {
         align-items: center;
         height: 55px;
         padding: 0px 20px;
-        box-sizing: border-box;
         outline: none;
         position: relative;
     }
     #play_list:hover .more span{
-        background-color: #fa233b;
+        background-color: var(--redBgColor);
     }
     #play_list:hover{
-        background: #fff;
+        background: var(--whiteBgColor);
     }
     #play_list:focus .more span{
-        background-color: #fff;
+        background-color: var(--whiteBgColor);
     }
     #play_list:focus{
-        background: #fa233b;
+        background: var(--redBgColor);
     }
     #play_list:focus #list_name{
-        color: #fff;
+        color: var(--whiteFontColor);
     }
     #play_list img{
         border-radius: 4px;
@@ -215,7 +209,7 @@ export default {
     }
     #play_list span:nth-of-type(2){
         font-size: 12px;
-        color: #3c3c4399;
+        color: var(--grayishFontColor);
         font-family: "SF Pro Text";
         border-top: none;
     }

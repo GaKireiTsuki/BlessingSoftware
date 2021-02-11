@@ -7,6 +7,22 @@
     user-select: none;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
+    vertical-align: middle
+}
+:root{
+    --redBgColor: #FA233B;
+    --redFontColor: #FA233B;
+    --redFillColor: #FA233B;
+    --whiteFontColor: white;
+    --whiteBgColor: white;
+    --whiteFillColor: white;
+    --silveryWhiteFontColor: #dadce0;
+    --silveryWhiteBgColor: #dadce0;
+    --silveryWhiteFillColor: #dadce0;
+    --blackBgColor: black;
+    --blackFontColor: black;
+    --grayishFontColor: #3c3c4399;
+    --grayishFillColor: #3c3c4399;
 }
 a{
     cursor: pointer;
@@ -21,7 +37,7 @@ body{
     height: 100vh;
 }
 a{
-    color: #000;
+    color: var(--blackFontColor);
     /* transition: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1); */
 }
 /*毛玻璃*/
@@ -77,25 +93,25 @@ audio::-webkit-media-controls-time-remaining-display{
 
 @media (prefers-color-scheme: dark) {
     .album_content a{
-        color: #fa233b !important;
+        color: var(--redFontColor) !important;
     }
     :root, #bag, .login{
         background: #1d1d1f !important;
     }
     *, a{
-        color: #dadce0 !important;
+        color: var(--silveryWhiteFontColor) !important;
     }
     .info a, .info a:nth-of-type(2){
-        color: #dadce0 !important;
+        color: var(--silveryWhiteFontColor) !important;
     }
     #nav_link img{
         filter: invert(0);
     }
     .menu div{
-        background: #dadce0;
+        background: var(--silveryWhiteBgColor);
     }
     .open_list svg{
-        fill: #dadce0;
+        fill: var(--silveryWhiteFillColor);
     }
     .nav, .audioplayer, .play_list{
         background: hsl(0deg 0% 18% / 88%);
@@ -113,6 +129,6 @@ audio::-webkit-media-controls-time-remaining-display{
 
 @media (prefers-color-scheme: light) {
     :root {
-        background: #fff;
+        background: var(--whiteBgColor);
     }
 }

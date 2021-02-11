@@ -177,7 +177,6 @@ export default {
 }
 #artists_category {
     padding: 16px 0;
-    box-sizing: border-box;
 }
 .artists #category:last-child .category {
     display: flex;

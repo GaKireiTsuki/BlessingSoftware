@@ -17,7 +17,6 @@
 .artist_info{
     position: relative;
     padding-top: 80px;
-    box-sizing: border-box;
     height: 386px;
     background: linear-gradient(180deg,#fff,#f3f3f3)
 }

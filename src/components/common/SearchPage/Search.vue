@@ -82,7 +82,7 @@ export default search
     }
     .search_title a{
         font-size: 15px;
-        color: #fa233b;
+        color: var(--redFontColor);
     }
     .search_title a:hover{
         text-decoration: underline;
@@ -98,7 +98,6 @@ export default search
         display: flex;
         column-gap: 20px;
         padding: 15px 0px;
-        box-sizing: border-box;
     }
     .search_artists{
         display: grid;
