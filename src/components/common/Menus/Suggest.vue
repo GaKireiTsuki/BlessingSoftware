@@ -51,7 +51,7 @@
             ...mapState(['term'])
         },
         watch: {
-            keywords(term) {
+            term(term) {
                 clearTimeout(this.timer);
                 var that = this;
                 this.timer = setTimeout(() => {

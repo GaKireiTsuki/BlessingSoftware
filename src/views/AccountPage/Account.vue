@@ -47,6 +47,13 @@ export default {
     activated() {
         this.userinfo()
     },
+    watch: {
+        loginStatu () {
+            if (this.loginStatu !== true) {
+                this.$router({name: 'Music'})
+            }
+        }
+    }
 }
 </script>
 <style>

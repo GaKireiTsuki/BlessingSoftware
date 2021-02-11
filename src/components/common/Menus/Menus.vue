@@ -102,8 +102,8 @@ export default {
         },
     },
     watch: {
-        keywords (keywords) {
-            return this.$store.dispatch("suggest", keywords);
+        term (term) {
+            return this.$store.dispatch("suggest", term);
         },
     },
 };
@@ -244,6 +244,7 @@ $(function () {
     position: absolute;
 }
 #pc_input_search img:nth-of-type(1) {
+    box-sizing: content-box;
     padding: 13px;
 }
 #pc_input_search input[type="search"] {
@@ -321,11 +322,13 @@ $(function () {
     top: 0;
     background: var(--blackBgColor);
     display: none;
+    box-sizing: content-box;
 }
 #search img {
     position: absolute;
     width: 13px !important;
     padding: 11.5px;
+    box-sizing: content-box;
 }
 input[type="search"] {
     padding: 0 0 0 36px;
