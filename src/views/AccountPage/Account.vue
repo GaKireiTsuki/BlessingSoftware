@@ -18,7 +18,6 @@
     </div>
 </template>
 <script>
-import Cookies from 'js-cookie'
 import { mapState, mapActions } from 'vuex'
 export default {
     name: 'account',
@@ -35,10 +34,10 @@ export default {
         ...mapActions(['logout']),
         out () {
             this.logout()
-            Cookies.remove('MUSIC_U')
+            this.$api.music.logout()
         },
         userinfo () {
-            this.$api.music.userinfo().then((res) => {
+            this.$api.music.userinfo().then(res => {
                 this.profile = res.profile
                 this.account = res.account
             })
@@ -50,7 +49,7 @@ export default {
     watch: {
         loginStatu () {
             if (this.loginStatu !== true) {
-                this.$router({name: 'Music'})
+                this.$router.push({name: 'Music'})
             }
         }
     }

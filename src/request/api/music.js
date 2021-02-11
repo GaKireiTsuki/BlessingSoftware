@@ -61,7 +61,7 @@ const music = {
     },
 
     userinfo() { // 获取账号信息
-        return axios.post(`${base.music}/user/account`)
+        return axios.post(`${base.music}/user/account?timerstamp=${Date.now()}`)
     },
 
     qrkey() { // 获取二维码key
@@ -84,6 +84,9 @@ const music = {
     },
     email(account, password) { // 邮箱登录
         return axios.post(`${base.music}/login?email=${account}&password=${password}&timerstamp=${Date.now()}`)
+    },
+    logout() { // 退出登录
+        return axios.post(`${base.music}/logout`)
     }
 }
 

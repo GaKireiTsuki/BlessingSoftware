@@ -67,7 +67,6 @@
 <script>
 import $ from 'jquery'
 import suggest from './Suggest'
-import Cookies from 'js-cookie'
 import { mapState, mapActions } from 'vuex'
 export default {
     name: "menus",
@@ -84,7 +83,7 @@ export default {
         ...mapActions(['logout']),
         out () {
             this.logout()
-            Cookies.remove('MUSIC_U')
+            this.$api.music.logout()
         },
         search () {
             this.$router.push({name: 'Search', query: {term: this.term}})
@@ -105,6 +104,11 @@ export default {
         term (term) {
             return this.$store.dispatch("suggest", term);
         },
+        loginStatu () {
+            if (this.loginStatu !== true) {
+                this.$router.push({name: 'Music'})
+            }
+        }
     },
 };
 $(function () {
