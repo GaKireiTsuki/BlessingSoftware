@@ -63,7 +63,7 @@
             <div id="song_info">
                 <span class="info" v-show="url !== ''">{{songName}}</span>
                 <span class="info" v-show="url !== ''">{{artistName}} — {{albumName}}</span>
-                <audio controls controlsList='nodownload noremote footbar' :src="url" v-show="url !== ''"></audio>
+                <audio controls controlsList='nodownload noremote footbar' :src="url | Https" v-show="url !== ''"></audio>
             </div>
         </div>
         <div class="controls_container">

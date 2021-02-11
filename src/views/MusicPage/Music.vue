@@ -7,7 +7,7 @@
                     <h2></h2>
                     <h2></h2>
                 </div>
-                <img :src="item.imageUrl" :key="item.imageUrl" :alt="item.name" :title="item.name">
+                <img :src="item.imageUrl | Https" :key="item.imageUrl | Https" :alt="item.name" :title="item.name">
             </div>
         </div>
         <div id="new_song_helf">

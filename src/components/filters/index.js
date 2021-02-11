@@ -29,3 +29,8 @@ exports.Nbsp = (value) => {
     var nbsp = value.replace(/\s/g, ' ')
     return `${nbsp}`
 };
+
+exports.Https = (value) => {
+    var https = value.replace(/http/, 'https')
+    return `${https}`
+};
