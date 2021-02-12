@@ -30,22 +30,13 @@
         <div class="search_title">
             <h2>更多{{mv.artistName}}的作品</h2>
         </div>
-        <div class="flex_layout">
-            <div class="albums mv" v-for="(item, index) in mvs" :key="index">
-                <router-link :to="{name: 'MV', params: {id: item.id, name: item.name}}">
-                    <img class="album_cover" v-lazy="item.imgurl16v9 + '?param=159y90'" :key="item.imgurl16v9 + '?param=159y90'" :alt="item.name" :title="item.name">
-                </router-link>
-                <div class="info">
-                    <router-link :to="{name: 'MV', params: {id: item.id, name: item.name}}">{{item.name}}</router-link>
-                    <router-link :to="{name: 'Artist', params: {id: item.artist.id, name: item.artist.name}}">{{item.artistName}}</router-link>
-                </div>
-            </div>
-        </div>
+        <flexLayoutMV ref="flexLayoutMV" :mvs="mvs"></flexLayoutMV>
     </div>
 </template>
 <script>
 import $ from 'jquery'
 import axios from 'axios'
+import flexLayoutMV from '@/components/public/flexLayout/flexLayoutMV'
 export default {
     name: 'MV',
     data() {
@@ -57,6 +48,7 @@ export default {
             r: '',
         }
     },
+    components: {flexLayoutMV},
     computed: {
         sortBrs () {
             return sortBrsKey(this.brs, 'point')
