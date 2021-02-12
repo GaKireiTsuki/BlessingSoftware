@@ -1,7 +1,11 @@
 import axios from 'axios'
 import { mapActions } from 'vuex'
+import flexLayout from '@/components/public/flexLayout/flexLayout'
+import flexLayoutMV from '@/components/public/flexLayout/flexLayoutMV'
+import helfLayout from '@/components/public/helfLayout/helfLayout'
 export default {
     name: 'Search',
+    components: {flexLayout, helfLayout, flexLayoutMV},
     data() {
         return {
             terms: this.$route.query.term,
