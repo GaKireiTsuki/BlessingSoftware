@@ -17,7 +17,6 @@ const Music = () => import('@/views/MusicPage/Music.vue')
 const Err = () => import('@/views/ErrPage/Err.vue')
 
 const Search = () => import('@/components/common/SearchPage/Search.vue')
-const MoreAlbum = () => import('@/components/common/SearchPage/more/MoreAlbum.vue')
 const MV = () => import('@/components/common/MVPage/MV.vue')
 const Album = () => import('@/components/common/AlbumPage/Album.vue')
 const Artist = () => import('@/components/common/ArtistPage/Artist.vue')
@@ -82,12 +81,6 @@ const routes = [
         path: '/mv/:name/:id',
         name: 'MV',
         component: MV
-    },
-    //更多专辑
-    {
-        path: '/more-album/:keywords',
-        name: 'MoreAlbum',
-        component: MoreAlbum
     },
     //专辑详情
     {
