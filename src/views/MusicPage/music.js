@@ -1,9 +1,11 @@
 import axios from 'axios'
 import { mapActions } from 'vuex'
 import category from '@/components/public/Category/Category'
+import flexLayout from '@/components/public/flexLayout/flexLayout'
+import helfLayout from '@/components/public/helfLayout/helfLayout'
 export default {
     name: 'music',
-    components: {category},
+    components: {category, flexLayout, helfLayout},
     data() {
         return {
             ssize: 32,
