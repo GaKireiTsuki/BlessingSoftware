@@ -1,45 +1,9 @@
 <template>
     <div class="artists" v-wechat-title="'BS Music - 艺人'">
         <div id="artists_category">
-            <div id="category">
-                <div class="category">
-                    <label v-for="(item, index) in AreaCategory" :key="index">
-                        <input
-                            type="radio"
-                            class="radio"
-                            v-model="area"
-                            :value="item.value"
-                        />
-                        <span>{{ item.text }}</span>
-                    </label>
-                </div>
-            </div>
-            <div id="category">
-                <div class="category">
-                    <label v-for="(item, index) in TypeCategory" :key="index">
-                        <input
-                            type="radio"
-                            class="radio"
-                            v-model="type"
-                            :value="item.value"
-                        />
-                        <span>{{ item.text }}</span>
-                    </label>
-                </div>
-            </div>
-            <div id="category">
-                <div class="category">
-                    <label v-for="(item, index) in NameCategory" :key="index">
-                        <input
-                            type="radio"
-                            class="radio"
-                            v-model="name"
-                            :value="item.value"
-                        />
-                        <span>{{ item.text }}</span>
-                    </label>
-                </div>
-            </div>
+            <category ref="category" :category="AreaCategory" :option="area" @update="area = $event"></category>
+            <category ref="category" :category="TypeCategory" :option="type" @update="type = $event"></category>
+            <category ref="category" :category="NameCategory" :option="name" @update="name = $event"></category>
         </div>
         <div class="grid_layout">
             <div class="albums" v-for="(item, index) in artists" :key="index">
@@ -68,8 +32,10 @@
     </div>
 </template>
 <script>
+import category from '@/components/public/Category/Category'
 export default {
     name: "artists",
+    components: {category},
     data() {
         return {
             AreaCategory: [

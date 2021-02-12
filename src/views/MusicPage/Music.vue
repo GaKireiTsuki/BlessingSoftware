@@ -28,14 +28,7 @@
             </div>
         </div>
         <div id="new_album_helf">
-            <div id="category">
-                <div class="category">
-                    <label v-for="(item, index) in category" :key="index">
-                        <input type="radio" class="radio" v-model="area" :value="item.value">
-                        <span>{{item.text}}</span>
-                    </label>
-                </div>
-            </div>
+            <category ref="category" :category="category" :option="area" @update="area = $event"></category>
             <div class="new_album_helf flex_layout">
                 <div class="albums" v-for="(item, index) in albums" :key="index">
                     <router-link :to="{name: 'Album', params: {id: item.id, name: item.name}}">

@@ -1,5 +1,5 @@
 const base = {
-    /* music: 'https://cloud.hxmusic.xyz' */
+    /* music: 'https://music_api.hxmusic.xyz' */
     music: 'http://localhost:3000'
 }
 

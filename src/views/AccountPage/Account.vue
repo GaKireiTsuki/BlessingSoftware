@@ -15,6 +15,9 @@
                 <span>您的 Music ID 是 {{account.id}}</span>
             </div>
         </div>
+        <div class="account_content">
+            
+        </div>
     </div>
 </template>
 <script>
@@ -56,6 +59,12 @@ export default {
 }
 </script>
 <style>
+    .account_content #category{
+        justify-content: flex-start;
+    }
+    .account_content{
+        padding-top: 194px;
+    }
     .account_back{
         background: #f5f5f7;
         position: absolute;

@@ -1,7 +1,9 @@
 import axios from 'axios'
 import { mapActions } from 'vuex'
+import category from '@/components/public/Category/Category'
 export default {
     name: 'music',
+    components: {category},
     data() {
         return {
             ssize: 32,
