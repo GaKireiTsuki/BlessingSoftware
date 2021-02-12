@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { mapActions } from 'vuex'
 import flexLayout from '@/components/public/flexLayout/flexLayout'
 import flexLayoutMV from '@/components/public/flexLayout/flexLayoutMV'
 import helfLayout from '@/components/public/helfLayout/helfLayout'
@@ -19,7 +18,6 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['playSong', 'addSong']),
         searchs () {
             var that = this;
             axios.all([

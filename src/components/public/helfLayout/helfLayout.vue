@@ -1,7 +1,7 @@
 <template>
     <div class="helf_layout">
         <div class="new_song" v-for="(item, index) in songs" :key="index">
-            <div class="play_music">
+            <div class="play_music" v-if="!item.al">
                 <img v-lazy="'?param=50y50'" :key="'?param=50y50'" />
                 <svg
                     @click="playSong(item.id)"
@@ -14,7 +14,25 @@
                     ></path>
                 </svg>
             </div>
-            <div class="info">
+            <div class="play_music" v-if="item.al">
+                <img
+                    v-lazy="item.al.picUrl + '?param=50y50'"
+                    :key="item.al.picUrl + '?param=50y50'"
+                    :alt="item.name"
+                    :title="item.name"
+                />
+                <svg
+                    @click="playSong(item.id)"
+                    id="play_button"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 27 27"
+                >
+                    <path
+                        d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"
+                    ></path>
+                </svg>
+            </div>
+            <div class="info" v-if="item.artists">
                 <router-link to="">{{ item.name }}</router-link>
                 <span>
                     <router-link
@@ -23,6 +41,20 @@
                             params: { id: item.id, name: item.name },
                         }"
                         v-for="(item, index) in item.artists"
+                        :key="index"
+                        >{{ item.name }}</router-link
+                    >
+                </span>
+            </div>
+            <div class="info" v-if="item.ar">
+                <router-link to="">{{ item.name }}</router-link>
+                <span>
+                    <router-link
+                        :to="{
+                            name: 'Artist',
+                            params: { id: item.id, name: item.name },
+                        }"
+                        v-for="(item, index) in item.ar"
                         :key="index"
                         >{{ item.name }}</router-link
                     >
@@ -44,8 +76,12 @@
     </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
     name: "helfLayout",
     props: ["songs"],
+    methods: {
+        ...mapActions(['playSong', 'addSong']),
+    },
 };
 </script>

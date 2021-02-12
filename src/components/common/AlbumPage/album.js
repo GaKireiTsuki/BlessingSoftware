@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { mapActions, mapState } from 'vuex'
 import flexLayoutMV from '@/components/public/flexLayout/flexLayoutMV'
+import flexLayout from '@/components/public/flexLayout/flexLayout'
 export default {
     name: 'Album',
     data() {
@@ -12,7 +13,7 @@ export default {
             mvs: []
         }
     },
-    components: {flexLayoutMV},
+    components: {flexLayoutMV, flexLayout},
     computed: {
         ...mapState(["songID"]),
     },

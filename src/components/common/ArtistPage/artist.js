@@ -1,19 +1,20 @@
 import axios from 'axios'
-import { mapActions } from 'vuex'
+import flexLayoutMV from '@/components/public/flexLayout/flexLayoutMV'
+import flexLayout from '@/components/public/flexLayout/flexLayout'
+import helfLayout from '@/components/public/helfLayout/helfLayout'
 export default {
     name: 'Artist',
     data() {
         return {
             img1v1Url: '',
             name: '',
-            postArtist: [],
             hotSongs: [],
             hotAlbums: [],
             mvs: []
         }
     },
+    components: {flexLayoutMV, flexLayout, helfLayout},
     methods: {
-        ...mapActions(['playSong', 'addSong']),
         artist() {
             var that = this;
             axios.all([
