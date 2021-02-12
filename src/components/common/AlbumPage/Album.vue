@@ -65,17 +65,7 @@
         <div class="search_title" v-show="mvs && mvs.length>0">
             <h2>音乐视频</h2>
         </div>
-        <div class="flex_layout" v-show="mvs && mvs.length>0">
-            <div class="albums mv" v-for="(item, index) in mvs" :key="index">
-                <router-link :to="{name: 'MV', params: {id: item.id, name: item.name}}">
-                    <img class="album_cover" v-lazy="item.imgurl16v9 + '?param=159y90'" :key="item.imgurl16v9 + '?param=159y90'" :alt="item.name" :title="item.name">
-                </router-link>
-                <div class="info">
-                    <router-link :to="{name: 'MV', params: {id: item.id, name: item.name}}">{{item.name}}</router-link>
-                    <router-link :to="{name: 'Artist', params: {id: item.artist.id, name: item.artist.name}}">{{item.artistName}}</router-link>
-                </div>
-            </div>
-        </div>
+        <flexLayoutMV ref="flexLayoutMV" :mvs="mvs" v-show="mvs && mvs.length>0"></flexLayoutMV>
         <div class="search_title">
             <h2>更多{{artistsname}}的作品</h2>
         </div>
