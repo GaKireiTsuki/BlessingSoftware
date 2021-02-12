@@ -5,25 +5,7 @@
             <category ref="category" :category="TypeCategory" :option="type" @update="type = $event"></category>
             <category ref="category" :category="NameCategory" :option="name" @update="name = $event"></category>
         </div>
-        <div class="grid_layout">
-            <div class="albums" v-for="(item, index) in artists" :key="index">
-                <router-link :to="{ name: 'Artist', params: { id: item.id, name: item.name }}">
-                    <img
-                        class="album_cover"
-                        v-lazy="item.picUrl + '?param=150y150'"
-                        :key="item.picUrl + '?param=150y150'"
-                        :alt="item.name"
-                        :title="item.name"
-                    />
-                </router-link>
-                <div class="info">
-                    <router-link
-                        :to="{ name: 'Artist', params: { id: item.id, name: item.name }}"
-                        >{{ item.name }}</router-link
-                    >
-                </div>
-            </div>
-        </div>
+        <gridLayout ref="gridLayout" :album="artists"></gridLayout>
         <infinite-loading @infinite="getartistlist">
             <div slots="no-more"></div>
             <div slots="no-results"></div>
@@ -33,9 +15,10 @@
 </template>
 <script>
 import category from '@/components/public/Category/Category'
+import gridLayout from '@/components/public/gridLayout/gridLayout'
 export default {
     name: "artists",
-    components: {category},
+    components: {category, gridLayout},
     data() {
         return {
             AreaCategory: [
