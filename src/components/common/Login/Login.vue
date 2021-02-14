@@ -36,6 +36,8 @@ export default {
         email () {
             this.$api.music.email(this.account, this.password).then( res => {
                 if (res.code === 200) {
+                    this.$store.dispatch('alter', true)
+                    this.$store.dispatch('userId', res.profile.userId)
                     clearInterval(this.timer)
                     $(function () {
                         var _login = $("#logins")
