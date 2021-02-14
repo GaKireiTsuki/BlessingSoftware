@@ -1,9 +1,9 @@
 <template>
-    <div id="logins">
+    <div id="logins" v-show="logins">
         <div id="login">
             <div class="login">
-                <button @click="closetimer()" class="closes_login"></button>
-                <div class="login_content">
+                <button @click="closetimer(), logins =! logins, loginc = false" class="closes_login"></button>
+                <div class="login_content" v-show="!loginc">
                     <img src="../../../assets/img/blessingsoftware-logo.svg" alt="">
                     <h1>使用 Music ID 登录</h1>
                     <p>您将登录 Blessing Software Music</p>
@@ -13,11 +13,17 @@
                         <input v-model="account" type="text" name="account" id="account">
                         <input @keyup.enter="email()" v-model="password" type="password" name="password" id="password">
                     </div>
+                    <span @click="loginstatus(), loginc =! loginc">使用二维码登录</span>
+                </div>
+                <div class="login_content" v-show="loginc">
+                    <img src="../../../assets/img/blessingsoftware-logo.svg" alt="">
+                    <h1>使用二维码登录</h1>
+                    <p>您将登录 Blessing Software Music</p>
                     <img id="qrimg" :src="qrimg" alt="">
-                    <span @click="loginstatus()" class="qrif">使用二维码登录</span>
+                    <span @click="closetimer(), loginc =! loginc">使用 Music ID 登录</span>
                 </div>
             </div>
-            <button @click="closetimer()" class="close_login"></button>
+            <button @click="closetimer(), logins =! logins, loginc = false" class="close_login"></button>
         </div>
     </div>
 </template>
@@ -29,7 +35,9 @@ export default {
         return {
             account: '',
             password: '',
-            qrimg: ''
+            qrimg: '',
+            loginc: false,
+            logins: false
         }
     },
     methods: {
@@ -38,25 +46,9 @@ export default {
                 if (res.code === 200) {
                     this.$store.dispatch('alter', true)
                     this.$store.dispatch('userId', res.profile.userId)
+                    this.loginc = false,
+                    this.logins =! this.logins
                     clearInterval(this.timer)
-                    $(function () {
-                        var _login = $("#logins")
-                        var qrif = $('.qrif')
-                        var qrh = $('.login_content h1')
-                        var qrimg = $('#qrimg')
-                        var ap = $('.ap')
-                        var next = $('#next')
-                        var nexts = $('#nexts')
-                        _login.hide()
-                        qrimg.hide()
-                        ap.show()
-                        qrif.text('使用二维码登录')
-                        qrh.text('使用 Music ID 登录')
-                        $('body').removeAttr('style');
-                        $('.ap input').val("").removeAttr('style')
-                        next.removeAttr('style')
-                        nexts.removeAttr('style')
-                    })
                 }
             })
         },
@@ -84,19 +76,8 @@ export default {
                 } else {
                     this.$store.dispatch('alter', true)
                     this.$store.dispatch('userId', res.data.account.id)
-                    $(function () {
-                        var _login = $("#logins")
-                        var qrif = $('.qrif')
-                        var qrh = $('.login_content h1')
-                        var qrimg = $('#qrimg')
-                        var ap = $('.ap')
-                        _login.hide()
-                        qrimg.hide()
-                        ap.show()
-                        qrif.text('使用二维码登录')
-                        qrh.text('使用 Music ID 登录')
-                        $('body').removeAttr('style');
-                    })
+                    this.loginc = false,
+                    this.logins =! this.logins
                 }
             })
         },
@@ -124,44 +105,13 @@ export default {
     }
 }
 $(function () {
-    var close = $("#login button[class $= '_login']")
     var _login = $("#logins")
     var open_login = $(".open_login")
-    var qrif = $('.qrif')
-    var qrh = $('.login_content h1')
-    var qrimg = $('#qrimg')
-    var ap = $('.ap')
     var next = $('#next')
     var nexts = $('#nexts')
-    close.on('click', function () {
-        _login.hide()
-        qrimg.hide()
-        ap.show()
-        qrif.text('使用二维码登录')
-        qrh.text('使用 Music ID 登录')
-        $('body').removeAttr('style');
-        $('.ap input').val("").removeAttr('style')
-        next.removeAttr('style')
-        nexts.removeAttr('style')
-    })
     open_login.on('click', function () {
         _login.show()
         $('body').css({overflow: 'hidden'})
-    })
-    qrif.on('click', function () {
-        if (qrimg.is(':hidden')) {
-            setTimeout(() => {
-                qrimg.show()
-                ap.hide()
-                qrif.text('使用 Music ID 登录')
-                qrh.text('使用二维码登录')
-            }, 300);
-        } else {
-            qrimg.hide()
-            ap.show()
-            qrif.text('使用二维码登录')
-            qrh.text('使用 Music ID 登录')
-        }
     })
     next.on('click', function () {
         $('.ap input[type=password]').css({height: '42px'}).focus()
@@ -245,7 +195,6 @@ $(function () {
     #qrimg{
         width: 198px;
         height: 198px;
-        display: none;
     }
     #logins{
         display: none;
