@@ -78,7 +78,7 @@ const routes = [
     },
     //MV
     {
-        path: '/mv/:name/:id',
+        path: '/music-video/:name/:id',
         name: 'MV',
         component: MV
     },
