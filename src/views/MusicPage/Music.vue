@@ -11,11 +11,11 @@
             </div>
         </div>
         <div id="new_song_helf">
-            <helfLayout ref="helfLayout" :songs="result" class="new_song_helf helf_layout"></helfLayout>
+            <helfLayout ref="helfLayout" :songs="result" class="new_song_helf"></helfLayout>
         </div>
         <div id="new_album_helf">
             <category ref="category" :category="category" :option="area" @update="area = $event"></category>
-            <flexLayout ref="flexLayout" :albums="albums" class="new_album_helf flex_layout"></flexLayout>
+            <flexLayout ref="flexLayout" :albums="albums" class="new_album_helf"></flexLayout>
         </div>
     </div>
 </template>

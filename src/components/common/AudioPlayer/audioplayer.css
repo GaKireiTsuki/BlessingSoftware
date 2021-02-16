@@ -21,7 +21,7 @@
     .pause_icon{
         display: none;
     }
-    button[class $= '_song']{
+    button[class *= '_song']{
         background: none;
         border: none;
         width: 32px;

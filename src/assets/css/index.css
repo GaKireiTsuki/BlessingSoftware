@@ -1,6 +1,10 @@
 .mv img[lazy="loading"]{
     height: 83.01px;
 }
+.disable{
+    pointer-events: none;
+    fill: var(--grayishFillColor) !important;
+}
 .add_play_list{
     width: 32px;
     height: 100%;
@@ -167,10 +171,10 @@ label{
     width: 100%;
     margin-bottom: 4px;
 }
-div[class $= '_layout']::-webkit-scrollbar{
+div[class *= '_layout']::-webkit-scrollbar{
     height: 4px;
 }
-div[class $= '_layout']{
+div[class *= '_layout']{
     grid-auto-flow: column;
     grid-template-rows: repeat(1,1fr);
     display: grid;
@@ -223,6 +227,17 @@ div[class $= '_layout']{
 .lyric::-webkit-scrollbar,
 .play_list::-webkit-scrollbar{
     display: none;
+}
+@media screen and (height: 450px){
+    .nav, .audioplayer, .search_title, .flex_layout, .album_button{
+        display: none !important;
+    }
+    a{
+        pointer-events: none;
+    }
+    .add_play_list{
+        display: none;
+    }
 }
 @media screen and (max-width: 484px){
     .banner{

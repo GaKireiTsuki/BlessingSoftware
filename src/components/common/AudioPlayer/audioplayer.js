@@ -16,11 +16,12 @@ export default {
         ...mapActions(['prevSong', 'nextSong']),
         ...mapMutations([
             'PLAY_HISTORY',
+            'PLAY_LIST',
             'SEND_LYRIC'
         ])
     },
     computed: {
-        ...mapState(['songID'])
+        ...mapState(['songID', 'playList'])
     },
     watch: {
         songID(songID) {
@@ -48,6 +49,7 @@ export default {
                         .then(axios.spread((res1, res2) => {
                             that.img = res1.songs[0].al.picUrl
                             this.$store.commit('PLAY_HISTORY', res1.songs[0])
+                            this.$store.dispatch('addSong', res1.songs[0])
                             that.songName = res1.songs[0].name
                             that.artistName = res1.songs[0].ar[0].name
                             that.albumName = res1.songs[0].al.name

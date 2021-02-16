@@ -1,7 +1,7 @@
 <template>
     <div class="audioplayer bmbl">
         <div class="controls">
-            <div class="playback_controls">
+            <div class="playback_controls" :class="songID.length != '' ? 'enabled':'disable'">
                 <button class="shuffle_song">
                     <svg width="100%" height="100%" viewBox="0 0 30 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
@@ -12,7 +12,7 @@
                     </svg>
                 </button>
                 <div class="controls_button">
-                    <button class="previous_song" @click="prevSong(songID)">
+                    <button class="previous_song" :class="playList.length > 1 ? 'enabled':'disable'" @click="prevSong(songID)">
                         <svg width="100%" height="100%" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
                             style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421">
@@ -21,7 +21,7 @@
                                 style="fill-rule:nonzero"></path>
                         </svg>
                     </button>
-                    <button class="play_pause_song">
+                    <button class="play_pause_song" :class="songID.length != '' ? 'enabled':'disable'">
                         <svg class="play_icon" width="100%" height="100%" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
                             style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421">
@@ -37,7 +37,7 @@
                                 style="fill-rule:nonzero"></path>
                         </svg>
                     </button>
-                    <button class="next_song" @click="nextSong(songID)">
+                    <button class="next_song" :class="playList.length > 1 ? 'enabled':'disable'" @click="nextSong(songID)">
                         <svg width="100%" height="100%" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
                             style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
