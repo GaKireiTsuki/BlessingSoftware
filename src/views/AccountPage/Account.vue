@@ -44,10 +44,14 @@ export default {
                 this.profile = res.profile
                 this.account = res.account
             })
+        },
+        ipinfo () {
+            
         }
     },
     activated() {
         this.userinfo()
+        this.ipinfo()
     },
     watch: {
         loginStatu () {
