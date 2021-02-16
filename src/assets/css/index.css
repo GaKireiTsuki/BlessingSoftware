@@ -259,9 +259,6 @@ div[class *= '_layout']{
     height: 40px;
     position: relative;
 }
-.new_song:hover .play_music .bars{
-    opacity: 0;
-}
 .play_music .bars{
     left: 7.1px;
     top: 15px;
