@@ -1,5 +1,5 @@
 <template>
-    <div class="music" v-wechat-title="'BS Music'">
+    <div class="music" v-wechat-title="$route.meta.title">
         <div class="banner">
             <div id="banner" v-for="(item, index) in banners" :key="index">
                 <div class="banner_info">

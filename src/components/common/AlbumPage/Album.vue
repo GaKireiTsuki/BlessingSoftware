@@ -25,17 +25,17 @@
                     <div class="album_song_list" v-for="(item, index) in songs" :key="index" tabindex="0" outline=0>
                         <div style="width: 17.5px"></div>
                         <span>
-                            <div v-show="songID !== item.id">{{item.no}}</div>
-                            <div class="bars" v-show="songID === item.id">
+                            <div v-show="songID != item.id">{{item.no}}</div>
+                            <div class="bars" v-show="songID == item.id && playIng == true">
                                 <div class="bars1"></div>
                                 <div class="bars2"></div>
                                 <div class="bars3"></div>
                                 <div class="bars4"></div>
                             </div>
-                            <button v-show="songID === item.id" style="background: no-repeat; border: none;">
+                            <button v-show="songID == item.id" style="background: no-repeat; border: none;">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27"><path d="M9,17.6071429 C9,18.3928571 9.42,19 10.14,19 L10.92,19 C11.58,19 12,18.3928571 12,17.6071429 L12,9.39285714 C12,8.60714286 11.58,8 10.92,8 L10.14,8 C9.42,8 9,8.60714286 9,9.39285714 L9,17.6071429 Z M15,17.6071429 C15,18.3928571 15.42,19 16.14,19 L16.92,19 C17.58,19 18,18.3928571 18,17.6071429 L18,9.39285714 C18,8.60714286 17.58,8 16.92,8 L16.14,8 C15.42,8 15,8.60714286 15,9.39285714 L15,17.6071429 Z"></path></svg>
                             </button>
-                            <button v-show="songID !== item.id" style="background: no-repeat; border: none;">
+                            <button v-show="songID != item.id" style="background: no-repeat; border: none;">
                                 <svg @click="playSong(item.id)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27"><path d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"></path></svg>
                             </button>
                         </span>

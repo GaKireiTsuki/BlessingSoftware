@@ -1,5 +1,5 @@
 <template>
-    <div class="account">
+    <div class="account" v-wechat-title="$route.meta.title">
         <div class="account_back">
             <div class="account_title">
                 <h1>账户</h1>

@@ -15,7 +15,7 @@ export default {
     },
     components: {flexLayoutMV, flexLayout},
     computed: {
-        ...mapState(["songID"]),
+        ...mapState(["songID", "playIng"]),
     },
     methods: {
         ...mapActions(['playSong', 'addSong', 'playAlbum']),
