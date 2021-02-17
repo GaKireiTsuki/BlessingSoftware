@@ -45,17 +45,22 @@ export default {
                 this.account = res.account
             })
         },
-        ipinfo () {
-            
+        loginrefresh() {
+            this.$api.music.loginrefresh().then(res => {
+                if (res.code == 200) {
+                    this.userinfo()
+                }
+            }).catch(err => {
+                err
+            })
         }
     },
     activated() {
-        this.userinfo()
-        this.ipinfo()
+        this.loginrefresh()
     },
     watch: {
         loginStatu () {
-            if (this.loginStatu !== true) {
+            if (this.loginStatu != true) {
                 this.$router.push({name: 'Music'})
             }
         }
