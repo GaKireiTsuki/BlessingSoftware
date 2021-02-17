@@ -1,5 +1,5 @@
 <template>
-    <div class="artists" v-wechat-title="$route.meta.title">
+    <div class="artists">
         <div id="artists_category">
             <category ref="category" :category="AreaCategory" :option="area" @update="area = $event"></category>
             <category ref="category" :category="TypeCategory" :option="type" @update="type = $event"></category>

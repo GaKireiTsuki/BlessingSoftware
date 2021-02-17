@@ -1,5 +1,5 @@
 <template>
-    <div v-wechat-title="$route.meta.title">
+    <div>
         <!-- <iframe
             allow="autoplay *; encrypted-media *; fullscreen *"
             frameborder="0"
