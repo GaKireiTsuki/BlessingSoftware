@@ -53,13 +53,10 @@ export default {
                             that.songName = res1.songs[0].name
                             that.artistName = res1.songs[0].ar[0].name
                             that.albumName = res1.songs[0].al.name
-                            switch (res2.nolyric) {
-                                case true:
-                                    this.$store.commit('SEND_LYRIC', '')
-                                    break;
-                                default:
-                                    this.$store.commit('SEND_LYRIC', res2.lrc.lyric)
-                                    break;
+                            if (res2.lrc == null) {
+                                this.$store.commit('SEND_LYRIC', '')
+                            } else {
+                                this.$store.commit('SEND_LYRIC', res2.lrc.lyric)
                             }
                         }))
                     setTimeout(() => {
@@ -79,7 +76,7 @@ $(function () {
     var song_info = $(".song_info")
     var controls = $(".controls")
     var controls_container = $(".controls_container")
-    var button_song = $("button[class $= '_song']")
+    var button_song = $("button[class *= '_song']")
     openlyric.on("click", function (e) {
         e.stopPropagation()
         if (lyric.is(":hidden")) {

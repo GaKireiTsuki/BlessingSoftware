@@ -48,8 +48,8 @@ const mutations = {
 
     // 移除相应的歌曲
     [TYPES.REMOVE_SONGS] (state, id) {
-        const i = state.playList.findIndex(x => x.id === id)
-        if (i !== -1) {
+        const i = state.playList.findIndex(x => x.id == id)
+        if (i != -1) {
             state.playList.splice(i, 1)
         }
     },
@@ -57,8 +57,12 @@ const mutations = {
     // 上一首歌
     [TYPES.PREV_SONGS] (state, id) {
         setTimeout(() => {
-            const i = state.playList.findIndex(x => x.id === id)
-            if (i !== -1) {
+            const i = state.playList.findIndex(x => x.id == id)
+            if (i == -1) {
+                const t = state.playList.slice(0, 1)
+                state.songID = t[0].id
+            }
+            if (i != -1) {
                 const n = state.playList.slice(i-1)
                 if (n && n.length<=0) {
                     return
@@ -72,8 +76,12 @@ const mutations = {
     // 下一首歌
     [TYPES.NEXT_SONGS] (state, id) {
         setTimeout(() => {
-            const i = state.playList.findIndex(x => x.id === id)
-            if (i !== -1) {
+            const i = state.playList.findIndex(x => x.id == id)
+            if (i == -1) {
+                const t = state.playList.slice(0, 1)
+                state.songID = t[0].id
+            }
+            if (i != -1) {
                 const n = state.playList.slice(i+1)
                 if (n && n.length<=0) {
                     const t = state.playList.slice(0, 1)
