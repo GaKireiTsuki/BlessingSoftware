@@ -44,6 +44,13 @@ const music = {
         return axios.post(`${base.music}/mv/detail?mvid=${id}`)
     },
 
+    djr() { // 推荐节目
+        return axios.post(`${base.music}/dj/program/toplist?limit=12`)
+    },
+    dji() { // 节目详情
+        return axios.post(`${base.music}/dj/program/detail?id=`)
+    },
+
     artistlist(offset, area, type, name) { // 获取艺术家列表
         return axios.post(`${base.music}/artist/list?limit=24&offset=${offset}&type=${type}&area=${area}&initial=${name}`)
     },

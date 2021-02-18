@@ -190,7 +190,7 @@ label{
 }
 .play_button:hover{
     cursor: pointer;
-    background: var(--redBgColor);
+    background: var(--redBgColor) !important;
 }
 .play_button{
     width: 36px;
@@ -214,6 +214,17 @@ label{
 .albums img{
     width: 100%;
     margin-bottom: 4px;
+}
+.albums .play_cover{
+    justify-items: flex-start;
+    align-items: flex-end;
+}
+.albums .play_button{
+    left: 10px;
+    bottom: 14px;
+    background: #efefef40;
+    width: 30px;
+    height: 30px;
 }
 div[class *= '_layout']::-webkit-scrollbar{
     height: 4px;

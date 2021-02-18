@@ -2,11 +2,24 @@
     <div class="flex_layout">
         <div class="albums" v-for="(item, index) in albums" :key="index">
             <router-link
+                v-if="item.artists"
+                class="play_cover"
                 :to="{
                     name: 'Album',
                     params: { id: item.id, name: item.name },
                 }"
             >
+                <button class="play_button">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 27 27"
+                        class="glyph"
+                    >
+                        <path
+                            d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"
+                        ></path>
+                    </svg>
+                </button>
                 <img
                     class="album_cover"
                     v-lazy="item.picUrl + '?param=150y150'"
@@ -15,7 +28,31 @@
                     :title="item.name"
                 />
             </router-link>
-            <div class="info">
+            <router-link
+                v-if="item.program"
+                class="play_cover"
+                to=""
+            >
+                <button @click="playSong(item.program.mainTrackId)" class="play_button">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 27 27"
+                        class="glyph"
+                    >
+                        <path
+                            d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"
+                        ></path>
+                    </svg>
+                </button>
+                <img
+                    class="album_cover"
+                    v-lazy="item.program.coverUrl + '?param=150y150'"
+                    :key="item.program.coverUrl + '?param=150y150'"
+                    :alt="item.name"
+                    :title="item.name"
+                />
+            </router-link>
+            <div class="info" v-if="item.artists">
                 <router-link
                     :to="{
                         name: 'Album',
@@ -32,12 +69,20 @@
                     {{ item.artists[0].name }}</router-link
                 >
             </div>
+            <div class="info" v-if="item.program">
+                <router-link to="">{{ item.program.description }}</router-link>
+                <router-link to=""> {{ item.program.name }}</router-link>
+            </div>
         </div>
     </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
     name: "flexLayout",
     props: ["albums"],
+    methods: {
+        ...mapActions(['playSong', 'addSong']),
+    },
 };
 </script>
