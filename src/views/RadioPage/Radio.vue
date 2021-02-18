@@ -18,7 +18,6 @@
     </div>
 </template>
 <script>
-import axios from 'axios'
 import flexLayout from '@/components/public/flexLayout/flexLayout'
 export default {
     name: 'radio',
