@@ -1,15 +1,16 @@
 <template>
     <div class="flex_layout">
         <div class="albums" v-for="(item, index) in albums" :key="index">
-            <router-link
-                v-if="item.artists"
+            <div
                 class="play_cover"
-                :to="{
-                    name: 'Album',
-                    params: { id: item.id, name: item.name },
-                }"
+                v-if="item.artists"
+                style="
+                    position: relative;
+                    justify-items: inherit;
+                    align-items: inherit;
+                "
             >
-                <button class="play_button">
+                <button @click="playAlbum(item.id)" class="play_button">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 27 27"
@@ -20,20 +21,25 @@
                         ></path>
                     </svg>
                 </button>
-                <img
-                    class="album_cover"
-                    v-lazy="item.picUrl + '?param=150y150'"
-                    :key="item.picUrl + '?param=150y150'"
-                    :alt="item.name"
-                    :title="item.name"
-                />
-            </router-link>
-            <router-link
-                v-if="item.program"
-                class="play_cover"
-                to=""
-            >
-                <button @click="playSong(item.program.mainTrackId)" class="play_button">
+                <router-link
+                    class="play_cover"
+                    :to="{
+                        name: 'Album',
+                        params: { id: item.id, name: item.name },
+                    }"
+                    ><img
+                        class="album_cover"
+                        v-lazy="item.picUrl + '?param=150y150'"
+                        :key="item.picUrl + '?param=150y150'"
+                        :alt="item.name"
+                        :title="item.name"
+                /></router-link>
+            </div>
+            <router-link v-if="item.program" class="play_cover" to="">
+                <button
+                    @click="playSong(item.program.mainTrackId)"
+                    class="play_button"
+                >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 27 27"
@@ -77,12 +83,18 @@
     </div>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 export default {
     name: "flexLayout",
     props: ["albums"],
     methods: {
-        ...mapActions(['playSong', 'addSong']),
+        ...mapActions(["playSong", "playAlbum"]),
+        playAlbum (id) {
+            this.$api.music.albuminfo(id).then(res => {
+                this.$store.dispatch('playAlbum', res.songs)
+                this.$store.dispatch('playSong', res.songs[0].id)
+            })
+        }
     },
 };
 </script>

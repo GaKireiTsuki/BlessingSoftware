@@ -111,7 +111,6 @@ $(function () {
     var nexts = $('#nexts')
     open_login.on('click', function () {
         _login.show()
-        $('body').css({overflow: 'hidden'})
     })
     next.on('click', function () {
         $('.ap input[type=password]').css({height: '42px'}).focus()

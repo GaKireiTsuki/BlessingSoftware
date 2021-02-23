@@ -5,17 +5,17 @@ import flexLayout from '@/components/public/flexLayout/flexLayout'
 import helfLayout from '@/components/public/helfLayout/helfLayout'
 export default {
     name: 'music',
-    components: {category, flexLayout, helfLayout},
+    components: { category, flexLayout, helfLayout },
     data() {
         return {
             ssize: 32,
             area: 'ALL',
             category: [
-                {text: '全部', value: 'ALL'},
-                {text: '国语流行', value: 'ZH'},
-                {text: '日语流行', value: 'JP'},
-                {text: '欧美流行', value: 'EA'},
-                {text: '韩语流行', value: 'KR'}
+                { text: '全部', value: 'ALL' },
+                { text: '国语流行', value: 'ZH' },
+                { text: '日语流行', value: 'JP' },
+                { text: '欧美流行', value: 'EA' },
+                { text: '韩语流行', value: 'KR' }
             ],
             asize: 24,
             keywords: '',
@@ -29,24 +29,24 @@ export default {
         ...mapActions(['playSong', 'addSong']),
     },
     watch: {
-        area () {
+        area() {
             var that = this;
-            this.$api.music.newalbum(this.area, this.asize).then((res)=>{
+            this.$api.music.newalbum(this.area, this.asize).then((res) => {
                 that.albums = res.albums;
             })
         }
     },
-    async created () {
+    async created() {
         var that = this;
         axios.all([
-            this.$api.music.newsong(this.ssize), 
-            this.$api.music.newalbum(this.area, this.asize), 
+            this.$api.music.newsong(this.ssize),
+            this.$api.music.newalbum(this.area, this.asize),
             this.$api.music.banner()
         ])
-        .then(axios.spread((res1, res2, res3)=>{
-            that.result = res1.result;
-            that.albums = res2.albums
-            that.banners = res3.banners
-        }))
+            .then(axios.spread((res1, res2, res3) => {
+                that.result = res1.result;
+                that.albums = res2.albums
+                that.banners = res3.banners
+            }))
     }
 }

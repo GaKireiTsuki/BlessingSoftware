@@ -226,10 +226,17 @@ label{
     width: 30px;
     height: 30px;
 }
+div[class *= '_layout']::-webkit-scrollbar-thumb{
+    border: inherit;
+    box-shadow: inherit;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+}
 div[class *= '_layout']::-webkit-scrollbar{
-    height: 4px;
+    height: 6px;
 }
 div[class *= '_layout']{
+    position: relative;
     grid-auto-flow: column;
     grid-template-rows: repeat(1,1fr);
     display: grid;

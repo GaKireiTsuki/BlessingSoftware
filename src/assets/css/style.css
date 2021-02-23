@@ -66,11 +66,11 @@ a{
     width: 12px;
 }
 /* 滚动条轨道 */
-::-webkit-scrollbar-track:hover{
-    background: #E8E8E8;
+::-webkit-scrollbar-track{
+    background: none;
 }
 /*滑块*/
-::-webkit-scrollbar-thumb:hover{
+::-webkit-scrollbar-thumb{
     height: 6px;
     border: 4px solid transparent;
     background-clip: padding-box;
@@ -79,9 +79,6 @@ a{
     background-color: gray;
     box-shadow: inset -1px -1px 0 rgb(0 0 0 / 5%), inset 1px 1px 0 rgb(0 0 0 / 5%);
     -webkit-box-shadow: inset -1px -1px 0 rgb(0 0 0 / 5%), inset 1px 1px 0 rgb(0 0 0 / 5%);
-}
-::-webkit-scrollbar-thumb:active{
-    border: none;
 }
 
 audio{

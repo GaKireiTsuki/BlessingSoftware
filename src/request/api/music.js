@@ -12,7 +12,7 @@ const music = {
         return axios.post(`${base.music}/search?keywords=${term}&limit=${asize}&type=10`)
     },
     searchsong(term, ssize) { // 搜索歌曲
-        return axios.post(`${base.music}/search?keywords=${term}&limit=${ssize}&type=1`)
+        return axios.post(`${base.music}/cloudsearch?keywords=${term}&limit=${ssize}&type=1`)
     },
     searchmv(term, msize) { // 搜索MV
         return axios.post(`${base.music}/search?keywords=${term}&limit=${msize}&type=1004`)

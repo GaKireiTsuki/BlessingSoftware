@@ -8,11 +8,14 @@ import VueLazyload from 'vue-lazyload'
 import InfiniteLoading from 'vue-infinite-loading'
 import Message from './components/message/index'
 import filters from './components/filters/index'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 import './assets/css/index.css'
 import './assets/css/style.css'
 import './assets/css/fonts.css'
+import 'swiper/css/swiper.css'
 
+Vue.use(VueAwesomeSwiper)
 Vue.config.productionTip = false
 Vue.prototype.$api = api
 Vue.prototype.$message = Message.install

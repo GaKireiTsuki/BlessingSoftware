@@ -4,7 +4,8 @@
             <div class="play_music" v-if="!item.al && !item.picUrl">
                 <img v-lazy="'?param=50y50'" :key="'?param=50y50'" />
                 <svg
-                    @click="playSong(item.id)" v-show="songID != item.id"
+                    @click="playSong(item.id)"
+                    v-show="songID != item.id"
                     id="play_button"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 27 27"
@@ -28,7 +29,8 @@
                     :title="item.name"
                 />
                 <svg
-                    @click="playSong(item.id)" v-show="songID != item.id"
+                    @click="playSong(item.id)"
+                    v-show="songID != item.id"
                     id="play_button"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 27 27"
@@ -52,7 +54,8 @@
                     :title="item.name"
                 />
                 <svg
-                    @click="playSong(item.id)" v-show="songID != item.id"
+                    @click="playSong(item.id)"
+                    v-show="songID != item.id"
                     id="play_button"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 27 27"
