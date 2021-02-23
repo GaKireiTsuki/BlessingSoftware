@@ -22,10 +22,13 @@
         </transition>
         <h3 v-show="playList && playList.length>0" @click="phsh =! phsh">待播清单</h3>
         <div id="play_list" v-for="(item, index) in playList" :key="index" tabindex="1" outline=0>
-            <img @click="playSong(item.id)" v-lazy="'?param=40y40'" :key="'?param=40y40'">
+            <img v-if="item.al" @click="playSong(item.id)" v-lazy="item.al.picUrl + '?param=40y40'" :key="item.al.picUrl + '?param=40y40'">
+            <img v-if="item.picUrl" @click="playSong(item.id)" v-lazy="item.picUrl + '?param=40y40'" :key="item.picUrl + '?param=40y40'">
             <div class="play_list_name">
                 <div>
                     <span id="list_name">{{item.name}}</span>
+                    <span v-if="item.ar" id="list_name">{{item.ar[0].name}}</span>
+                    <span v-if="item.song" id="list_name">{{item.song.artists[0].name}}</span>
                 </div>
                 <div class="more" tabindex="0" outline=0>
                     <span></span>

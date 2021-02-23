@@ -109,8 +109,9 @@ label{
     border-top: 1px solid #d6d6d6;
 }
 #play_button{
-    fill: var(--redFillColor);
+    fill: var(--whiteFillColor);
     transition: all .2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    cursor: pointer;
 }
 .search_title{
     line-height: 1.22226;
@@ -226,6 +227,10 @@ label{
     width: 30px;
     height: 30px;
 }
+.albums .add_button{
+    right: 10px !important;
+    left: auto;
+}
 div[class *= '_layout']::-webkit-scrollbar-thumb{
     border: inherit;
     box-shadow: inherit;
@@ -268,10 +273,7 @@ div[class *= '_layout']{
     transform: scale(1);
 }
 .new_song:hover .play_music img{
-    filter: saturate(180%) blur(1px);
-}
-.new_song:hover{
-    background: rgba(0,0,0,.14901960784313725);
+    filter: brightness(80%);
 }
 .play_music{
     height: 40px;
@@ -311,6 +313,9 @@ div[class *= '_layout']{
 @media screen and (max-width: 484px){
     .banner{
         grid-auto-columns: calc((100% - 0 * 20px) / 1) !important;
+    }
+    .album_button{
+        justify-content: center !important;
     }
     .controls, .controls_container{
         display: none;

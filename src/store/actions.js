@@ -22,9 +22,7 @@ const actions = {
 
     // 添加歌曲至播放列表
     addSong ({ commit }, songs) {
-        commit(TYPES.ADD_SONGS_PLAY_LIST,
-            JSON.stringify(songs, ['id', 'name'])
-        )
+        commit(TYPES.ADD_SONGS_PLAY_LIST, songs)
     },
 
     // 播放专辑

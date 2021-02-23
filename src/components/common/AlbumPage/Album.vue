@@ -371,15 +371,13 @@ export default album;
     z-index: -1;
 }
 @media screen and (max-width: 484px) {
-    #album_cover_bg {
-        transform: scale(0.82) translateY(calc(8% + 14px)) translateZ(0px);
-    }
     #album_info {
         padding: 0;
+        text-align: center;
     }
     #album .cover {
-        padding: 16px;
-        width: 100%;
+        margin: 0 53px;
+        width: calc(100% - 53px * 2);
         height: 100%;
         position: relative;
         top: 0;
@@ -393,7 +391,7 @@ export default album;
         margin-top: 0;
     }
     .album_content {
-        margin: 0;
+        margin: 18px 0 0;
     }
 }
 </style>

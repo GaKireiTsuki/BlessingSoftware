@@ -21,6 +21,21 @@
                         ></path>
                     </svg>
                 </button>
+                <button @click="addAlbum(item.id)"
+                    class="add_button play_button"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="27"
+                        height="27"
+                        viewBox="0 0 27 27"
+                        class="glyph"
+                    >
+                        <path
+                            d="M8.89547677 13.5330073c0-1.1057457-.97371638-2.0959657-2.09596577-2.0959657-1.13875305 0-2.0794621.99022-2.0794621 2.0959657 0 1.1222494.94070905 2.0794621 2.0794621 2.0794621 1.12224939 0 2.09596577-.9572127 2.09596577-2.0794621zm6.68398533 0c0-1.1057457-.9572127-2.0959657-2.0794621-2.0959657-1.1222494 0-2.0794621.99022-2.0794621 2.0959657 0 1.1222494.9572127 2.0794621 2.0794621 2.0794621 1.1222494 0 2.0794621-.9572127 2.0794621-2.0794621zm6.700489 0c0-1.1057457-.940709-2.0959657-2.0794621-2.0959657-1.1222494 0-2.0959658.99022-2.0959658 2.0959657 0 1.1222494.9737164 2.0794621 2.0959658 2.0794621 1.1387531 0 2.0794621-.9572127 2.0794621-2.0794621z"
+                        ></path>
+                    </svg>
+                </button>
                 <router-link
                     class="play_cover"
                     :to="{
@@ -88,13 +103,18 @@ export default {
     name: "flexLayout",
     props: ["albums"],
     methods: {
-        ...mapActions(["playSong", "playAlbum"]),
-        playAlbum (id) {
-            this.$api.music.albuminfo(id).then(res => {
-                this.$store.dispatch('playAlbum', res.songs)
-                this.$store.dispatch('playSong', res.songs[0].id)
-            })
-        }
+        ...mapActions(["playSong", "playAlbum", "addSong"]),
+        playAlbum(id) {
+            this.$api.music.albuminfo(id).then((res) => {
+                this.$store.dispatch("playAlbum", res.songs);
+                this.$store.dispatch("playSong", res.songs[0].id);
+            });
+        },
+        addAlbum(id) {
+            this.$api.music.albuminfo(id).then((res) => {
+                this.$store.dispatch("addSong", res.songs);
+            });
+        },
     },
 };
 </script>
