@@ -4,7 +4,7 @@
             <div class="play_history" v-show="phsh">
                 <h3 @click="phsh =! phsh">历史记录</h3>
                 <div id="play_list" v-for="(item, index) in playHistory" :key="index" tabindex="1" outline=0>
-                    <img @click="playSong(item.id), addSong(item)" v-lazy="item.al.picUrl + '?param=40y40'" :alt="item.name" :title="item.name">
+                    <img @click="playSong(item.id), addSong(item)" v-lazy="item.al.picUrl + '?param=40y40'">
                     <div class="play_list_name">
                         <div>
                             <span id="list_name">{{item.name}}</span>
@@ -22,7 +22,7 @@
         </transition>
         <h3 v-show="playList && playList.length>0" @click="phsh =! phsh">待播清单</h3>
         <div id="play_list" v-for="(item, index) in playList" :key="index" tabindex="1" outline=0>
-            <img @click="playSong(item.id)" v-lazy="'?param=40y40'" :key="'?param=40y40'" :alt="item.name" :title="item.name">
+            <img @click="playSong(item.id)" v-lazy="'?param=40y40'" :key="'?param=40y40'">
             <div class="play_list_name">
                 <div>
                     <span id="list_name">{{item.name}}</span>
