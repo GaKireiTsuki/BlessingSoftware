@@ -16,11 +16,12 @@ export default {
         };
     },
     methods: {
-        ...mapActions(['prevSong', 'nextSong', 'playPause']),
+        ...mapActions(['prevSong', 'nextSong', 'playPause', 'playSong']),
         ...mapMutations([
             'PLAY_HISTORY',
             'PLAY_LIST',
-            'SEND_LYRIC'
+            'SEND_LYRIC',
+            'SEND_SONGS_ID'
         ]),
         // 调整音量大小
         ControlVolume () {
@@ -55,6 +56,7 @@ export default {
         }
         CreateAudio.onended = () => {
             this.playPause(false)
+            this.$store.commit('SEND_SONGS_ID', '1')
         }
         CreateAudio.onplay = () => {
             this.playPause(true)
@@ -87,7 +89,8 @@ export default {
         },
         songID(songID) {
             var that = this;
-            this.$api.music.playmusic(songID).then((res) => {
+            if (songID != 1) {
+                this.$api.music.playmusic(songID).then((res) => {
                 if (res.data[0].url === null) {
 
                     this.$message({
@@ -125,6 +128,7 @@ export default {
                     }, 400)
                 }
             });
+            }
         }
     }
 }
