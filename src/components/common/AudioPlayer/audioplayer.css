@@ -18,9 +18,6 @@
         width: 30px !important;
         height: 22px !important;
     }
-    .pause_icon{
-        display: none;
-    }
     button[class *= '_song']{
         background: none;
         border: none;
@@ -34,12 +31,73 @@
         width: 100%;
         display: flex;
     }
-    .controls_container div:nth-of-type(1){
+    .controls_container div:first-child{
         display: flex;
         padding: 0 10px;
         margin: 0 auto;
+        align-items: center;
     }
-    .controls_container div:nth-of-type(2){
+    .web-chrome-playback-lcd__volume-icon {
+        height: 18px;
+        padding: 2px;
+        width: 18px;
+        fill: var(--grayishFillColor);
+        -webkit-margin-end: 2px;
+        margin-inline-end: 2px;
+    }
+    .controls_container div:first-child input[type=range] {
+        padding: 0;
+        width: 70px;
+        height: 100%;
+        display: inline-block;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        overflow: visible;
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+        color: inherit;
+        outline: none;
+    }
+    .controls_container div:first-child input[type=range]::-webkit-slider-thumb {
+        appearance: inherit;
+        min-inline-size: 0px;
+        box-sizing: border-box;
+        display: flex;
+        -webkit-user-modify: read-only !important;
+        flex: 1 1 0%;
+    }
+    .controls_container div:first-child input[type=range]::-webkit-slider-runnable-track {
+        height: 3px;
+        -webkit-appearance: none;
+        appearance: none;
+        display: block;
+        overflow: visible;
+        color: transparent;
+        cursor: pointer;
+        border-radius: 3px;
+        border-color: transparent;
+        background-color: transparent;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 3px;
+        background-image: linear-gradient(90deg,#00000080 var(--volume),#00000026 var(--volume));
+    }
+    .controls_container div:first-child input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        margin-top: -5px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        box-shadow: inset 0 0 1px rgb(0 0 0 / 50%), 0 1px 1px rgb(0 0 0 / 10%);
+        background-position: center;
+        cursor: pointer;
+        outline-color: transparent;
+        background-color: var(--whiteBgColor);
+    }
+    .controls_container div:first-child ~ div{
         display: flex;
         width: 56px;
         margin-inline-end: 20px;
@@ -81,7 +139,6 @@
     .song_info img {
         width: 44px;
         height: 44px;
-        filter: invert(0.1);
     }
 
     .audioplayer {

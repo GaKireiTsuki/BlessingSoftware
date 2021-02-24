@@ -64,7 +64,7 @@
                         d="M11.3545232,18.4180929 L18.4676039,14.242665 C19.0452323,13.9290954 19.0122249,13.1204156 18.4676039,12.806846 L11.3545232,8.63141809 C10.7603912,8.26833741 9.98471883,8.54889976 9.98471883,9.19254279 L9.98471883,17.8404645 C9.98471883,18.5006112 10.7108802,18.7976773 11.3545232,18.4180929 Z"
                     ></path>
                 </svg>
-                <div class="bars" v-show="songID == item.id">
+                <div class="bars" v-show="songID == item.id && playIng == true">
                     <div class="bars1"></div>
                     <div class="bars2"></div>
                     <div class="bars3"></div>
@@ -133,7 +133,7 @@ export default {
     name: "helfLayout",
     props: ["songs"],
     computed: {
-        ...mapState(["songID"]),
+        ...mapState(["songID", "playIng"]),
     },
     methods: {
         ...mapActions(["playSong", "addSong"]),

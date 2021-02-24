@@ -16,6 +16,11 @@ const mutations = {
         state.uid = id
     },
 
+    // 播放状态
+    [TYPES.SET_PLAYING](state, value) {
+        state.playIng = value
+    },
+
     // 发送歌曲ID
     [TYPES.SEND_SONGS_ID](state, id) {
         state.songID = id

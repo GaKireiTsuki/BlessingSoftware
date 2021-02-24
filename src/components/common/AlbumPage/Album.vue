@@ -80,10 +80,11 @@
                                 <div class="bars4"></div>
                             </div>
                             <button
-                                v-show="songID == item.id"
+                                v-show="songID == item.id && playIng != false"
                                 style="background: no-repeat; border: none"
                             >
                                 <svg
+                                    @click="ControlPause"
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 27 27"
                                 >
@@ -97,7 +98,7 @@
                                 style="background: no-repeat; border: none"
                             >
                                 <svg
-                                    @click="playSong(item.id)"
+                                    @click="playSong(item.id), ControlPlay"
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 27 27"
                                 >

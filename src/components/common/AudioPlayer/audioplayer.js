@@ -1,6 +1,8 @@
 import $ from "jquery";
 import axios from "axios";
 import { mapActions, mapState, mapMutations } from "vuex";
+var CreateAudio = new Audio()
+CreateAudio.src = true
 export default {
     name: "audioplayer",
     data() {
@@ -9,21 +11,77 @@ export default {
             img: '',
             artistName: '',
             songName: '',
-            albumName: ''
+            albumName: '',
+            volume: '1'
         };
     },
     methods: {
-        ...mapActions(['prevSong', 'nextSong']),
+        ...mapActions(['prevSong', 'nextSong', 'playPause']),
         ...mapMutations([
             'PLAY_HISTORY',
             'PLAY_LIST',
             'SEND_LYRIC'
-        ])
+        ]),
+        // 调整音量大小
+        ControlVolume () {
+            CreateAudio.volume = this.volume / 100
+        },
+        // 播放
+        ControlPlay () {
+            this.playPause(true)
+        },
+        // 暂停
+        ControlPause () {
+            this.playPause(false)
+        },
+        playIngs() {
+            if (this.playIng == true) {
+                CreateAudio.play()
+            }
+            if (this.playIng == false) {
+                CreateAudio.pause()
+            }
+        },
+        volumes() {
+            var volume = document.querySelector("#volume")
+            volume.style.setProperty("--volume", this.volume + '%')
+            this.ControlVolume()
+        }
+    },
+    mounted() {
+        CreateAudio.oncanplay = () => {
+            this.playPause(true)
+            this.playIngs()
+        }
+        CreateAudio.onplay = () => {
+            this.playPause(true)
+        }
+        CreateAudio.onpause = () => {
+            this.playPause(false)
+        }
+        this.volumes()
     },
     computed: {
-        ...mapState(['songID', 'playList'])
+        ...mapState(['songID', 'playList', 'playIng'])
     },
     watch: {
+        playIng() {
+            if (this.playIng == true) {
+                CreateAudio.play()
+                .catch((err) => {
+                    err
+                });
+            }
+            if (this.playIng == false) {
+                CreateAudio.pause()
+            }
+        },
+        volume() {
+            this.volumes()
+        },
+        url() {
+            CreateAudio.src = this.url
+        },
         songID(songID) {
             var that = this;
             this.$api.music.playmusic(songID).then((res) => {
@@ -50,9 +108,9 @@ export default {
                             that.img = res1.songs[0].al.picUrl
                             this.$store.commit('PLAY_HISTORY', res1.songs[0])
                             this.$store.dispatch('addSong', res1.songs[0])
-                            that.songName = res1.songs[0].name
-                            that.artistName = res1.songs[0].ar[0].name
-                            that.albumName = res1.songs[0].al.name
+                            that.songName = res1.songs[0]
+                            that.artistName = res1.songs[0].ar[0]
+                            that.albumName = res1.songs[0].al
                             if (res2.lrc == null) {
                                 this.$store.commit('SEND_LYRIC', '')
                             } else {

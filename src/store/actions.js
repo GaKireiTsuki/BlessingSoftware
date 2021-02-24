@@ -15,9 +15,23 @@ const actions = {
         commit(TYPES.USER_ID, id)
     },
 
+
+    // 播放状态
+    playPause ({ commit }, value) {
+        switch (value) {
+            case true:
+                commit(TYPES.SET_PLAYING, value)
+                break;
+            case false:
+                commit(TYPES.SET_PLAYING, value)
+                break;
+        }
+    },
+
     // 发送歌曲ID
     playSong ({ commit }, id) {
         commit(TYPES.SEND_SONGS_ID, id)
+        commit(TYPES.SET_PLAYING, true)
     },
 
     // 添加歌曲至播放列表

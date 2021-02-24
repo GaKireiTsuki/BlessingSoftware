@@ -18,7 +18,15 @@ export default {
         ...mapState(["songID", "playIng"]),
     },
     methods: {
-        ...mapActions(['playSong', 'addSong', 'playAlbum']),
+        ...mapActions(['playSong', 'addSong', 'playAlbum', 'playPause']),
+        // 播放
+        ControlPlay () {
+            this.playPause(true)
+        },
+        // 暂停
+        ControlPause () {
+            this.playPause(false)
+        },
         getalbum () {
             this.$api.music.albuminfo(this.id).then(res => {
                 this.album = res.album

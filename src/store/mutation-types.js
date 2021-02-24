@@ -37,4 +37,5 @@ export const PREV_SONGS = 'PREV_SONGS'
 // 下一首歌
 export const NEXT_SONGS = 'NEXT_SONGS'
 
+// 播放状态
 export const SET_PLAYING = 'SET_PLAYING'

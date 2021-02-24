@@ -125,7 +125,7 @@ export default {
     margin-bottom: 0px;
 }
 #artists_category {
-    padding: 16px 0;
+    padding: 15px 0;
 }
 .artists #category:last-child .category {
     display: flex;

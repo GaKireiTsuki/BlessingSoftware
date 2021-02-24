@@ -10,7 +10,7 @@ const state = {
     // 播放历史
     playHistory: [],
     // 播放状态
-    playIng: true,
+    playIng: false,
     // 歌词
     lyric: '',
     // 所见即所得
