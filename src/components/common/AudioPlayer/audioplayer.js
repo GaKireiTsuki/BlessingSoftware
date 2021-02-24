@@ -76,9 +76,15 @@ export default {
                 .catch((err) => {
                     err
                 });
+                if (this.songID == '1') {
+                    this.$store.commit('SEND_SONGS_ID', this.songName.id)
+                }
             }
             if (this.playIng == false) {
                 CreateAudio.pause()
+                if (this.songID != '1') {
+                    this.$store.commit('SEND_SONGS_ID', '1')
+                }
             }
         },
         volume() {
