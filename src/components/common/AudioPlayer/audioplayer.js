@@ -99,6 +99,8 @@ export default {
                         type: "error",
                         hasClose: true,
                     });
+                    this.playPause(false)
+                    this.$store.commit('SEND_SONGS_ID', '1')
                 }
                 if (res.data[0].fee === 1) {
                     console.log("试听");
