@@ -12,7 +12,7 @@ export default {
             artistName: '',
             songName: '',
             albumName: '',
-            volume: '1'
+            volume: '50'
         };
     },
     methods: {
@@ -52,6 +52,9 @@ export default {
         CreateAudio.oncanplay = () => {
             this.playPause(true)
             this.playIngs()
+        }
+        CreateAudio.onended = () => {
+            this.playPause(false)
         }
         CreateAudio.onplay = () => {
             this.playPause(true)
