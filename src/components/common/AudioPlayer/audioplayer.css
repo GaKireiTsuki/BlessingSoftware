@@ -1,24 +1,29 @@
-    .controls{
+    .controls {
         width: 100%;
         text-align: center;
         line-height: 0;
     }
-    .playback_controls{
+
+    .playback_controls {
         display: inline-grid;
         grid-auto-flow: column;
         align-items: center;
     }
-    .controls_button{
+
+    .controls_button {
         display: inline-grid;
         grid-auto-flow: column;
         align-items: center;
     }
-    .shuffle_song, .repeat_song{
+
+    .shuffle_song,
+    .repeat_song {
         fill: var(--grayishFillColor) !important;
         width: 30px !important;
         height: 22px !important;
     }
-    button[class *= '_song']{
+
+    button[class *='_song'] {
         background: none;
         border: none;
         width: 32px;
@@ -27,16 +32,38 @@
         outline: none;
         cursor: pointer;
     }
-    .controls_container{
+
+    .controls_container {
         width: 100%;
         display: flex;
     }
-    .controls_container div:first-child{
+
+    .controls_container div:first-child {
         display: flex;
         padding: 0 10px;
         margin: 0 auto;
         align-items: center;
     }
+
+    #progress {
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        overflow: visible;
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+        color: inherit;
+        position: relative;
+        direction: ltr;
+        z-index: 3;
+        outline: none;
+    }
+
     .web-chrome-playback-lcd__volume-icon {
         height: 18px;
         padding: 2px;
@@ -45,6 +72,7 @@
         -webkit-margin-end: 2px;
         margin-inline-end: 2px;
     }
+
     .controls_container div:first-child input[type=range] {
         padding: 0;
         width: 70px;
@@ -60,14 +88,44 @@
         color: inherit;
         outline: none;
     }
-    .controls_container div:first-child input[type=range]::-webkit-slider-thumb {
-        appearance: inherit;
-        min-inline-size: 0px;
-        box-sizing: border-box;
-        display: flex;
-        -webkit-user-modify: read-only !important;
-        flex: 1 1 0%;
+
+    #progress::-webkit-slider-runnable-track {
+        height: 3px;
+        -webkit-appearance: none;
+        appearance: none;
+        display: block;
+        overflow: visible;
+        color: transparent;
+        cursor: pointer;
+        border-color: transparent;
+        background-color: transparent;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 3px;
+        background-image: linear-gradient(90deg, #656565 var(--progress), #0000001a var(--progress));
     }
+
+    #progress::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        margin-top: -5px;
+        width: 6px;
+        height: 9px;
+        display: none;
+        opacity: 0;
+        border-radius: 3px 3px 0 0;
+        border: 1px solid var(--whiteBgColor);
+        outline: transparent solid 1px;
+        background-position: center;
+        cursor: pointer;
+        background-color: #656565;
+    }
+
+    #song_info:hover #progress::-webkit-slider-thumb {
+        opacity: 1;
+        display: block;
+    }
+
     .controls_container div:first-child input[type=range]::-webkit-slider-runnable-track {
         height: 3px;
         -webkit-appearance: none;
@@ -82,8 +140,9 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: 100% 3px;
-        background-image: linear-gradient(90deg,#00000080 var(--volume),#00000026 var(--volume));
+        background-image: linear-gradient(90deg, #00000080 var(--volume), #00000026 var(--volume));
     }
+
     .controls_container div:first-child input[type=range]::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
@@ -97,11 +156,13 @@
         outline-color: transparent;
         background-color: var(--whiteBgColor);
     }
-    .controls_container div:first-child ~ div{
+
+    .controls_container div:first-child~div {
         display: flex;
         width: 56px;
         margin-inline-end: 20px;
     }
+
     .song_info {
         display: flex;
         height: 44px;
@@ -114,7 +175,7 @@
         border: 1px solid #E0E0E0;
         width: 100%;
         display: grid;
-        grid-template-rows: 14px 14px 13px;
+        grid-template-rows: 1fr 1fr 2px;
         background: var(--whiteBgColor);
         border-left: none;
     }

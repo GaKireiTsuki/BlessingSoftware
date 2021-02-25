@@ -12,7 +12,11 @@ export default {
             artistName: '',
             songName: '',
             albumName: '',
-            volume: '50'
+            volume: '50',
+            songs: '',
+            progress: '0',
+            duration: '0',
+            ms: true
         };
     },
     methods: {
@@ -47,16 +51,37 @@ export default {
             var volume = document.querySelector("#volume")
             volume.style.setProperty("--volume", this.volume + '%')
             this.ControlVolume()
-        }
+        },
+        mss() {
+            CreateAudio.currentTime = (this.progress / 100) * this.duration
+            this.ms = true
+        },
+        sliderProgress() {
+            this.ms = false
+        },
     },
     mounted() {
         CreateAudio.oncanplay = () => {
             this.playPause(true)
             this.playIngs()
+            this.duration = CreateAudio.duration
+            CreateAudio.ontimeupdate = () => {
+                if (this.ms != false) {
+                    this.progress = parseFloat((CreateAudio.currentTime / this.duration) * 100).toFixed(4)
+                    var progress = document.querySelector("#progress")
+                    progress.style.setProperty("--progress", this.progress + '%')
+                } else {
+                    return
+                }
+            }
         }
         CreateAudio.onended = () => {
             this.playPause(false)
             this.$store.commit('SEND_SONGS_ID', '1')
+            this.$store.commit('PLAY_HISTORY', this.songs)
+            this.progress = '0'
+            var progress = document.querySelector("#progress")
+            progress.style.setProperty("--progress", this.progress + '%')
         }
         CreateAudio.onplay = () => {
             this.playPause(true)
@@ -73,9 +98,7 @@ export default {
         playIng() {
             if (this.playIng == true) {
                 CreateAudio.play()
-                .catch((err) => {
-                    err
-                });
+                .catch((err) => { err });
                 if (this.songID == '1') {
                     this.$store.commit('SEND_SONGS_ID', this.songName.id)
                 }
@@ -119,8 +142,8 @@ export default {
                         this.$api.music.musiclyric(songID)
                     ])
                         .then(axios.spread((res1, res2) => {
+                            this.songs = res1.songs[0]
                             that.img = res1.songs[0].al.picUrl
-                            this.$store.commit('PLAY_HISTORY', res1.songs[0])
                             this.$store.dispatch('addSong', res1.songs[0])
                             that.songName = res1.songs[0]
                             that.artistName = res1.songs[0].ar[0]
@@ -131,9 +154,6 @@ export default {
                                 this.$store.commit('SEND_LYRIC', res2.lrc.lyric)
                             }
                         }))
-                    setTimeout(() => {
-                        $("audio").trigger("play");
-                    }, 400)
                 }
             });
             }

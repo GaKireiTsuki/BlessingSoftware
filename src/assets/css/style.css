@@ -24,6 +24,7 @@
     --grayishFontColor: #3c3c4399;
     --grayishFillColor: #3c3c4399;
     --volume: 50%;
+    --progress: 0%;
 }
 a{
     cursor: pointer;
