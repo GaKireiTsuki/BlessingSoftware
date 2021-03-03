@@ -12,7 +12,6 @@ import filters from './components/filters/index'
 import './assets/css/index.css'
 import './assets/css/style.css'
 import './assets/css/fonts.css'
-import 'swiper/css/swiper.css'
 
 Vue.config.productionTip = false
 Vue.prototype.$api = api
